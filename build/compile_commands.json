@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/chris/git/pan_tilt_control_system/build",
+  "command": "/usr/bin/g++  -I/home/chris/git/pan_tilt_control_system/cpp/include -g -std=gnu++17 -o CMakeFiles/pan_tilt.dir/src/main.cpp.o -c /home/chris/git/pan_tilt_control_system/cpp/src/main.cpp",
+  "file": "/home/chris/git/pan_tilt_control_system/cpp/src/main.cpp"
+}
+]
