@@ -398,3 +398,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Build
+/cpp/build/*
+!/cpp/build/.gitkeep
+
+/build/*
+!/build/.gitkeep
