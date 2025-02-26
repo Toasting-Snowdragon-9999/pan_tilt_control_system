@@ -1,3 +1,0 @@
-/home/chris/git/pan_tilt_control_system/cpp/build/CMakeFiles/pan_tilt.dir
-/home/chris/git/pan_tilt_control_system/cpp/build/CMakeFiles/edit_cache.dir
-/home/chris/git/pan_tilt_control_system/cpp/build/CMakeFiles/rebuild_cache.dir
