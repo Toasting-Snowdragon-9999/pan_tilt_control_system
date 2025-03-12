@@ -1,0 +1,73 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0xA013CC39A013CC39",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../hall_sensor.gen/sources_1/bd/read_sensor",
+      "name": "read_sensor",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "advanced_compare_0": ""
+    },
+    "ports": {
+      "a_in_0": {
+        "direction": "I"
+      },
+      "b_in_0": {
+        "direction": "I"
+      },
+      "direction_0": {
+        "direction": "O"
+      }
+    },
+    "components": {
+      "advanced_compare_0": {
+        "vlnv": "xilinx.com:module_ref:advanced_compare:1.0",
+        "ip_revision": "1",
+        "xci_name": "read_sensor_advanced_compare_0_0",
+        "xci_path": "ip\\read_sensor_advanced_compare_0_0\\read_sensor_advanced_compare_0_0.xci",
+        "inst_hier_path": "advanced_compare_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "advanced_compare",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a_in": {
+            "direction": "I"
+          },
+          "b_in": {
+            "direction": "I"
+          },
+          "direction": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "a_in_0_1": {
+        "ports": [
+          "a_in_0",
+          "advanced_compare_0/a_in"
+        ]
+      },
+      "advanced_compare_0_direction": {
+        "ports": [
+          "advanced_compare_0/direction",
+          "direction_0"
+        ]
+      },
+      "b_in_0_1": {
+        "ports": [
+          "b_in_0",
+          "advanced_compare_0/b_in"
+        ]
+      }
+    }
+  }
+}

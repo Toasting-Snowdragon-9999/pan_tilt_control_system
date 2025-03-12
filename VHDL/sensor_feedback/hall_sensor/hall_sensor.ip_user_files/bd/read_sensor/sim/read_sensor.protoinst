@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"read_sensor": {
+			"proto_instances": {
+			}
+		}
+	}
+}

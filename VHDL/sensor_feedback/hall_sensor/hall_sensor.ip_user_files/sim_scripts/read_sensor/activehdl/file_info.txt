@@ -1,0 +1,2 @@
+read_sensor_advanced_compare_0_0.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_advanced_compare_0_0/sim/read_sensor_advanced_compare_0_0.vhd,
+read_sensor.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/sim/read_sensor.vhd,
