@@ -1,0 +1,6 @@
+vhdl xil_defaultlib  \
+"../../../bd/read_sensor/ip/read_sensor_advanced_compare_0_0/sim/read_sensor_advanced_compare_0_0.vhd" \
+"../../../bd/read_sensor/sim/read_sensor.vhd" \
+
+# Do not sort compile order
+nosort
