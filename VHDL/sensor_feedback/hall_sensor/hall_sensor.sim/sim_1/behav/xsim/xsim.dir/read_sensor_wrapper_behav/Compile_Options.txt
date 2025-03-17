@@ -1,1 +1,0 @@
---incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "read_sensor_wrapper_behav" "xil_defaultlib.read_sensor_wrapper" -log "elaborate.log" 

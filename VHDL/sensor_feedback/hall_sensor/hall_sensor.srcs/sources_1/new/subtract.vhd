@@ -1,22 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03/12/2025 10:39:56 AM
--- Design Name: 
--- Module Name: subtract - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
 
 
 library IEEE;
@@ -38,34 +19,30 @@ entity subtract is
     
     Port ( a_in : in STD_LOGIC_VECTOR (n_bits-1 downto 0);
            b_in : in STD_LOGIC_VECTOR (n_bits-1 downto 0);
-           result : out STD_LOGIC_VECTOR (n_bits-1 downto 0);
-           sign : std_logic);
+           clk  : in STD_LOGIC;
+           result : out STD_LOGIC_VECTOR (n_bits-1 downto 0));
            
 end subtract;
 
 architecture Behavioral of subtract is
-    signal a_value, b_value : UNSIGNED(n_bits-1 downto 0);
-    signal temp_result : UNSIGNED(n_bits-1 downto 0);
+    signal a_value, b_value : SIGNED(n_bits-1 downto 0);
+    signal temp_result : SIGNED(n_bits-1 downto 0);
 
 begin
-    process(a_in, b_in)
+    process(clk, a_in, b_in)
     begin
         -- Convert input vectors to UNSIGNED
-        a_value <= UNSIGNED(a_in);
-        b_value <= UNSIGNED(b_in);
+        a_value <= SIGNED(a_in);
+        b_value <= SIGNED(b_in);
         
         -- Perform subtraction either a-b or b-a 
         -- and then set the sign accordingly 
-        if a_value < b_value then
-            temp_result <= b_value - a_value;
-            sign <= '1';  -- Negative result
-        else
+        if(rising_edge(clk)) then
             temp_result <= a_value - b_value;
-            sign <= '0';  -- Positive result
         end if;
         
         result <= STD_LOGIC_VECTOR(temp_result);
-
+        
     end process;
 
 end Behavioral;

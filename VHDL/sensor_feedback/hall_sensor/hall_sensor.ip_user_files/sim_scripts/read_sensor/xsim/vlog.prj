@@ -1,0 +1,7 @@
+verilog xil_defaultlib  \
+"../../../bd/read_sensor/ip/read_sensor_xlconstant_0_0/sim/read_sensor_xlconstant_0_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

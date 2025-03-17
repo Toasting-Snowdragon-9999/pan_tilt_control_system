@@ -1,2 +1,9 @@
 read_sensor_advanced_compare_0_0.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_advanced_compare_0_0/sim/read_sensor_advanced_compare_0_0.vhd,
+read_sensor_not_gate_0_0.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_not_gate_0_0/sim/read_sensor_not_gate_0_0.vhd,
+read_sensor_generate_clock_0_0.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_generate_clock_0_0/sim/read_sensor_generate_clock_0_0.vhd,
+read_sensor_counter_0_0.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_counter_0_0/sim/read_sensor_counter_0_0.vhd,
+read_sensor_xlconstant_0_0.v,verilog,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_xlconstant_0_0/sim/read_sensor_xlconstant_0_0.v,
+read_sensor_counter_0_1.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_counter_0_1/sim/read_sensor_counter_0_1.vhd,
+read_sensor_subtract_0_0.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/ip/read_sensor_subtract_0_0/sim/read_sensor_subtract_0_0.vhd,
 read_sensor.vhd,vhdl,xil_defaultlib,../../../bd/read_sensor/sim/read_sensor.vhd,
+glbl.v,Verilog,xil_defaultlib,glbl.v

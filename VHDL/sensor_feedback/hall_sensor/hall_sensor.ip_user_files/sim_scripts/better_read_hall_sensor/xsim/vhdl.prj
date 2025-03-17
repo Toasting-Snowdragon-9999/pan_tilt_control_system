@@ -1,0 +1,9 @@
+vhdl xil_defaultlib  \
+"../../../bd/better_read_hall_sensor/ip/better_read_hall_sensor_advanced_compare_0_0/sim/better_read_hall_sensor_advanced_compare_0_0.vhd" \
+"../../../bd/better_read_hall_sensor/ip/better_read_hall_sensor_advanced_counter_0_0/sim/better_read_hall_sensor_advanced_counter_0_0.vhd" \
+"../../../bd/better_read_hall_sensor/ip/better_read_hall_sensor_comparator_equal_0_0/sim/better_read_hall_sensor_comparator_equal_0_0.vhd" \
+"../../../bd/better_read_hall_sensor/ip/better_read_hall_sensor_generate_clock_0_0/sim/better_read_hall_sensor_generate_clock_0_0.vhd" \
+"../../../bd/better_read_hall_sensor/sim/better_read_hall_sensor.vhd" \
+
+# Do not sort compile order
+nosort

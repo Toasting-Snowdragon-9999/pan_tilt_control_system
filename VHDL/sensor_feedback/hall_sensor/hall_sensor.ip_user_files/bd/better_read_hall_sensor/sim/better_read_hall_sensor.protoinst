@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"better_read_hall_sensor": {
+			"proto_instances": {
+			}
+		}
+	}
+}

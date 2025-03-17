@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 13 16:14:24 2025" VIVADOVERSION="2024.2">
+
+  <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="better_read_hall_sensor" PACKAGE="clg400" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="I" NAME="a_in_0" SIGIS="undef" SIGNAME="External_Ports_a_in_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="determin_direction" PORT="a_in"/>
+        <CONNECTION INSTANCE="generate_clock_0" PORT="pwm_a"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="b_in_0" SIGIS="undef" SIGNAME="External_Ports_b_in_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="determin_direction" PORT="b_in"/>
+        <CONNECTION INSTANCE="generate_clock_0" PORT="pwm_b"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="c_out_0" SIGIS="undef" SIGNAME="over_max_c_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="over_max" PORT="c_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk_0" SIGIS="clk" SIGNAME="External_Ports_clk_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="generate_clock_0" PORT="internal_clock"/>
+        <CONNECTION INSTANCE="get_deg" PORT="clk"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="10" NAME="count" RIGHT="0" SIGIS="undef" SIGNAME="get_deg_count">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="get_deg" PORT="count"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="dir" SIGIS="undef" SIGNAME="determin_direction_direction">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="determin_direction" PORT="direction"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="en" SIGIS="undef" SIGNAME="generate_clock_0_gen_clk">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="generate_clock_0" PORT="gen_clk"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/determin_direction" HWVERSION="1.0" INSTANCE="determin_direction" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="advanced_compare" VLNV="xilinx.com:module_ref:advanced_compare:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="better_read_hall_sensor_advanced_compare_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a_in" SIGIS="undef" SIGNAME="External_Ports_a_in_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="a_in_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b_in" SIGIS="undef" SIGNAME="External_Ports_b_in_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="b_in_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="direction" SIGIS="undef" SIGNAME="determin_direction_direction">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="dir"/>
+            <CONNECTION INSTANCE="get_deg" PORT="up"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/external_sensor" HWVERSION="1.1" INSTANCE="external_sensor" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="better_read_hall_sensor_xlconstant_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="external_sensor_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="get_deg" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/generate_clock_0" HWVERSION="1.0" INSTANCE="generate_clock_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="generate_clock" VLNV="xilinx.com:module_ref:generate_clock:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="better_read_hall_sensor_generate_clock_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="gen_clk" SIGIS="clk" SIGNAME="generate_clock_0_gen_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="en"/>
+            <CONNECTION INSTANCE="get_deg" PORT="en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="internal_clock" SIGIS="clk" SIGNAME="External_Ports_clk_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pwm_a" SIGIS="undef" SIGNAME="External_Ports_a_in_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="a_in_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pwm_b" SIGIS="undef" SIGNAME="External_Ports_b_in_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="b_in_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/get_deg" HWVERSION="1.0" INSTANCE="get_deg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="advanced_counter" VLNV="xilinx.com:module_ref:advanced_counter:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="better_read_hall_sensor_advanced_counter_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="count" RIGHT="0" SIGIS="undef" SIGNAME="get_deg_count">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="over_max" PORT="a_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="count"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="generate_clock_0_gen_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="generate_clock_0" PORT="gen_clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="external_sensor_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="external_sensor" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="up" SIGIS="undef" SIGNAME="determin_direction_direction">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="determin_direction" PORT="direction"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/max_deg" HWVERSION="1.1" INSTANCE="max_deg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x59F"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="better_read_hall_sensor_xlconstant_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="10" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="max_deg_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="over_max" PORT="b_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/over_max" HWVERSION="1.0" INSTANCE="over_max" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comparator_equal" VLNV="xilinx.com:module_ref:comparator_equal:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="better_read_hall_sensor_comparator_equal_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="10" NAME="a_in" RIGHT="0" SIGIS="undef" SIGNAME="get_deg_count">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="get_deg" PORT="count"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="b_in" RIGHT="0" SIGIS="undef" SIGNAME="max_deg_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="max_deg" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c_out" SIGIS="undef" SIGNAME="over_max_c_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="c_out_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

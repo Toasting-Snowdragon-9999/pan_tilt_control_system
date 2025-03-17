@@ -1,0 +1,15 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../hall_sensor.srcs/sources_1/new/advanced_compare.vhd" \
+"../../../../hall_sensor.srcs/sources_1/new/advanced_counter.vhd" \
+"../../../../hall_sensor.srcs/sources_1/new/compare_equal.vhd" \
+"../../../../hall_sensor.srcs/sources_1/new/generate_clock.vhd" \
+"../../../../hall_sensor.ip_user_files/bd/better_read_hall_sensor/ip/better_read_hall_sensor_advanced_compare_0_0/sim/better_read_hall_sensor_advanced_compare_0_0.vhd" \
+"../../../../hall_sensor.ip_user_files/bd/better_read_hall_sensor/ip/better_read_hall_sensor_advanced_counter_0_0/sim/better_read_hall_sensor_advanced_counter_0_0.vhd" \
+"../../../../hall_sensor.ip_user_files/bd/better_read_hall_sensor/ip/better_read_hall_sensor_comparator_equal_0_0/sim/better_read_hall_sensor_comparator_equal_0_0.vhd" \
+"../../../../hall_sensor.ip_user_files/bd/better_read_hall_sensor/ip/better_read_hall_sensor_generate_clock_0_0/sim/better_read_hall_sensor_generate_clock_0_0.vhd" \
+"../../../../hall_sensor.ip_user_files/bd/better_read_hall_sensor/sim/better_read_hall_sensor.vhd" \
+"../../../../hall_sensor.gen/sources_1/bd/better_read_hall_sensor/hdl/better_read_hall_sensor_wrapper.vhd" \
+
+# Do not sort compile order
+nosort
