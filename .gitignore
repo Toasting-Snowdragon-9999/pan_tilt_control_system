@@ -405,3 +405,7 @@ FodyWeavers.xsd
 
 /build/*
 !/build/.gitkeep
+
+
+# Old SPI folder that should not be added to project
+/embedded/spi
