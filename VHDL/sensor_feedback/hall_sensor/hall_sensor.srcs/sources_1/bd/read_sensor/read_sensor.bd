@@ -1,17 +1,22 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA013CC39A013CC39",
+      "boundary_crc": "0xD89B630D825A91ED",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../hall_sensor.gen/sources_1/bd/read_sensor",
       "name": "read_sensor",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.2",
-      "validated": "true"
+      "tool_version": "2024.2"
     },
     "design_tree": {
-      "advanced_compare_0": ""
+      "advanced_compare_0": "",
+      "not_gate_0": "",
+      "generate_clock_0": "",
+      "negativ_count": "",
+      "xlconstant_0": "",
+      "positiv_count": "",
+      "subtract_0": ""
     },
     "ports": {
       "a_in_0": {
@@ -20,8 +25,28 @@
       "b_in_0": {
         "direction": "I"
       },
-      "direction_0": {
+      "internal_clock_0": {
+        "type": "clk",
+        "direction": "I"
+      },
+      "gen_clk_0": {
+        "type": "clk",
         "direction": "O"
+      },
+      "result_0": {
+        "direction": "O",
+        "left": "10",
+        "right": "0"
+      },
+      "a_count": {
+        "direction": "O",
+        "left": "10",
+        "right": "0"
+      },
+      "b_count": {
+        "direction": "O",
+        "left": "10",
+        "right": "0"
       }
     },
     "components": {
@@ -47,25 +72,262 @@
             "direction": "O"
           }
         }
+      },
+      "not_gate_0": {
+        "vlnv": "xilinx.com:module_ref:not_gate:1.0",
+        "ip_revision": "1",
+        "xci_name": "read_sensor_not_gate_0_0",
+        "xci_path": "ip\\read_sensor_not_gate_0_0\\read_sensor_not_gate_0_0.xci",
+        "inst_hier_path": "not_gate_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "not_gate",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a_in": {
+            "direction": "I"
+          },
+          "not_a": {
+            "direction": "O"
+          }
+        }
+      },
+      "generate_clock_0": {
+        "vlnv": "xilinx.com:module_ref:generate_clock:1.0",
+        "ip_revision": "1",
+        "xci_name": "read_sensor_generate_clock_0_0",
+        "xci_path": "ip\\read_sensor_generate_clock_0_0\\read_sensor_generate_clock_0_0.xci",
+        "inst_hier_path": "generate_clock_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "generate_clock",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "pwm_a": {
+            "direction": "I"
+          },
+          "pwm_b": {
+            "direction": "I"
+          },
+          "internal_clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "gen_clk": {
+            "type": "clk",
+            "direction": "O"
+          }
+        }
+      },
+      "negativ_count": {
+        "vlnv": "xilinx.com:module_ref:counter:1.0",
+        "ip_revision": "1",
+        "xci_name": "read_sensor_counter_0_0",
+        "xci_path": "ip\\read_sensor_counter_0_0\\read_sensor_counter_0_0.xci",
+        "inst_hier_path": "negativ_count",
+        "parameters": {
+          "n_bits": {
+            "value": "11"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "count": {
+            "direction": "O",
+            "left": "10",
+            "right": "0"
+          }
+        }
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "9",
+        "xci_name": "read_sensor_xlconstant_0_0",
+        "xci_path": "ip\\read_sensor_xlconstant_0_0\\read_sensor_xlconstant_0_0.xci",
+        "inst_hier_path": "xlconstant_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "positiv_count": {
+        "vlnv": "xilinx.com:module_ref:counter:1.0",
+        "ip_revision": "1",
+        "xci_name": "read_sensor_counter_0_1",
+        "xci_path": "ip\\read_sensor_counter_0_1\\read_sensor_counter_0_1.xci",
+        "inst_hier_path": "positiv_count",
+        "parameters": {
+          "n_bits": {
+            "value": "11"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "count": {
+            "direction": "O",
+            "left": "10",
+            "right": "0"
+          }
+        }
+      },
+      "subtract_0": {
+        "vlnv": "xilinx.com:module_ref:subtract:1.0",
+        "ip_revision": "1",
+        "xci_name": "read_sensor_subtract_0_0",
+        "xci_path": "ip\\read_sensor_subtract_0_0\\read_sensor_subtract_0_0.xci",
+        "inst_hier_path": "subtract_0",
+        "parameters": {
+          "n_bits": {
+            "value": "11"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "subtract",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a_in": {
+            "direction": "I",
+            "left": "10",
+            "right": "0"
+          },
+          "b_in": {
+            "direction": "I",
+            "left": "10",
+            "right": "0"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "read_sensor_internal_clock_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "result": {
+            "direction": "O",
+            "left": "10",
+            "right": "0"
+          }
+        }
       }
     },
     "nets": {
       "a_in_0_1": {
         "ports": [
           "a_in_0",
-          "advanced_compare_0/a_in"
+          "advanced_compare_0/a_in",
+          "generate_clock_0/pwm_a"
         ]
       },
       "advanced_compare_0_direction": {
         "ports": [
           "advanced_compare_0/direction",
-          "direction_0"
+          "not_gate_0/a_in",
+          "positiv_count/en"
         ]
       },
       "b_in_0_1": {
         "ports": [
           "b_in_0",
-          "advanced_compare_0/b_in"
+          "advanced_compare_0/b_in",
+          "generate_clock_0/pwm_b"
+        ]
+      },
+      "generate_clock_0_gen_clk": {
+        "ports": [
+          "generate_clock_0/gen_clk",
+          "gen_clk_0",
+          "negativ_count/clk",
+          "positiv_count/clk"
+        ]
+      },
+      "internal_clock_0_1": {
+        "ports": [
+          "internal_clock_0",
+          "subtract_0/clk",
+          "generate_clock_0/internal_clock"
+        ]
+      },
+      "negativ_count_count": {
+        "ports": [
+          "negativ_count/count",
+          "b_count",
+          "subtract_0/b_in"
+        ]
+      },
+      "not_gate_0_not_a": {
+        "ports": [
+          "not_gate_0/not_a",
+          "negativ_count/en"
+        ]
+      },
+      "positiv_count_count": {
+        "ports": [
+          "positiv_count/count",
+          "a_count",
+          "subtract_0/a_in"
+        ]
+      },
+      "subtract_0_result": {
+        "ports": [
+          "subtract_0/result",
+          "result_0"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "negativ_count/rst",
+          "positiv_count/rst"
         ]
       }
     }

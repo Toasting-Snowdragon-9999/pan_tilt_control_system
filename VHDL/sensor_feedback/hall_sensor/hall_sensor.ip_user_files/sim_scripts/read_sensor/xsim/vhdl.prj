@@ -1,5 +1,10 @@
 vhdl xil_defaultlib  \
 "../../../bd/read_sensor/ip/read_sensor_advanced_compare_0_0/sim/read_sensor_advanced_compare_0_0.vhd" \
+"../../../bd/read_sensor/ip/read_sensor_not_gate_0_0/sim/read_sensor_not_gate_0_0.vhd" \
+"../../../bd/read_sensor/ip/read_sensor_generate_clock_0_0/sim/read_sensor_generate_clock_0_0.vhd" \
+"../../../bd/read_sensor/ip/read_sensor_counter_0_0/sim/read_sensor_counter_0_0.vhd" \
+"../../../bd/read_sensor/ip/read_sensor_counter_0_1/sim/read_sensor_counter_0_1.vhd" \
+"../../../bd/read_sensor/ip/read_sensor_subtract_0_0/sim/read_sensor_subtract_0_0.vhd" \
 "../../../bd/read_sensor/sim/read_sensor.vhd" \
 
 # Do not sort compile order

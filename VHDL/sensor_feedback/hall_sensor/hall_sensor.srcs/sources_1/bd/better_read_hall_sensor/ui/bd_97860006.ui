@@ -1,0 +1,27 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.58549",
+   "Default View_TopLeft":"-128,-184",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
+#  -string -flagsOSRD
+preplace port port-id_motor_a -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace port port-id_motor_b -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 90 -defaultsOSRD
+preplace port port-id_external_hall -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace portBus deg_times_four -pg 1 -lvl 4 -x 890 -y 90 -defaultsOSRD
+preplace inst determin_direction -pg 1 -lvl 1 -x 290 -y 20 -defaultsOSRD
+preplace inst get_deg -pg 1 -lvl 2 -x 540 -y 90 -defaultsOSRD
+preplace inst generate_clock_0 -pg 1 -lvl 1 -x 290 -y 190 -defaultsOSRD
+preplace netloc advanced_compare_0_direction 1 1 1 420 20n
+preplace netloc a_in_0_1 1 0 1 160J 10n
+preplace netloc b_in_0_1 1 0 1 170J 30n
+preplace netloc get_deg_count 1 2 2 N 90 N
+preplace netloc clk_0_1 1 0 2 140J 90 410J
+preplace netloc generate_clock_0_gen_clk 1 1 1 420 100n
+preplace netloc rst_0_1 1 0 2 150J 110 410J
+levelinfo -pg 1 0 290 540 750 890
+pagesize -pg 1 -db -bbox -sgen -130 -180 1070 370
+"
+}
+0

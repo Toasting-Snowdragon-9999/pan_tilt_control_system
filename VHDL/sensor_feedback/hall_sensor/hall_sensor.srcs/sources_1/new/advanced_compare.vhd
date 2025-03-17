@@ -1,22 +1,3 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 03/12/2025 11:31:59 AM
--- Design Name: 
--- Module Name: advanced_compare - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
 
 
 library IEEE;
@@ -38,22 +19,17 @@ entity advanced_compare is
 end advanced_compare;
 
 architecture Behavioral of advanced_compare is
-    signal prev_a, prev_b : STD_LOGIC := '0';  -- Previous state storage
+
 begin
-    process(a_in, b_in)
+    process(a_in)
     begin
-        -- Only act when both a_in and b_in are high
-        if (a_in = '1' and b_in = '1') then
+    if(rising_edge(a_in)) then
+        if (b_in = '0') then
             -- Compare with previous state
-            if (prev_a = '1' and prev_b = '0') then
-                direction <= '1';  -- "10" detected (clockwise)
-            elsif (prev_a = '0' and prev_b = '1') then
-                direction <= '0';  -- "01" detected (counterclockwise)
-            end if;
+             direction <= '1';  -- "10" detected (clockwise)
+        elsif (b_in = '1') then
+             direction <= '0';  -- "01" detected (counterclockwise)
         end if;
-        
-        -- Store the current state as previous for the next comparison
-        prev_a <= a_in;
-        prev_b <= b_in;
+        end if;
     end process;
 end Behavioral;
