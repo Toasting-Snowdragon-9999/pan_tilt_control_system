@@ -405,3 +405,11 @@ FodyWeavers.xsd
 
 /build/*
 !/build/.gitkeep
+
+
+/VHDL/pwm_generator/*.str
+/VHDL/sensor_feedback/*.str
+
+/VHDL/pwm_generator/vivado.jou
+/VHDL/sensor_feedback/vivado.log
+/VHDL/pwm_generator/pwm_generator.cache/wt/project.wpc
