@@ -32,6 +32,7 @@ endif()
 set(SOURCES
     src/vision.cpp
     src/priority_vision.cpp
+    src/uart.cpp
 )
 
 # Add executable
