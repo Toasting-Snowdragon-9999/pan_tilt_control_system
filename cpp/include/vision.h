@@ -13,10 +13,11 @@
 #include <opencv2/cudafilters.hpp>
 
 #include "cuda_defines.h"
+#include "uart.h"
 
 #define EXTERNAL_CAMERA 4
 #define INTERNAL_CAMERA 0
-#define CAMERA_IN_USE INTERNAL_CAMERA
+#define CAMERA_IN_USE EXTERNAL_CAMERA
 #define RESET 0
 #define MAX_CALIBRATION 100
 #define MAX_8_BIT 255
