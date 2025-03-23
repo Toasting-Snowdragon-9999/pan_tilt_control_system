@@ -27,7 +27,7 @@ class PrioVision : public Vision {
     public:
         PrioVision();
         ~PrioVision();
-        void tracking () override;
+        void tracking (int cam) override;
 
     protected: 
         std::vector<ColorThreshold> _thresholds;

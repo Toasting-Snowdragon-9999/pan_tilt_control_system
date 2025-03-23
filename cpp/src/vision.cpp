@@ -3,6 +3,7 @@
 #define COLORSPACE cv::COLOR_BGR2Lab
 
 Vision::Vision() {
+    _region_of_interest = cv::Rect(0, 0, 0, 0);
     std::cout << "Vision object created" << std::endl;
 }
 
@@ -43,14 +44,14 @@ bool Vision::save_image(const cv::Mat& image, const std::string& filename)
     return success;
 }
 
-void Vision::tracking() {
+void Vision::tracking(int cam) {
     bool enable_calibration = true;    
     int radius = 1;
     two_dim::tracking_offset offset;
     std::vector<cv::Scalar> threshholds = _get_thresholds(enable_calibration);
     std::cout << "thresholds: " << threshholds[0] << " " << threshholds[1] << std::endl;
 
-    cv::VideoCapture cap(CAMERA_IN_USE);
+    cv::VideoCapture cap(cam);
 
     if (!cap.isOpened()) {
         std::cerr << "Error: Could not open camera!" << std::endl;
@@ -212,9 +213,9 @@ void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>&
     int max_index = -1;
 
     // Keep these static so they persist between function calls
-    static cv::Rect old_rect(0, 0, 0, 0);
-    static cv::Point old_center(old_rect.x + old_rect.width / 2,
-                old_rect.y + old_rect.height / 2);
+    
+    static cv::Point old_center(_region_of_interest.x + _region_of_interest.width / 2,
+                _region_of_interest.y + _region_of_interest.height / 2);
 
     for (size_t i = 0; i < contours.size(); i++){
         double area = cv::contourArea(contours[i]);
@@ -235,18 +236,19 @@ void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>&
         new_rect.width  = std::min(new_rect.width,  src_image.cols - new_rect.x);
         new_rect.height = std::min(new_rect.height, src_image.rows - new_rect.y);
 
-        int center_x = new_rect.x + new_rect.width / 2;
-        int center_y = new_rect.y + new_rect.height / 2;
+        int center_x    = new_rect.x + new_rect.width / 2;
+        int center_y    = new_rect.y + new_rect.height / 2;
+
         cv::Point new_center(center_x, center_y);
 
         if (_valid_center_diff(new_center, old_center, MAX_DEVIATION)){
-            old_rect = new_rect;
+            _region_of_interest = new_rect;
             old_center = new_center;
         }
 
         int thickness = 3;
-        cv::rectangle(src_image,      //cv::rectangle(src_image, top_left, bottom_right,  cv::Scalar(brg::baby_pink_blue, brg::baby_pink_green, brg::baby_pink_red), thickness);
-            old_rect,
+        cv::rectangle(src_image,      
+            _region_of_interest,
             cv::Scalar(brg::baby_pink_blue,
                         brg::baby_pink_green,
                         brg::baby_pink_red),
@@ -255,8 +257,8 @@ void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>&
 
         cv::circle(src_image,
             old_center,
-            1,               // radius
-            cv::Scalar(0, 0, 0),   // color: black
+            1,                      // radius
+            cv::Scalar(0, 0, 0),    // color: black
             cv::FILLED
         );
 

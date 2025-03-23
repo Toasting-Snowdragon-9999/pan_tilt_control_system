@@ -27,7 +27,7 @@ class Vision {
     public:
         Vision();
         ~Vision();
-        virtual void tracking();
+        virtual void tracking(int cam);
         void load_image(const std::string& file_name);
         bool save_image(const cv::Mat& image, const std::string& filename);
         void display_image(const cv::Mat& image);
@@ -36,6 +36,7 @@ class Vision {
         float _offset;
         two_dim::points _center_image;
         two_dim::points _center_tracking;
+        cv::Rect _region_of_interest; // Region of interest
 
         cv::Mat _image, _blurred_cpu;
         cv::cuda::GpuMat _grey, _hsv, _blurred, _gpu_frame;

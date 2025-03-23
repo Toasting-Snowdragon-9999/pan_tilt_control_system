@@ -22,12 +22,39 @@ struct UartConfig {
 class Uart {
     private: 
         int _handler;
+         /**
+        * @brief This method will return a baudrate usable for the underlying system
+        * @param baud_rate Type: unsigned 32 bit integer - This is the desired baudrate 
+        * @return Type: speed_t - This is the baudrate that the system can use 
+        */
         speed_t _get_baudrate(uint32_t baud_rate);
+        /**
+         * @brief This method will set the data bits for the UART communication
+         * @param data_bits Type: uint8_t - This is the number of data bits
+         * @param tty Type: struct termios - This is the configuration for the UART communication
+         * @return Type: void - 
+         */
         void _set_data_bits(uint8_t data_bits, struct termios& tty);
+        /**
+         * @brief This method will set the stop bits for the UART communication
+         * @param stop_bits Type: uint8_t - This is the number of stop bits
+         * @param tty Type: struct termios - This is the configuration for the UART communication
+         * @return Type: void - 
+         */
         void _set_parity(uint8_t parity, struct termios& tty);
 
     public:
+        /**
+        * @brief This method will construct the UART communication
+        * @param none Type: void -
+        * @return Type: void - 
+        */
         Uart();
+                /**
+        * @brief This method will deconstruct the UART communication
+        * @param none Type: void -
+        * @return Type: void - 
+        */
         ~Uart();
         /**
         * @brief This method will initialise the UART communication with a port and a config
@@ -35,7 +62,7 @@ class Uart {
         * @param port Type: const char * - This is a pointer to the port that the UART communication will be on
         * @return Type: void - 
         */
-        void init(const UartConfig& config, const char* port);
+        bool init(const UartConfig& config, const char* port);
         /**
         * @brief This method will send 1 byte of data
         * @param data Type: const uint8_t - This is a reference to the data that will be sent

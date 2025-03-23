@@ -1,10 +1,10 @@
 #include "priority_vision.h"
 
-PrioVision::PrioVision() {
+PrioVision::PrioVision() : Vision() {
 
 }
 
-PrioVision::~PrioVision() {
+PrioVision::~PrioVision(){
 
 }
 
@@ -25,15 +25,13 @@ PrioVision::find_highest_priority_threshold(std::vector<ColorThreshold>& thresho
     return best_threshold; // Returns either a reference or empty optional
 }
 
-
-
-void PrioVision::tracking() {
+void PrioVision::tracking(int cam) {
     int radius = 1;
     two_dim::tracking_offset offset;
     bool run_calibration = true;
     _set_priority(run_calibration);
 
-    cv::VideoCapture cap(CAMERA_IN_USE);
+    cv::VideoCapture cap(cam);
     // cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);     // Makes it very slow
     // cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);    // Makes it very slow
     // cap.set(cv::CAP_PROP_FPS, 30);               // max 30
