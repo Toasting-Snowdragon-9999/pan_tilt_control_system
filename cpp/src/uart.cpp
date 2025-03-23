@@ -101,12 +101,12 @@ int Uart::communicate(const std::vector<uint8_t>& data, std::vector<uint8_t>& re
 }
 
 
-void Uart::init(const UartConfig& config, const char* port) {
+bool Uart::init(const UartConfig& config, const char* port) {
     _handler = open(port, O_RDWR | O_NOCTTY | O_SYNC);
     if (_handler < 0) {
         std::cerr << "Error: Cannot open port " << port 
                   << ", error: " << strerror(errno) << std::endl;
-        return;
+        return 0;
     }
 
     // Get current serial port settings
@@ -117,7 +117,7 @@ void Uart::init(const UartConfig& config, const char* port) {
         std::cerr << "Error from tcgetattr: " << strerror(errno) << std::endl;
         close(_handler);
         _handler = -1;
-        return;
+        return 0;
     }
 
     speed_t speed = _get_baudrate(config.baud_rate);
@@ -165,12 +165,13 @@ void Uart::init(const UartConfig& config, const char* port) {
          std::cerr << "Error from tcsetattr: " << strerror(errno) << std::endl;
          close(_handler);
          _handler = -1;
-         return;
+         return 0;
      }
  
      // Flush old data
      tcflush(_handler, TCIFLUSH);
  
      std::cout << "Successfully opened and configured " << port << std::endl;
+     return 1;
 }
 
