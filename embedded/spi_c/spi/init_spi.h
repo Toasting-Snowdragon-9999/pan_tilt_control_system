@@ -27,7 +27,7 @@
 
 void SPI_init(void);
 
-void SPI_write(INT16U);
+void SPI_write(INT8U);
 
 void Delay_ms(int);
 

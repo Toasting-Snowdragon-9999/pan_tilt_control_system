@@ -97,7 +97,7 @@ void SPI_init(void){
      *The protocol mode: Freescale SPI, TI SSF, MICROWIRE (FRF)
      *The data size (DSS)
     ****************************************************************************************************/
-    SSI2_CR0_R |= SSI_CR0_DSS_16 |  SSI_CR0_SCR_M;
+    SSI2_CR0_R |= SSI_CR0_DSS_8 |  0xF900 | SSI_CR0_SPH | SSI_CR0_SPO; // Mode 3 is used
 
 
     /*Serial clock rate (SCR) set to 0, mode 0 is used (SPH=0 and SPO=0), protocol mode Freescale SPI is used
@@ -116,13 +116,13 @@ void SPI_init(void){
 
 }
 
-void SPI_write(INT16U data){
+void SPI_write(INT8U data){
 
-    GPIO_PORTB_DATA_R &= ~(1 << 5); //Slave select bit is set to low, causing slave data to be enabled onto SSI2Rx
-    //while((SSI2_SR_R & 0x02) == 0); //Waits until transmit FIFO is not empty/ready
+    //GPIO_PORTB_DATA_R &= ~(1 << 5); //Slave select bit is set to low, causing slave data to be enabled onto SSI2Rx
+    while((SSI2_SR_R & 0x02) == 0); //Waits until transmit FIFO is not empty/ready
     SSI2_DR_R = data; //Transmit data via SPI
-    //while(SSI2_SR_R & 0x10); //Wait until transmit FIFO is full/transmission complete
-    GPIO_PORTB_DATA_R |= (1 << 5); //Slave select bit is set to high to end communication
+    while(SSI2_SR_R & 0x10); //Wait until transmit FIFO is full/transmission complete
+    //GPIO_PORTB_DATA_R |= (1 << 5); //Slave select bit is set to high to end communication
 
 }
 
