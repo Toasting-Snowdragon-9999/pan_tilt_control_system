@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "xlconstant_v1_1_9" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "movement_interpreter_wrapper_behav" "xil_defaultlib.movement_interpreter_wrapper" "xil_defaultlib.glbl" -log "elaborate.log" 

@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"movement_interpreter": {
+			"proto_instances": {
+			}
+		}
+	}
+}

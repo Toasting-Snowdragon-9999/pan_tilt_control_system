@@ -13,9 +13,10 @@ architecture Behavioral of duty_cycle_lut is
 begin
         with spi_in select
             duty_tmp <= 
-                    TO_UNSIGNED(31250000,27) when "00",  -- 25% duty cycle
-                    TO_UNSIGNED(62500000,27) when "01",  -- 50% duty cycle
-                    TO_UNSIGNED(93750000,27) when "10",  -- 75% duty cycle
+                    TO_UNSIGNED(0,27) when "00",  -- 0% duty cycle
+                    TO_UNSIGNED(31250000,27) when "01",  -- 25% duty cycle
+                    TO_UNSIGNED(62500000,27) when "10",  -- 50% duty cycle
+--                    TO_UNSIGNED(93750000,27) when "10",  -- 75% duty cycle
                     TO_UNSIGNED(125000000,27) when "11",  -- 100% duty cycle
                     TO_UNSIGNED(0,27) when others;  -- turn off all LEDs
         duty_constant <= STD_LOGIC_VECTOR(duty_tmp);        
