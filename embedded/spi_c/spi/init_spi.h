@@ -25,11 +25,11 @@
 #ifndef INIT_SPI_H_
 #define INIT_SPI_H_
 
-void SPI_init(void)
+void SPI_init(void);
 
-void SPI_write(INT16U)
+void SPI_write(INT16U);
 
-void Delay_ms(int)
+void Delay_ms(int);
 
 
 #endif /* INIT_SPI_H_ */

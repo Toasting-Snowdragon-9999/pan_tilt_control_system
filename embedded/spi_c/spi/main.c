@@ -18,22 +18,25 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include "emp_type.h"
-#include "init_spi"
+#include "init_spi.h"
 /***************** Defines ********************/
 /***************** Constants ******************/
-INT16U test_word1 = "1010100";
-INT16U test_word2 = "111000";
-int sec = 1000;
+
 /***************** Variables ******************/
 int main(void)
 {
+    INT16U test_word1 = 0b1111110001010100;
+    INT16U test_word2 = 0b0110101101010111;
+    int sec = 1000;
     SPI_init(); //Initialize the SPI2 module and its related GPIO pins
 
-    SPI_write(test_word1);
-    Delay_ms(sec); //Wait 1 second
-    SPI_write(test_word2);
-    Delay_ms(sec); //Wait 1 second
-	return 0;
+    while(1){
+        SPI_write(test_word1);
+        Delay_ms(sec); //Wait 1 second
+        SPI_write(test_word2);
+        Delay_ms(sec); //Wait 1 second
+    }
+    return 0;
 }
 
 /***************** End of module **************/
