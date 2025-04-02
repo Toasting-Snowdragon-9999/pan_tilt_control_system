@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Apr  2 12:55:49 2025" VIVADOVERSION="2024.2">
+
+  <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="pwm_generator" PACKAGE="clg400" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="counter_1" PORT="clk"/>
+        <CONNECTION INSTANCE="four_counter_0" PORT="clk"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="led_0" SIGIS="undef" SIGNAME="not_gate_0_out_1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="not_gate_0" PORT="out_1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="led_1" SIGIS="undef" SIGNAME="not_gate_1_out_1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="not_gate_1" PORT="out_1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="rpio_08_r" SIGIS="undef" SIGNAME="not_gate_1_out_1">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="not_gate_1" PORT="out_1"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="sw" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_sw">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="fpga_2input_copier_0" PORT="in_0"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/clear_comparator_1" HWVERSION="1.0" INSTANCE="clear_comparator_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equal_comparator" VLNV="xilinx.com:module_ref:equal_comparator:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="27"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_reset_comparator_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="26" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="clk_frq_constant_1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_frq_constant_1" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="26" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="counter_1_cnt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="counter_1" PORT="cnt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="clear_comparator_1_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="counter_1" PORT="clr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/clear_comparator_2" HWVERSION="1.0" INSTANCE="clear_comparator_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="equal_comparator" VLNV="xilinx.com:module_ref:equal_comparator:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="27"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_reset_comparator_0_3"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="26" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="four_counter_0_cnt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="four_counter_0" PORT="cnt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="26" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="four_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="four_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="clear_comparator_2_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="four_counter_0" PORT="clr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="0" FULLNAME="/clk_frq_constant_1" HWVERSION="2.0" INSTANCE="clk_frq_constant_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x7735940"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="28"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_clk_frq_constant_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="27" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="clk_frq_constant_1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clear_comparator_1" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/comparator_1" HWVERSION="1.0" INSTANCE="comparator_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comparator" VLNV="xilinx.com:module_ref:comparator:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="27"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_comparator_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="26" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="four_counter_0_cnt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="four_counter_0" PORT="cnt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="26" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="small_duty_cycle_lut_0_duty_constant">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="small_duty_cycle_lut_0" PORT="duty_constant"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="comparator_1_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="not_gate_0" PORT="in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/comparator_2" HWVERSION="1.0" INSTANCE="comparator_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comparator" VLNV="xilinx.com:module_ref:comparator:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="27"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_comparator_2_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="26" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="counter_1_cnt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="counter_1" PORT="cnt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="26" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="duty_cycle_lut_1_duty_constant">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="duty_cycle_lut_1" PORT="duty_constant"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="comparator_2_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="not_gate_1" PORT="in_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/counter_1" HWVERSION="1.0" INSTANCE="counter_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="counter" VLNV="xilinx.com:module_ref:counter:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="27"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_counter_3_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clr" SIGIS="undef" SIGNAME="clear_comparator_1_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clear_comparator_1" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="26" NAME="cnt" RIGHT="0" SIGIS="undef" SIGNAME="counter_1_cnt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clear_comparator_1" PORT="b"/>
+            <CONNECTION INSTANCE="comparator_2" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="enabled_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="enabled_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="disabled_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="disabled_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/disabled_0" HWVERSION="1.1" INSTANCE="disabled_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_xlconstant_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="disabled_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="counter_1" PORT="rst"/>
+            <CONNECTION INSTANCE="four_counter_0" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/duty_cycle_lut_1" HWVERSION="1.0" INSTANCE="duty_cycle_lut_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="duty_cycle_lut" VLNV="xilinx.com:module_ref:duty_cycle_lut:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_duty_cycle_lut_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="26" NAME="duty_constant" RIGHT="0" SIGIS="undef" SIGNAME="duty_cycle_lut_1_duty_constant">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_2" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="spi_in" RIGHT="0" SIGIS="undef" SIGNAME="fpga_2input_copier_0_out_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fpga_2input_copier_0" PORT="out_1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/enabled_0" HWVERSION="1.1" INSTANCE="enabled_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_xlconstant_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="enabled_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="four_counter_0" PORT="en"/>
+            <CONNECTION INSTANCE="counter_1" PORT="en"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/four_constant_0" HWVERSION="1.1" INSTANCE="four_constant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x4"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_xlconstant_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="four_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clear_comparator_2" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/four_counter_0" HWVERSION="1.0" INSTANCE="four_counter_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="counter" VLNV="xilinx.com:module_ref:counter:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_counter_2_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="clr" SIGIS="undef" SIGNAME="clear_comparator_2_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clear_comparator_2" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="cnt" RIGHT="0" SIGIS="undef" SIGNAME="four_counter_0_cnt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_1" PORT="a"/>
+            <CONNECTION INSTANCE="clear_comparator_2" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="enabled_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="enabled_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="disabled_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="disabled_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/fpga_2input_copier_0" HWVERSION="1.0" INSTANCE="fpga_2input_copier_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="fpga_2input_copier" VLNV="xilinx.com:module_ref:fpga_2input_copier:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_fpga_2input_copier_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="in_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_sw">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="sw"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="out_0" RIGHT="0" SIGIS="undef" SIGNAME="fpga_2input_copier_0_out_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="small_duty_cycle_lut_0" PORT="spi_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="out_1" RIGHT="0" SIGIS="undef" SIGNAME="fpga_2input_copier_0_out_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="duty_cycle_lut_1" PORT="spi_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/not_gate_0" HWVERSION="1.0" INSTANCE="not_gate_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="not_gate" VLNV="xilinx.com:module_ref:not_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_not_gate_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="in_1" SIGIS="undef" SIGNAME="comparator_1_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_1" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="out_1" SIGIS="undef" SIGNAME="not_gate_0_out_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/not_gate_1" HWVERSION="1.0" INSTANCE="not_gate_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="not_gate" VLNV="xilinx.com:module_ref:not_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_not_gate_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="in_1" SIGIS="undef" SIGNAME="comparator_2_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_2" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="out_1" SIGIS="undef" SIGNAME="not_gate_1_out_1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="led_1"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rpio_08_r"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/small_duty_cycle_lut_0" HWVERSION="1.0" INSTANCE="small_duty_cycle_lut_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="small_duty_cycle_lut" VLNV="xilinx.com:module_ref:small_duty_cycle_lut:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="pwm_generator_small_duty_cycle_lut_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="26" NAME="duty_constant" RIGHT="0" SIGIS="undef" SIGNAME="small_duty_cycle_lut_0_duty_constant">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_1" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="spi_in" RIGHT="0" SIGIS="undef" SIGNAME="fpga_2input_copier_0_out_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="fpga_2input_copier_0" PORT="out_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>
