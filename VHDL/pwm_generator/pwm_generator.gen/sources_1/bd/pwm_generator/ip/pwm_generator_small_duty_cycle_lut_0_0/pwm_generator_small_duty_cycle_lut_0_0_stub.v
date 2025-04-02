@@ -1,0 +1,23 @@
+// Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+// Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+// --------------------------------------------------------------------------------
+// Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
+// Date        : Wed Apr  2 12:53:02 2025
+// Host        : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
+// Command     : write_verilog -force -mode synth_stub
+//               /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_small_duty_cycle_lut_0_0/pwm_generator_small_duty_cycle_lut_0_0_stub.v
+// Design      : pwm_generator_small_duty_cycle_lut_0_0
+// Purpose     : Stub declaration of top-level module interface
+// Device      : xc7z020clg400-1
+// --------------------------------------------------------------------------------
+
+// This empty module with port declaration file causes synthesis tools to infer a black box for IP.
+// The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
+// Please paste the declaration into a Verilog source file or add the file as an additional source.
+(* CHECK_LICENSE_TYPE = "pwm_generator_small_duty_cycle_lut_0_0,small_duty_cycle_lut,{}" *) (* core_generation_info = "pwm_generator_small_duty_cycle_lut_0_0,small_duty_cycle_lut,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=small_duty_cycle_lut,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* ip_definition_source = "module_ref" *) (* x_core_info = "small_duty_cycle_lut,Vivado 2024.2" *) 
+module pwm_generator_small_duty_cycle_lut_0_0(spi_in, duty_constant)
+/* synthesis syn_black_box black_box_pad_pin="spi_in[1:0],duty_constant[26:0]" */;
+  input [1:0]spi_in;
+  output [26:0]duty_constant;
+endmodule

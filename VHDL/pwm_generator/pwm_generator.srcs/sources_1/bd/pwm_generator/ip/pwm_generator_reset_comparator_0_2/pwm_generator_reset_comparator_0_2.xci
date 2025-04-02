@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pwm_generator_reset_comparator_0_2",
-    "cell_name": "reset_comparator_1",
+    "cell_name": "clear_comparator_1",
     "component_reference": "xilinx.com:module_ref:equal_comparator:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_2",

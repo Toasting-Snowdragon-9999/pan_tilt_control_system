@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Apr  2 09:40:05 2025
+# Process ID         : 37883
+# Current directory  : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_not_gate_0_1_synth_1
+# Command line       : vivado -log pwm_generator_not_gate_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_generator_not_gate_0_1.tcl
+# Log file           : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_not_gate_0_1_synth_1/pwm_generator_not_gate_0_1.vds
+# Journal file       : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_not_gate_0_1_synth_1/vivado.jou
+# Running On         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.2 LTS
+# Processor Detail   : Intel(R) Core(TM) Ultra 7 155H
+# CPU Frequency      : 3902.200 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 22
+# Host memory        : 32970 MB
+# Swap memory        : 8589 MB
+# Total Virtual      : 41560 MB
+# Available Virtual  : 32631 MB
+#-----------------------------------------------------------
+source pwm_generator_not_gate_0_1.tcl -notrace
