@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1743591349" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pwm_generator_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1744189366" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pwm_generator_wrapper.dcp">
   <File Type="VDS-TIMINGSUMMARY" Name="pwm_generator_wrapper_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="pwm_generator_wrapper.dcp"/>
   <File Type="RDS-UTIL-PB" Name="pwm_generator_wrapper_utilization_synth.pb"/>
@@ -11,7 +11,7 @@
   <File Type="PA-TCL" Name="pwm_generator_wrapper.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/duty_cycle_lut.vhd">
+    <File Path="$PSRCDIR/sources_1/new/counter.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -23,31 +23,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/not_gate.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/counter.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/fpga_2input_copier.vhd">
+    <File Path="$PSRCDIR/sources_1/new/big_duty_cycle_lut.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/comparator.vhd">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/small_duty_cycle_lut.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -62,6 +44,34 @@
     </File>
     <File Path="$PGENDIR/sources_1/bd/pwm_generator/hdl/pwm_generator_wrapper.vhd">
       <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/not_gate.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/duty_cycle_lut.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/fpga_2input_copier.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/small_duty_cycle_lut.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -104,15 +114,12 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_small_duty_cycle_lut_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_2_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_twentyone_counter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clear_comparator_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_3_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_big_duty_cycle_lut_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_1_1"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_counter_2_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_big_duty_cycle_lut_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_reset_comparator_0_3"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_counter_3_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_fpga_2input_copier_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_duty_cycle_lut_0_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_not_gate_0_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_reset_comparator_0_2"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_not_gate_1_0"/>
 </GenRun>

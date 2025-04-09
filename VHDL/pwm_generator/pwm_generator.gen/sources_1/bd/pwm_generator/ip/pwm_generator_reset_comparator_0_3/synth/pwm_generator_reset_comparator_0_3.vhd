@@ -55,8 +55,8 @@ USE ieee.numeric_std.ALL;
 
 ENTITY pwm_generator_reset_comparator_0_3 IS
   PORT (
-    a : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
-    b : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
+    a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    b : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     c : OUT STD_LOGIC
   );
 END pwm_generator_reset_comparator_0_3;
@@ -69,8 +69,8 @@ ARCHITECTURE pwm_generator_reset_comparator_0_3_arch OF pwm_generator_reset_comp
       n_bits : INTEGER
     );
     PORT (
-      a : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
-      b : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
+      a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+      b : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       c : OUT STD_LOGIC
     );
   END COMPONENT equal_comparator;
@@ -79,13 +79,13 @@ ARCHITECTURE pwm_generator_reset_comparator_0_3_arch OF pwm_generator_reset_comp
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF pwm_generator_reset_comparator_0_3_arch : ARCHITECTURE IS "pwm_generator_reset_comparator_0_3,equal_comparator,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF pwm_generator_reset_comparator_0_3_arch: ARCHITECTURE IS "pwm_generator_reset_comparator_0_3,equal_comparator,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=equal_comparator,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=27}";
+  ATTRIBUTE CORE_GENERATION_INFO OF pwm_generator_reset_comparator_0_3_arch: ARCHITECTURE IS "pwm_generator_reset_comparator_0_3,equal_comparator,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=equal_comparator,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=5}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF pwm_generator_reset_comparator_0_3_arch: ARCHITECTURE IS "module_ref";
 BEGIN
   U0 : equal_comparator
     GENERIC MAP (
-      n_bits => 27
+      n_bits => 5
     )
     PORT MAP (
       a => a,

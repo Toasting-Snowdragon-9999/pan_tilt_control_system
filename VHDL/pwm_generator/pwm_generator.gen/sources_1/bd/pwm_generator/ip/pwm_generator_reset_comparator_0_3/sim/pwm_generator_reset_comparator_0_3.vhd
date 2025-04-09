@@ -55,8 +55,8 @@ USE ieee.numeric_std.ALL;
 
 ENTITY pwm_generator_reset_comparator_0_3 IS
   PORT (
-    a : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
-    b : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
+    a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    b : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     c : OUT STD_LOGIC
   );
 END pwm_generator_reset_comparator_0_3;
@@ -69,15 +69,15 @@ ARCHITECTURE pwm_generator_reset_comparator_0_3_arch OF pwm_generator_reset_comp
       n_bits : INTEGER
     );
     PORT (
-      a : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
-      b : IN STD_LOGIC_VECTOR(26 DOWNTO 0);
+      a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+      b : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
       c : OUT STD_LOGIC
     );
   END COMPONENT equal_comparator;
 BEGIN
   U0 : equal_comparator
     GENERIC MAP (
-      n_bits => 27
+      n_bits => 5
     )
     PORT MAP (
       a => a,

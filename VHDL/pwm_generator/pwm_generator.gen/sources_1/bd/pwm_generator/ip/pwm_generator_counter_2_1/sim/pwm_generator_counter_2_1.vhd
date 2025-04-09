@@ -59,7 +59,7 @@ ENTITY pwm_generator_counter_2_1 IS
     rst : IN STD_LOGIC;
     clr : IN STD_LOGIC;
     en : IN STD_LOGIC;
-    cnt : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+    cnt : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
   );
 END pwm_generator_counter_2_1;
 
@@ -75,7 +75,7 @@ ARCHITECTURE pwm_generator_counter_2_1_arch OF pwm_generator_counter_2_1 IS
       rst : IN STD_LOGIC;
       clr : IN STD_LOGIC;
       en : IN STD_LOGIC;
-      cnt : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+      cnt : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
     );
   END COMPONENT counter;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -83,14 +83,14 @@ ARCHITECTURE pwm_generator_counter_2_1_arch OF pwm_generator_counter_2_1 IS
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
   ATTRIBUTE X_INTERFACE_MODE OF clk: SIGNAL IS "slave clk";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pwm_generator_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pwm_generator_clk_0, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF rst: SIGNAL IS "xilinx.com:signal:reset:1.0 rst RST";
   ATTRIBUTE X_INTERFACE_MODE OF rst: SIGNAL IS "slave rst";
   ATTRIBUTE X_INTERFACE_PARAMETER OF rst: SIGNAL IS "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 BEGIN
   U0 : counter
     GENERIC MAP (
-      n_bits => 3
+      n_bits => 5
     )
     PORT MAP (
       clk => clk,

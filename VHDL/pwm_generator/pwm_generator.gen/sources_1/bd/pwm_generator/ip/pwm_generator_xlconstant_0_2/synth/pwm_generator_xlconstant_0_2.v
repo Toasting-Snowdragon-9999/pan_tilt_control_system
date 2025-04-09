@@ -52,17 +52,17 @@
 
 (* X_CORE_INFO = "xlconstant_v1_1_9_xlconstant,Vivado 2024.2" *)
 (* CHECK_LICENSE_TYPE = "pwm_generator_xlconstant_0_2,xlconstant_v1_1_9_xlconstant,{}" *)
-(* CORE_GENERATION_INFO = "pwm_generator_xlconstant_0_2,xlconstant_v1_1_9_xlconstant,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=9,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,CONST_WIDTH=3,CONST_VAL=0x4}" *)
+(* CORE_GENERATION_INFO = "pwm_generator_xlconstant_0_2,xlconstant_v1_1_9_xlconstant,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=9,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,CONST_WIDTH=5,CONST_VAL=0x14}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module pwm_generator_xlconstant_0_2 (
   dout
 );
 
-output wire [2 : 0] dout;
+output wire [4 : 0] dout;
 
   xlconstant_v1_1_9_xlconstant #(
-    .CONST_WIDTH(3),
-    .CONST_VAL(3'H4)
+    .CONST_WIDTH(5),
+    .CONST_VAL(5'H14)
   ) inst (
     .dout(dout)
   );

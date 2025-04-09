@@ -56,7 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "pwm_generator_reset_comparator_0_3_synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 set_param ips.modRefOverrideMrefDirPath /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/mref

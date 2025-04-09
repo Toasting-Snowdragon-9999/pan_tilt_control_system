@@ -3,8 +3,8 @@
 # SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Wed Apr  2 12:55:51 2025
-# Process ID         : 61425
+# Start of session at: Wed Apr  9 11:03:38 2025
+# Process ID         : 62001
 # Current directory  : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1
 # Command line       : vivado -log pwm_generator_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_generator_wrapper.tcl
 # Log file           : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/pwm_generator_wrapper.vds
@@ -13,13 +13,13 @@
 # Platform           : Ubuntu
 # Operating System   : Ubuntu 24.04.2 LTS
 # Processor Detail   : Intel(R) Core(TM) Ultra 7 155H
-# CPU Frequency      : 1995.371 MHz
+# CPU Frequency      : 3976.638 MHz
 # CPU Physical cores : 16
 # CPU Logical cores  : 22
 # Host memory        : 32970 MB
 # Swap memory        : 8589 MB
 # Total Virtual      : 41560 MB
-# Available Virtual  : 34813 MB
+# Available Virtual  : 33859 MB
 #-----------------------------------------------------------
 source pwm_generator_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
@@ -41,91 +41,217 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 61636
+INFO: [Synth 8-7075] Helper process launched with PID 62156
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1984.449 ; gain = 342.332 ; free physical = 11094 ; free virtual = 31964
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1985.941 ; gain = 417.172 ; free physical = 15393 ; free virtual = 31163
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'pwm_generator_wrapper' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/hdl/pwm_generator_wrapper.vhd:25]
 INFO: [Synth 8-3491] module 'pwm_generator' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:15' bound to instance 'pwm_generator_i' of component 'pwm_generator' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/hdl/pwm_generator_wrapper.vhd:36]
 INFO: [Synth 8-638] synthesizing module 'pwm_generator' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:29]
-INFO: [Synth 8-3491] module 'pwm_generator_reset_comparator_0_2' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_reset_comparator_0_2_stub.vhdl:6' bound to instance 'clear_comparator_1' of component 'pwm_generator_reset_comparator_0_2' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:144]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_reset_comparator_0_2' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_reset_comparator_0_2_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'pwm_generator_reset_comparator_0_3' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_reset_comparator_0_3_stub.vhdl:6' bound to instance 'clear_comparator_2' of component 'pwm_generator_reset_comparator_0_3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:150]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_reset_comparator_0_3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_reset_comparator_0_3_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'pwm_generator_comparator_1_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_1_0_stub.vhdl:6' bound to instance 'comparator_1' of component 'pwm_generator_comparator_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:159]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_comparator_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_1_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'pwm_generator_comparator_2_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_2_0_stub.vhdl:6' bound to instance 'comparator_2' of component 'pwm_generator_comparator_2_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:166]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_comparator_2_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_2_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'pwm_generator_counter_3_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_counter_3_0_stub.vhdl:6' bound to instance 'counter_1' of component 'pwm_generator_counter_3_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:172]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_counter_3_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_counter_3_0_stub.vhdl:25]
-INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_1/synth/pwm_generator_xlconstant_0_1.v:53' bound to instance 'disabled_0' of component 'pwm_generator_xlconstant_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:180]
+INFO: [Synth 8-3491] module 'pwm_generator_big_duty_cycle_lut_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_big_duty_cycle_lut_0_0_stub.vhdl:6' bound to instance 'big_duty_cycle_lut_0' of component 'pwm_generator_big_duty_cycle_lut_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:179]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_big_duty_cycle_lut_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_big_duty_cycle_lut_0_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'pwm_generator_big_duty_cycle_lut_0_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_big_duty_cycle_lut_0_1_stub.vhdl:6' bound to instance 'big_duty_cycle_lut_1' of component 'pwm_generator_big_duty_cycle_lut_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:185]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_big_duty_cycle_lut_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_big_duty_cycle_lut_0_1_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'pwm_generator_reset_comparator_0_3' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_reset_comparator_0_3_stub.vhdl:6' bound to instance 'clear_comparator_1' of component 'pwm_generator_reset_comparator_0_3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:191]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_reset_comparator_0_3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_reset_comparator_0_3_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'pwm_generator_clear_comparator_1_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_clear_comparator_1_0_stub.vhdl:6' bound to instance 'clear_comparator_2' of component 'pwm_generator_clear_comparator_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:197]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_clear_comparator_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_clear_comparator_1_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'pwm_generator_comparator_1_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_1_1_stub.vhdl:6' bound to instance 'comparator_3' of component 'pwm_generator_comparator_1_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:203]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_comparator_1_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_1_1_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'pwm_generator_comparator_3_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_3_0_stub.vhdl:6' bound to instance 'comparator_4' of component 'pwm_generator_comparator_3_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:209]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_comparator_3_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_comparator_3_0_stub.vhdl:23]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_1/synth/pwm_generator_xlconstant_0_1.v:53' bound to instance 'disabled_0' of component 'pwm_generator_xlconstant_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:215]
 INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_1/synth/pwm_generator_xlconstant_0_1.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_9_xlconstant' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_9_xlconstant' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_0_1' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_1/synth/pwm_generator_xlconstant_0_1.v:53]
-INFO: [Synth 8-3491] module 'pwm_generator_duty_cycle_lut_0_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_duty_cycle_lut_0_1_stub.vhdl:6' bound to instance 'duty_cycle_lut_1' of component 'pwm_generator_duty_cycle_lut_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:184]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_duty_cycle_lut_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_duty_cycle_lut_0_1_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_0/synth/pwm_generator_xlconstant_0_0.v:53' bound to instance 'enabled_0' of component 'pwm_generator_xlconstant_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:189]
+INFO: [Synth 8-3491] module 'pwm_generator_disabled_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_disabled_0_0/synth/pwm_generator_disabled_0_0.v:53' bound to instance 'disabled_1' of component 'pwm_generator_disabled_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:219]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_disabled_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_disabled_0_0/synth/pwm_generator_disabled_0_0.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_disabled_0_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_disabled_0_0/synth/pwm_generator_disabled_0_0.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_0/synth/pwm_generator_xlconstant_0_0.v:53' bound to instance 'enabled_0' of component 'pwm_generator_xlconstant_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:223]
 INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_0/synth/pwm_generator_xlconstant_0_0.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_0_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_0/synth/pwm_generator_xlconstant_0_0.v:53]
-INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_2' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2/synth/pwm_generator_xlconstant_0_2.v:53' bound to instance 'four_constant_0' of component 'pwm_generator_xlconstant_0_2' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:193]
+INFO: [Synth 8-3491] module 'pwm_generator_enabled_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_enabled_0_0/synth/pwm_generator_enabled_0_0.v:53' bound to instance 'enabled_1' of component 'pwm_generator_enabled_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:227]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_enabled_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_enabled_0_0/synth/pwm_generator_enabled_0_0.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_enabled_0_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_enabled_0_0/synth/pwm_generator_enabled_0_0.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_2' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2/synth/pwm_generator_xlconstant_0_2.v:53' bound to instance 'twentyone_constant_0' of component 'pwm_generator_xlconstant_0_2' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:231]
 INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_0_2' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2/synth/pwm_generator_xlconstant_0_2.v:53]
 INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized1' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
 INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_0_2' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2/synth/pwm_generator_xlconstant_0_2.v:53]
-INFO: [Synth 8-3491] module 'pwm_generator_counter_2_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_counter_2_1_stub.vhdl:6' bound to instance 'four_counter_0' of component 'pwm_generator_counter_2_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:197]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_counter_2_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_counter_2_1_stub.vhdl:25]
-INFO: [Synth 8-3491] module 'pwm_generator_fpga_2input_copier_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_fpga_2input_copier_0_0_stub.vhdl:6' bound to instance 'fpga_2input_copier_0' of component 'pwm_generator_fpga_2input_copier_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:205]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_fpga_2input_copier_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_fpga_2input_copier_0_0_stub.vhdl:23]
-INFO: [Synth 8-3491] module 'pwm_generator_not_gate_1_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_not_gate_1_0_stub.vhdl:6' bound to instance 'not_gate_0' of component 'pwm_generator_not_gate_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:211]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_not_gate_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_not_gate_1_0_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'pwm_generator_not_gate_0_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_not_gate_0_1_stub.vhdl:6' bound to instance 'not_gate_1' of component 'pwm_generator_not_gate_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:216]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_not_gate_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_not_gate_0_1_stub.vhdl:22]
-INFO: [Synth 8-3491] module 'pwm_generator_small_duty_cycle_lut_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_small_duty_cycle_lut_0_0_stub.vhdl:6' bound to instance 'small_duty_cycle_lut_0' of component 'pwm_generator_small_duty_cycle_lut_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:221]
-INFO: [Synth 8-638] synthesizing module 'pwm_generator_small_duty_cycle_lut_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-61425-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_small_duty_cycle_lut_0_0_stub.vhdl:22]
+INFO: [Synth 8-3491] module 'pwm_generator_twentyone_constant_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_twentyone_constant_0_0/synth/pwm_generator_twentyone_constant_0_0.v:53' bound to instance 'twentyone_constant_1' of component 'pwm_generator_twentyone_constant_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:235]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_twentyone_constant_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_twentyone_constant_0_0/synth/pwm_generator_twentyone_constant_0_0.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_twentyone_constant_0_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_twentyone_constant_0_0/synth/pwm_generator_twentyone_constant_0_0.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_counter_2_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_counter_2_1_stub.vhdl:6' bound to instance 'twentyone_counter_0' of component 'pwm_generator_counter_2_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:239]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_counter_2_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_counter_2_1_stub.vhdl:25]
+INFO: [Synth 8-3491] module 'pwm_generator_twentyone_counter_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_twentyone_counter_0_0_stub.vhdl:6' bound to instance 'twentyone_counter_1' of component 'pwm_generator_twentyone_counter_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:247]
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_twentyone_counter_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-62001-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/realtime/pwm_generator_twentyone_counter_0_0_stub.vhdl:25]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconcat_0_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_0/synth/pwm_generator_xlconcat_0_0.v:53' bound to instance 'xlconcat_0' of component 'pwm_generator_xlconcat_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:255]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconcat_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_0/synth/pwm_generator_xlconcat_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_6_xlconcat' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/6120/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_6_xlconcat' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/6120/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconcat_0_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_0/synth/pwm_generator_xlconcat_0_0.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconcat_0_1' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_1/synth/pwm_generator_xlconcat_0_1.v:53' bound to instance 'xlconcat_1' of component 'pwm_generator_xlconcat_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:262]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconcat_0_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_1/synth/pwm_generator_xlconcat_0_1.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_6_xlconcat__parameterized0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/6120/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_6_xlconcat__parameterized0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/6120/hdl/xlconcat_v2_1_vl_rfs.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconcat_0_1' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_1/synth/pwm_generator_xlconcat_0_1.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_3' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_3/synth/pwm_generator_xlconstant_0_3.v:53' bound to instance 'xlconstant_0' of component 'pwm_generator_xlconstant_0_3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:269]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_0_3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_3/synth/pwm_generator_xlconstant_0_3.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized2' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized2' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_0_3' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_3/synth/pwm_generator_xlconstant_0_3.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_4' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_4/synth/pwm_generator_xlconstant_0_4.v:53' bound to instance 'xlconstant_1' of component 'pwm_generator_xlconstant_0_4' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:273]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_0_4' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_4/synth/pwm_generator_xlconstant_0_4.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized3' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized3' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_0_4' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_4/synth/pwm_generator_xlconstant_0_4.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_0_5' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_5/synth/pwm_generator_xlconstant_0_5.v:53' bound to instance 'xlconstant_2' of component 'pwm_generator_xlconstant_0_5' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:277]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_0_5' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_5/synth/pwm_generator_xlconstant_0_5.v:53]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_0_5' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_5/synth/pwm_generator_xlconstant_0_5.v:53]
+INFO: [Synth 8-3491] module 'pwm_generator_xlconstant_1_0' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_1_0/synth/pwm_generator_xlconstant_1_0.v:53' bound to instance 'xlconstant_3' of component 'pwm_generator_xlconstant_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:281]
+INFO: [Synth 8-6157] synthesizing module 'pwm_generator_xlconstant_1_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_1_0/synth/pwm_generator_xlconstant_1_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized4' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_9_xlconstant__parameterized4' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ipshared/e2d2/hdl/xlconstant_v1_1_vl_rfs.v:68]
+INFO: [Synth 8-6155] done synthesizing module 'pwm_generator_xlconstant_1_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_1_0/synth/pwm_generator_xlconstant_1_0.v:53]
 INFO: [Synth 8-256] done synthesizing module 'pwm_generator' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/synth/pwm_generator.vhd:29]
 INFO: [Synth 8-256] done synthesizing module 'pwm_generator_wrapper' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/hdl/pwm_generator_wrapper.vhd:25]
+WARNING: [Synth 8-7129] Port In3[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In4[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In5[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In6[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In7[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In8[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In9[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In10[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In11[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In12[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In13[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In14[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In15[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In16[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In17[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In18[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In19[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In20[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In21[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In22[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In23[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In24[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In25[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In26[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In27[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In28[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In29[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In30[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In31[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In32[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In33[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In34[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In35[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In36[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In37[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In38[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In39[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In40[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In41[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In42[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In43[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In44[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In45[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In46[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In47[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In48[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In49[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In50[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In51[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In52[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In53[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In54[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In55[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In56[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In57[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In58[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In59[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In60[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In61[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In62[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In63[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In64[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In65[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In66[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In67[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In68[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In69[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In70[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In71[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In72[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In73[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In74[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In75[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In76[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In77[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In78[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In79[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In80[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In81[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In82[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In83[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In84[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In85[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In86[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In87[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In88[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In89[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In90[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In91[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In92[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In93[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In94[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In95[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In96[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In97[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In98[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In99[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In100[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In101[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In102[0] in module xlconcat_v2_1_6_xlconcat__parameterized0 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2055.418 ; gain = 413.301 ; free physical = 11090 ; free virtual = 31960
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2058.879 ; gain = 490.109 ; free physical = 15309 ; free virtual = 31079
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2073.230 ; gain = 431.113 ; free physical = 11090 ; free virtual = 31960
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2076.691 ; gain = 507.922 ; free physical = 15305 ; free virtual = 31075
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2073.230 ; gain = 431.113 ; free physical = 11090 ; free virtual = 31960
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2076.691 ; gain = 507.922 ; free physical = 15305 ; free virtual = 31075
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2073.230 ; gain = 0.000 ; free physical = 11089 ; free virtual = 31960
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2076.691 ; gain = 0.000 ; free physical = 15301 ; free virtual = 31071
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_duty_cycle_lut_0_1/pwm_generator_duty_cycle_lut_0_1/pwm_generator_duty_cycle_lut_0_1_in_context.xdc] for cell 'pwm_generator_i/duty_cycle_lut_1'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_duty_cycle_lut_0_1/pwm_generator_duty_cycle_lut_0_1/pwm_generator_duty_cycle_lut_0_1_in_context.xdc] for cell 'pwm_generator_i/duty_cycle_lut_1'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_2/pwm_generator_reset_comparator_0_2/pwm_generator_reset_comparator_0_2_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_1'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_2/pwm_generator_reset_comparator_0_2/pwm_generator_reset_comparator_0_2_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_1'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_not_gate_0_1/pwm_generator_not_gate_0_1/pwm_generator_not_gate_0_1_in_context.xdc] for cell 'pwm_generator_i/not_gate_1'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_not_gate_0_1/pwm_generator_not_gate_0_1/pwm_generator_not_gate_0_1_in_context.xdc] for cell 'pwm_generator_i/not_gate_1'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_not_gate_1_0/pwm_generator_not_gate_1_0/pwm_generator_not_gate_1_0_in_context.xdc] for cell 'pwm_generator_i/not_gate_0'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_not_gate_1_0/pwm_generator_not_gate_1_0/pwm_generator_not_gate_1_0_in_context.xdc] for cell 'pwm_generator_i/not_gate_0'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_3_0/pwm_generator_counter_3_0/pwm_generator_counter_3_0_in_context.xdc] for cell 'pwm_generator_i/counter_1'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_3_0/pwm_generator_counter_3_0/pwm_generator_counter_3_0_in_context.xdc] for cell 'pwm_generator_i/counter_1'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_fpga_2input_copier_0_0/pwm_generator_fpga_2input_copier_0_0/pwm_generator_fpga_2input_copier_0_0_in_context.xdc] for cell 'pwm_generator_i/fpga_2input_copier_0'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_fpga_2input_copier_0_0/pwm_generator_fpga_2input_copier_0_0/pwm_generator_fpga_2input_copier_0_0_in_context.xdc] for cell 'pwm_generator_i/fpga_2input_copier_0'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/pwm_generator_counter_2_1/pwm_generator_counter_2_1_in_context.xdc] for cell 'pwm_generator_i/four_counter_0'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/pwm_generator_counter_2_1/pwm_generator_counter_2_1_in_context.xdc] for cell 'pwm_generator_i/four_counter_0'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_2'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_2'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_2_0/pwm_generator_comparator_2_0/pwm_generator_comparator_2_0_in_context.xdc] for cell 'pwm_generator_i/comparator_2'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_2_0/pwm_generator_comparator_2_0/pwm_generator_comparator_2_0_in_context.xdc] for cell 'pwm_generator_i/comparator_2'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_1_0/pwm_generator_comparator_1_0/pwm_generator_comparator_1_0_in_context.xdc] for cell 'pwm_generator_i/comparator_1'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_1_0/pwm_generator_comparator_1_0/pwm_generator_comparator_1_0_in_context.xdc] for cell 'pwm_generator_i/comparator_1'
-Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_small_duty_cycle_lut_0_0/pwm_generator_small_duty_cycle_lut_0_0/pwm_generator_small_duty_cycle_lut_0_0_in_context.xdc] for cell 'pwm_generator_i/small_duty_cycle_lut_0'
-Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_small_duty_cycle_lut_0_0/pwm_generator_small_duty_cycle_lut_0_0/pwm_generator_small_duty_cycle_lut_0_0_in_context.xdc] for cell 'pwm_generator_i/small_duty_cycle_lut_0'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/pwm_generator_counter_2_1/pwm_generator_counter_2_1_in_context.xdc] for cell 'pwm_generator_i/twentyone_counter_0'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/pwm_generator_counter_2_1/pwm_generator_counter_2_1_in_context.xdc] for cell 'pwm_generator_i/twentyone_counter_0'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_1'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_1'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0/pwm_generator_big_duty_cycle_lut_0_0/pwm_generator_big_duty_cycle_lut_0_0_in_context.xdc] for cell 'pwm_generator_i/big_duty_cycle_lut_0'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0/pwm_generator_big_duty_cycle_lut_0_0/pwm_generator_big_duty_cycle_lut_0_0_in_context.xdc] for cell 'pwm_generator_i/big_duty_cycle_lut_0'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_1_1/pwm_generator_comparator_1_1/pwm_generator_comparator_1_1_in_context.xdc] for cell 'pwm_generator_i/comparator_3'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_1_1/pwm_generator_comparator_1_1/pwm_generator_comparator_1_1_in_context.xdc] for cell 'pwm_generator_i/comparator_3'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_1/pwm_generator_big_duty_cycle_lut_0_1/pwm_generator_big_duty_cycle_lut_0_1_in_context.xdc] for cell 'pwm_generator_i/big_duty_cycle_lut_1'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_1/pwm_generator_big_duty_cycle_lut_0_1/pwm_generator_big_duty_cycle_lut_0_1_in_context.xdc] for cell 'pwm_generator_i/big_duty_cycle_lut_1'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_clear_comparator_1_0/pwm_generator_clear_comparator_1_0/pwm_generator_clear_comparator_1_0_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_2'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_clear_comparator_1_0/pwm_generator_clear_comparator_1_0/pwm_generator_clear_comparator_1_0_in_context.xdc] for cell 'pwm_generator_i/clear_comparator_2'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_3_0/pwm_generator_comparator_3_0/pwm_generator_comparator_3_0_in_context.xdc] for cell 'pwm_generator_i/comparator_4'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_comparator_3_0/pwm_generator_comparator_3_0/pwm_generator_comparator_3_0_in_context.xdc] for cell 'pwm_generator_i/comparator_4'
+Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_twentyone_counter_0_0/pwm_generator_twentyone_counter_0_0/pwm_generator_twentyone_counter_0_0_in_context.xdc] for cell 'pwm_generator_i/twentyone_counter_1'
+Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_twentyone_counter_0_0/pwm_generator_twentyone_counter_0_0/pwm_generator_twentyone_counter_0_0_in_context.xdc] for cell 'pwm_generator_i/twentyone_counter_1'
 Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/PYNQ-Z2_v1.0.xdc]
 Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/PYNQ-Z2_v1.0.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/jrm/git/pan_tilt_control_system/VHDL/PYNQ-Z2_v1.0.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/pwm_generator_wrapper_propImpl.xdc].
@@ -134,46 +260,52 @@ Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_g
 Finished Parsing XDC File [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2122.156 ; gain = 0.000 ; free physical = 11093 ; free virtual = 31964
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2125.617 ; gain = 0.000 ; free physical = 15331 ; free virtual = 31104
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2122.156 ; gain = 0.000 ; free physical = 11093 ; free virtual = 31964
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2125.617 ; gain = 0.000 ; free physical = 15329 ; free virtual = 31102
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2122.156 ; gain = 480.039 ; free physical = 11121 ; free virtual = 31991
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2125.617 ; gain = 556.848 ; free physical = 15358 ; free virtual = 31129
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2130.160 ; gain = 488.043 ; free physical = 11121 ; free virtual = 31991
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2133.621 ; gain = 564.852 ; free physical = 15358 ; free virtual = 31131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/enabled_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/duty_cycle_lut_1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/clear_comparator_1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/not_gate_1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/not_gate_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/counter_1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/fpga_2input_copier_0. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/disabled_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/four_counter_0. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/four_constant_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/twentyone_counter_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/twentyone_constant_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/clear_comparator_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/big_duty_cycle_lut_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/comparator_3. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/big_duty_cycle_lut_1. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/clear_comparator_2. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/comparator_2. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/comparator_1. (constraint file  auto generated constraint).
-Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/small_duty_cycle_lut_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/comparator_4. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/disabled_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/enabled_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/twentyone_constant_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/twentyone_counter_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/xlconstant_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/xlconstant_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/xlconcat_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/xlconcat_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/xlconstant_2. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for pwm_generator_i/xlconstant_3. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2130.160 ; gain = 488.043 ; free physical = 11121 ; free virtual = 31991
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2133.621 ; gain = 564.852 ; free physical = 15358 ; free virtual = 31130
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2130.160 ; gain = 488.043 ; free physical = 11096 ; free virtual = 31992
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2133.621 ; gain = 564.852 ; free physical = 15354 ; free virtual = 31128
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -196,25 +328,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2130.160 ; gain = 488.043 ; free physical = 11105 ; free virtual = 32005
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2133.621 ; gain = 564.852 ; free physical = 15367 ; free virtual = 31144
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2205.160 ; gain = 563.043 ; free physical = 11084 ; free virtual = 31960
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2209.621 ; gain = 640.852 ; free physical = 15331 ; free virtual = 31107
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2205.160 ; gain = 563.043 ; free physical = 11084 ; free virtual = 31960
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2209.621 ; gain = 640.852 ; free physical = 15331 ; free virtual = 31107
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2214.176 ; gain = 572.059 ; free physical = 11076 ; free virtual = 31952
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2218.637 ; gain = 649.867 ; free physical = 15323 ; free virtual = 31099
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -232,99 +364,93 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished IO Insertion : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30972
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30972
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
 
 Report BlackBoxes: 
-+------+---------------------------------------+----------+
-|      |BlackBox name                          |Instances |
-+------+---------------------------------------+----------+
-|1     |pwm_generator_reset_comparator_0_2     |         1|
-|2     |pwm_generator_reset_comparator_0_3     |         1|
-|3     |pwm_generator_comparator_1_0           |         1|
-|4     |pwm_generator_comparator_2_0           |         1|
-|5     |pwm_generator_counter_3_0              |         1|
-|6     |pwm_generator_duty_cycle_lut_0_1       |         1|
-|7     |pwm_generator_counter_2_1              |         1|
-|8     |pwm_generator_fpga_2input_copier_0_0   |         1|
-|9     |pwm_generator_not_gate_1_0             |         1|
-|10    |pwm_generator_not_gate_0_1             |         1|
-|11    |pwm_generator_small_duty_cycle_lut_0_0 |         1|
-+------+---------------------------------------+----------+
++------+-------------------------------------+----------+
+|      |BlackBox name                        |Instances |
++------+-------------------------------------+----------+
+|1     |pwm_generator_big_duty_cycle_lut_0_0 |         1|
+|2     |pwm_generator_big_duty_cycle_lut_0_1 |         1|
+|3     |pwm_generator_reset_comparator_0_3   |         1|
+|4     |pwm_generator_clear_comparator_1_0   |         1|
+|5     |pwm_generator_comparator_1_1         |         1|
+|6     |pwm_generator_comparator_3_0         |         1|
+|7     |pwm_generator_counter_2_1            |         1|
+|8     |pwm_generator_twentyone_counter_0_0  |         1|
++------+-------------------------------------+----------+
 
 Report Cell Usage: 
-+------+--------------------------------------------+------+
-|      |Cell                                        |Count |
-+------+--------------------------------------------+------+
-|1     |pwm_generator_comparator_1_0_bbox           |     1|
-|2     |pwm_generator_comparator_2_0_bbox           |     1|
-|3     |pwm_generator_counter_2_1_bbox              |     1|
-|4     |pwm_generator_counter_3_0_bbox              |     1|
-|5     |pwm_generator_duty_cycle_lut_0_1_bbox       |     1|
-|6     |pwm_generator_fpga_2input_copier_0_0_bbox   |     1|
-|7     |pwm_generator_not_gate_0_1_bbox             |     1|
-|8     |pwm_generator_not_gate_1_0_bbox             |     1|
-|9     |pwm_generator_reset_comparator_0_2_bbox     |     1|
-|10    |pwm_generator_reset_comparator_0_3_bbox     |     1|
-|11    |pwm_generator_small_duty_cycle_lut_0_0_bbox |     1|
-|12    |IBUF                                        |     3|
-|13    |OBUF                                        |     3|
-+------+--------------------------------------------+------+
++------+------------------------------------------+------+
+|      |Cell                                      |Count |
++------+------------------------------------------+------+
+|1     |pwm_generator_big_duty_cycle_lut_0_0_bbox |     1|
+|2     |pwm_generator_big_duty_cycle_lut_0_1_bbox |     1|
+|3     |pwm_generator_clear_comparator_1_0_bbox   |     1|
+|4     |pwm_generator_comparator_1_1_bbox         |     1|
+|5     |pwm_generator_comparator_3_0_bbox         |     1|
+|6     |pwm_generator_counter_2_1_bbox            |     1|
+|7     |pwm_generator_reset_comparator_0_3_bbox   |     1|
+|8     |pwm_generator_twentyone_counter_0_0_bbox  |     1|
+|9     |IBUF                                      |     3|
+|10    |OBUF                                      |     2|
++------+------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.957 ; gain = 743.840 ; free physical = 10949 ; free virtual = 31825
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.449 ; gain = 819.680 ; free physical = 15196 ; free virtual = 30974
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2385.957 ; gain = 694.914 ; free physical = 10953 ; free virtual = 31829
-Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2385.965 ; gain = 743.840 ; free physical = 10953 ; free virtual = 31829
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2388.449 ; gain = 770.754 ; free physical = 15195 ; free virtual = 30973
+Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2388.457 ; gain = 819.680 ; free physical = 15195 ; free virtual = 30973
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2385.965 ; gain = 0.000 ; free physical = 10953 ; free virtual = 31829
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2388.457 ; gain = 0.000 ; free physical = 15195 ; free virtual = 30972
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2385.965 ; gain = 0.000 ; free physical = 11131 ; free virtual = 32007
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2388.457 ; gain = 0.000 ; free physical = 15348 ; free virtual = 31125
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 76378546
+Synth Design complete | Checksum: 927c76b1
 INFO: [Common 17-83] Releasing license: Synthesis
-65 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+97 Infos, 102 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:23 . Memory (MB): peak = 2385.965 ; gain = 895.922 ; free physical = 11131 ; free virtual = 32006
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1578.606; main = 1578.606; forked = 261.161
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3047.164; main = 2385.961; forked = 917.000
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2409.969 ; gain = 0.000 ; free physical = 11130 ; free virtual = 32006
+synth_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:22 . Memory (MB): peak = 2388.457 ; gain = 1011.781 ; free physical = 15349 ; free virtual = 31127
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1594.016; main = 1594.016; forked = 267.575
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3050.625; main = 2388.453; forked = 917.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2412.461 ; gain = 0.000 ; free physical = 15350 ; free virtual = 31127
 INFO: [Common 17-1381] The checkpoint '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/pwm_generator_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file pwm_generator_wrapper_utilization_synth.rpt -pb pwm_generator_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr  2 12:56:18 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  9 11:04:04 2025...

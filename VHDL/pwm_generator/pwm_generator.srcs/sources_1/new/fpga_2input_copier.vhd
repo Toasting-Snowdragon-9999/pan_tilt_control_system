@@ -32,8 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity fpga_2input_copier is
-    Port ( in_0 : in STD_LOGIC_VECTOR(1 downto 0);
-           out_0 : out STD_LOGIC_VECTOR (1 downto 0);
+    Port ( in_0 : in STD_LOGIC_VECTOR(4 downto 0);
+           out_0 : out STD_LOGIC_VECTOR (4 downto 0);
            out_1 : out STD_LOGIC_VECTOR (1 downto 0));
 end fpga_2input_copier;
 

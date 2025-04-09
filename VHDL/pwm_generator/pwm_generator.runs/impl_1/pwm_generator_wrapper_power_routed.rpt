@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date             : Wed Apr  2 12:57:02 2025
+| Date             : Wed Apr  9 11:04:47 2025
 | Host             : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 | Command          : report_power -file pwm_generator_wrapper_power_routed.rpt -pb pwm_generator_wrapper_power_summary_routed.pb -rpx pwm_generator_wrapper_power_routed.rpx
 | Design           : pwm_generator_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.114        |
+| Total On-Chip Power (W)  | 0.109        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.008        |
+| Dynamic (W)              | 0.003        |
 | Device Static (W)        | 0.106        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 83.7         |
@@ -52,16 +52,15 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      122 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       35 |     53200 |            0.07 |
-|   CARRY4       |    <0.001 |       21 |     13300 |            0.16 |
-|   Register     |    <0.001 |       30 |    106400 |            0.03 |
-|   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |    <0.001 |       61 |       --- |             --- |
-| I/O            |     0.007 |        6 |       125 |            4.80 |
+| Clocks         |    <0.001 |        3 |       --- |             --- |
+| Slice Logic    |    <0.001 |       29 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       10 |     53200 |            0.02 |
+|   Register     |    <0.001 |       10 |    106400 |           <0.01 |
+|   Others       |     0.000 |        1 |       --- |             --- |
+| Signals        |    <0.001 |       20 |       --- |             --- |
+| I/O            |     0.003 |        5 |       125 |            4.00 |
 | Static Power   |     0.106 |          |           |                 |
-| Total          |     0.114 |          |           |                 |
+| Total          |     0.109 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,9 +70,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.009 |       0.002 |      0.007 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.011 |       0.000 |      0.010 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.008 |       0.001 |      0.007 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.010 |       0.000 |      0.010 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -147,8 +146,7 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
-| pwm_generator_wrapper |     0.008 |
-|   pwm_generator_i     |     0.001 |
+| pwm_generator_wrapper |     0.003 |
 +-----------------------+-----------+
 
 

@@ -3,8 +3,8 @@
 # SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Wed Apr  2 12:52:37 2025
-# Process ID         : 55733
+# Start of session at: Wed Apr  2 15:14:03 2025
+# Process ID         : 107630
 # Current directory  : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_counter_2_1_synth_1
 # Command line       : vivado -log pwm_generator_counter_2_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_generator_counter_2_1.tcl
 # Log file           : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_counter_2_1_synth_1/pwm_generator_counter_2_1.vds
@@ -13,13 +13,13 @@
 # Platform           : Ubuntu
 # Operating System   : Ubuntu 24.04.2 LTS
 # Processor Detail   : Intel(R) Core(TM) Ultra 7 155H
-# CPU Frequency      : 3609.400 MHz
+# CPU Frequency      : 3986.328 MHz
 # CPU Physical cores : 16
 # CPU Logical cores  : 22
 # Host memory        : 32970 MB
 # Swap memory        : 8589 MB
 # Total Virtual      : 41560 MB
-# Available Virtual  : 34406 MB
+# Available Virtual  : 32292 MB
 #-----------------------------------------------------------
 source pwm_generator_counter_2_1.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
@@ -33,21 +33,21 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Designutils 20-5008] Incremental synthesis strategy off
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 56149
+INFO: [Synth 8-7075] Helper process launched with PID 107829
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1792.551 ; gain = 354.848 ; free physical = 6917 ; free virtual = 27735
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1793.000 ; gain = 294.848 ; free physical = 10532 ; free virtual = 29191
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'pwm_generator_counter_2_1' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/synth/pwm_generator_counter_2_1.vhd:66]
-	Parameter n_bits bound to: 3 - type: integer 
+	Parameter n_bits bound to: 5 - type: integer 
 INFO: [Synth 8-3491] module 'counter' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/new/counter.vhd:5' bound to instance 'U0' of component 'counter' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/synth/pwm_generator_counter_2_1.vhd:99]
 INFO: [Synth 8-638] synthesizing module 'counter' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/new/counter.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'counter' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/new/counter.vhd:14]
 INFO: [Synth 8-256] done synthesizing module 'pwm_generator_counter_2_1' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/synth/pwm_generator_counter_2_1.vhd:66]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1864.520 ; gain = 426.816 ; free physical = 6729 ; free virtual = 27599
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1863.938 ; gain = 365.785 ; free physical = 10426 ; free virtual = 29111
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1879.363 ; gain = 441.660 ; free physical = 6712 ; free virtual = 27582
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1881.750 ; gain = 383.598 ; free physical = 10430 ; free virtual = 29116
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -55,10 +55,10 @@ Start Loading Part and Timing Information
 Loading part: xc7z020clg400-1
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1879.363 ; gain = 441.660 ; free physical = 6712 ; free virtual = 27582
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1881.750 ; gain = 383.598 ; free physical = 10430 ; free virtual = 29116
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1888.270 ; gain = 450.566 ; free physical = 6704 ; free virtual = 27576
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1890.656 ; gain = 392.504 ; free physical = 10430 ; free virtual = 29116
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -66,9 +66,9 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input    3 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
 +---Registers : 
-	                3 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
 +---Muxes : 
 	   2 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
@@ -89,20 +89,20 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2015.113 ; gain = 577.410 ; free physical = 6145 ; free virtual = 27022
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2014.469 ; gain = 516.316 ; free physical = 10081 ; free virtual = 28743
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2028.988 ; gain = 591.285 ; free physical = 6116 ; free virtual = 26992
+Finished Timing Optimization : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2029.344 ; gain = 531.191 ; free physical = 10081 ; free virtual = 28743
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2028.988 ; gain = 591.285 ; free physical = 6100 ; free virtual = 26977
+Finished Technology Mapping : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2029.344 ; gain = 531.191 ; free physical = 10073 ; free virtual = 28735
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -120,37 +120,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5932 ; free virtual = 26845
+Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5932 ; free virtual = 26845
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5931 ; free virtual = 26845
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5931 ; free virtual = 26845
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5932 ; free virtual = 26845
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5932 ; free virtual = 26845
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -166,43 +166,44 @@ Report Cell Usage:
 +------+-----+------+
 |      |Cell |Count |
 +------+-----+------+
-|1     |LUT4 |     1|
-|2     |LUT5 |     1|
-|3     |LUT6 |     1|
-|4     |FDRE |     3|
+|1     |LUT1 |     1|
+|2     |LUT2 |     2|
+|3     |LUT3 |     1|
+|4     |LUT4 |     1|
+|5     |LUT5 |     1|
+|6     |FDRE |     5|
 +------+-----+------+
 
 Report Instance Areas: 
 +------+---------+--------+------+
 |      |Instance |Module  |Cells |
 +------+---------+--------+------+
-|1     |top      |        |     6|
-|2     |  U0     |counter |     6|
+|1     |top      |        |    11|
+|2     |  U0     |counter |    11|
 +------+---------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5932 ; free virtual = 26845
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9913 ; free virtual = 28575
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.801 ; gain = 744.098 ; free physical = 5931 ; free virtual = 26844
-Synthesis Optimization Complete : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.809 ; gain = 744.098 ; free physical = 5931 ; free virtual = 26844
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.156 ; gain = 683.004 ; free physical = 9909 ; free virtual = 28571
+Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2181.164 ; gain = 683.004 ; free physical = 9909 ; free virtual = 28571
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2195.676 ; gain = 0.000 ; free physical = 6067 ; free virtual = 26978
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2196.031 ; gain = 0.000 ; free physical = 9938 ; free virtual = 28600
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2331.258 ; gain = 0.000 ; free physical = 5866 ; free virtual = 26731
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2329.613 ; gain = 0.000 ; free physical = 10025 ; free virtual = 28687
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 604ffb1a
+Synth Design complete | Checksum: a9c8d7f9
 INFO: [Common 17-83] Releasing license: Synthesis
 19 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:17 ; elapsed = 00:00:15 . Memory (MB): peak = 2331.258 ; gain = 949.582 ; free physical = 5866 ; free virtual = 26731
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1371.126; main = 1361.670; forked = 191.495
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3030.988; main = 2331.262; forked = 916.996
+synth_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 2329.613 ; gain = 887.488 ; free physical = 10025 ; free virtual = 28687
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1519.858; main = 1445.331; forked = 238.119
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3051.348; main = 2329.617; forked = 917.000
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2620.223 ; gain = 0.000 ; free physical = 4957 ; free virtual = 25842
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2631.578 ; gain = 0.000 ; free physical = 9685 ; free virtual = 28346
 INFO: [Common 17-1381] The checkpoint '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_counter_2_1_synth_1/pwm_generator_counter_2_1.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2620.223 ; gain = 288.965 ; free physical = 4963 ; free virtual = 25847
 INFO: [Vivado 12-24828] Executing command : report_utilization -file pwm_generator_counter_2_1_utilization_synth.rpt -pb pwm_generator_counter_2_1_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr  2 12:53:03 2025...
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  2 15:14:26 2025...

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Wed Apr  2 12:57:02 2025
+| Date         : Wed Apr  9 11:04:47 2025
 | Host         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_bus_skew -warn_on_violation -file pwm_generator_wrapper_bus_skew_routed.rpt -pb pwm_generator_wrapper_bus_skew_routed.pb -rpx pwm_generator_wrapper_bus_skew_routed.rpx
 | Design       : pwm_generator_wrapper

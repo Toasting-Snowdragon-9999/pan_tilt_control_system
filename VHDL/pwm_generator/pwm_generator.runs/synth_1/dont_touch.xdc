@@ -9,24 +9,6 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generat
 # IP: bd/pwm_generator/ip/pwm_generator_xlconstant_0_0/pwm_generator_xlconstant_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconstant_0_0 || ORIG_REF_NAME==pwm_generator_xlconstant_0_0} -quiet] -quiet
 
-# IP: bd/pwm_generator/ip/pwm_generator_duty_cycle_lut_0_1/pwm_generator_duty_cycle_lut_0_1.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_duty_cycle_lut_0_1 || ORIG_REF_NAME==pwm_generator_duty_cycle_lut_0_1} -quiet] -quiet
-
-# IP: bd/pwm_generator/ip/pwm_generator_reset_comparator_0_2/pwm_generator_reset_comparator_0_2.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_reset_comparator_0_2 || ORIG_REF_NAME==pwm_generator_reset_comparator_0_2} -quiet] -quiet
-
-# IP: bd/pwm_generator/ip/pwm_generator_not_gate_0_1/pwm_generator_not_gate_0_1.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_not_gate_0_1 || ORIG_REF_NAME==pwm_generator_not_gate_0_1} -quiet] -quiet
-
-# IP: bd/pwm_generator/ip/pwm_generator_not_gate_1_0/pwm_generator_not_gate_1_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_not_gate_1_0 || ORIG_REF_NAME==pwm_generator_not_gate_1_0} -quiet] -quiet
-
-# IP: bd/pwm_generator/ip/pwm_generator_counter_3_0/pwm_generator_counter_3_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_counter_3_0 || ORIG_REF_NAME==pwm_generator_counter_3_0} -quiet] -quiet
-
-# IP: bd/pwm_generator/ip/pwm_generator_fpga_2input_copier_0_0/pwm_generator_fpga_2input_copier_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_fpga_2input_copier_0_0 || ORIG_REF_NAME==pwm_generator_fpga_2input_copier_0_0} -quiet] -quiet
-
 # IP: bd/pwm_generator/ip/pwm_generator_xlconstant_0_1/pwm_generator_xlconstant_0_1.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconstant_0_1 || ORIG_REF_NAME==pwm_generator_xlconstant_0_1} -quiet] -quiet
 
@@ -39,13 +21,49 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generat
 # IP: bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_reset_comparator_0_3 || ORIG_REF_NAME==pwm_generator_reset_comparator_0_3} -quiet] -quiet
 
-# IP: bd/pwm_generator/ip/pwm_generator_comparator_2_0/pwm_generator_comparator_2_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_comparator_2_0 || ORIG_REF_NAME==pwm_generator_comparator_2_0} -quiet] -quiet
+# IP: bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0/pwm_generator_big_duty_cycle_lut_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_big_duty_cycle_lut_0_0 || ORIG_REF_NAME==pwm_generator_big_duty_cycle_lut_0_0} -quiet] -quiet
 
-# IP: bd/pwm_generator/ip/pwm_generator_comparator_1_0/pwm_generator_comparator_1_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_comparator_1_0 || ORIG_REF_NAME==pwm_generator_comparator_1_0} -quiet] -quiet
+# IP: bd/pwm_generator/ip/pwm_generator_comparator_1_1/pwm_generator_comparator_1_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_comparator_1_1 || ORIG_REF_NAME==pwm_generator_comparator_1_1} -quiet] -quiet
 
-# IP: bd/pwm_generator/ip/pwm_generator_small_duty_cycle_lut_0_0/pwm_generator_small_duty_cycle_lut_0_0.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_small_duty_cycle_lut_0_0 || ORIG_REF_NAME==pwm_generator_small_duty_cycle_lut_0_0} -quiet] -quiet
+# IP: bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_1/pwm_generator_big_duty_cycle_lut_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_big_duty_cycle_lut_0_1 || ORIG_REF_NAME==pwm_generator_big_duty_cycle_lut_0_1} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_clear_comparator_1_0/pwm_generator_clear_comparator_1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_clear_comparator_1_0 || ORIG_REF_NAME==pwm_generator_clear_comparator_1_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_comparator_3_0/pwm_generator_comparator_3_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_comparator_3_0 || ORIG_REF_NAME==pwm_generator_comparator_3_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_disabled_0_0/pwm_generator_disabled_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_disabled_0_0 || ORIG_REF_NAME==pwm_generator_disabled_0_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_enabled_0_0/pwm_generator_enabled_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_enabled_0_0 || ORIG_REF_NAME==pwm_generator_enabled_0_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_twentyone_constant_0_0/pwm_generator_twentyone_constant_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_twentyone_constant_0_0 || ORIG_REF_NAME==pwm_generator_twentyone_constant_0_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_twentyone_counter_0_0/pwm_generator_twentyone_counter_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_twentyone_counter_0_0 || ORIG_REF_NAME==pwm_generator_twentyone_counter_0_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_xlconstant_0_3/pwm_generator_xlconstant_0_3.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconstant_0_3 || ORIG_REF_NAME==pwm_generator_xlconstant_0_3} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_xlconstant_0_4/pwm_generator_xlconstant_0_4.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconstant_0_4 || ORIG_REF_NAME==pwm_generator_xlconstant_0_4} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_xlconcat_0_0/pwm_generator_xlconcat_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconcat_0_0 || ORIG_REF_NAME==pwm_generator_xlconcat_0_0} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_xlconcat_0_1/pwm_generator_xlconcat_0_1.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconcat_0_1 || ORIG_REF_NAME==pwm_generator_xlconcat_0_1} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_xlconstant_0_5/pwm_generator_xlconstant_0_5.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconstant_0_5 || ORIG_REF_NAME==pwm_generator_xlconstant_0_5} -quiet] -quiet
+
+# IP: bd/pwm_generator/ip/pwm_generator_xlconstant_1_0/pwm_generator_xlconstant_1_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==pwm_generator_xlconstant_1_0 || ORIG_REF_NAME==pwm_generator_xlconstant_1_0} -quiet] -quiet
 
 # XDC: /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/pwm_generator_ooc.xdc

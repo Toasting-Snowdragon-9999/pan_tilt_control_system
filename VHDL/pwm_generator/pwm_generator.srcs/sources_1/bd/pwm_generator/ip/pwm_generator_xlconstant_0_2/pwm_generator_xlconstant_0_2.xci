@@ -2,19 +2,19 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pwm_generator_xlconstant_0_2",
-    "cell_name": "four_constant_0",
+    "cell_name": "twentyone_constant_0",
     "component_reference": "xilinx.com:ip:xlconstant:1.1",
     "ip_revision": "9",
     "gen_directory": "../../../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "pwm_generator_xlconstant_0_2", "resolve_type": "user", "usage": "all" } ],
-        "CONST_WIDTH": [ { "value": "3", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "CONST_VAL": [ { "value": "4", "value_src": "user", "resolve_type": "user", "usage": "all" } ]
+        "CONST_WIDTH": [ { "value": "5", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "CONST_VAL": [ { "value": "20", "value_src": "user", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
-        "CONST_WIDTH": [ { "value": "3", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "CONST_VAL": [ { "value": "0x4", "resolve_type": "generated", "format": "bitString", "usage": "all" } ]
+        "CONST_WIDTH": [ { "value": "5", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "CONST_VAL": [ { "value": "0x14", "resolve_type": "generated", "format": "bitString", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq" } ],
@@ -42,7 +42,7 @@
     },
     "boundary": {
       "ports": {
-        "dout": [ { "direction": "out", "size_left": "2", "size_right": "0" } ]
+        "dout": [ { "direction": "out", "size_left": "4", "size_right": "0" } ]
       }
     }
   }

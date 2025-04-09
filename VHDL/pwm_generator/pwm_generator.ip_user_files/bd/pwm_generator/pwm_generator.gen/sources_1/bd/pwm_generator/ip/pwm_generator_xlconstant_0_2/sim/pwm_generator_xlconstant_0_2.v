@@ -57,11 +57,11 @@ module pwm_generator_xlconstant_0_2 (
   dout
 );
 
-output wire [2 : 0] dout;
+output wire [4 : 0] dout;
 
   xlconstant_v1_1_9_xlconstant #(
-    .CONST_WIDTH(3),
-    .CONST_VAL(3'H4)
+    .CONST_WIDTH(5),
+    .CONST_VAL(5'H14)
   ) inst (
     .dout(dout)
   );
