@@ -13,7 +13,7 @@ architecture Behavioral of comparator is
 
 begin
     process (a,b)
-        begin if a >= b then
+        begin if unsigned(a) > unsigned(b) then
                 c <= '1';
             else c <= '0';
         end if;

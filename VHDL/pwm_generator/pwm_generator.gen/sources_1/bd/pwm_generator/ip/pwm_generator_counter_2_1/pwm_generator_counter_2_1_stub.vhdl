@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
--- Date        : Wed Apr  2 12:53:02 2025
+-- Date        : Wed Apr  2 15:14:26 2025
 -- Host        : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_counter_2_1/pwm_generator_counter_2_1_stub.vhdl
@@ -19,13 +19,13 @@ entity pwm_generator_counter_2_1 is
     rst : in STD_LOGIC;
     clr : in STD_LOGIC;
     en : in STD_LOGIC;
-    cnt : out STD_LOGIC_VECTOR ( 2 downto 0 )
+    cnt : out STD_LOGIC_VECTOR ( 4 downto 0 )
   );
 
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of pwm_generator_counter_2_1 : entity is "pwm_generator_counter_2_1,counter,{}";
   attribute core_generation_info : string;
-  attribute core_generation_info of pwm_generator_counter_2_1 : entity is "pwm_generator_counter_2_1,counter,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=counter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=3}";
+  attribute core_generation_info of pwm_generator_counter_2_1 : entity is "pwm_generator_counter_2_1,counter,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=counter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=5}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of pwm_generator_counter_2_1 : entity is "yes";
   attribute ip_definition_source : string;
@@ -36,7 +36,7 @@ architecture stub of pwm_generator_counter_2_1 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "clk,rst,clr,en,cnt[2:0]";
+  attribute black_box_pad_pin of stub : architecture is "clk,rst,clr,en,cnt[4:0]";
   attribute x_interface_info : string;
   attribute x_interface_info of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute x_interface_mode : string;

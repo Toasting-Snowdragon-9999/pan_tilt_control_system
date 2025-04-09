@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Wed Apr  2 12:53:02 2025
+| Date         : Wed Apr  9 11:03:26 2025
 | Host         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_utilization -file pwm_generator_reset_comparator_0_3_utilization_synth.rpt -pb pwm_generator_reset_comparator_0_3_utilization_synth.pb
 | Design       : pwm_generator_reset_comparator_0_3
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |    9 |     0 |          0 |     53200 |  0.02 |
-|   LUT as Logic          |    9 |     0 |          0 |     53200 |  0.02 |
+| Slice LUTs*             |    2 |     0 |          0 |     53200 | <0.01 |
+|   LUT as Logic          |    2 |     0 |          0 |     53200 | <0.01 |
 |   LUT as Memory         |    0 |     0 |          0 |     17400 |  0.00 |
 | Slice Registers         |    0 |     0 |          0 |    106400 |  0.00 |
 |   Register as Flip Flop |    0 |     0 |          0 |    106400 |  0.00 |
@@ -149,8 +149,8 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT6     |    9 |                 LUT |
-| CARRY4   |    3 |          CarryLogic |
+| LUT6     |    1 |                 LUT |
+| LUT5     |    1 |                 LUT |
 +----------+------+---------------------+
 
 

@@ -2,7 +2,7 @@
 -- Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
--- Date        : Wed Apr  2 12:53:02 2025
+-- Date        : Wed Apr  9 11:03:26 2025
 -- Host        : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3_stub.vhdl
@@ -15,15 +15,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity pwm_generator_reset_comparator_0_3 is
   Port ( 
-    a : in STD_LOGIC_VECTOR ( 26 downto 0 );
-    b : in STD_LOGIC_VECTOR ( 26 downto 0 );
+    a : in STD_LOGIC_VECTOR ( 4 downto 0 );
+    b : in STD_LOGIC_VECTOR ( 4 downto 0 );
     c : out STD_LOGIC
   );
 
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of pwm_generator_reset_comparator_0_3 : entity is "pwm_generator_reset_comparator_0_3,equal_comparator,{}";
   attribute core_generation_info : string;
-  attribute core_generation_info of pwm_generator_reset_comparator_0_3 : entity is "pwm_generator_reset_comparator_0_3,equal_comparator,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=equal_comparator,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=27}";
+  attribute core_generation_info of pwm_generator_reset_comparator_0_3 : entity is "pwm_generator_reset_comparator_0_3,equal_comparator,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=equal_comparator,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=5}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of pwm_generator_reset_comparator_0_3 : entity is "yes";
   attribute ip_definition_source : string;
@@ -34,7 +34,7 @@ architecture stub of pwm_generator_reset_comparator_0_3 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "a[26:0],b[26:0],c";
+  attribute black_box_pad_pin of stub : architecture is "a[4:0],b[4:0],c";
   attribute x_core_info : string;
   attribute x_core_info of stub : architecture is "equal_comparator,Vivado 2024.2";
 begin

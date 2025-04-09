@@ -62,7 +62,7 @@ typedef bit bit_as_bool;
 
 (* SC_MODULE_EXPORT *)
 module pwm_generator_xlconstant_0_2 (
-  output bit [2 : 0 ] dout
+  output bit [4 : 0 ] dout
 );
 endmodule
 `endif
@@ -72,6 +72,6 @@ endmodule
 module pwm_generator_xlconstant_0_2 (dout)
 (* integer foreign = "SystemC";
 *);
- output wire [2 : 0 ] dout;
+ output wire [4 : 0 ] dout;
 endmodule
 `endif

@@ -6,25 +6,25 @@
 
 (* BLOCK_STUB = "true" *)
 module pwm_generator (
+  clk,
   led_0,
   led_1,
-  sw,
-  clk,
-  rpio_08_r
+  sw_0,
+  sw_1
 );
 
-  (* X_INTERFACE_IGNORE = "true" *)
-  output led_0;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output led_1;
-  (* X_INTERFACE_IGNORE = "true" *)
-  input [1:0]sw;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *)
   (* X_INTERFACE_MODE = "slave CLK.CLK" *)
   (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN pwm_generator_clk_0, INSERT_VIP 0" *)
   input clk;
   (* X_INTERFACE_IGNORE = "true" *)
-  output rpio_08_r;
+  output led_0;
+  (* X_INTERFACE_IGNORE = "true" *)
+  output led_1;
+  (* X_INTERFACE_IGNORE = "true" *)
+  input [0:0]sw_0;
+  (* X_INTERFACE_IGNORE = "true" *)
+  input [0:0]sw_1;
 
   // stub module has no contents
 

@@ -54,8 +54,8 @@
 #include "systemc.h"
 class pwm_generator_xlconstant_0_2 : public sc_module {
   public:
-xlconstant_v1_1_9<3,4> mod;
-  sc_out< sc_bv<3> > dout;
+xlconstant_v1_1_9<5,20> mod;
+  sc_out< sc_bv<5> > dout;
 pwm_generator_xlconstant_0_2 (sc_core::sc_module_name name);
   };
 

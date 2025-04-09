@@ -59,7 +59,7 @@ ENTITY pwm_generator_counter_2_1 IS
     rst : IN STD_LOGIC;
     clr : IN STD_LOGIC;
     en : IN STD_LOGIC;
-    cnt : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+    cnt : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
   );
 END pwm_generator_counter_2_1;
 
@@ -75,7 +75,7 @@ ARCHITECTURE pwm_generator_counter_2_1_arch OF pwm_generator_counter_2_1 IS
       rst : IN STD_LOGIC;
       clr : IN STD_LOGIC;
       en : IN STD_LOGIC;
-      cnt : OUT STD_LOGIC_VECTOR(2 DOWNTO 0)
+      cnt : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
     );
   END COMPONENT counter;
   ATTRIBUTE X_CORE_INFO : STRING;
@@ -83,7 +83,7 @@ ARCHITECTURE pwm_generator_counter_2_1_arch OF pwm_generator_counter_2_1 IS
   ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
   ATTRIBUTE CHECK_LICENSE_TYPE OF pwm_generator_counter_2_1_arch : ARCHITECTURE IS "pwm_generator_counter_2_1,counter,{}";
   ATTRIBUTE CORE_GENERATION_INFO : STRING;
-  ATTRIBUTE CORE_GENERATION_INFO OF pwm_generator_counter_2_1_arch: ARCHITECTURE IS "pwm_generator_counter_2_1,counter,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=counter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=3}";
+  ATTRIBUTE CORE_GENERATION_INFO OF pwm_generator_counter_2_1_arch: ARCHITECTURE IS "pwm_generator_counter_2_1,counter,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=counter,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED,n_bits=5}";
   ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
   ATTRIBUTE IP_DEFINITION_SOURCE OF pwm_generator_counter_2_1_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -98,7 +98,7 @@ ARCHITECTURE pwm_generator_counter_2_1_arch OF pwm_generator_counter_2_1 IS
 BEGIN
   U0 : counter
     GENERIC MAP (
-      n_bits => 3
+      n_bits => 5
     )
     PORT MAP (
       clk => clk,
