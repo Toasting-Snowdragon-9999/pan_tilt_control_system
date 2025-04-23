@@ -6,11 +6,8 @@
  */
 //#define FREERTOS_CONFIG_RUNTIME_STATS_INSTANCE
 #include "FreeRTOSConfig.h"
-
 #include "common.h"
-// forward declarations
-//void vControllerTask(void *pv);
-//void vUartTxTask    (void *pv);
+
 //Priority Defines
 #define Prio_Debug 1
 #define Prio_Uart_Tx 4
