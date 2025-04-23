@@ -9,8 +9,8 @@
 
 #include "common.h"
 // forward declarations
-void vControllerTask(void *pv);
-void vUartTxTask    (void *pv);
+//void vControllerTask(void *pv);
+//void vUartTxTask    (void *pv);
 //Priority Defines
 #define Prio_Debug 1
 #define Prio_Uart_Tx 4
@@ -47,8 +47,8 @@ static void setupHardware(void)
 
 
 }
-
-/*void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
+/*
+void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
 {
     // If this hits, a task has overflowed its stack
     for( ;; );
@@ -58,6 +58,7 @@ void vApplicationMallocFailedHook(void)
     // If this hits, a memory allocation failed
     for( ;; );
 }
+
 
 void vTestTask(void *pvParameters)
 {
@@ -77,10 +78,12 @@ int main(void)
         xUartTxQueue = xQueueCreate(16, sizeof(char));
 
 
-        uart_putc('M');
+       // uart_putc('M');
         uart_print("=== MAIN===\n");
-        //xTaskCreate( vTestTask, "TEST", 200, NULL, 4, NULL );
+       // xTaskCreate(status_led_task, "LED", 70, NULL, 1, NULL );
+       // xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
+        //uart_putc('H');
 
         if (xTaskCreate( vControllerTask,"CONTROLLER", 200, xUartRxQueue, Prio_Controller, &vControllerTaskHandle) != pdPASS) { uart_print("TaskCreate CONTROLLER failed\n"); }
 
