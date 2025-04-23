@@ -26,32 +26,56 @@
 /***************** Variables ******************/
 int main(void)
 {
-    INT16U test_word1 = 0b1111110001010100;
-    INT16U test_word2 = 0b0110101101010111;
-    int sec = 1000;
+    //INT16U test_word1 = 0b1111110001010100;
+    INT16U test_word2 = 0b0111101010100010;
+  //INT16U test_word2 = 0b0111000000000000;
     SPI_init(); //Initialize the SPI2 module and its related GPIO pins
-    uart0_init(9600, 8, 1, 'n');
-    INT8U test_uart = '\0';
-    int i;
-
-    while(1){
+    //SPI_init_slave();
+   // uart0_init(9600, 8, 1, 'n');
+//    INT8U test_uart = '\0';
+    //SPI_write(0b0000000000000000);
+    //SPI_write(0b0000000000000000);
+   // while(1){
           //while(!uart0_rx_rdy());
-        if(uart0_rx_rdy()){
-        test_uart = uart0_getc();
-        }
-        if(test_uart != '\0'){
-          SPI_write(test_uart);
-        }
-        //Delay_ms(sec); //Wait 1 second
-          //while(!uart0_tx_rdy());
-       uart0_putc( test_uart );
-       Delay_ms(100); //Wait 1 second
-       test_uart = '\0';
+//        if(uart0_rx_rdy()){
+//            test_uart = uart0_getc();
+//        }
+//        if(test_uart != '\0'){
+//            SPI_write(test_uart);
+//        }
+//    INT8U lsb_8;
+    INT8U msb_8;
+    INT16U msb;
+    while(1){
+        SPI_write(test_word2);
+        //msb = SPI_read();
 
+        //msb_8 = msb;//(unsigned char)(unsigned short)msb;
 
-        //SPI_write(test_word2);
-        //Delay_ms(sec); //Wait 1 second
+        //while(!uart0_tx_rdy());
+            //lsb_8 = SPI_read() & 0x00FF;
+            //uart0_putc(lsb_8);
+           // Delay_ms(10);
+        //if(uart0_tx_rdy()){
+           // uart0_putc(msb_8);
+           // Delay_ms(10);
+        //}
+
     }
+
+//        if(uart0_tx_rdy()){
+//                uart0_putc(SPI_read());
+//        }
+        //Delay_ms(sec); //Wait 1 second
+          //while(!uart0_tx_rdy());¨
+//       uart0_putc( test_uart );
+      // Delay_ms(10);
+//       test_uart = '\0';
+
+
+
+      //  Delay_ms(100); //Wait 1 second
+   // }
     return 0;
 }
 

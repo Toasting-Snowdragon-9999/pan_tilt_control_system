@@ -27,9 +27,13 @@
 
 void SPI_init(void);
 
-void SPI_write(INT8U);
+void SPI_write(INT16U);
+
+INT16U SPI_read(void);
 
 void Delay_ms(int);
+
+void SPI_init_slave(void);
 
 
 #endif /* INIT_SPI_H_ */
