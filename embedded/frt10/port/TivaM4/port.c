@@ -356,7 +356,7 @@ void vPortExitCritical( void )
 }
 /*-----------------------------------------------------------*/
 
-void vPortSysTickHandler( void )
+void xPortSysTickHandler( void )
 {
     /* The SysTick runs at the lowest interrupt priority, so when this interrupt
      * executes all interrupts must be unmasked.  There is therefore no need to

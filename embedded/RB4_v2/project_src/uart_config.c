@@ -60,7 +60,7 @@ void uart_print(const char *fmt, ...)
     for(p = buf; *p; ++p)
         uart_putc((uint8_t)*p);
 }
-/*
+
 // ISR: read DR, push to queue, clear interrupt, yield if needed
 void UART0_Handler(void)
 {
@@ -75,7 +75,7 @@ void UART0_Handler(void)
 
     portYIELD_FROM_ISR(woken);
 }
-*/
+
 uint8_t uart_getc(void) {
     while (UART0_FR_R & UART_FR_RXFE) {
         vTaskDelay(pdMS_TO_TICKS(10));  // <-- let other tasks run
