@@ -7,17 +7,14 @@
 
 #ifndef SW_TASK_H_
 #define SW_TASK_H_
-#include "FreeRTOS.h"    // Must be first – sets up configuration and core types
-#include "task.h"        // Defines task-related types and functions
-#include "queue.h"       // Defines queue-related types and functions
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 #include "emp_type.h"
-
-
 #include "tm4c123gh6pm.h"
 #include "gpio.h"
 #include "led_state.h"
-
-
 
 void vSwitchTask(void *pvParameters);
 

@@ -1,5 +1,5 @@
 #include "common.h"
-#include "uart_config.h"
+#include "uart_tx_task.h"
 /*
  * uart_tx_task.c
  *
@@ -7,21 +7,23 @@
  *      Author: linax
  */
 
-
-
 extern QueueHandle_t xUartTxQueue;
 
 void vUartTxTask(void *pvParameters)
 {
     TickType_t lastWake = xTaskGetTickCount();
-    uint8_t b;
-      for (;;) {
-          uart_putc('T');
-          // wait for controller to hand us a byte
-          xQueueReceive(xUartTxQueue, &b, portMAX_DELAY);
-          // send it out on the wire
-          uart_putc(b);
+    uint8_t txChar;
 
-        vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(300));
+    for (;;) {
+
+          //uart_putc('T'); //indicate TX task is running through uart (debugging)
+
+          uart_print("\r\n<<<UART_TRANSMITTER>>>\r\n");
+          //wait for byte from controller
+          xQueueReceive(xUartTxQueue, &txChar, pdMS_TO_TICKS(1000)); //define portmax delay or specific macro?
+
+          uart_putc(txChar);  //transmit byte over uart
+
+          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(100)); //necessary?
     }
 }

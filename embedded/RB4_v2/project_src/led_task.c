@@ -6,14 +6,15 @@
  */
 
 #include "common.h"
-
+#include "led_task.h"
 
 void vLedTask(void *pvParameters)
 {
-    //const TickType_t xDelay100ms = pdMS_TO_TICKS( 100 );
+
     char ch;
     for(;;){
-        //uart_putc('L');
+        uart_print("\r\n<<<LED_TASK>>>\r\n");
+
         // Block until there is a byte in the TX queue
         if( xQueueReceive( xUartRxQueue, &ch, portMAX_DELAY ) == pdTRUE ){
             GPIO_PORTF_DATA_R &= ~(0x0E);   // reset LEDs
@@ -41,8 +42,7 @@ void vLedTask(void *pvParameters)
 
         }
 
-        //DELAY
-                vTaskDelay( pdMS_TO_TICKS( 300) );
+                vTaskDelay( pdMS_TO_TICKS( 300) ); //optimal?
 
 
     }

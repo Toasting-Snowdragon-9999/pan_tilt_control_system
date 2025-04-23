@@ -8,53 +8,65 @@
 
 #ifndef COMMON_H #define COMMON_H
 
-#define UART0_RX_INT_MASK   UART_IM_RXIM
-#define UART0_TX_INT_MASK   UART_IM_TXIM
-
-#include <stdint.h>    // for int8_t, int16_t, int32_t, etc.
-#include <stddef.h>    // for size_t, ptrdiff_t, etc.
+#include <stdint.h>
+#include <stddef.h>
 #include <stdarg.h>
 #include <stdio.h>
-//#include <sys/types.h> // sometimes needed for ssize_t on certain systems
 
+/*FreeRTOS specific headers*/
 #include "FreeRTOSConfig.h"
-
-#include "FreeRTOS.h" // Must be first.
+#include "FreeRTOS.h" // Must be first?
 #include "task.h"
 #include "queue.h"
 #include "timers.h"
 
 /* Project-specific types */
 #include "emp_type.h"
-//#include "glob_def.h"
 #include "tmodel.h"
-/* Hardware-specific headers */
+
+/* Hardware-specific and setup headers */
 #include "tm4c123gh6pm.h"
 #include "gpio.h"
 #include "systick_frt.h"
-//#include "runtime_stats.h"
-#include "led_state.h"
-
-/* UART and other configuration */
-#include "uart_config.h"
-#include "uart_rx_task.h"
-#include "uart_tx_task.h"
-
-/* Application modules */
-#include "led_task.h"
-#include "sw_task.h"
-
-#include "debugger.h"
-#include "controller.h"
-
-/* Other modules as needed */
 #include "events.h"
 #include "swtimers.h" // etc.
 
+/* Task headers */
+#include "controller.h"
+#include "uart_rx_task.h"
+#include "uart_tx_task.h"
+#include "led_task.h"
+#include "sw_task.h"
+#include "debugger.h"
 
+/* configuration and state headers? */
+#include "led_state.h"
+#include "uart_config.h"
+
+//Priority Defines
+#define Prio_Uart_Tx 4 //HIGH PRIORITY
+#define Prio_Controller 3
+#define Prio_Uart_Rx 3
+
+#define Prio_Led 1
+#define Prio_Sw 1
+#define Prio_Debug 1
+//Queue Handles
 extern QueueHandle_t xUartRxQueue;
 extern QueueHandle_t xUartTxQueue;
-extern QueueHandle_t xCtrlRxQueue;
+
+
+// Task Handles
+extern TaskHandle_t vControllerTaskHandle;
+extern TaskHandle_t vLedTaskHandle;
+extern TaskHandle_t vSwitchTaskHandle;
+extern TaskHandle_t vUartRxTaskHandle;
+extern TaskHandle_t vUartTxTaskHandle;
+extern TaskHandle_t vDebugTaskHandle;
+
+// Controller Variables
+extern unsigned char ref;
+extern unsigned char fb;
 
 #endif /* COMMON_H */
 

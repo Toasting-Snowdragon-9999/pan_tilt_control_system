@@ -1,15 +1,19 @@
 #include "common.h"
 
 /* Global definitions */
+
+//Queue Handles
 QueueHandle_t xUartTxQueue;
 QueueHandle_t xUartRxQueue;
-/*
-xQueueHandle xUartRxQueue = NULL;
-xQueueHandle xUartTxQueue = NULL;
 
-Controller_t Controller = { .CtrlState = CTRL_IDLE, .Feedback = 0,
-                              .CtrlInput = NULL, .CtrlOutput = NULL };
-*/
+// Task Handles
+TaskHandle_t vControllerTaskHandle;
+TaskHandle_t vLedTaskHandle;
+TaskHandle_t vSwitchTaskHandle;
+TaskHandle_t vUartRxTaskHandle;
+TaskHandle_t vUartTxTaskHandle;
+TaskHandle_t vDebugTaskHandle;
 
+// Controller Variables
 unsigned char ref = 100;
 unsigned char fb = 0;

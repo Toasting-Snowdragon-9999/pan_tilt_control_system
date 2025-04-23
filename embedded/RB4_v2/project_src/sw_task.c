@@ -75,7 +75,7 @@ void vSwitchTask(void * pvParameters)
 ******************************************************************************/
 {
 for(;;){
-    //uart_putc('S');
+    uart_print("\r\n<<<SWITCH_TASK>>>\r\n");
    INT8U  time_out;
 
    time_out = get_msg_event( SEB_TO_BUTTON );

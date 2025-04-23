@@ -7,9 +7,10 @@
 
 #ifndef DEBUGGER_H_
 #define DEBUGGER_H_
-#include "FreeRTOS.h"    // Must be first – sets up configuration and core types
-#include "task.h"        // Defines task-related types and functions
-#include "queue.h"       // Defines queue-related types and functions
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
 #include "emp_type.h"
 
 void vDebugTask(void *pvParameters);

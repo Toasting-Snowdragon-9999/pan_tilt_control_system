@@ -7,8 +7,6 @@
 #include "tm4c123gh6pm.h"
 #include "emp_type.h"
 
-
-
 #ifndef LED_STATE_H_
 #define LED_STATE_H_
 
@@ -16,7 +14,6 @@
 #define RED 1
 #define GREEN 2
 #define BLUE 3
-
 
 extern volatile INT8U LED_State;
 

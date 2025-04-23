@@ -6,11 +6,7 @@
  */
 
 #include "common.h"
-
-extern TaskHandle_t vLedTaskHandle;
-extern TaskHandle_t vSwitchTaskHandle;
-extern TaskHandle_t vUartRxTaskHandle;
-extern TaskHandle_t vUartTxTaskHandle;
+#include "debugger.h"
 
 const char* getTaskStateString(eTaskState state) {
     switch (state) {
@@ -24,16 +20,13 @@ const char* getTaskStateString(eTaskState state) {
 }
 
 void vDebugTask(void *pvParameters) {
-    //uart_putc('D');
+    uart_print("\r\n<<<DEBUGGER>>>\r\n");
     TickType_t lastWake = xTaskGetTickCount();
-    for (;;) {
-        uart_putc('d');
 
+    for (;;) {
         uart_print("=== Debug: System State ===\n");
         TaskStatus_t taskStats[10];
         UBaseType_t total = uxTaskGetSystemState(taskStats, 10, NULL);
-
-
 
         uart_print("Number of tasks:  %u\n", total);
         uint8_t i;
