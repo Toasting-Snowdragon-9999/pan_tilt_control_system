@@ -41,14 +41,14 @@ void uart_init(uint32_t baud, uint8_t dbits, uint8_t sbits, uint8_t parity)
     NVIC_EN0_R |= (1<<5);
 }
 
-// Simple blocking TX
+//blocking TX
 void uart_putc(uint8_t b)
 {
     while( UART0_FR_R & (1<<5) ) {}   // wait TX FIFO not full
     UART0_DR_R = b;
 }
 
-// printf-style
+// printf-style uart print
 void uart_print(const char *fmt, ...)
 {
     char buf[80];
@@ -60,7 +60,7 @@ void uart_print(const char *fmt, ...)
     for(p = buf; *p; ++p)
         uart_putc((uint8_t)*p);
 }
-
+/*
 // ISR: read DR, push to queue, clear interrupt, yield if needed
 void UART0_Handler(void)
 {
@@ -75,10 +75,10 @@ void UART0_Handler(void)
 
     portYIELD_FROM_ISR(woken);
 }
-
+*/
 uint8_t uart_getc(void) {
     while (UART0_FR_R & UART_FR_RXFE) {
-        vTaskDelay(pdMS_TO_TICKS(10));  // <-- let other tasks run
+        vTaskDelay(pdMS_TO_TICKS(10));  //avoid blocking on uart poll by yielding (caller task) through delay
     }
     return (uint8_t)(UART0_DR_R & 0xFF);
 }
