@@ -26,7 +26,7 @@
 /***************** Variables ******************/
 int main(void)
 {
-    //INT16U test_word1 = 0b1111110001010100;
+    INT16U test_word1 = 0b1111110001010100;
     INT16U test_word2 = 0b0111101010100010;
   //INT16U test_word2 = 0b0111000000000000;
     SPI_init(); //Initialize the SPI2 module and its related GPIO pins
@@ -47,7 +47,9 @@ int main(void)
     INT8U msb_8;
     INT16U msb;
     while(1){
+        SPI_write(test_word1);
         SPI_write(test_word2);
+
         //msb = SPI_read();
 
         //msb_8 = msb;//(unsigned char)(unsigned short)msb;
