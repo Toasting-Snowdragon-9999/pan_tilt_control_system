@@ -11,6 +11,10 @@
 #include <string>       // strerror
 #include <vector>
 
+// for class UartReader 
+#include <atomic>
+#include <thread>
+#include <iomanip>
 struct UartConfig {
   uint32_t baud_rate;
   uint8_t data_bits;
@@ -68,13 +72,13 @@ class Uart {
         * @param data Type: const uint8_t - This is a reference to the data that will be sent
         * @return Type: void - 
         */
-        void speak(const uint8_t* data);
+        void speak(const uint8_t* data, int size);
         /**
         * @brief This method will recieve 1 byte of data
         * @param data Type: uint8_t - This is a reference to where the recieved data will be stored
         * @return Type: void - 
         */
-        void listen(uint8_t* data);
+        void listen(uint8_t* data, int size);
         /**
         * @brief This method will send the data 1 byte at a time and check to recieve a byte after each send
         * @param data Type: vector of uint8_t - this is a vector to the data that will be sent
@@ -88,6 +92,23 @@ class Uart {
         */
         int communicate(const std::vector<uint8_t>& data, std::vector<uint8_t>& rec, int size);
 
+};
+
+
+class UartReader {
+public:
+    UartReader(Uart& uart);
+    ~UartReader();
+
+    void start();
+    void stop();
+
+private:
+    void run();
+
+    Uart& _uart;
+    std::atomic<bool> _running;
+    std::thread _thread;
 };
 
 #endif // UART_H

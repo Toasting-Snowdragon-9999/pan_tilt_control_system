@@ -52,8 +52,8 @@ void Uart::_set_parity(uint8_t parity, struct termios& tty) {
 }
 
 
-void Uart::speak(const uint8_t* data){
-    uint32_t size = 1;
+void Uart::speak(const uint8_t* data, int size) {
+    // uint8_t size = 3;
     if (_handler < 0) {
         std::cerr << "Error: Serial port not open for writing." << std::endl;
         return;
@@ -64,8 +64,8 @@ void Uart::speak(const uint8_t* data){
     }
 }
 
-void Uart::listen(uint8_t* data){
-    uint32_t size = 1;
+void Uart::listen(uint8_t* data, int size){
+
     if (_handler < 0) {
         std::cerr << "Error: Serial port not open for reading." << std::endl;
         return;
@@ -92,8 +92,8 @@ int Uart::communicate(const std::vector<uint8_t>& data, std::vector<uint8_t>& re
     rec.resize(size);
 
     for(int i = 0; i < size; i++){
-        speak(&data[i]);
-        listen(&rec[i]);
+        speak(&data[i], 1);
+        listen(&rec[i], 1);
     }
 
     return 0;
@@ -102,7 +102,7 @@ int Uart::communicate(const std::vector<uint8_t>& data, std::vector<uint8_t>& re
 
 
 bool Uart::init(const UartConfig& config, const char* port) {
-    _handler = open(port, O_RDWR | O_NOCTTY | O_SYNC);
+    _handler = open(port, O_RDWR | O_NOCTTY | O_SYNC); // O_RDWR
     if (_handler < 0) {
         std::cerr << "Error: Cannot open port " << port 
                   << ", error: " << strerror(errno) << std::endl;
@@ -157,7 +157,7 @@ bool Uart::init(const UartConfig& config, const char* port) {
      tty.c_oflag &= ~OPOST;
  
      // Set VMIN & VTIME for read() blocking behavior
-     tty.c_cc[VMIN]  = 0;    // no minimum # of bytes
+     tty.c_cc[VMIN]  = 1;    // no minimum # of bytes
      tty.c_cc[VTIME] = 10;   // 1 second timeout (10 * 0.1s)
  
      // Apply settings
@@ -175,3 +175,30 @@ bool Uart::init(const UartConfig& config, const char* port) {
      return 1;
 }
 
+
+UartReader::UartReader(Uart& uart) : _uart(uart), _running(false) {}
+
+UartReader::~UartReader() {
+    stop();
+}
+
+void UartReader::start() {
+    _running = true;
+    _thread = std::thread(&UartReader::run, this);
+}
+
+void UartReader::stop() {
+    _running = false;
+    if (_thread.joinable()) {
+        _thread.join();
+    }
+}
+
+void UartReader::run() {
+    uint8_t byte;
+    while (_running) {
+        _uart.listen(&byte, 1);
+        std::cout << static_cast<char>(byte) << std::flush;  // print as char
+        
+    } 
+}

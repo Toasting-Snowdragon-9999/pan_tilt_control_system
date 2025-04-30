@@ -23,7 +23,7 @@ class SurfFeatureTracking : PrioVision{
          * @param none Type: void -
          * @return Type: void - 
          */
-        void tracking(int cam) override;
+        void tracking(Uart& uart) override;
 
     protected:
         cv::Ptr<cv::cuda::SURF_CUDA> _surf;

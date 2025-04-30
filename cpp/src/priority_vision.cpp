@@ -25,13 +25,13 @@ PrioVision::find_highest_priority_threshold(std::vector<ColorThreshold>& thresho
     return best_threshold; // Returns either a reference or empty optional
 }
 
-void PrioVision::tracking(int cam) {
+void PrioVision::tracking(Uart& uart) {
     int radius = 1;
     two_dim::tracking_offset offset;
     bool run_calibration = true;
     _set_priority(run_calibration);
 
-    cv::VideoCapture cap(cam);
+    cv::VideoCapture cap(CAMERA_IN_USE);
     // cap.set(cv::CAP_PROP_FRAME_WIDTH, 1920);     // Makes it very slow
     // cap.set(cv::CAP_PROP_FRAME_HEIGHT, 1080);    // Makes it very slow
     // cap.set(cv::CAP_PROP_FPS, 30);               // max 30
@@ -39,14 +39,29 @@ void PrioVision::tracking(int cam) {
     // double fps = cap.get(cv::CAP_PROP_FPS);             // 800  2.4 times smaller than the actual value
     // double width = cap.get(cv::CAP_PROP_FRAME_WIDTH);   // 448  2.41 times smaller than the actual value
     // double height = cap.get(cv::CAP_PROP_FRAME_HEIGHT); // 30
-
+    std::this_thread::sleep_for(std::chrono::seconds(2));
     if (!cap.isOpened()) {
         std::cerr << "Error: Could not open camera!" << std::endl;
         return;
     }
     cv::namedWindow("GPU Accelerated", cv::WINDOW_AUTOSIZE);
-    
+
+    auto next_frame_time = chrone_time::now();
+    auto frame_interval = std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::duration<double>(1.0 / SAMPLING_FREQ));
+
+    UartReader ur(uart);
+    ur.start();
+
     for (;;) { 
+        // To adjust sampling rate
+        auto now = chrone_time::now();
+        if (now < next_frame_time) {
+            //std::cout << "Waiting for next frame..." << std::endl;
+            std::this_thread::sleep_for(next_frame_time - now);
+        }
+        next_frame_time += frame_interval;
+
         cap >> _image;         
         if (_image.empty()) {
             std::cerr << "Error: Empty frame!" << std::endl;
@@ -54,7 +69,7 @@ void PrioVision::tracking(int cam) {
         }
 
         std::vector <int> size = {_image.cols, _image.rows, radius};
-        _draw_center_dot(_image, size);
+        _draw_center_dot(_image,  size);
         
         _mark_cornors(_image);
 
@@ -67,20 +82,39 @@ void PrioVision::tracking(int cam) {
             _find_contours(_contours, _blurred_cpu);
             _thresholds[i].contours = _contours;
         }
+
+
         
         auto best = find_highest_priority_threshold(_thresholds);
         if (best) {
-            std::cout << "Selected threshold with priority: " << static_cast<int>(best->get().priority) << std::endl;
             _draw_rect(_image, best->get().contours, best->get().min_area);
         } else {
             std::cout << "No valid threshold found." << std::endl;
         }
         
         _calculate_offset(offset);
+        
+        //std::cout << "Offset: " << offset.x_offset << " " << offset.y_offset << std::endl;
+   
+        uint16_t x_encoded = static_cast<uint16_t>(offset.x_offset) + 400;  // Range: 0–800
+        uint16_t y_encoded = static_cast<uint16_t>(offset.y_offset) + 224;  // Range: 0–448
+        
+        std::cout << "Encoded: " << x_encoded << " " << y_encoded << std::endl;
 
+        uint8_t x_off[2];
+        // memcpy(&x_off[0], "x", sizeof(uint8_t));
+        memcpy(&x_off[0], &x_encoded, sizeof(uint16_t));
+
+        uint8_t y_off[3];
+        memcpy(&y_off[0], "y", sizeof(uint8_t));
+        memcpy(&y_off[1], &y_encoded, sizeof(uint16_t));
+
+        uart.speak(x_off, 2);   
+ 
         cv::imshow("GPU Accelerated", _image);
         
         if (cv::waitKey(1) >= 0) {
+            ur.stop();
             break;
         }
     }
