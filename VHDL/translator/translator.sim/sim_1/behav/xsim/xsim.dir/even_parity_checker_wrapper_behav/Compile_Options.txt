@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "xlslice_v1_0_4" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "even_parity_checker_wrapper_behav" "xil_defaultlib.even_parity_checker_wrapper" "xil_defaultlib.glbl" -log "elaborate.log" 

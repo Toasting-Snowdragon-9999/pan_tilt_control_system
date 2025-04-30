@@ -1,0 +1,33 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../translator.gen/sources_1/bd/translator_0",
+      "name": "translator_0",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.2"
+    },
+    "design_tree": {
+      "command_bit_slice_0": ""
+    },
+    "components": {
+      "command_bit_slice_0": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "translator_0_xlslice_0_0",
+        "xci_path": "ip/translator_0_xlslice_0_0/translator_0_xlslice_0_0.xci",
+        "inst_hier_path": "command_bit_slice_0",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "10"
+          },
+          "DIN_WIDTH": {
+            "value": "16"
+          }
+        }
+      }
+    }
+  }
+}
