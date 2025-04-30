@@ -72,7 +72,25 @@ void uart_send_double(double value)
         uart_putc(p[i]);  // Send each byte over UART
     }
 }
+/*
+void uart_send_16int(INT16U value)
+{
+    INT8U lsb= value & 0x00FF;
+    INT8U temp = value & 0xFF00;
+    INT8U msb = (temp>>8);
 
+        uart_putc(msb);  // Send msb byte over UART
+        uart_putc(lsb);  // Send lsb byte over UART
+}
+*/
+void uart_send_16int(INT16U value)
+{
+    uint8_t *p = (uint8_t *)&value;
+    int i;
+    for ( i = 0; i < sizeof(INT16U); i++) {
+        uart_putc(p[i]);  // Send each byte over UART
+    }
+}
 
 
 /*

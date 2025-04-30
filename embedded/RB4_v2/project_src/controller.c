@@ -77,7 +77,7 @@ void vPidControllerTask(void *pvParameters)
     double output = 0.0;
     uint8_t in;
 
-    TickType_t xLastWakeTime = xTaskGetTickCount(); //initilize before start of task
+    TickType_t xLastWakeTime = xTaskGetTickCount(); //initialize before start of task
 
     for( ;; )
     {

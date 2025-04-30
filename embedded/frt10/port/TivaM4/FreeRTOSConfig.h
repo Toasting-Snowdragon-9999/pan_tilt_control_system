@@ -94,7 +94,7 @@
 #define configUSE_TICK_HOOK         0
 #define configCPU_CLOCK_HZ          ( ( unsigned long ) 16000000 )
 #define configTICK_RATE_HZ          ( ( portTickType ) 200 )
-#define configMAX_PRIORITIES        10
+#define configMAX_PRIORITIES        5
 //#define configMAX_PRIORITIES        ( ( unsigned portBASE_TYPE ) 10 )
 #define configMINIMAL_STACK_SIZE    ( ( unsigned short ) 70 )
 #define configTOTAL_HEAP_SIZE       ( ( size_t ) ( 7000 ) )
