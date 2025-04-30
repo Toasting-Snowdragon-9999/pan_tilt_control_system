@@ -10,17 +10,29 @@
 
 
 void PID_Init(PIDController_t *pid,
-              double kp, double ki, double kd, double Ts,
+              double kp, double ki, double kd, double Ts, double N,
               double output_min, double output_max)
 {
+    // Values given to the PID controller
     pid->kp = kp;
     pid->ki = ki;
     pid->kd = kd;
     pid->Ts = Ts;
-    pid->prev_error = 0.0;
-    pid->integral   = 0.0;
+    pid->N  = N;
     pid->output_min = output_min;
     pid->output_max = output_max;
+
+    // Initialize previous values
+    pid->prev_error = 0.0;
+    //pid->integral   = 0.0;
+    //pid->prev_integral = 0.0;
+    pid->prev_derivative = 0.0;
+    
+    // Initialize PID coefficients for the derivative term
+    pid->alpha = 1 + pid->N * (pid->Ts / 2);
+    pid->beta  = pid->N * (pid->Ts / 2) - 1;
+    pid->gamma = pid->kd * pid->N;
+    // U_d(z) / e(z) = gamma * (z-1) / (alpha*z + beta)
 }
 
 double PID_Compute(PIDController_t *pid,
@@ -33,10 +45,12 @@ double PID_Compute(PIDController_t *pid,
         double P = pid->kp * error;
 
         // Integral
-        double I = pid->ki * pid->prev_error + pid->ki * (pid->Ts / 2) * (error + pid->prev_error);
+        //double I = pid->prev_integral + pid->ki * (pid->Ts / 2) * (error + pid->prev_error);
+        //pid->prev_integral = I; // Save the integral term for next calculation
 
         // Derivative
-        double D = pid->kd * (2 / pid->Ts) * (error - pid->prev_error) - pid->kd * pid->prev_error;
+        double D = - (pid->alpha / pid->beta) * pid->prev_derivative + (pid->gamma / pid->beta) * (error - pid->prev_error);
+        pid->prev_derivative = D; // Save the derivative term for next calculation
 
         // Update previous error for next calculation
         pid->prev_error = error;
@@ -45,19 +59,19 @@ double PID_Compute(PIDController_t *pid,
         double output = P + I + D;
 
         // Clamp output to min/max
-        if (output > pid->output_max) {
+        /*if (output > pid->output_max) {
             pid->ki = 0.0; // Reset integral term if output exceeds max
         } else if (output < pid->output_min) {
             output = pid->output_min;
-        }
+        }*/
 
         // Update integral term with anti-windup
-        pid->integral += error * pid->Ts;
+        /*pid->integral += error * pid->Ts;
         if (pid->integral > pid->output_max) {
             pid->integral = pid->output_max;
         } else if (pid->integral < pid->output_min) {
             pid->integral = pid->output_min;
-        }
+        }*/
 
         // Save current error for next derivative calculation
         pid->prev_error = error;
