@@ -1,0 +1,30 @@
+{
+    "Report Information": {
+        "Copyright": "Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.",
+        "Tool Version": "Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024",
+        "Date": "Wed Apr  2 12:53:43 2025",
+        "Host": "jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS",
+        "Command": "report_design_analysis -disable_dataflow_error -qor_summary -disable_device_warning -json /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1/.Xil/Vivado-57224-jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx/dcp0/pwm_generator_wrapper_rda.json",
+        "Design": "pwm_generator_wrapper",
+        "Device": "xc7z020",
+        "Design State": "Synthesized"
+    },
+    "Design QoR Summary": [{
+            "Task Name": "synth_design",
+            "Options": "-define default::[not_specified] -vhdl_define default::[not_specified]",
+            "Directives": "",
+            "Runtime(mins)": "0",
+            "WNS(ns)": "",
+            "TNS(ns)": "",
+            "WHS(ns)": "",
+            "THS(ns)": "",
+            "RQA": "",
+            "Global Cong Level N-E-S-W": "",
+            "Global Cong Tile% N-E-S-W": "",
+            "Long Cong Level N-E-S-W": "",
+            "Long Cong Tile% N-E-S-W": "",
+            "Short Cong Level N-E-S-W": "",
+            "Short Cong Tile% N-E-S-W": "",
+            "Number of threads": "7"
+        }]
+}

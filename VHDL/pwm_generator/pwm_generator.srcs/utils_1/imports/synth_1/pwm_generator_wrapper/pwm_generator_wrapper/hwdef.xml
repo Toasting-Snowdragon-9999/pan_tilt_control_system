@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Project Version="1" Minor="7" DIGEST="">
+	<TOOL_VERSION Version="2024.2"/>
+	<MODE Name="Pre-Synthesis"/>
+	<SYSTEMINFO BOARD="tul.com.tw:pynq-z2:1.0" PART="xc7z020clg400-1" ARCH="zynq" PACKAGE="clg400" DEVICE="7z020" SPEED="-1" LUT="53200" FF="106400" BRAM="140" DSP="220"/>
+	<PART Name="xc7z020clg400-1">
+		<SSIT IS_SSIT="0"/>
+		<NUM_OF_SLRS Value="1"/>
+	</PART>
+	<HIERARCHY Name="pwm_generator_wrapper"/>
+	<File Type="HW_HANDOFF" Name="pwm_generator.hwh" src_db="pwm_generator.hwdef" DESIGN_HIERARCHY="pwm_generator_i" BD_TYPE="DEFAULT_BD">
+	</File>
+	<File Type="BDA" Name="pwm_generator.bda" src_db="pwm_generator.hwdef">
+	</File>
+	<USEDRESOURCES LUT="0" FF="0" BRAM="0" DSP="0"/>
+	<DESIGN_DATA Type="rm">
+		<DESIGN_IDS DESIGN_ID="1608529408" PARENT_ID="0" NODE_ID="1608551936"/>
+	</DESIGN_DATA>
+</Project>
+

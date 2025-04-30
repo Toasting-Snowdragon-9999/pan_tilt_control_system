@@ -1,6 +1,16 @@
 verilog xil_defaultlib  \
 "../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_0/sim/pwm_generator_xlconstant_0_0.v" \
-"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_enabled_0_1/sim/pwm_generator_enabled_0_1.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_1/sim/pwm_generator_xlconstant_0_1.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2/sim/pwm_generator_xlconstant_0_2.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_disabled_0_0/sim/pwm_generator_disabled_0_0.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_enabled_0_0/sim/pwm_generator_enabled_0_0.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_twentyone_constant_0_0/sim/pwm_generator_twentyone_constant_0_0.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_3/sim/pwm_generator_xlconstant_0_3.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_4/sim/pwm_generator_xlconstant_0_4.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_0/sim/pwm_generator_xlconcat_0_0.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconcat_0_1/sim/pwm_generator_xlconcat_0_1.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_5/sim/pwm_generator_xlconstant_0_5.v" \
+"../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_1_0/sim/pwm_generator_xlconstant_1_0.v" \
 
 verilog xil_defaultlib "glbl.v"
 

@@ -1,0 +1,11 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_0/sim/movement_interpreter_xlconstant_0_0.v" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_1/sim/movement_interpreter_xlconstant_0_1.v" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_2/sim/movement_interpreter_xlconstant_0_2.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
