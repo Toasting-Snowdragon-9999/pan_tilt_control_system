@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Mar 26 15:48:02 2025" VIVADOVERSION="2024.2">
+
+  <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="movement_interpreter" PACKAGE="clg400" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="O" LEFT="0" NAME="IN1" RIGHT="0" SIGIS="undef" SIGNAME="bit_0_slice_0_Dout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="bit_0_slice_0" PORT="Dout"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="IN2" RIGHT="0" SIGIS="undef" SIGNAME="bit_1_slice_1_Dout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="bit_1_slice_1" PORT="Dout"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="2" NAME="cruise_duty_cycle" RIGHT="0" SIGIS="undef" SIGNAME="conditional_transmit_0_out_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="conditional_transmit_0" PORT="out_0"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="in_0_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_in_0_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mode_selector_0" PORT="in_0"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="0" FULLNAME="/bit_0_slice_0" HWVERSION="2.0" INSTANCE="bit_0_slice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="0"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_ilslice_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="mode_selector_0_h_bridge">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mode_selector_0" PORT="h_bridge"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_0_slice_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="IN1"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="0" FULLNAME="/bit_1_slice_1" HWVERSION="2.0" INSTANCE="bit_1_slice_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="1"/>
+        <PARAMETER NAME="DIN_TO" VALUE="1"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_bit_0_slice_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="mode_selector_0_h_bridge">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mode_selector_0" PORT="h_bridge"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_1_slice_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="IN2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/comparator_equals_0" HWVERSION="1.0" INSTANCE="comparator_equals_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="comparator_equals" VLNV="xilinx.com:module_ref:comparator_equals:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_comparator_equals_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="mode_selector_0_cruise">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="mode_selector_0" PORT="cruise"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="cruise_constant_2_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="cruise_constant_2" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="comparator_equals_0_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="conditional_transmit_0" PORT="in_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/condition_constant_0" HWVERSION="1.1" INSTANCE="condition_constant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_xlconstant_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="condition_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="conditional_transmit_0" PORT="condition_constant"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/conditional_transmit_0" HWVERSION="1.0" INSTANCE="conditional_transmit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="conditional_transmitter" VLNV="xilinx.com:module_ref:conditional_transmitter:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="n_bits_0" VALUE="1"/>
+        <PARAMETER NAME="n_bits_1" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_conditional_transmit_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="condition_constant" RIGHT="0" SIGIS="undef" SIGNAME="condition_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="condition_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="in_0" RIGHT="0" SIGIS="undef" SIGNAME="comparator_equals_0_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_equals_0" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="out_0" RIGHT="0" SIGIS="undef" SIGNAME="conditional_transmit_0_out_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="cruise_duty_cycle"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="transmission_constant" RIGHT="0" SIGIS="undef" SIGNAME="transmission_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="transmission_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/cruise_constant_2" HWVERSION="1.1" INSTANCE="cruise_constant_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x3"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="4"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_xlconstant_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="3" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="cruise_constant_2_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_equals_0" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/mode_selector_0" HWVERSION="1.0" INSTANCE="mode_selector_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mode_selector" VLNV="xilinx.com:module_ref:mode_selector:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_mode_selector_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="1" NAME="cruise" RIGHT="0" SIGIS="undef" SIGNAME="mode_selector_0_cruise">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="comparator_equals_0" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="h_bridge" RIGHT="0" SIGIS="undef" SIGNAME="mode_selector_0_h_bridge">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_1_slice_1" PORT="Din"/>
+            <CONNECTION INSTANCE="bit_0_slice_0" PORT="Din"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="in_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_in_0_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="in_0_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="9" FULLNAME="/transmission_constant_0" HWVERSION="1.1" INSTANCE="transmission_constant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="3"/>
+        <PARAMETER NAME="Component_Name" VALUE="movement_interpreter_xlconstant_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="2" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="transmission_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="conditional_transmit_0" PORT="transmission_constant"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

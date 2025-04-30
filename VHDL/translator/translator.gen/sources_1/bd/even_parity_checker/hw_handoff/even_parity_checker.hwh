@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Apr 23 14:57:00 2025" VIVADOVERSION="2024.2">
+
+  <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="even_parity_checker" PACKAGE="clg400" SPEEDGRADE="-1"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="I" LEFT="8" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="bit_0" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_1" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_2" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_3" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_4" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_5" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_6" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_7" PORT="Din"/>
+        <CONNECTION INSTANCE="bit_8" PORT="Din"/>
+        <CONNECTION INSTANCE="parity_off_0" PORT="Din"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="pass_fail_0_data_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pass_fail_0" PORT="data_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="External_Ports_en">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pass_fail_0" PORT="en"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="fail" SIGIS="undef" SIGNAME="pass_fail_0_fail">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pass_fail_0" PORT="fail"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pass" SIGIS="undef" SIGNAME="pass_fail_0_pass">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="pass_fail_0" PORT="pass"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="4" FULLNAME="/bit_0" HWVERSION="1.0" INSTANCE="bit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="0"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xlslice_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_0" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_1" HWVERSION="1.0" INSTANCE="bit_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="1"/>
+        <PARAMETER NAME="DIN_TO" VALUE="1"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_0" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_2" HWVERSION="1.0" INSTANCE="bit_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="2"/>
+        <PARAMETER NAME="DIN_TO" VALUE="2"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_1_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_1" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_3" HWVERSION="1.0" INSTANCE="bit_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="3"/>
+        <PARAMETER NAME="DIN_TO" VALUE="3"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_2_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_1" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_4" HWVERSION="1.0" INSTANCE="bit_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="4"/>
+        <PARAMETER NAME="DIN_TO" VALUE="4"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_2_1"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_2" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_5" HWVERSION="1.0" INSTANCE="bit_5" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="5"/>
+        <PARAMETER NAME="DIN_TO" VALUE="5"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_2_2"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_5_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_2" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_6" HWVERSION="1.0" INSTANCE="bit_6" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="6"/>
+        <PARAMETER NAME="DIN_TO" VALUE="6"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_2_3"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_6_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_3" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_7" HWVERSION="1.0" INSTANCE="bit_7" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="7"/>
+        <PARAMETER NAME="DIN_TO" VALUE="7"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_2_4"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_7_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_3" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/bit_8" HWVERSION="1.0" INSTANCE="bit_8" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="8"/>
+        <PARAMETER NAME="DIN_TO" VALUE="8"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_bit_2_5"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="bit_8_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_7" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/not_gate_0" HWVERSION="1.0" INSTANCE="not_gate_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="not_gate" VLNV="user.org:user:not_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_not_gate_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="xor_gate_7_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_7" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="b" SIGIS="undef" SIGNAME="not_gate_0_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="pass_fail_0" PORT="inp"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="4" FULLNAME="/parity_off_0" HWVERSION="1.0" INSTANCE="parity_off_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="8"/>
+        <PARAMETER NAME="DIN_TO" VALUE="1"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xlslice_0_2"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_data_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="parity_off_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="pass_fail_0" PORT="data_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/pass_fail_0" HWVERSION="1.0" INSTANCE="pass_fail_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pass_fail" VLNV="xilinx.com:module_ref:pass_fail:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_pass_fail_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="7" NAME="data_in" RIGHT="0" SIGIS="undef" SIGNAME="parity_off_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="parity_off_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="data_out" RIGHT="0" SIGIS="undef" SIGNAME="pass_fail_0_data_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="data_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="External_Ports_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="fail" SIGIS="undef" SIGNAME="pass_fail_0_fail">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="fail"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="inp" SIGIS="undef" SIGNAME="not_gate_0_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="not_gate_0" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pass" SIGIS="undef" SIGNAME="pass_fail_0_pass">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pass"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_0" HWVERSION="1.0" INSTANCE="xor_gate_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="bit_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="bit_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_0_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_5" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_1" HWVERSION="1.0" INSTANCE="xor_gate_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="bit_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_2" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="bit_3_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_3" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_1_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_5" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_2" HWVERSION="1.0" INSTANCE="xor_gate_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_2"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="bit_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_4" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="bit_5_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_5" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_2_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_6" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_3" HWVERSION="1.0" INSTANCE="xor_gate_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_3"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="bit_6_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_6" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="bit_7_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_7" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_3_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_6" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_4" HWVERSION="1.0" INSTANCE="xor_gate_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_4"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="xor_gate_5_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_5" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="xor_gate_6_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_6" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_4_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_7" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_5" HWVERSION="1.0" INSTANCE="xor_gate_5" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_5"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="xor_gate_0_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_0" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="xor_gate_1_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_1" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_5_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_4" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_6" HWVERSION="1.0" INSTANCE="xor_gate_6" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_0_6"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="xor_gate_2_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_2" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="xor_gate_3_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_3" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_6_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_4" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/xor_gate_7" HWVERSION="1.0" INSTANCE="xor_gate_7" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xor_gate" VLNV="user.org:user:xor_gate:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="even_parity_checker_xor_gate_8_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="a" SIGIS="undef" SIGNAME="bit_8_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="bit_8" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="b" SIGIS="undef" SIGNAME="xor_gate_4_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xor_gate_4" PORT="c"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c" SIGIS="undef" SIGNAME="xor_gate_7_c">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="not_gate_0" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

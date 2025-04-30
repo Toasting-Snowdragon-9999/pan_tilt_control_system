@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_1.srcs/sources_1/new/mode_selector.vhd" \
+"../../../../project_1.srcs/sources_1/new/comparator_equals.vhd" \
+"../../../../project_1.srcs/sources_1/new/conditional_transmitter.vhd" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_mode_selector_0_0/sim/movement_interpreter_mode_selector_0_0.vhd" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_comparator_equals_0_0/sim/movement_interpreter_comparator_equals_0_0.vhd" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_conditional_transmit_0_0/sim/movement_interpreter_conditional_transmit_0_0.vhd" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/sim/movement_interpreter.vhd" \
+"../../../../project_1.gen/sources_1/bd/movement_interpreter/hdl/movement_interpreter_wrapper.vhd" \
+
+# Do not sort compile order
+nosort

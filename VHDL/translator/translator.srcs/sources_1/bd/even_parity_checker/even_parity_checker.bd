@@ -1,0 +1,487 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x84DDC2A784DDC2A7",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../translator.gen/sources_1/bd/even_parity_checker",
+      "name": "even_parity_checker",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "xor_gate_0": "",
+      "xor_gate_1": "",
+      "xor_gate_2": "",
+      "xor_gate_3": "",
+      "xor_gate_4": "",
+      "xor_gate_5": "",
+      "xor_gate_6": "",
+      "pass_fail_0": "",
+      "not_gate_0": "",
+      "xor_gate_7": "",
+      "bit_0": "",
+      "bit_1": "",
+      "bit_2": "",
+      "bit_3": "",
+      "bit_4": "",
+      "bit_5": "",
+      "bit_6": "",
+      "bit_7": "",
+      "bit_8": "",
+      "parity_off_0": ""
+    },
+    "ports": {
+      "data_out": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "fail": {
+        "direction": "O"
+      },
+      "pass": {
+        "direction": "O"
+      },
+      "data_in": {
+        "direction": "I",
+        "left": "8",
+        "right": "0"
+      },
+      "en": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "xor_gate_0": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_0",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_0/even_parity_checker_xor_gate_0_0.xci",
+        "inst_hier_path": "xor_gate_0"
+      },
+      "xor_gate_1": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_1",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_1/even_parity_checker_xor_gate_0_1.xci",
+        "inst_hier_path": "xor_gate_1"
+      },
+      "xor_gate_2": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_2",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_2/even_parity_checker_xor_gate_0_2.xci",
+        "inst_hier_path": "xor_gate_2"
+      },
+      "xor_gate_3": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_3",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_3/even_parity_checker_xor_gate_0_3.xci",
+        "inst_hier_path": "xor_gate_3"
+      },
+      "xor_gate_4": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_4",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_4/even_parity_checker_xor_gate_0_4.xci",
+        "inst_hier_path": "xor_gate_4"
+      },
+      "xor_gate_5": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_5",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_5/even_parity_checker_xor_gate_0_5.xci",
+        "inst_hier_path": "xor_gate_5"
+      },
+      "xor_gate_6": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_0_6",
+        "xci_path": "ip/even_parity_checker_xor_gate_0_6/even_parity_checker_xor_gate_0_6.xci",
+        "inst_hier_path": "xor_gate_6"
+      },
+      "pass_fail_0": {
+        "vlnv": "xilinx.com:module_ref:pass_fail:1.0",
+        "ip_revision": "1",
+        "xci_name": "even_parity_checker_pass_fail_0_0",
+        "xci_path": "ip/even_parity_checker_pass_fail_0_0/even_parity_checker_pass_fail_0_0.xci",
+        "inst_hier_path": "pass_fail_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "pass_fail",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "inp": {
+            "direction": "I"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "data_in": {
+            "direction": "I",
+            "left": "7",
+            "right": "0"
+          },
+          "pass": {
+            "direction": "O"
+          },
+          "data_out": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "fail": {
+            "direction": "O"
+          }
+        }
+      },
+      "not_gate_0": {
+        "vlnv": "user.org:user:not_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_not_gate_0_0",
+        "xci_path": "ip/even_parity_checker_not_gate_0_0/even_parity_checker_not_gate_0_0.xci",
+        "inst_hier_path": "not_gate_0"
+      },
+      "xor_gate_7": {
+        "vlnv": "user.org:user:xor_gate:1.0",
+        "ip_revision": "2",
+        "xci_name": "even_parity_checker_xor_gate_8_0",
+        "xci_path": "ip/even_parity_checker_xor_gate_8_0/even_parity_checker_xor_gate_8_0.xci",
+        "inst_hier_path": "xor_gate_7"
+      },
+      "bit_0": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_xlslice_0_0",
+        "xci_path": "ip/even_parity_checker_xlslice_0_0/even_parity_checker_xlslice_0_0.xci",
+        "inst_hier_path": "bit_0",
+        "parameters": {
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_1": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_0_0",
+        "xci_path": "ip/even_parity_checker_bit_0_0/even_parity_checker_bit_0_0.xci",
+        "inst_hier_path": "bit_1",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "1"
+          },
+          "DIN_TO": {
+            "value": "1"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_2": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_1_0",
+        "xci_path": "ip/even_parity_checker_bit_1_0/even_parity_checker_bit_1_0.xci",
+        "inst_hier_path": "bit_2",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "2"
+          },
+          "DIN_TO": {
+            "value": "2"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_3": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_2_0",
+        "xci_path": "ip/even_parity_checker_bit_2_0/even_parity_checker_bit_2_0.xci",
+        "inst_hier_path": "bit_3",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "3"
+          },
+          "DIN_TO": {
+            "value": "3"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_4": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_2_1",
+        "xci_path": "ip/even_parity_checker_bit_2_1/even_parity_checker_bit_2_1.xci",
+        "inst_hier_path": "bit_4",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "4"
+          },
+          "DIN_TO": {
+            "value": "4"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_5": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_2_2",
+        "xci_path": "ip/even_parity_checker_bit_2_2/even_parity_checker_bit_2_2.xci",
+        "inst_hier_path": "bit_5",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "5"
+          },
+          "DIN_TO": {
+            "value": "5"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_6": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_2_3",
+        "xci_path": "ip/even_parity_checker_bit_2_3/even_parity_checker_bit_2_3.xci",
+        "inst_hier_path": "bit_6",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "6"
+          },
+          "DIN_TO": {
+            "value": "6"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_7": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_2_4",
+        "xci_path": "ip/even_parity_checker_bit_2_4/even_parity_checker_bit_2_4.xci",
+        "inst_hier_path": "bit_7",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "7"
+          },
+          "DIN_TO": {
+            "value": "7"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "bit_8": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_bit_2_5",
+        "xci_path": "ip/even_parity_checker_bit_2_5/even_parity_checker_bit_2_5.xci",
+        "inst_hier_path": "bit_8",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "8"
+          },
+          "DIN_TO": {
+            "value": "8"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      },
+      "parity_off_0": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "4",
+        "xci_name": "even_parity_checker_xlslice_0_2",
+        "xci_path": "ip/even_parity_checker_xlslice_0_2/even_parity_checker_xlslice_0_2.xci",
+        "inst_hier_path": "parity_off_0",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "8"
+          },
+          "DIN_TO": {
+            "value": "1"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          }
+        }
+      }
+    },
+    "nets": {
+      "bit_0_Dout": {
+        "ports": [
+          "bit_0/Dout",
+          "xor_gate_0/a"
+        ]
+      },
+      "bit_1_Dout": {
+        "ports": [
+          "bit_1/Dout",
+          "xor_gate_0/b"
+        ]
+      },
+      "bit_2_Dout": {
+        "ports": [
+          "bit_2/Dout",
+          "xor_gate_1/a"
+        ]
+      },
+      "bit_3_Dout": {
+        "ports": [
+          "bit_3/Dout",
+          "xor_gate_1/b"
+        ]
+      },
+      "bit_4_Dout": {
+        "ports": [
+          "bit_4/Dout",
+          "xor_gate_2/a"
+        ]
+      },
+      "bit_5_Dout": {
+        "ports": [
+          "bit_5/Dout",
+          "xor_gate_2/b"
+        ]
+      },
+      "bit_6_Dout": {
+        "ports": [
+          "bit_6/Dout",
+          "xor_gate_3/a"
+        ]
+      },
+      "bit_7_Dout": {
+        "ports": [
+          "bit_7/Dout",
+          "xor_gate_3/b"
+        ]
+      },
+      "bit_8_Dout": {
+        "ports": [
+          "bit_8/Dout",
+          "xor_gate_7/a"
+        ]
+      },
+      "data_1": {
+        "ports": [
+          "data_in",
+          "bit_0/Din",
+          "bit_1/Din",
+          "bit_2/Din",
+          "bit_3/Din",
+          "bit_4/Din",
+          "bit_5/Din",
+          "bit_6/Din",
+          "bit_7/Din",
+          "bit_8/Din",
+          "parity_off_0/Din"
+        ]
+      },
+      "en_0_1": {
+        "ports": [
+          "en",
+          "pass_fail_0/en"
+        ]
+      },
+      "not_gate_0_b": {
+        "ports": [
+          "not_gate_0/b",
+          "pass_fail_0/inp"
+        ]
+      },
+      "parity_off_0_Dout": {
+        "ports": [
+          "parity_off_0/Dout",
+          "pass_fail_0/data_in"
+        ]
+      },
+      "pass_fail_0_data_out": {
+        "ports": [
+          "pass_fail_0/data_out",
+          "data_out"
+        ]
+      },
+      "pass_fail_0_fail": {
+        "ports": [
+          "pass_fail_0/fail",
+          "fail"
+        ]
+      },
+      "pass_fail_0_pass": {
+        "ports": [
+          "pass_fail_0/pass",
+          "pass"
+        ]
+      },
+      "xor_gate_0_c": {
+        "ports": [
+          "xor_gate_0/c",
+          "xor_gate_5/a"
+        ]
+      },
+      "xor_gate_1_c": {
+        "ports": [
+          "xor_gate_1/c",
+          "xor_gate_5/b"
+        ]
+      },
+      "xor_gate_2_c": {
+        "ports": [
+          "xor_gate_2/c",
+          "xor_gate_6/a"
+        ]
+      },
+      "xor_gate_3_c": {
+        "ports": [
+          "xor_gate_3/c",
+          "xor_gate_6/b"
+        ]
+      },
+      "xor_gate_4_c": {
+        "ports": [
+          "xor_gate_4/c",
+          "xor_gate_7/b"
+        ]
+      },
+      "xor_gate_5_c": {
+        "ports": [
+          "xor_gate_5/c",
+          "xor_gate_4/a"
+        ]
+      },
+      "xor_gate_6_c": {
+        "ports": [
+          "xor_gate_6/c",
+          "xor_gate_4/b"
+        ]
+      },
+      "xor_gate_8_c": {
+        "ports": [
+          "xor_gate_7/c",
+          "not_gate_0/a"
+        ]
+      }
+    }
+  }
+}

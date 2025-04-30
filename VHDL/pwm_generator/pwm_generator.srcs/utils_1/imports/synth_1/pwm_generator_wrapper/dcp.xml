@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Checkpoint Version="23" Minor="0">
+	<BUILD_NUMBER Name="5239630"/>
+	<FULL_BUILD Name="SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024"/>
+	<PRODUCT Name="Vivado v2024.2 (64-bit)"/>
+	<Part Name="xc7z020clg400-1"/>
+	<FeatureSet Name="FeatureSet_Classic"/>
+	<NEXTGEN_VERSAL Name="0"/>
+	<BoardPart Name="tul.com.tw:pynq-z2:part0:1.0"/>
+	<Top Name="pwm_generator_wrapper"/>
+	<DisableAutoIOBuffers Name="0"/>
+	<OutOfContext Name="0"/>
+	<MacroLevel Name="1"/>
+	<RunGenerated Name="1"/>
+	<HDPlatform Name="0"/>
+	<File Type="VERILOG_STUB" Name="pwm_generator_wrapper_stub.v" ModTime="1743591223"/>
+	<File Type="VHDL_STUB" Name="pwm_generator_wrapper_stub.vhdl" ModTime="1743591223"/>
+	<File Type="PARAMXML" Name="pwm_generator_wrapper_param.xml" ModTime="1743591223"/>
+	<File Type="PARAMXML" Name="pwm_generator_wrapper_param.xml" ModTime="1743591223"/>
+	<File Type="SHAPE" Name="pwm_generator_wrapper.shape" ModTime="1743591223"/>
+	<File Type="EDIF" Name="pwm_generator_wrapper.edf" ModTime="1743591223"/>
+	<File Type="XN" Name="pwm_generator_wrapper.xn" ModTime="1743591223"/>
+	<File Type="INCR" Name="pwm_generator_wrapper.incr" ModTime="1743591223"/>
+	<File Type="RDA" Name="pwm_generator_wrapper.rda" ModTime="1743591223"/>
+	<File Type="JSON_RDA" Name="pwm_generator_wrapper_rda.json" ModTime="1743591223"/>
+	<File Type="WDF" Name="pwm_generator_wrapper.wdf" ModTime="1743591223"/>
+	<File Type="SYNTH" Name="pwm_generator_wrapper.synth" ModTime="1743591223"/>
+	<File Type="HWDEF" Name="pwm_generator_wrapper.hwdef" ModTime="1743591223"/>
+	<File Type="HWDEF" Name="pwm_generator_wrapper.hwdef" ModTime="1743591223"/>
+</Checkpoint>
+

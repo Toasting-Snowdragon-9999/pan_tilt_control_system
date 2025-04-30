@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_xlslice_0_0/sim/even_parity_checker_xlslice_0_0.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_0_0/sim/even_parity_checker_bit_0_0.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_1_0/sim/even_parity_checker_bit_1_0.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_2_0/sim/even_parity_checker_bit_2_0.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_2_1/sim/even_parity_checker_bit_2_1.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_2_2/sim/even_parity_checker_bit_2_2.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_2_3/sim/even_parity_checker_bit_2_3.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_2_4/sim/even_parity_checker_bit_2_4.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_bit_2_5/sim/even_parity_checker_bit_2_5.v" \
+"../../../../translator.ip_user_files/bd/even_parity_checker/ip/even_parity_checker_xlslice_0_2/sim/even_parity_checker_xlslice_0_2.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

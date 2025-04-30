@@ -1,0 +1,214 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed Apr  9 11:02:48 2025
+# Process ID         : 59610
+# Current directory  : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_big_duty_cycle_lut_0_0_synth_1
+# Command line       : vivado -log pwm_generator_big_duty_cycle_lut_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source pwm_generator_big_duty_cycle_lut_0_0.tcl
+# Log file           : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_big_duty_cycle_lut_0_0_synth_1/pwm_generator_big_duty_cycle_lut_0_0.vds
+# Journal file       : /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_big_duty_cycle_lut_0_0_synth_1/vivado.jou
+# Running On         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.2 LTS
+# Processor Detail   : Intel(R) Core(TM) Ultra 7 155H
+# CPU Frequency      : 2584.337 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 22
+# Host memory        : 32970 MB
+# Swap memory        : 8589 MB
+# Total Virtual      : 41560 MB
+# Available Virtual  : 33877 MB
+#-----------------------------------------------------------
+source pwm_generator_big_duty_cycle_lut_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jrm/vivado/my_ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2024.2/data/ip'.
+WARNING: [IP_Flow 19-1663] Duplicate IP found for 'user.org:user:counter:1.0'. The one found in IP location '/home/jrm/vivado/my_ip_repo/counter' will take precedence over the same IP in location /home/jrm/vivado/my_ip_repo
+Command: synth_design -top pwm_generator_big_duty_cycle_lut_0_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 59948
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1792.547 ; gain = 351.848 ; free physical = 10946 ; free virtual = 26551
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'pwm_generator_big_duty_cycle_lut_0_0' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0/synth/pwm_generator_big_duty_cycle_lut_0_0.vhd:64]
+INFO: [Synth 8-3491] module 'big_duty_cycle_lut' declared at '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/new/big_duty_cycle_lut.vhd:5' bound to instance 'U0' of component 'big_duty_cycle_lut' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0/synth/pwm_generator_big_duty_cycle_lut_0_0.vhd:83]
+INFO: [Synth 8-638] synthesizing module 'big_duty_cycle_lut' [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/new/big_duty_cycle_lut.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'big_duty_cycle_lut' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/new/big_duty_cycle_lut.vhd:13]
+INFO: [Synth 8-256] done synthesizing module 'pwm_generator_big_duty_cycle_lut_0_0' (0#1) [/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0/synth/pwm_generator_big_duty_cycle_lut_0_0.vhd:64]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1864.484 ; gain = 423.785 ; free physical = 9871 ; free virtual = 25443
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1882.297 ; gain = 441.598 ; free physical = 9732 ; free virtual = 25303
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1882.297 ; gain = 441.598 ; free physical = 9728 ; free virtual = 25299
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1891.203 ; gain = 450.504 ; free physical = 9711 ; free virtual = 25286
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input    5 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2024.062 ; gain = 583.363 ; free physical = 9027 ; free virtual = 24671
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++-------------------+------------+---------------+----------------+
+|Module Name        | RTL Object | Depth x Width | Implemented As | 
++-------------------+------------+---------------+----------------+
+|big_duty_cycle_lut | duty_tmp   | 32x5          | LUT            | 
++-------------------+------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2031.000 ; gain = 590.301 ; free physical = 9015 ; free virtual = 24653
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2031.000 ; gain = 590.301 ; free physical = 9010 ; free virtual = 24651
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |LUT3 |     1|
+|2     |LUT5 |     1|
+|3     |LUT6 |     3|
++------+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |     5|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8099 ; free virtual = 23724
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.812 ; gain = 742.113 ; free physical = 8083 ; free virtual = 23709
+Synthesis Optimization Complete : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 2182.820 ; gain = 742.113 ; free physical = 8083 ; free virtual = 23709
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2197.688 ; gain = 0.000 ; free physical = 8139 ; free virtual = 23766
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2290.281 ; gain = 0.000 ; free physical = 7885 ; free virtual = 23526
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: f544794a
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:23 . Memory (MB): peak = 2290.281 ; gain = 905.609 ; free physical = 7869 ; free virtual = 23510
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1332.987; main = 1332.987; forked = 184.458
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 2808.203; main = 2290.285; forked = 916.996
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Common 17-1381] The checkpoint '/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_big_duty_cycle_lut_0_0_synth_1/pwm_generator_big_duty_cycle_lut_0_0.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2590.254 ; gain = 299.973 ; free physical = 7453 ; free virtual = 23269
+INFO: [Vivado 12-24828] Executing command : report_utilization -file pwm_generator_big_duty_cycle_lut_0_0_utilization_synth.rpt -pb pwm_generator_big_duty_cycle_lut_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  9 11:03:23 2025...
