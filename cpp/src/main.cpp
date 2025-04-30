@@ -4,39 +4,35 @@
 #include "priority_vision.h"
 #include "uart.h"
 
-#define EXTERNAL_CAMERA 4
-#define INTERNAL_CAMERA 0
-#define CAMERA_IN_USE EXTERNAL_CAMERA
+
+#define UART_DEBUGGER "/dev/ttyACM0"
+#define UART_TO_TTY "/dev/ttyUSB0"
 
 int main() {
-    PrioVision vision;
-    vision.tracking(CAMERA_IN_USE);
 
-    // std::string usb_debugger = "/dev/ttyACM0";
-    // std::string usb_to_tty = "/dev/ttyUSB0";
-    // UartConfig config = {
-    //     .baud_rate = 9600,
-    //     .data_bits = 8,
-    //     .stop_bits = 1,
-    //     .parity = 0,
-    //     .flow_control = 0
-    // };
 
-    // Uart uart;
-    // bool success = uart.init(config, usb_to_tty.c_str());
-    // const std::vector<uint8_t> data = {'h', 'h', 'a', 'b'};
-    // uint8_t rec;
-    // uint8_t old_rec = '\n';
-    // if (success){
-    //     while (true) {
-    //         uart.listen(&rec);
-    //         if (rec != old_rec) {
-    //             //uart.listen(&rec);
-    //             std::cout << rec << std::endl;
-    //             old_rec = rec;
-    //         }
-    //     }
-    // }
+    // /*INITILISES UART*/
+    std::string usb_debugger = "/dev/ttyACM0";
+    std::string usb_to_tty = "/dev/ttyUSB0";
+    Uart uart;
+    UartConfig config = {
+        .baud_rate = 115200 ,
+        .data_bits = 8,
+        .stop_bits = 1,
+        .parity = 0,
+        .flow_control = 0
+    };
+    bool success = uart.init(config, usb_debugger.c_str());
+
+    /*IF UART SUCCESSFULLY INITIALISED WE START TRACKING*/
+    if (success){
+        PrioVision vision;
+        vision.tracking(uart);
+    }
+    else{
+        std::cerr << "Failed to initialize UART." << std::endl;
+        return -1;
+    }
 
     return 0;
 }

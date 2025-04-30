@@ -17,17 +17,20 @@
 
 #define EXTERNAL_CAMERA 4
 #define INTERNAL_CAMERA 0
-#define CAMERA_IN_USE EXTERNAL_CAMERA
+#define CAMERA_IN_USE INTERNAL_CAMERA
 #define RESET 0
 #define MAX_CALIBRATION 100
 #define MAX_8_BIT 255
 #define MAX_DEVIATION 7
+#define SAMPLING_FREQ 1 // Hz
+
+using chrone_time = std::chrono::steady_clock;
 
 class Vision {
     public:
         Vision();
         ~Vision();
-        virtual void tracking(int cam);
+        virtual void tracking(Uart& uart);
         void load_image(const std::string& file_name);
         bool save_image(const cv::Mat& image, const std::string& filename);
         void display_image(const cv::Mat& image);

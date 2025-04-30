@@ -44,14 +44,14 @@ bool Vision::save_image(const cv::Mat& image, const std::string& filename)
     return success;
 }
 
-void Vision::tracking(int cam) {
+void Vision::tracking(Uart& uart) {
     bool enable_calibration = true;    
     int radius = 1;
     two_dim::tracking_offset offset;
     std::vector<cv::Scalar> threshholds = _get_thresholds(enable_calibration);
     std::cout << "thresholds: " << threshholds[0] << " " << threshholds[1] << std::endl;
 
-    cv::VideoCapture cap(cam);
+    cv::VideoCapture cap(CAMERA_IN_USE);
 
     if (!cap.isOpened()) {
         std::cerr << "Error: Could not open camera!" << std::endl;
@@ -340,6 +340,42 @@ void Vision::_calibration(std::vector<cv::Scalar>& thresholds) {
     const int center_size = 30;
 
     int sample_index = 0;
+    auto now = chrone_time::now();
+    while (chrone_time::now() <= now + std::chrono::seconds(3)) {
+        cap >> _image;
+        if (_image.empty()) {
+            std::cerr << "Error: Empty frame!" << std::endl;
+            break;
+        }
+
+        int center_x = _image.cols / 2;
+        int center_y = _image.rows / 2;
+
+        // Convert to LAB color space. 
+        // (Make sure COLORSPACE = cv::COLOR_BGR2Lab or change to that explicitly)
+        cv::Mat lab_image;
+        cv::cvtColor(_image, lab_image, COLORSPACE); //cv::COLOR_BGR2Lab
+
+        // Define a small center around the center
+        int center_left   = std::max(center_x - center_size / 2, 0);
+        int center_top    = std::max(center_y - center_size / 2, 0);
+        int center_width  = std::min(center_size, _image.cols - center_left);
+        int center_height = std::min(center_size, _image.rows - center_top);
+
+        cv::Rect center(center_left, center_top, center_width, center_height);
+
+        // Draw the center and a small center indicator for visualization
+        cv::rectangle(_image, center, cv::Scalar(0, 0, 255), 2);
+        cv::circle(_image, cv::Point(center_x, center_y), 5, cv::Scalar(0, 0, 255), -1);
+
+        cv::imshow("Calibration", _image);
+
+        // Press any key to quit early
+        if (cv::waitKey(1) >= 0) {
+            break;
+        }
+    }
+
 
     while (true) {
         cap >> _image;
@@ -452,122 +488,3 @@ void Vision::_calibration(std::vector<cv::Scalar>& thresholds) {
 
     cv::destroyWindow("Calibration");
 }
-
-
-/*
-void Vision::_calibration(std::vector<cv::Scalar>& thresholds)
-{
-    std::cout << "Calibration (LAB-based)" << std::endl;
-
-    cv::VideoCapture cap(CAMERA_IN_USE);
-    if (!cap.isOpened()) {
-        std::cerr << "Error: Could not open camera!" << std::endl;
-        return;
-    }
-
-    cv::namedWindow("Calibration", cv::WINDOW_AUTOSIZE);
-
-    const int center_size = 30;
-    const int max_samples = MAX_CALIBRATION; // number of frames to sample
-
-    // This will store one (L,a,b) row per sampled frame
-    cv::Mat samples(max_samples, 3, CV_32F, cv::Scalar(0));
-
-    int sample_index = 0;
-    while (true) {
-        cap >> _image;
-        if (_image.empty()) {
-            std::cerr << "Error: Empty frame!" << std::endl;
-            break;
-        }
-
-        int center_x = _image.cols / 2;
-        int center_y = _image.rows / 2;
-
-        // Convert to LAB color space
-        cv::Mat lab_image;
-        cv::cvtColor(_image, lab_image, cv::COLOR_BGR2Lab);
-
-        // Define a small ROI around the center
-        int center_left   = std::max(center_x - center_size / 2, 0);
-        int center_top    = std::max(center_y - center_size / 2, 0);
-        int center_width  = std::min(center_size, _image.cols - center_left);
-        int center_height = std::min(center_size, _image.rows - center_top);
-
-        cv::Rect center_roi(center_left, center_top, center_width, center_height);
-        cv::Mat center_lab = lab_image(center_roi);
-
-        // Mean LAB of this ROI
-        cv::Scalar meanVal = cv::mean(center_lab);
-
-        // Store in samples matrix, one row = [L, a, b]
-        samples.at<float>(sample_index, 0) = static_cast<float>(meanVal[0]);
-        samples.at<float>(sample_index, 1) = static_cast<float>(meanVal[1]);
-        samples.at<float>(sample_index, 2) = static_cast<float>(meanVal[2]);
-
-        // Draw ROI and center indicator
-        cv::rectangle(_image, center_roi, cv::Scalar(0, 255, 0), 2);
-        cv::circle(_image, cv::Point(center_x, center_y), 5, cv::Scalar(0, 255, 0), -1);
-
-        cv::imshow("Calibration", _image);
-
-        sample_index++;
-        if (sample_index >= max_samples) {
-            break;
-        }
-
-        if (cv::waitKey(10) >= 0) {
-            break;
-        }
-    }
-
-    // Now compute mean/stddev of ALL your samples
-    cv::Scalar meanVal, stddevVal;
-    cv::meanStdDev(samples, meanVal, stddevVal);
-
-    double avg_L     = meanVal[0];
-    double avg_a     = meanVal[1];
-    double avg_b     = meanVal[2];
-    double stddev_L  = stddevVal[0];
-    double stddev_a  = stddevVal[1];
-    double stddev_b  = stddevVal[2];
-
-    // Choose a factor for your threshold
-    double factor = 2; // try 1.5, 2.0, etc., depending on how strict you want to be
-
-    // cv::Scalar lower_bound(
-    //     avg_L - factor * stddev_L,
-    //     avg_a - factor * stddev_a,
-    //     avg_b - factor * stddev_b
-    // );
-
-    // cv::Scalar upper_bound(
-    //     avg_L + factor * stddev_L,
-    //     avg_a + factor * stddev_a,
-    //     avg_b + factor * stddev_b
-    // );
-    // Example after computing lowerVal & upperVal:
-    double lower_L = std::max(0.0, std::min(255.0, avg_L - factor * stddev_L));
-    double lower_a = std::max(0.0, std::min(255.0, avg_a - factor * stddev_a));
-    double lower_b = std::max(0.0, std::min(255.0, avg_b - factor * stddev_b));
-
-    double upper_L = std::max(0.0, std::min(255.0, avg_L + factor * stddev_L));
-    double upper_a = std::max(0.0, std::min(255.0, avg_a + factor * stddev_a));
-    double upper_b = std::max(0.0, std::min(255.0, avg_b + factor * stddev_b));
-
-    cv::Scalar lower_bound(lower_L, lower_a, lower_b);
-    cv::Scalar upper_bound(upper_L, upper_a, upper_b);
-
-    // Print results for debugging
-    std::cout << "Mean LAB: (" << avg_L << ", " << avg_a << ", " << avg_b << ")\n";
-    std::cout << "StdDev LAB: (" << stddev_L << ", " << stddev_a << ", " << stddev_b << ")\n";
-    std::cout << "Lower bound: " << lower_bound << std::endl;
-    std::cout << "Upper bound: " << upper_bound << std::endl;
-
-    // Save thresholds
-    thresholds.push_back(lower_bound);
-    thresholds.push_back(upper_bound);
-
-    cv::destroyWindow("Calibration");
-}
-*/
