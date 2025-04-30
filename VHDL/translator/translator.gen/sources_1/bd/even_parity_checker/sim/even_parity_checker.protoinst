@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"even_parity_checker": {
+			"proto_instances": {
+			}
+		}
+	}
+}

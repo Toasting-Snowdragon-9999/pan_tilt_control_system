@@ -1,0 +1,282 @@
+{
+   "ActiveEmotionalView":"Reduced Jogs",
+   "Addressing View_ScaleFactor":"0.8",
+   "Addressing View_TopLeft":"-1086,-586",
+   "Color Coded_ExpandedHierarchyInLayout":"",
+   "Color Coded_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_fail_0 -pg 1 -lvl 8 -x 1350 -y 310 -defaultsOSRD
+preplace port port-id_pass_0 -pg 1 -lvl 8 -x 1350 -y 250 -defaultsOSRD
+preplace portBus data_out_0 -pg 1 -lvl 8 -x 1350 -y 280 -defaultsOSRD
+preplace portBus data -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace inst xor_gate_0 -pg 1 -lvl 2 -x 290 -y 150 -defaultsOSRD
+preplace inst xor_gate_1 -pg 1 -lvl 2 -x 290 -y 350 -defaultsOSRD
+preplace inst xor_gate_2 -pg 1 -lvl 2 -x 290 -y 490 -defaultsOSRD
+preplace inst xor_gate_3 -pg 1 -lvl 2 -x 290 -y 690 -defaultsOSRD
+preplace inst xor_gate_4 -pg 1 -lvl 4 -x 610 -y 490 -defaultsOSRD
+preplace inst xor_gate_5 -pg 1 -lvl 3 -x 430 -y 340 -defaultsOSRD
+preplace inst xor_gate_6 -pg 1 -lvl 3 -x 430 -y 500 -defaultsOSRD
+preplace inst pass_fail_0 -pg 1 -lvl 7 -x 1190 -y 280 -defaultsOSRD
+preplace inst not_gate_0 -pg 1 -lvl 6 -x 950 -y 390 -defaultsOSRD
+preplace inst xor_gate_7 -pg 1 -lvl 5 -x 780 -y 390 -defaultsOSRD
+preplace inst bit_0 -pg 1 -lvl 1 -x 120 -y 60 -defaultsOSRD
+preplace inst bit_1 -pg 1 -lvl 1 -x 120 -y 160 -defaultsOSRD
+preplace inst bit_2 -pg 1 -lvl 1 -x 120 -y 260 -defaultsOSRD
+preplace inst bit_3 -pg 1 -lvl 1 -x 120 -y 360 -defaultsOSRD
+preplace inst bit_4 -pg 1 -lvl 1 -x 120 -y 480 -defaultsOSRD
+preplace inst bit_5 -pg 1 -lvl 1 -x 120 -y 580 -defaultsOSRD
+preplace inst bit_6 -pg 1 -lvl 1 -x 120 -y 680 -defaultsOSRD
+preplace inst bit_7 -pg 1 -lvl 1 -x 120 -y 780 -defaultsOSRD
+preplace inst bit_8 -pg 1 -lvl 4 -x 610 -y 380 -defaultsOSRD
+preplace inst parity_off_0 -pg 1 -lvl 6 -x 950 -y 290 -defaultsOSRD
+preplace netloc xor_gate_0_c 1 2 1 360 150n
+preplace netloc xor_gate_1_c 1 2 1 N 350
+preplace netloc xor_gate_2_c 1 2 1 N 490
+preplace netloc xor_gate_3_c 1 2 1 360 510n
+preplace netloc xor_gate_5_c 1 3 1 500 340n
+preplace netloc xor_gate_6_c 1 3 1 N 500
+preplace netloc not_gate_0_b 1 6 1 1050 270n
+preplace netloc xor_gate_4_c 1 4 1 710 400n
+preplace netloc xor_gate_8_c 1 5 1 NJ 390
+preplace netloc pass_fail_0_data_out 1 7 1 NJ 280
+preplace netloc pass_fail_0_fail 1 7 1 1330J 300n
+preplace netloc pass_fail_0_pass 1 7 1 1330J 250n
+preplace netloc bit_0_Dout 1 1 1 220J 60n
+preplace netloc bit_1_Dout 1 1 1 NJ 160
+preplace netloc bit_2_Dout 1 1 1 220J 260n
+preplace netloc bit_3_Dout 1 1 1 NJ 360
+preplace netloc bit_4_Dout 1 1 1 NJ 480
+preplace netloc bit_5_Dout 1 1 1 220J 500n
+preplace netloc bit_6_Dout 1 1 1 NJ 680
+preplace netloc bit_7_Dout 1 1 1 220J 700n
+preplace netloc bit_8_Dout 1 4 1 NJ 380
+preplace netloc data_1 1 0 6 20 420 NJ 420 NJ 420 510 290 NJ 290 NJ
+preplace netloc parity_off_0_Dout 1 6 1 NJ 290
+levelinfo -pg 1 0 120 290 430 610 780 950 1190 1350
+pagesize -pg 1 -db -bbox -sgen -110 0 1510 840
+",
+   "Color Coded_ScaleFactor":"1.77295",
+   "Color Coded_TopLeft":"-109,-47",
+   "Default View_ScaleFactor":"1.77295",
+   "Default View_TopLeft":"-109,-47",
+   "Display-PortTypeOthers":"true",
+   "ExpandedHierarchyInLayout":"",
+   "Grouping and No Loops_ExpandedHierarchyInLayout":"",
+   "Grouping and No Loops_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port group_1 -pg 1 -lvl 8 -x 1300 -y 200 -defaultsOSRD
+preplace portBus data -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace inst xor_gate_0 -pg 1 -lvl 2 -x 290 -y 40 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 120R
+preplace inst xor_gate_1 -pg 1 -lvl 2 -x 290 -y 240 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 20R
+preplace inst xor_gate_2 -pg 1 -lvl 2 -x 290 -y 460 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 20R
+preplace inst xor_gate_3 -pg 1 -lvl 2 -x 290 -y 660 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 20R
+preplace inst xor_gate_4 -pg 1 -lvl 4 -x 600 -y 340 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 140L -pinDir c right -pinY c 20R
+preplace inst xor_gate_5 -pg 1 -lvl 3 -x 430 -y 140 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 220R
+preplace inst xor_gate_6 -pg 1 -lvl 3 -x 430 -y 460 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 220L -pinDir c right -pinY c 20R
+preplace inst pass_fail_0 -pg 1 -lvl 7 -x 1160 -y 180 -swap {0 2 1} -defaultsOSRD -pinBusDir group_1 right -pinBusY group_1 20R -pinDir inp left -pinY inp 120L -pinBusDir data_in left -pinBusY data_in 20L
+preplace inst not_gate_0 -pg 1 -lvl 6 -x 940 -y 280 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b right -pinY b 20R
+preplace inst xor_gate_7 -pg 1 -lvl 5 -x 770 -y 240 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 60R
+preplace inst bit_0 -pg 1 -lvl 1 -x 120 -y 40 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_1 -pg 1 -lvl 1 -x 120 -y 140 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_2 -pg 1 -lvl 1 -x 120 -y 240 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_3 -pg 1 -lvl 1 -x 120 -y 340 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_4 -pg 1 -lvl 1 -x 120 -y 460 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_5 -pg 1 -lvl 1 -x 120 -y 560 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_6 -pg 1 -lvl 1 -x 120 -y 660 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_7 -pg 1 -lvl 1 -x 120 -y 760 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_8 -pg 1 -lvl 4 -x 600 -y 240 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst parity_off_0 -pg 1 -lvl 6 -x 940 -y 180 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace netloc netgroup_1 1 7 1 N 200
+preplace netloc xor_gate_0_c 1 2 1 N 160
+preplace netloc xor_gate_1_c 1 2 1 N 260
+preplace netloc xor_gate_2_c 1 2 1 N 480
+preplace netloc xor_gate_3_c 1 2 1 N 680
+preplace netloc xor_gate_5_c 1 3 1 N 360
+preplace netloc xor_gate_6_c 1 3 1 N 480
+preplace netloc not_gate_0_b 1 6 1 N 300
+preplace netloc xor_gate_4_c 1 4 1 N 360
+preplace netloc xor_gate_8_c 1 5 1 NJ 300
+preplace netloc bit_0_Dout 1 1 1 NJ 60
+preplace netloc bit_1_Dout 1 1 1 NJ 160
+preplace netloc bit_2_Dout 1 1 1 NJ 260
+preplace netloc bit_3_Dout 1 1 1 NJ 360
+preplace netloc bit_4_Dout 1 1 1 NJ 480
+preplace netloc bit_5_Dout 1 1 1 NJ 580
+preplace netloc bit_6_Dout 1 1 1 NJ 680
+preplace netloc bit_7_Dout 1 1 1 NJ 780
+preplace netloc bit_8_Dout 1 4 1 NJ 260
+preplace netloc data_1 1 0 6 20 420 NJ 420 NJ 420 500 200 NJ 200 NJ
+preplace netloc parity_off_0_Dout 1 6 1 NJ 200
+levelinfo -pg 1 0 120 290 430 600 770 940 1160 1300
+pagesize -pg 1 -db -bbox -sgen -110 0 1410 840
+",
+   "Grouping and No Loops_ScaleFactor":"1.88771",
+   "Grouping and No Loops_TopLeft":"-109,-19",
+   "Interfaces View_ScaleFactor":"1.78402",
+   "Interfaces View_TopLeft":"-109,-44",
+   "No Loops_ExpandedHierarchyInLayout":"",
+   "No Loops_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_fail_0 -pg 1 -lvl 8 -x 1340 -y 260 -defaultsOSRD
+preplace port port-id_pass_0 -pg 1 -lvl 8 -x 1340 -y 200 -defaultsOSRD
+preplace portBus data_out_0 -pg 1 -lvl 8 -x 1340 -y 230 -defaultsOSRD
+preplace portBus data -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace inst xor_gate_0 -pg 1 -lvl 2 -x 290 -y 40 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 120R
+preplace inst xor_gate_1 -pg 1 -lvl 2 -x 290 -y 240 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 20R
+preplace inst xor_gate_2 -pg 1 -lvl 2 -x 290 -y 460 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 20R
+preplace inst xor_gate_3 -pg 1 -lvl 2 -x 290 -y 660 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 20R
+preplace inst xor_gate_4 -pg 1 -lvl 4 -x 600 -y 340 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 140L -pinDir c right -pinY c 20R
+preplace inst xor_gate_5 -pg 1 -lvl 3 -x 430 -y 140 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 220R
+preplace inst xor_gate_6 -pg 1 -lvl 3 -x 430 -y 460 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 220L -pinDir c right -pinY c 20R
+preplace inst pass_fail_0 -pg 1 -lvl 7 -x 1180 -y 180 -swap {1 0 2 3 4} -defaultsOSRD -pinDir inp left -pinY inp 120L -pinBusDir data_in left -pinBusY data_in 20L -pinDir pass right -pinY pass 20R -pinBusDir data_out right -pinBusY data_out 50R -pinDir fail right -pinY fail 80R
+preplace inst not_gate_0 -pg 1 -lvl 6 -x 940 -y 280 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b right -pinY b 20R
+preplace inst xor_gate_7 -pg 1 -lvl 5 -x 770 -y 240 -defaultsOSRD -pinDir a left -pinY a 20L -pinDir b left -pinY b 120L -pinDir c right -pinY c 60R
+preplace inst bit_0 -pg 1 -lvl 1 -x 120 -y 40 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_1 -pg 1 -lvl 1 -x 120 -y 140 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_2 -pg 1 -lvl 1 -x 120 -y 240 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_3 -pg 1 -lvl 1 -x 120 -y 340 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_4 -pg 1 -lvl 1 -x 120 -y 460 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_5 -pg 1 -lvl 1 -x 120 -y 560 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_6 -pg 1 -lvl 1 -x 120 -y 660 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_7 -pg 1 -lvl 1 -x 120 -y 760 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst bit_8 -pg 1 -lvl 4 -x 600 -y 240 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace inst parity_off_0 -pg 1 -lvl 6 -x 940 -y 180 -defaultsOSRD -pinBusDir Din left -pinBusY Din 20L -pinBusDir Dout right -pinBusY Dout 20R
+preplace netloc xor_gate_0_c 1 2 1 N 160
+preplace netloc xor_gate_1_c 1 2 1 N 260
+preplace netloc xor_gate_2_c 1 2 1 N 480
+preplace netloc xor_gate_3_c 1 2 1 N 680
+preplace netloc xor_gate_5_c 1 3 1 N 360
+preplace netloc xor_gate_6_c 1 3 1 N 480
+preplace netloc not_gate_0_b 1 6 1 N 300
+preplace netloc xor_gate_4_c 1 4 1 N 360
+preplace netloc xor_gate_8_c 1 5 1 NJ 300
+preplace netloc pass_fail_0_data_out 1 7 1 NJ 230
+preplace netloc pass_fail_0_fail 1 7 1 NJ 260
+preplace netloc pass_fail_0_pass 1 7 1 NJ 200
+preplace netloc bit_0_Dout 1 1 1 NJ 60
+preplace netloc bit_1_Dout 1 1 1 NJ 160
+preplace netloc bit_2_Dout 1 1 1 NJ 260
+preplace netloc bit_3_Dout 1 1 1 NJ 360
+preplace netloc bit_4_Dout 1 1 1 NJ 480
+preplace netloc bit_5_Dout 1 1 1 NJ 580
+preplace netloc bit_6_Dout 1 1 1 NJ 680
+preplace netloc bit_7_Dout 1 1 1 NJ 780
+preplace netloc bit_8_Dout 1 4 1 NJ 260
+preplace netloc data_1 1 0 6 20 420 NJ 420 NJ 420 500 200 NJ 200 NJ
+preplace netloc parity_off_0_Dout 1 6 1 NJ 200
+levelinfo -pg 1 0 120 290 430 600 770 940 1180 1340
+pagesize -pg 1 -db -bbox -sgen -110 0 1500 840
+",
+   "No Loops_ScaleFactor":"1.78402",
+   "No Loops_TopLeft":"-109,-44",
+   "Reduced Jogs_ExpandedHierarchyInLayout":"",
+   "Reduced Jogs_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_fail -pg 1 -lvl 8 -x 1340 -y 200 -defaultsOSRD
+preplace port port-id_pass -pg 1 -lvl 8 -x 1340 -y 140 -defaultsOSRD
+preplace port port-id_en -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace portBus data_out -pg 1 -lvl 8 -x 1340 -y 170 -defaultsOSRD
+preplace portBus data_in -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace inst xor_gate_0 -pg 1 -lvl 2 -x 290 -y 40 -defaultsOSRD -pinY a 20L -pinY b 40L -pinY c 40R
+preplace inst xor_gate_1 -pg 1 -lvl 2 -x 290 -y 280 -defaultsOSRD -pinY a 20L -pinY b 120L -pinY c 20R
+preplace inst xor_gate_2 -pg 1 -lvl 2 -x 290 -y 500 -defaultsOSRD -pinY a 20L -pinY b 120L -pinY c 20R
+preplace inst xor_gate_3 -pg 1 -lvl 2 -x 290 -y 700 -defaultsOSRD -pinY a 20L -pinY b 120L -pinY c 20R
+preplace inst xor_gate_4 -pg 1 -lvl 4 -x 600 -y 380 -defaultsOSRD -pinY a 20L -pinY b 140L -pinY c 20R
+preplace inst xor_gate_5 -pg 1 -lvl 3 -x 430 -y 180 -defaultsOSRD -pinY a 20L -pinY b 120L -pinY c 220R
+preplace inst xor_gate_6 -pg 1 -lvl 3 -x 430 -y 500 -defaultsOSRD -pinY a 20L -pinY b 220L -pinY c 20R
+preplace inst pass_fail_0 -pg 1 -lvl 7 -x 1180 -y 120 -swap {2 0 1 3 4 5} -defaultsOSRD -pinY inp 220L -pinY en 20L -pinBusY data_in 120L -pinY pass 20R -pinBusY data_out 50R -pinY fail 80R
+preplace inst not_gate_0 -pg 1 -lvl 6 -x 940 -y 320 -defaultsOSRD -pinY a 20L -pinY b 20R
+preplace inst xor_gate_7 -pg 1 -lvl 5 -x 770 -y 280 -defaultsOSRD -pinY a 20L -pinY b 120L -pinY c 60R
+preplace inst bit_0 -pg 1 -lvl 1 -x 120 -y 40 -defaultsOSRD -pinBusY Din 40L -pinBusY Dout 20R
+preplace inst bit_1 -pg 1 -lvl 1 -x 120 -y 180 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_2 -pg 1 -lvl 1 -x 120 -y 280 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_3 -pg 1 -lvl 1 -x 120 -y 380 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_4 -pg 1 -lvl 1 -x 120 -y 500 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_5 -pg 1 -lvl 1 -x 120 -y 600 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_6 -pg 1 -lvl 1 -x 120 -y 700 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_7 -pg 1 -lvl 1 -x 120 -y 800 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst bit_8 -pg 1 -lvl 4 -x 600 -y 280 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst parity_off_0 -pg 1 -lvl 6 -x 940 -y 220 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace netloc bit_0_Dout 1 1 1 NJ 60
+preplace netloc bit_1_Dout 1 1 1 220J 80n
+preplace netloc bit_2_Dout 1 1 1 NJ 300
+preplace netloc bit_3_Dout 1 1 1 NJ 400
+preplace netloc bit_4_Dout 1 1 1 NJ 520
+preplace netloc bit_5_Dout 1 1 1 NJ 620
+preplace netloc bit_6_Dout 1 1 1 NJ 720
+preplace netloc bit_7_Dout 1 1 1 NJ 820
+preplace netloc bit_8_Dout 1 4 1 NJ 300
+preplace netloc data_1 1 0 6 20 460 NJ 460 NJ 460 500 240 NJ 240 NJ
+preplace netloc not_gate_0_b 1 6 1 N 340
+preplace netloc parity_off_0_Dout 1 6 1 NJ 240
+preplace netloc pass_fail_0_data_out 1 7 1 NJ 170
+preplace netloc pass_fail_0_fail 1 7 1 NJ 200
+preplace netloc pass_fail_0_pass 1 7 1 NJ 140
+preplace netloc xor_gate_0_c 1 2 1 360 80n
+preplace netloc xor_gate_1_c 1 2 1 N 300
+preplace netloc xor_gate_2_c 1 2 1 N 520
+preplace netloc xor_gate_3_c 1 2 1 N 720
+preplace netloc xor_gate_4_c 1 4 1 N 400
+preplace netloc xor_gate_5_c 1 3 1 N 400
+preplace netloc xor_gate_6_c 1 3 1 N 520
+preplace netloc xor_gate_8_c 1 5 1 NJ 340
+preplace netloc en_0_1 1 0 7 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ
+levelinfo -pg 1 0 120 290 430 600 770 940 1180 1340
+pagesize -pg 1 -db -bbox -sgen -130 0 1480 880
+",
+   "Reduced Jogs_ScaleFactor":"0.866286",
+   "Reduced Jogs_TopLeft":"-208,0",
+   "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
+#  -string -flagsOSRD
+preplace port port-id_fail_0 -pg 1 -lvl 8 -x 1350 -y 310 -defaultsOSRD
+preplace port port-id_pass_0 -pg 1 -lvl 8 -x 1350 -y 250 -defaultsOSRD
+preplace portBus data_out_0 -pg 1 -lvl 8 -x 1350 -y 280 -defaultsOSRD
+preplace portBus data -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace inst xor_gate_0 -pg 1 -lvl 2 -x 290 -y 150 -defaultsOSRD
+preplace inst xor_gate_1 -pg 1 -lvl 2 -x 290 -y 350 -defaultsOSRD
+preplace inst xor_gate_2 -pg 1 -lvl 2 -x 290 -y 490 -defaultsOSRD
+preplace inst xor_gate_3 -pg 1 -lvl 2 -x 290 -y 690 -defaultsOSRD
+preplace inst xor_gate_4 -pg 1 -lvl 4 -x 610 -y 490 -defaultsOSRD
+preplace inst xor_gate_5 -pg 1 -lvl 3 -x 430 -y 340 -defaultsOSRD
+preplace inst xor_gate_6 -pg 1 -lvl 3 -x 430 -y 500 -defaultsOSRD
+preplace inst pass_fail_0 -pg 1 -lvl 7 -x 1190 -y 280 -defaultsOSRD
+preplace inst not_gate_0 -pg 1 -lvl 6 -x 950 -y 390 -defaultsOSRD
+preplace inst xor_gate_7 -pg 1 -lvl 5 -x 780 -y 390 -defaultsOSRD
+preplace inst bit_0 -pg 1 -lvl 1 -x 120 -y 60 -defaultsOSRD
+preplace inst bit_1 -pg 1 -lvl 1 -x 120 -y 160 -defaultsOSRD
+preplace inst bit_2 -pg 1 -lvl 1 -x 120 -y 260 -defaultsOSRD
+preplace inst bit_3 -pg 1 -lvl 1 -x 120 -y 360 -defaultsOSRD
+preplace inst bit_4 -pg 1 -lvl 1 -x 120 -y 480 -defaultsOSRD
+preplace inst bit_5 -pg 1 -lvl 1 -x 120 -y 580 -defaultsOSRD
+preplace inst bit_6 -pg 1 -lvl 1 -x 120 -y 680 -defaultsOSRD
+preplace inst bit_7 -pg 1 -lvl 1 -x 120 -y 780 -defaultsOSRD
+preplace inst bit_8 -pg 1 -lvl 4 -x 610 -y 380 -defaultsOSRD
+preplace inst parity_off_0 -pg 1 -lvl 6 -x 950 -y 290 -defaultsOSRD
+preplace netloc xor_gate_0_c 1 2 1 360 150n
+preplace netloc xor_gate_1_c 1 2 1 N 350
+preplace netloc xor_gate_2_c 1 2 1 N 490
+preplace netloc xor_gate_3_c 1 2 1 360 510n
+preplace netloc xor_gate_5_c 1 3 1 500 340n
+preplace netloc xor_gate_6_c 1 3 1 N 500
+preplace netloc not_gate_0_b 1 6 1 1050 270n
+preplace netloc xor_gate_4_c 1 4 1 710 400n
+preplace netloc xor_gate_8_c 1 5 1 NJ 390
+preplace netloc pass_fail_0_data_out 1 7 1 NJ 280
+preplace netloc pass_fail_0_fail 1 7 1 1330J 300n
+preplace netloc pass_fail_0_pass 1 7 1 1330J 250n
+preplace netloc bit_0_Dout 1 1 1 220J 60n
+preplace netloc bit_1_Dout 1 1 1 NJ 160
+preplace netloc bit_2_Dout 1 1 1 220J 260n
+preplace netloc bit_3_Dout 1 1 1 NJ 360
+preplace netloc bit_4_Dout 1 1 1 NJ 480
+preplace netloc bit_5_Dout 1 1 1 220J 500n
+preplace netloc bit_6_Dout 1 1 1 NJ 680
+preplace netloc bit_7_Dout 1 1 1 220J 700n
+preplace netloc bit_8_Dout 1 4 1 NJ 380
+preplace netloc data_1 1 0 6 20 420 NJ 420 NJ 420 510 290 NJ 290 NJ
+preplace netloc parity_off_0_Dout 1 6 1 NJ 290
+levelinfo -pg 1 0 120 290 430 610 780 950 1190 1350
+pagesize -pg 1 -db -bbox -sgen -110 0 1510 840
+"
+}
+0

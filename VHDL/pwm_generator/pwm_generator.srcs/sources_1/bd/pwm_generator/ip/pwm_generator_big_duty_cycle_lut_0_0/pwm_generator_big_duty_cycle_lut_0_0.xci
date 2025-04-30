@@ -2,7 +2,6 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pwm_generator_big_duty_cycle_lut_0_0",
-    "cell_name": "big_duty_cycle_lut_0",
     "component_reference": "xilinx.com:module_ref:big_duty_cycle_lut:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_big_duty_cycle_lut_0_0",

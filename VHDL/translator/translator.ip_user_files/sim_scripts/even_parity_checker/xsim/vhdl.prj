@@ -1,0 +1,17 @@
+vhdl xil_defaultlib  \
+"../../../bd/even_parity_checker/ipshared/804a/src/xor_gate.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_0/sim/even_parity_checker_xor_gate_0_0.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_1/sim/even_parity_checker_xor_gate_0_1.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_2/sim/even_parity_checker_xor_gate_0_2.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_3/sim/even_parity_checker_xor_gate_0_3.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_4/sim/even_parity_checker_xor_gate_0_4.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_5/sim/even_parity_checker_xor_gate_0_5.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_0_6/sim/even_parity_checker_xor_gate_0_6.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_pass_fail_0_0/sim/even_parity_checker_pass_fail_0_0.vhd" \
+"../../../bd/even_parity_checker/ipshared/1ccc/src/not_gate.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_not_gate_0_0/sim/even_parity_checker_not_gate_0_0.vhd" \
+"../../../bd/even_parity_checker/ip/even_parity_checker_xor_gate_8_0/sim/even_parity_checker_xor_gate_8_0.vhd" \
+"../../../bd/even_parity_checker/sim/even_parity_checker.vhd" \
+
+# Do not sort compile order
+nosort

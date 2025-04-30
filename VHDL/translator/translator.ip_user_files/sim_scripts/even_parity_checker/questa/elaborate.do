@@ -1,0 +1,1 @@
+vopt -64 -l elaborate.log +acc=npr -suppress 10016  -L xil_defaultlib -L xlslice_v1_0_4 -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.even_parity_checker xil_defaultlib.glbl -o even_parity_checker_opt
