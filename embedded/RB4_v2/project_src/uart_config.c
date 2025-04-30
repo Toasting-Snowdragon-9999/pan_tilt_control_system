@@ -64,6 +64,15 @@ void uart_print(const char *fmt, ...)
         uart_putc((uint8_t)*p);
 }
 
+void uart_send_double(double value)
+{
+    uint8_t *p = (uint8_t *)&value;
+    int i;
+    for ( i = 0; i < sizeof(double); i++) {
+        uart_putc(p[i]);  // Send each byte over UART
+    }
+}
+
 
 
 /*

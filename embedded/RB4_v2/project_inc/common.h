@@ -33,6 +33,7 @@
 
 /* Task headers */
 #include "controller.h"
+#include "controller_dummy.h"
 #include "uart_rx_task.h"
 #include "uart_tx_task.h"
 #include "led_task.h"
@@ -45,19 +46,21 @@
 
 //Priority Defines
 #define Prio_Uart_Tx 4 //HIGH PRIORITY
-#define Prio_Controller 3
+#define Prio_Controller_Dummy 1
+#define Prio_Pid_Controller 3
 #define Prio_Uart_Rx 3
 
 #define Prio_Led 1
 #define Prio_Sw 1
 #define Prio_Debug 1
+
 //Queue Handles
 extern QueueHandle_t xUartRxQueue;
 extern QueueHandle_t xUartTxQueue;
 
-
 // Task Handles
-extern TaskHandle_t vControllerTaskHandle;
+extern TaskHandle_t vControllerDummyTaskHandle;
+extern TaskHandle_t vPidControllerTaskHandle;
 extern TaskHandle_t vLedTaskHandle;
 extern TaskHandle_t vSwitchTaskHandle;
 extern TaskHandle_t vUartRxTaskHandle;

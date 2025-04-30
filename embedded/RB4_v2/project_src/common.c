@@ -7,7 +7,8 @@ QueueHandle_t xUartTxQueue;
 QueueHandle_t xUartRxQueue;
 
 // Task Handles
-TaskHandle_t vControllerTaskHandle;
+TaskHandle_t vControllerDummyTaskHandle;
+TaskHandle_t vPidControllerTaskHandle;
 TaskHandle_t vLedTaskHandle;
 TaskHandle_t vSwitchTaskHandle;
 TaskHandle_t vUartRxTaskHandle;

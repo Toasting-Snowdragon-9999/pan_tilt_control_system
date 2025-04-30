@@ -9,23 +9,19 @@
 
 
 static void initilization(void)
-/*****************************************************************************
-*   Input    :  -
-*   Output   :  -
-*   Function :
-*****************************************************************************/
 {
 
   init_systick(); //freeRTOS default systick handler
   init_gpio();
-  uart_init(9600, 8, 1, 'n');
-
+  uart_init(115200, 8, 1, 'n');
+  //init_PID???
 
   GPIO_PORTF_DATA_R &= ~(0x0E);   //Debug led
 
 }
 
 int main(void)
+
 {
         initilization();
 
@@ -35,8 +31,8 @@ int main(void)
 
         uart_print("=== MAIN===\n");
 
-        if (xTaskCreate( vControllerTask,"CONTROLLER", 200, xUartRxQueue, Prio_Controller, &vControllerTaskHandle) != pdPASS)
-        { uart_print("TaskCreate CONTROLLER failed\n"); }
+        //if (xTaskCreate( vControllerDummyTask,"CONTROLLERDUMMY", 200, xUartRxQueue, Prio_Controller_Dummy, &vControllerDummyTaskHandle) != pdPASS)
+        //{ uart_print("TaskCreate CONTROLLER failed\n"); }
 
         if (xTaskCreate( vUartTxTask,"UART_TX", 200, xUartTxQueue, Prio_Uart_Tx, &vUartTxTaskHandle) != pdPASS)
         { uart_print("TaskCreate UART_TX failed\n"); }
@@ -44,13 +40,17 @@ int main(void)
         if (xTaskCreate( vUartRxTask, "UART_RX",  200, xUartRxQueue, Prio_Uart_Rx, &vUartRxTaskHandle) != pdPASS)
         { uart_print("TaskCreate UART_RX failed\n"); }
 
+       if (xTaskCreate( vPidControllerTask, "PID_CONTROLLER",  200, xUartRxQueue, Prio_Pid_Controller, &vPidControllerTaskHandle) != pdPASS)
+       { uart_print("TaskCreate PID_CONTROLLER failed\n"); }
+
+
         //if (xTaskCreate( vLedTask, "LED_TASK", 200, NULL, Prio_Led, &vLedTaskHandle) != pdPASS)
         //{ uart_print("TaskCreate LED_TASK failed\n"); }
 
         //if (xTaskCreate( vSwitchTask, "SW_TASK", 200, NULL, Prio_Sw, &vSwitchTaskHandle) != pdPASS)
         //{ uart_print("TaskCreate SW_TASK failed\n"); }
 
-
+        //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
         vTaskStartScheduler();
 
         for(;;);
