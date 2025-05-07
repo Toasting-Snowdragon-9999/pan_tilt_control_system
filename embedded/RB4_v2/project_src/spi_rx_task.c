@@ -16,7 +16,7 @@ void vSpiRxTask(void *pv) { //receive from fpga to tiva
         TickType_t lastWake = xTaskGetTickCount();
         for (;;) {
 
-            uart_print("\r\n<<<SPI_RECIEVER>>>\r\n");
+            //uart_print("\r\n<<<SPI_RECIEVER>>>\r\n");
             rxChar = SPI_read();
 
             xQueueSend(xSpiRxQueue, &rxChar, pdMS_TO_TICKS(100)); //find appropriate delay and create macro?

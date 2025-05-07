@@ -18,24 +18,26 @@ static void initilization(void)
   SPI_init();
   //init_PID???
 
-  GPIO_PORTF_DATA_R &= ~(0x0E);   //Debug led
+  //GPIO_PORTF_DATA_R &= ~(0x0E);   //Debug led
 
 }
 
 void vTestTask(void *pvParameters)
 {
    //uart_putc('Y');
+    GPIO_PORTF_DATA_R |= (0x02);
     for( ;; )
     {
 
         INT16U test_word1 = 0b1111110001010100;
+        //INT16U test_word1 = 0b0101010101010101;
         //INT16U test_word2 = 0b0111101010100010;
-
-        SPI_write(test_word1);
-        uart_send_16int(test_word1);
+        xQueueSend(xSpiTxQueue, &test_word1, pdMS_TO_TICKS(100));
+        //SPI_write(test_word1);
+        //uart_send_16int(test_word1);
         //SPI_write(test_word2);
         //uart_send_16int(test_word2);
-        vTaskDelay(pdMS_TO_TICKS(1));
+       vTaskDelay(pdMS_TO_TICKS(300));
     }
 }
 
@@ -52,7 +54,7 @@ int main(void)
         xSpiRxQueue = xQueueCreate(1, sizeof(INT16U));
         xSpiTxQueue = xQueueCreate(1, sizeof(INT16U));
 
-        uart_print("=== MAIN===\n");
+        //uart_print("=== MAIN===\n");
 
         //if (xTaskCreate( vControllerDummyTask,"CONTROLLERDUMMY", 200, xUartRxQueue, Prio_Controller_Dummy, &vControllerDummyTaskHandle) != pdPASS)
         //{ uart_print("TaskCreate CONTROLLER failed\n"); }
@@ -63,11 +65,11 @@ int main(void)
        // if (xTaskCreate( vUartRxTask, "UART_RX",  200, xUartRxQueue, Prio_Uart_Rx, &vUartRxTaskHandle) != pdPASS)
         //{ uart_print("TaskCreate UART_RX failed\n"); }
 
-        //if (xTaskCreate( vSpiTxTask,"SPI_TX", 200, xSpiTxQueue, Prio_Spi_Tx, &vSpiTxTaskHandle) != pdPASS)
-             // { uart_print("TaskCreate SPI_TX failed\n"); }
+        if (xTaskCreate( vSpiTxTask,"SPI_TX", 200, xSpiTxQueue, 3, &vSpiTxTaskHandle) != pdPASS)
+        { uart_print("TaskCreate SPI_TX failed\n"); }
 
-        //if (xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, Prio_Spi_Rx, &vSpiRxTaskHandle) != pdPASS)
-        //{ uart_print("TaskCreate SPI_RX failed\n"); }
+        if (xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, 3, &vSpiRxTaskHandle) != pdPASS)
+        { uart_print("TaskCreate SPI_RX failed\n"); }
 
       // if (xTaskCreate( vPidControllerTask, "PID_CONTROLLER",  200, xUartRxQueue, Prio_Pid_Controller, &vPidControllerTaskHandle) != pdPASS)
        //{ uart_print("TaskCreate PID_CONTROLLER failed\n"); }

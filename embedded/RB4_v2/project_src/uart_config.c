@@ -22,8 +22,10 @@ void uart_init(uint32_t baud, uint8_t dbits, uint8_t sbits, uint8_t parity)
     UART0_IBRD_R = ibrd;
     UART0_FBRD_R = (uint32_t)frac;
 
-    //8-N-1, FIFO on
+    //8 databits-No parity-1 stop bit, FIFO on (16 byte buffer)
     UART0_LCRH_R = (0x60) | (1<<4);
+
+    //UART0_LCRH_R &= ~UART_LCRH_FEN;             // Disable FIFO (FIFO Enable bit = 0)
 
     //Enable UART, Rx & Tx
     UART0_CTL_R |= (1<<0) | (1<<8) | (1<<9);
@@ -35,14 +37,27 @@ void uart_init(uint32_t baud, uint8_t dbits, uint8_t sbits, uint8_t parity)
     //Enable in NVIC (irq #5)
     NVIC_EN0_R |= (1<<5);
 }
+/*
+extern void uart_write(char data){
+    //while((UART0_FR_R&UART_FR_TXFF) != 0);    // UART Transmit FIFO Full
+    UART0_DR_R = data;
+}
+
+extern char uart_read(void){
+    while((UART0_FR_R&UART_FR_RXFE) != 0);    // UART Receive FIFO Empty
+    return((char)(UART0_DR_R&0xFF));          // When read, this field contains the data that was received by the UART.
+}
+*/
 
 //uart rx method
 uint8_t uart_getc(void) {
-    while (UART0_FR_R & UART_FR_RXFE) {
+    while (UART0_FR_R & UART_FR_RXFE) { //when RXFE = 0 at least one byte has arrived, exit loop
+                                        //fifo works as 16 bit hardware queue?
         vTaskDelay(pdMS_TO_TICKS(10));  //avoid blocking on uart poll by yielding (caller task) through delay
     }
     return (uint8_t)(UART0_DR_R & 0xFF);
 }
+
 
 //uart tx method
 void uart_putc(uint8_t b)
@@ -50,6 +65,14 @@ void uart_putc(uint8_t b)
     while( UART0_FR_R & (1<<5) ) {}   // wait TX FIFO not full (blocking)
     UART0_DR_R = b;
 }
+
+//no fifo method
+/*
+void uart_putc(char c)
+{
+    while((UART0_FR_R&UART_FR_TXFF) != 0);
+    UART0_DR_R = c;
+}*/
 
 // "printf-style" uart print
 void uart_print(const char *fmt, ...)
