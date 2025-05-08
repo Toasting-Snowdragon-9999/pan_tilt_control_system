@@ -37,23 +37,11 @@ void uart_init(uint32_t baud, uint8_t dbits, uint8_t sbits, uint8_t parity)
     //Enable in NVIC (irq #5)
     NVIC_EN0_R |= (1<<5);
 }
-/*
-extern void uart_write(char data){
-    //while((UART0_FR_R&UART_FR_TXFF) != 0);    // UART Transmit FIFO Full
-    UART0_DR_R = data;
-}
 
-extern char uart_read(void){
-    while((UART0_FR_R&UART_FR_RXFE) != 0);    // UART Receive FIFO Empty
-    return((char)(UART0_DR_R&0xFF));          // When read, this field contains the data that was received by the UART.
-}
-*/
-
-//uart rx method
+/* Grab one byte, blocking (with yield) until at least one byte in FIFO. */
 uint8_t uart_getc(void) {
-    while (UART0_FR_R & UART_FR_RXFE) { //when RXFE = 0 at least one byte has arrived, exit loop
-                                        //fifo works as 16 bit hardware queue?
-        vTaskDelay(pdMS_TO_TICKS(10));  //avoid blocking on uart poll by yielding (caller task) through delay
+    while (UART0_FR_R & UART_FR_RXFE) {
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
     return (uint8_t)(UART0_DR_R & 0xFF);
 }
@@ -66,13 +54,7 @@ void uart_putc(uint8_t b)
     UART0_DR_R = b;
 }
 
-//no fifo method
-/*
-void uart_putc(char c)
-{
-    while((UART0_FR_R&UART_FR_TXFF) != 0);
-    UART0_DR_R = c;
-}*/
+
 
 // "printf-style" uart print
 void uart_print(const char *fmt, ...)
@@ -87,25 +69,12 @@ void uart_print(const char *fmt, ...)
         uart_putc((uint8_t)*p);
 }
 
-void uart_send_double(double value)
+INT16U uart_get_16int(void)
 {
-    uint8_t *p = (uint8_t *)&value;
-    int i;
-    for ( i = 0; i < sizeof(double); i++) {
-        uart_putc(p[i]);  // Send each byte over UART
-    }
+    uint8_t lo = uart_getc();       // first byte on the wire
+    uint8_t hi = uart_getc();       // second byte
+    return ( (INT16U)hi << 8 ) | lo;
 }
-/*
-void uart_send_16int(INT16U value)
-{
-    INT8U lsb= value & 0x00FF;
-    INT8U temp = value & 0xFF00;
-    INT8U msb = (temp>>8);
-
-        uart_putc(msb);  // Send msb byte over UART
-        uart_putc(lsb);  // Send lsb byte over UART
-}
-*/
 void uart_send_16int(INT16U value)
 {
     uint8_t *p = (uint8_t *)&value;
@@ -115,20 +84,20 @@ void uart_send_16int(INT16U value)
     }
 }
 
-
-/*
-// ISR: read DR, push to queue, clear interrupt, yield if needed
-void UART0_Handler(void)
+void uart_send_double(double value)
 {
-    BaseType_t woken = pdFALSE;
-
-    if( UART0_MIS_R & (1<<4) )          // RXMIS
-    {
-        UART0_ICR_R = (1<<4);           // clear RX interrupt
-        uint8_t b = UART0_DR_R & 0xFF;  // read data
-        xQueueSendFromISR(xUartRxQueue, &b, &woken);
+    uint8_t *p = (uint8_t *)&value;
+    int i;
+    for ( i = 0; i < sizeof(double); i++) {
+        uart_putc(p[i]);  // Send each byte over UART
     }
-
-    portYIELD_FROM_ISR(woken);
 }
-*/
+
+
+//no fifo method
+/*
+void uart_putc(char c)
+{
+    while((UART0_FR_R&UART_FR_TXFF) != 0);
+    UART0_DR_R = c;
+}*/

@@ -19,11 +19,11 @@ void vSpiRxTask(void *pv) { //receive from fpga to tiva
             //uart_print("\r\n<<<SPI_RECIEVER>>>\r\n");
             rxChar = SPI_read();
 
-            xQueueSend(xSpiRxQueue, &rxChar, pdMS_TO_TICKS(100)); //find appropriate delay and create macro?
+            xQueueSend(xSpiRxQueue, &rxChar, pdMS_TO_TICKS(10)); //find appropriate delay and create macro?
+                xQueueSend(xUartTxQueue, &rxChar, pdMS_TO_TICKS(10));
+            //uart_send_16int(rxChar);
 
-            uart_send_16int(rxChar);
-
-            vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(300)); //necessary?
+            vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(100)); //necessary?
             //task delay to yield?
         }
 }

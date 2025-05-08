@@ -4,9 +4,14 @@
 #include <stdint.h>
 
 void    uart_init (uint32_t baud_rate, uint8_t databits, uint8_t stopbits, uint8_t parity);
+
 void    uart_putc (uint8_t ch);
 uint8_t uart_getc (void);
+
 void    uart_print(const char *format, ...);
+
 void uart_send_double(double value);
 void uart_send_16int(INT16U value);
+INT16U uart_get_16int(void);
+
 #endif

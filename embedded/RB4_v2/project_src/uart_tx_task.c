@@ -7,23 +7,24 @@
  *      Author: linax
  */
 
-extern QueueHandle_t xUartTxQueue;
 
+
+extern QueueHandle_t xUartTxQueue;
+extern QueueHandle_t xUartRxQueue;
 void vUartTxTask(void *pvParameters)
 {
     TickType_t lastWake = xTaskGetTickCount();
-    uint8_t txChar;
+    INT16U tx;
 
-    for (;;) {
+      for (;;) {
+          FSM_STATUS = TX;
 
-          //uart_putc('T'); //indicate TX task is running through uart (debugging)
+          // wait for controller to hand us a byte
+          xQueueReceive(xUartTxQueue, &tx, pdMS_TO_TICKS(10) );
+              uart_send_16int(tx);
+              uart_print("\n");
 
-          //uart_print("\r\n<<<UART_TRANSMITTER>>>\r\n");
-          //wait for byte from controller
-          xQueueReceive(xUartTxQueue, &txChar, pdMS_TO_TICKS(1000)); //define portmax delay or specific macro?
-          //uart_print("\r\n<<<controller output: >>>\r\n");
-          uart_putc(txChar);  //transmit byte over uart
-
-          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(300)); //necessary?
+          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(500));
     }
 }
+

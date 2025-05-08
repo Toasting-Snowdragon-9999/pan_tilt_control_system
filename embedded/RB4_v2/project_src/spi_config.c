@@ -75,7 +75,7 @@ void SPI_init(void){
        Configure the clock prescale divisor by writing the SSICPSR register.
        ****************************************************************************************************/
 
-       SSI2_CPSR_R = 2; //Clock prescaler set to 2
+       SSI2_CPSR_R = 20; //Clock prescaler set to 2
 
        /**************************************************************************************************
        Write the SSICR0 register with the following configuration:
@@ -104,27 +104,6 @@ void SPI_init(void){
 }
 
 
-/*
-    uint32_t SCR = 0x01; // 8-bits bits[15:8] //0x0100 is 16 bits
-    uint32_t SPH = (SSI_CR0_SPH != 0); // 1-bit
-    uint32_t SPO = (SSI_CR0_SPO != 0); // 1-bit
-    uint32_t DSS = SSI_CR0_DSS_16;     // 4-bits
-
-
-    const uint32_t MASK = (0xFFu <<  8)
-                        | (1u    <<  7)
-                        | (1u    <<  6)
-                        | (0xFu  <<  0);
-
-    need some sort of clearing?
-    SSI2_CR0_R &= ~MASK;  //clear register mask
-
-    SSI2_CR0_R |= ((SCR & 0xFFu) <<8)| ((SPH & 1u) << 7)| ((SPO & 1u) << 6)| ((DSS & 0xFu) << 0);
-
-
-    SSI2_CR0_R |= (SSI_CR0_DSS_16 |  0x0100 | SSI_CR0_SPH | SSI_CR0_SPO); // Mode 3 is used and the master clk is set to 4 MHz(16MHz/(2*(1+1)))
-
- */
 
 void SPI_write(INT16U data){
 

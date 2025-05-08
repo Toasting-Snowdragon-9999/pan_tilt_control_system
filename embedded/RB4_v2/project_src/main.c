@@ -6,8 +6,6 @@
  */
 #include "FreeRTOSConfig.h"
 #include "common.h"
-//#include "emp_types.h"
-
 
 static void initilization(void)
 {
@@ -18,75 +16,104 @@ static void initilization(void)
   SPI_init();
   //init_PID???
 
-  //GPIO_PORTF_DATA_R &= ~(0x0E);   //Debug led
-
 }
 
-void vTestTask(void *pvParameters)
-{
-   //uart_putc('Y');
-    GPIO_PORTF_DATA_R |= (0x02);
-    for( ;; )
-    {
 
-        INT16U test_word1 = 0b1111110001010100;
-        //INT16U test_word1 = 0b0101010101010101;
-        //INT16U test_word2 = 0b0111101010100010;
-        xQueueSend(xSpiTxQueue, &test_word1, pdMS_TO_TICKS(100));
-        //SPI_write(test_word1);
-        //uart_send_16int(test_word1);
-        //SPI_write(test_word2);
-        //uart_send_16int(test_word2);
-       vTaskDelay(pdMS_TO_TICKS(300));
-    }
+void QueueSetup(){
+
+          xSpiRxQueue = xQueueCreate(1, sizeof(INT16U));
+          xSpiTxQueue = xQueueCreate(1, sizeof(INT16U));
+
+          xPanCtrlOutQueue = xQueueCreate(1, sizeof(INT8U));
+          xTiltCtrlOutQueue = xQueueCreate(1, sizeof(INT8U));
+
+          xUartRxQueue = xQueueCreate(1, sizeof(INT16U));
+          xUartTxQueue = xQueueCreate(1, sizeof(INT16U));
+
 }
 
 int main(void)
 
 {
+        FSM_STATUS = IDLE;
         initilization();
+        QueueSetup();
 
-        //adjust queue size & add mutexes?
-        xUartRxQueue = xQueueCreate(1, sizeof(char));
-        xUartTxQueue = xQueueCreate(1, sizeof(char));
 
-        //adjust queue size & add mutexes?
-        xSpiRxQueue = xQueueCreate(1, sizeof(INT16U));
-        xSpiTxQueue = xQueueCreate(1, sizeof(INT16U));
+        if (xTaskCreate( vUartTxTask,"UART_TX", 200, xUartTxQueue, 4, &vUartTxTaskHandle) != pdPASS)
+        { uart_print("TaskCreate UART_TX failed\n"); }
 
-        //uart_print("=== MAIN===\n");
+        if (xTaskCreate( vUartRxTask, "UART_RX",  200, xUartRxQueue, 3, &vUartRxTaskHandle) != pdPASS)
+        { uart_print("TaskCreate UART_RX failed\n"); }
 
-        //if (xTaskCreate( vControllerDummyTask,"CONTROLLERDUMMY", 200, xUartRxQueue, Prio_Controller_Dummy, &vControllerDummyTaskHandle) != pdPASS)
-        //{ uart_print("TaskCreate CONTROLLER failed\n"); }
+        if (xTaskCreate( vLedTask, "LED_TASK", 200, NULL, 2, &vLedTaskHandle) != pdPASS)
+        { uart_print("TaskCreate LED_TASK failed\n"); }
 
-        //if (xTaskCreate( vUartTxTask,"UART_TX", 200, xUartTxQueue, Prio_Uart_Tx, &vUartTxTaskHandle) != pdPASS)
+        //if (xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 200, NULL, 4, &vSpiSendFrameTaskHandle) != pdPASS)
         //{ uart_print("TaskCreate UART_TX failed\n"); }
 
-       // if (xTaskCreate( vUartRxTask, "UART_RX",  200, xUartRxQueue, Prio_Uart_Rx, &vUartRxTaskHandle) != pdPASS)
+        //if (xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  200, NULL, 3, &vSpiGetFrameTaskHandle) != pdPASS)
         //{ uart_print("TaskCreate UART_RX failed\n"); }
 
-        if (xTaskCreate( vSpiTxTask,"SPI_TX", 200, xSpiTxQueue, 3, &vSpiTxTaskHandle) != pdPASS)
+
+/*
+    if (xTaskCreate( vSpiTxTask,"SPI_TX", 200, xSpiTxQueue, 3, &vSpiTxTaskHandle) != pdPASS)
         { uart_print("TaskCreate SPI_TX failed\n"); }
 
-        if (xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, 3, &vSpiRxTaskHandle) != pdPASS)
+        if (xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, 2, &vSpiRxTaskHandle) != pdPASS)
         { uart_print("TaskCreate SPI_RX failed\n"); }
-
+*/
       // if (xTaskCreate( vPidControllerTask, "PID_CONTROLLER",  200, xUartRxQueue, Prio_Pid_Controller, &vPidControllerTaskHandle) != pdPASS)
        //{ uart_print("TaskCreate PID_CONTROLLER failed\n"); }
 
 
-        //if (xTaskCreate( vLedTask, "LED_TASK", 200, NULL, Prio_Led, &vLedTaskHandle) != pdPASS)
-        //{ uart_print("TaskCreate LED_TASK failed\n"); }
 
-        //if (xTaskCreate( vSwitchTask, "SW_TASK", 200, NULL, Prio_Sw, &vSwitchTaskHandle) != pdPASS)
-        //{ uart_print("TaskCreate SW_TASK failed\n"); }
 
-        xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
         vTaskStartScheduler();
 
         for(;;);
 
 }
+
+
+//xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
+
+/*
+void vTestTask(void *pvParameters)
+{
+    for( ;; )
+    {
+        FSM_STATUS = IDLE;
+
+        //uart_print("EncoderFrame: \n");
+       INT16U EncoderFrame; //= 0b1101001010100010;
+       xQueueReceive(xUartRxQueue, &EncoderFrame, pdMS_TO_TICKS(500));
+           //xQueueSend(xUartTxQueue, &EncoderFrame, pdMS_TO_TICKS(500));
+           xQueueSend(xSpiRxQueue, &EncoderFrame, pdMS_TO_TICKS(500));
+
+
+       //uart_print("MotorPanError: ");
+       //INT16U PanError = 0b1101101100000000;
+       xQueueSend(xUartTxQueue, &PanError, pdMS_TO_TICKS(500));
+       //INT8U panError = 0b11011011;
+       xQueueSend(xPanCtrlOutQueue, &panError, pdMS_TO_TICKS(500));
+
+
+
+       //uart_print("MotorTiltError: ");
+       //INT16U TiltError = 0b110100100000000;
+       xQueueSend(xUartTxQueue, &TiltError, pdMS_TO_TICKS(500));
+       //INT8U tiltError = 0b1101001;
+       xQueueSend(xTiltCtrlOutQueue, &tiltError, pdMS_TO_TICKS(500));
+
+
+       vTaskDelay(pdMS_TO_TICKS(500));
+    }
+}
+
+*/
+
+
 
 /*DEBUGGNING TASKS*/
 /*
@@ -118,4 +145,11 @@ void vTestTask(void *pvParameters)
 
 //if (xTaskCreate(vDebugTask, "DEBUG", 256, NULL, Prio_Debug, &vDebugTaskHandle) != pdPASS) { uart_print("TaskCreate DEBUG failed\n"); }
 
+//if (xTaskCreate( vLedTask, "LED_TASK", 200, NULL, Prio_Led, &vLedTaskHandle) != pdPASS)
+        //{ uart_print("TaskCreate LED_TASK failed\n"); }
 
+        //if (xTaskCreate( vSwitchTask, "SW_TASK", 200, NULL, Prio_Sw, &vSwitchTaskHandle) != pdPASS)
+        //{ uart_print("TaskCreate SW_TASK failed\n"); }
+
+//if (xTaskCreate( vControllerDummyTask,"CONTROLLERDUMMY", 200, xUartRxQueue, Prio_Controller_Dummy, &vControllerDummyTaskHandle) != pdPASS)
+       //{ uart_print("TaskCreate CONTROLLER failed\n"); }
