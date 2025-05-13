@@ -13,6 +13,7 @@
 #include "queue.h"
 #include "emp_type.h"
 
+void printState();
 void vDebugTask(void *pvParameters);
 
 #endif /* DEBUGGER_H_ */

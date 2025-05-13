@@ -18,14 +18,21 @@ QueueHandle_t xTiltCtrlInQueue;
 QueueHandle_t xPanCtrlOutQueue;
 QueueHandle_t xTiltCtrlOutQueue;
 
+QueueHandle_t xUart16DebugQueue;
+QueueHandle_t xUart8DebugQueue;
 
 
 // Task Handles
 TaskHandle_t vControllerDummyTaskHandle;
-TaskHandle_t vPidControllerTaskHandle;
+//TaskHandle_t vPidControllerTaskHandle;
+TaskHandle_t vPanControllerTaskHandle;
+//TaskHandle_t vTiltControllerTaskHandle;
 
 TaskHandle_t vSpiSendFrameTaskHandle;
 TaskHandle_t vSpiGetFrameTaskHandle;
+
+TaskHandle_t vUartSendFrameTaskHandle;
+TaskHandle_t vUartGetFrameTaskHandle;
 
 TaskHandle_t vUartRxTaskHandle;
 TaskHandle_t vUartTxTaskHandle;

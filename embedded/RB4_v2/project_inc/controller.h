@@ -4,7 +4,6 @@
  *  Created on: 28 Apr 2025
  *      Author: linax
  */
-
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 #include "FreeRTOS.h"
@@ -15,28 +14,31 @@
 #define PID_FREQ_MS   1000   //delay/frequecy af controller
 
 typedef struct {
-    double kp;       // Proportional gain
-        double ki;       // Integral gain
-        double kd;       // Derivative gain
-        double Ts;       // Sampling time
-        double prev_error; // Previous error
-        double integral;   // Integral term
-        double output_min; // Minimum output (anti-windup)
-        double output_max; // Maximum output (anti-windup)
+    FP32 kp;       // Proportional gain
+    FP32 ki;       // Integral gain
+    FP32 kd;       // Derivative gain
+    FP32 Ts;       // Sampling time
+    FP32 N;        // Filter coefficient for derivative term
+    FP32 prev_error; // Previous error
+    // FP32 integral;   // Integral term
+    FP32 output_min; // Minimum output (anti-windup)
+    FP32 output_max; // Maximum output (anti-windup)
+    FP32 prev_derivative; // Previous derivative term
+    FP32 alpha;    // Coefficient for derivative term
+    FP32 beta;     // Coefficient for derivative term
+    FP32 gamma;    // Coefficient for derivative term
 
 } PIDController_t;
 
 void PID_Init(PIDController_t *pid,
-              double kp, double ki, double kd, double Ts,
-              double output_min, double output_max);
+    FP32 kp, FP32 ki, FP32 kd, FP32 Ts, FP32 N,
+    FP32 output_min, FP32 output_max);
 
-double PID_Compute(PIDController_t *pid,
-                   double reference,
-                   double measured_value);
-//2 control loops
-//vPanControllerTask
-//vTiltControllerTask
+INT16U PID_Compute(PIDController_t *pid,
+                   INT16U reference,
+                   INT16U measured_value);
 
-void vPidControllerTask(void *pvParameters);
+void vPanControllerTask(void *pvParameters);
+//void vTiltControllerTask(void *pvParameters);
 
 #endif /* CONTROLLER_H */

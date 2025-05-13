@@ -35,8 +35,8 @@
 /* Task headers */
 #include "controller.h"
 #include "controller_dummy.h"
-#include "uart_rx_task.h"
-#include "uart_tx_task.h"
+//#include "uart_rx_task.h"
+//#include "uart_tx_task.h"
 #include "spi_tx_task.h"
 #include "spi_rx_task.h"
 #include "map.h"
@@ -47,48 +47,58 @@
 
 /* configuration and state headers? */
 #include "led_state.h"
-#include "uart_config.h"
+//#include "uart_config.h"
 #include "spi_config.h"
 
+#include "uart.h"
+#include "uart_task.h"
 
-//timer defines
-#define QWAIT 100;
+//priotity defines
+#define TOP 4
+#define HIGH 3
+#define MEDIUM 2
+#define LOW 1
 
 //Priority Defines
 
-#define Prio_Controller_Dummy 1
-#define Prio_Pid_Controller 3
 
-#define Prio_Uart_Rx 3
-#define Prio_Uart_Tx 4
-#define Prio_Spi_Rx 3
-#define Prio_Spi_Tx 3
-
-#define Prio_Led 1
-#define Prio_Sw 1
-#define Prio_Debug 1
 
 //Queue Handles
 extern QueueHandle_t xUartRxQueue;
 extern QueueHandle_t xUartTxQueue;
 extern QueueHandle_t xSpiRxQueue;
 extern QueueHandle_t xSpiTxQueue;
-extern QueueHandle_t xSpiRxQueue;
-extern QueueHandle_t xSpiTxQueue;
 
-extern QueueHandle_t xPanCtrlInQueue;
-extern QueueHandle_t xTiltCtrlInQueue;
 
 extern QueueHandle_t xPanCtrlOutQueue;
 extern QueueHandle_t xTiltCtrlOutQueue;
 
+extern QueueHandle_t xPanFbOutQueue;
+extern QueueHandle_t xTiltFbOutQueue;
+
+extern QueueHandle_t xPanCtrlInQueue;
+extern QueueHandle_t xTiltCtrlInQueue;
+
+extern QueueHandle_t xPanFbInQueue;
+extern QueueHandle_t xTiltFbInQueue;
+
+extern QueueHandle_t xUart16DebugQueue;
+extern QueueHandle_t xUart8DebugQueue;
+
+
+
 
 // Task Handles
 extern TaskHandle_t vControllerDummyTaskHandle;
-extern TaskHandle_t vPidControllerTaskHandle;
+//extern TaskHandle_t vPidControllerTaskHandle;
+extern TaskHandle_t vPanControllerTaskHandle;
+//extern TaskHandle_t vTiltControllerTaskHandle;
 
 extern TaskHandle_t vUartRxTaskHandle;
 extern TaskHandle_t vUartTxTaskHandle;
+
+extern TaskHandle_t vUartSendFrameTaskHandle;
+extern TaskHandle_t vUartGetFrameTaskHandle;
 
 extern TaskHandle_t vSpiRxTaskHandle;
 extern TaskHandle_t vSpiTxTaskHandle;
@@ -105,9 +115,6 @@ extern unsigned char ref;
 extern unsigned char fb;
 
 extern INT16U MotorFrame;
-
-
-
 extern INT16U EncoderFrame;
 //from encoder
 extern INT8U panAng;
@@ -120,13 +127,19 @@ extern INT8U tiltSpeed;
 extern INT8U panDir;
 extern INT8U tiltDir;
 
-
-
-#define RX 0
-#define TX 1
-#define IDLE 2
-
 extern volatile INT8U FSM_STATUS;
+#define IDLE 0 //idle???
+#define CTRL 1 //controller task
+#define URTRX 2  //uart rx task
+#define URTTX 3 //uart tx task
+#define SPIRX 4 //spi rx task
+#define SPITX 5 //spi tx task
+#define GFPC 6 //get frame/unpack from pc
+#define GFFPGA 7 //get frame/unpack from fpga
+#define CFPC 8  //create frame/unpack from pc
+#define CFFPGA 9 //create frame/unpack from fpga
+
+
 
 #endif /* COMMON_H */
 

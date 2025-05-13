@@ -21,11 +21,11 @@ void LedDriver(){
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_RED;
            break;
-         case RX:
+         case URTRX:
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_YELLOW;
            break;
-         case TX:
+         case URTTX:
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_GREEN;
            break;
@@ -37,7 +37,7 @@ void LedDriver(){
 
 void vLedTask(void *pvParameters)
 {
-    uart_putc('L');
+    //uart_putc('L');
     GPIO_PORTF_DATA_R |= (0x0E); //clear LEDS
     INT8U prev_state = FSM_STATUS; //save elevator state
 
