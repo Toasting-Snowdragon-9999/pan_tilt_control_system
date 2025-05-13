@@ -1,0 +1,3 @@
+/home/morten/workspace/rb4/build/CMakeFiles/uart_test.dir
+/home/morten/workspace/rb4/build/CMakeFiles/edit_cache.dir
+/home/morten/workspace/rb4/build/CMakeFiles/rebuild_cache.dir
