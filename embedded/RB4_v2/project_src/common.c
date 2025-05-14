@@ -44,6 +44,8 @@ TaskHandle_t vDebugTaskHandle;
 TaskHandle_t vLedTaskHandle;
 TaskHandle_t vSwitchTaskHandle;
 
+TaskHandle_t vMapTestTaskHandle;
+
 // Controller Variables
 unsigned char ref = 100;
 unsigned char fb = 0;

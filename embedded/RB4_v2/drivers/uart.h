@@ -1,3 +1,4 @@
+
 /*
  * uart.h
  *
@@ -33,5 +34,8 @@ uint16_t uart1_get16(void);
 void    uart1_send16(uint16_t v);
 void    uart1_print(const char *fmt, ...);
 
-const char *rx_binary_string(uint16_t v);
+const char *rx_binary_string16(uint16_t v);
+const char *rx_binary_string8(INT8S v);
+
+const char *rx_binary_string(INT8S v);
 #endif /* DRIVERS_UART_H_ */

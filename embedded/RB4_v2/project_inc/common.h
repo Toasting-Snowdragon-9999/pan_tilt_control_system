@@ -110,6 +110,8 @@ extern TaskHandle_t vDebugTaskHandle;
 extern TaskHandle_t vLedTaskHandle;
 extern TaskHandle_t vSwitchTaskHandle;
 
+extern TaskHandle_t vMapTestTaskHandle;
+
 // Controller Variables
 extern unsigned char ref;
 extern unsigned char fb;

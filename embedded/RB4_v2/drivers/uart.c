@@ -1,3 +1,4 @@
+
 /*
  * uart.c
  *
@@ -60,8 +61,9 @@ void uart0_putc(uint8_t b) {
 }
 uint16_t uart0_get16(void) {
     taskENTER_CRITICAL();
-    uint8_t lo = uart0_getc();
     uint8_t hi = uart0_getc();
+    uint8_t lo = uart0_getc();
+
     taskEXIT_CRITICAL();
     return (uint16_t)((hi << 8) | lo);
 }
@@ -137,12 +139,25 @@ void uart1_print(const char *fmt, ...) {
 // Put this in uart.c (or a shared utils.c) at file‐scope:
 static char _binbuf[17];  // 16 bits + NUL
 
-const char *rx_binary_string(uint16_t v) {
+const char *rx_binary_string16(uint16_t v) {
    int i;
     for (i = 0; i < 16; i++) {
         // Extract bit 15 down to 0 in order
         _binbuf[i] = (v & (1 << (15 - i))) ? '1' : '0';
     }
     _binbuf[16] = '\0';
+    return _binbuf;
+}
+
+// Put this in uart.c (or a shared utils.c) at file‐scope:
+static char _binbuf[17];  // 16 bits + NUL
+
+const char *rx_binary_string8(INT8S v) {
+   int i;
+    for (i = 0; i < 8; i++) {
+        // Extract bit 15 down to 0 in order
+        _binbuf[i] = (v & (1 << (7 - i))) ? '1' : '0';
+    }
+    _binbuf[8] = '\0';
     return _binbuf;
 }

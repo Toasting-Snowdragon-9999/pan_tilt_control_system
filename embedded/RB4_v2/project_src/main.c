@@ -13,7 +13,7 @@ static void initilization(void)
   init_systick(); //freeRTOS default systick handler
   init_gpio();
   uart0_init(115200); //task uart
-  uart1_init(115200); //debugger
+//  uart1_init(115200); //debugger
   //SPI_init();
   //init_PID???
 
@@ -59,15 +59,17 @@ int main(void)
       //xTaskCreate(vDebugTask, "DEBUG", 200, NULL, 4, &vDebugTaskHandle);
       //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
-        xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
+       // xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 3, &vLedTaskHandle);
         xTaskCreate( vUartRxTask, "UART_RX",  512, xUartRxQueue,3, &vUartRxTaskHandle);
 
-        xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, xUartRxQueue, 4, &vPanControllerTaskHandle);
-        xTaskCreate( vUartTxTask,"UART_TX", 512, xUartTxQueue, 4, &vUartTxTaskHandle);
+//        xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, xUartRxQueue, 4, &vPanControllerTaskHandle);
+//        xTaskCreate( vUartTxTask,"UART_TX", 512, xUartTxQueue, 4, &vUartTxTaskHandle);
 
-        xTaskCreate( vUartSendFrameTask,"UART_SEND_FRAME", 512, NULL, 4, &vUartSendFrameTaskHandle);
+//        xTaskCreate( vUartSendFrameTask,"UART_SEND_FRAME", 512, NULL, 4, &vUartSendFrameTaskHandle);
 
-        xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  200, NULL, 4, &vUartGetFrameTaskHandle);
+//        xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  200, NULL, 4, &vUartGetFrameTaskHandle);
+
+        xTaskCreate( vMapTestTask, "MAP_TEST_TASK", 128, NULL, 4, &vMapTestTaskHandle);
 
 
        //xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 200, NULL, 4, &vSpiSendFrameTaskHandle);

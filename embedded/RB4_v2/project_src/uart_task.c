@@ -26,14 +26,15 @@ void vUartRxTask(void *pv) {
 
             rx = uart0_get16();
             //xQueueSend(xUartRxQueue, &rx, 0);
-            uart1_print("UartRxTask received: 0x%04x, 0b%s, d:%u \r\n", rx, rx_binary_string(rx), (unsigned)rx); //debugger
 
-            xQueueSend(xPanCtrlInQueue, &rx, 0); //test om delay kan være mindre
+            //uart0_print("UartRxTask received: 0x%04x, 0b%s, d:%u \r\n", rx, rx_binary_string(rx), (unsigned)rx); //debugger
 
+           xQueueSend(xUartRxQueue, &rx, 0); //test om delay kan være mindre
 
-                vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(5));
+            vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(10));
         }
 }
+
 
 
 void vUartTxTask(void *pvParameters)
@@ -43,11 +44,11 @@ void vUartTxTask(void *pvParameters)
       for (;;) {
           FSM_STATUS = URTTX;
 
-          if(xQueueReceive(xUartTxQueue, &tx, pdMS_TO_TICKS(50)) == pdTRUE){
+          if(xQueueReceive(xUartTxQueue, &tx, portMAX_DELAY)){
               uart0_send16(tx);
-              uart1_print("uart tx task received motorFrame \r\n"); //debugger
+              //uart1_print("uart tx task received motorFrame \r\n"); //debugger
           }
-          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(20));
+          //vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(20));
     }
 }
 

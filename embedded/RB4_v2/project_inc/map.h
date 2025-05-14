@@ -26,14 +26,16 @@
 
 
 
-INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed);
-void UnpackFrame(INT16U *Frame, INT8U *panVal, INT8U *tiltVal, INT8U *panDir, INT8U *tiltDir);
-INT8U ErrorToSpeed(INT8U error);
+//void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed);
+//void UnpackFrame(INT16U *Frame, INT8U *panVal, INT8U *tiltVal, INT8U *panDir, INT8U *tiltDir);
+void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal);
+INT8U ErrorToSpeed(FP32 *error);
 //INT8U EncValToAngle(INT8U encVal);
 void vSpiGetFrameTask(void *pvParameters);
 void vSpiSendFrameTask(void *pvParameters);
 void vUartSendFrameTask(void *pvParameters);
 void vUartGetFrameTask(void *pvParameters);
+void vMapTestTask(void *pvParameters);
 
 
 #endif /* PROJECT_INC_MAP_H_ */
