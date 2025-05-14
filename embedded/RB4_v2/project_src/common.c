@@ -9,24 +9,19 @@ QueueHandle_t xUartRxQueue;
 QueueHandle_t xSpiRxQueue;
 QueueHandle_t xSpiTxQueue;
 
-//QueueHandle_t xErrorOutQueue;
-//QueueHandle_t xErrorInQueue;
-
-
 QueueHandle_t xPanCtrlInQueue;
 QueueHandle_t xTiltCtrlInQueue;
+
 QueueHandle_t xPanCtrlOutQueue;
 QueueHandle_t xTiltCtrlOutQueue;
 
-QueueHandle_t xUart16DebugQueue;
-QueueHandle_t xUart8DebugQueue;
-
+QueueHandle_t xPanFbInQueue;
+QueueHandle_t xTiltFbInQueue;
 
 // Task Handles
-TaskHandle_t vControllerDummyTaskHandle;
-//TaskHandle_t vPidControllerTaskHandle;
+
 TaskHandle_t vPanControllerTaskHandle;
-//TaskHandle_t vTiltControllerTaskHandle;
+TaskHandle_t vTiltControllerTaskHandle;
 
 TaskHandle_t vSpiSendFrameTaskHandle;
 TaskHandle_t vSpiGetFrameTaskHandle;
@@ -44,10 +39,5 @@ TaskHandle_t vDebugTaskHandle;
 TaskHandle_t vLedTaskHandle;
 TaskHandle_t vSwitchTaskHandle;
 
-// Controller Variables
-unsigned char ref = 100;
-unsigned char fb = 0;
-
-INT16U MotorFrame;
 //state machines
 extern volatile INT8U FSM_STATUS = IDLE;

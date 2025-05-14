@@ -66,15 +66,12 @@
 //Queue Handles
 extern QueueHandle_t xUartRxQueue;
 extern QueueHandle_t xUartTxQueue;
+
 extern QueueHandle_t xSpiRxQueue;
 extern QueueHandle_t xSpiTxQueue;
 
-
 extern QueueHandle_t xPanCtrlOutQueue;
 extern QueueHandle_t xTiltCtrlOutQueue;
-
-extern QueueHandle_t xPanFbOutQueue;
-extern QueueHandle_t xTiltFbOutQueue;
 
 extern QueueHandle_t xPanCtrlInQueue;
 extern QueueHandle_t xTiltCtrlInQueue;
@@ -82,17 +79,13 @@ extern QueueHandle_t xTiltCtrlInQueue;
 extern QueueHandle_t xPanFbInQueue;
 extern QueueHandle_t xTiltFbInQueue;
 
-extern QueueHandle_t xUart16DebugQueue;
-extern QueueHandle_t xUart8DebugQueue;
-
-
-
+//QueueHandle_t xPanCtrlOutQueue;
+//QueueHandle_t xTiltCtrlOutQueue;
 
 // Task Handles
-extern TaskHandle_t vControllerDummyTaskHandle;
-//extern TaskHandle_t vPidControllerTaskHandle;
+
 extern TaskHandle_t vPanControllerTaskHandle;
-//extern TaskHandle_t vTiltControllerTaskHandle;
+extern TaskHandle_t vTiltControllerTaskHandle;
 
 extern TaskHandle_t vUartRxTaskHandle;
 extern TaskHandle_t vUartTxTaskHandle;

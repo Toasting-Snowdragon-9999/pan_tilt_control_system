@@ -20,34 +20,35 @@ static void initilization(void)
 }
 
 
-void QueueSetup(){
+void queueSetup(){
 
-          xSpiRxQueue = xQueueCreate(2, sizeof(INT16U)); //from fpga encoders
-          xSpiTxQueue = xQueueCreate(2, sizeof(INT16U)); //to fpa motors
+        xSpiRxQueue = xQueueCreate(1, sizeof(INT16U)); //from fpga encoders
+        xSpiTxQueue = xQueueCreate(1, sizeof(INT16U)); //to fpa motors
 
-          xPanCtrlOutQueue = xQueueCreate(2, sizeof(INT8U)); //from controller task to map task
-          xTiltCtrlOutQueue = xQueueCreate(2, sizeof(INT8U)); //from controller task to map task
+          xPanCtrlOutQueue = xQueueCreate(1, sizeof(FP32)); //from controller task to map task
+          xTiltCtrlOutQueue = xQueueCreate(1, sizeof(FP32)); //from controller task to map task
 
-          xPanCtrlInQueue = xQueueCreate(2, sizeof(INT16U)); //from map task to controller task
-          xTiltCtrlInQueue = xQueueCreate(2, sizeof(INT16U)); //from map task to controller task
+          xPanCtrlInQueue = xQueueCreate(1, sizeof(INT8U)); //from map task to controller task
+          xTiltCtrlInQueue = xQueueCreate(1, sizeof(INT8U)); //from map task to controller task
 
-          xUartRxQueue = xQueueCreate(2, sizeof(INT16U)); //from vision
-          xUartTxQueue = xQueueCreate(2, sizeof(INT16U)); //to pc
+          xPanFbInQueue = xQueueCreate(1, sizeof(INT8U)); //from map task to controller task
+          xTiltFbInQueue = xQueueCreate(1, sizeof(INT8U)); //from map task to controller task
 
-          //xUart16DebugQueue = xQueueCreate(1, sizeof(INT16U));
-          //xUart8DebugQueue = xQueueCreate(1, sizeof(INT8U));
+          xUartRxQueue = xQueueCreate(1, sizeof(INT16U)); //from vision
+          xUartTxQueue = xQueueCreate(1, sizeof(INT16U)); //to pc
+
 
 }
 
-void vTestTask(void *pvParameters)
+void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
 {
-    for( ;; )
-    {
-   ;
-       vTaskDelay(pdMS_TO_TICKS(500));
-
-        //vTaskDelay(pdMS_TO_TICKS(500));
-    }
+    // If this hits, a task has overflowed its stack
+    for( ;; );
+}
+void vApplicationMallocFailedHook(void)
+{
+    // If this hits, a memory allocation failed
+    for( ;; );
 }
 
 int main(void)
@@ -55,25 +56,29 @@ int main(void)
 {
         FSM_STATUS = IDLE;
         initilization();
-        QueueSetup();
-      //xTaskCreate(vDebugTask, "DEBUG", 200, NULL, 4, &vDebugTaskHandle);
-      //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
+        queueSetup();
 
         xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
-        xTaskCreate( vUartRxTask, "UART_RX",  512, xUartRxQueue,3, &vUartRxTaskHandle);
 
-        xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, xUartRxQueue, 4, &vPanControllerTaskHandle);
-        xTaskCreate( vUartTxTask,"UART_TX", 512, xUartTxQueue, 4, &vUartTxTaskHandle);
-
-        xTaskCreate( vUartSendFrameTask,"UART_SEND_FRAME", 512, NULL, 4, &vUartSendFrameTaskHandle);
-
-        xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  200, NULL, 4, &vUartGetFrameTaskHandle);
+        xTaskCreate( vUartRxTask, "UART_RX",  512, NULL,3, &vUartRxTaskHandle);
+      xTaskCreate( vUartTxTask,"UART_TX", 512, NULL, 4, &vUartTxTaskHandle);
 
 
-       //xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 200, NULL, 4, &vSpiSendFrameTaskHandle);
-       //xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  200, NULL, 4, &vSpiGetFrameTaskHandle);
-       //xTaskCreate( vSpiTxTask,"SPI_TX", 200, xSpiTxQueue, 4, &vSpiTxTaskHandle);
+        xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  512, NULL, 4, &vUartGetFrameTaskHandle);
+
+        xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, NULL, 4, &vPanControllerTaskHandle);
+
+        xTaskCreate( vTiltControllerTask, "TILT_CONTROLLER", 512, NULL, 4, &vTiltControllerTaskHandle);
+
+        xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 512, NULL, 4, &vSpiSendFrameTaskHandle);
+        xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  512, NULL, 4, &vSpiGetFrameTaskHandle);
+
+
+        //xTaskCreate( vSpiTxTask,"SPI_TX", 200, xSpiTxQueue, 4, &vSpiTxTaskHandle);
        //xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, 4, &vSpiRxTaskHandle);
+        // xTaskCreate( vUartSendFrameTask,"UART_SEND_FRAME", 512, NULL, 4, &vUartSendFrameTaskHandle);
+       //xTaskCreate(vDebugTask, "DEBUG", 200, NULL, 4, &vDebugTaskHandle);
+       //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
         vTaskStartScheduler();
 
@@ -85,6 +90,16 @@ int main(void)
 //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
 /*
+ * void vTestTask(void *pvParameters)
+{
+    for( ;; )
+    {
+   ;
+       vTaskDelay(pdMS_TO_TICKS(500));
+
+        //vTaskDelay(pdMS_TO_TICKS(500));
+    }
+}
 void vTestTask(void *pvParameters)
 {
     for( ;; )
@@ -123,16 +138,6 @@ void vTestTask(void *pvParameters)
 
 /*DEBUGGNING TASKS*/
 /*
-void vApplicationStackOverflowHook( TaskHandle_t xTask, char *pcTaskName )
-{
-    // If this hits, a task has overflowed its stack
-    for( ;; );
-}
-void vApplicationMallocFailedHook(void)
-{
-    // If this hits, a memory allocation failed
-    for( ;; );
-}
 
 
 void vTestTask(void *pvParameters)

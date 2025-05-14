@@ -14,15 +14,15 @@
 #define PID_FREQ_MS   1000   //delay/frequecy af controller
 
 typedef struct {
-    FP32 kp;       // Proportional gain
+     kp;       // Proportional gain
     FP32 ki;       // Integral gain
     FP32 kd;       // Derivative gain
     FP32 Ts;       // Sampling time
     FP32 N;        // Filter coefficient for derivative term
     FP32 prev_error; // Previous error
     // FP32 integral;   // Integral term
-    FP32 output_min; // Minimum output (anti-windup)
-    FP32 output_max; // Maximum output (anti-windup)
+    FP32 output_min; // Minimum output (anti-windup) (skla være INT8U?)/ eller send det til mapping som fikser?
+    FP32 output_max; // Maximum output (anti-windup) (skla være INT8U?)
     FP32 prev_derivative; // Previous derivative term
     FP32 alpha;    // Coefficient for derivative term
     FP32 beta;     // Coefficient for derivative term
@@ -34,11 +34,9 @@ void PID_Init(PIDController_t *pid,
     FP32 kp, FP32 ki, FP32 kd, FP32 Ts, FP32 N,
     FP32 output_min, FP32 output_max);
 
-INT16U PID_Compute(PIDController_t *pid,
-                   INT16U reference,
-                   INT16U measured_value);
+INT16U PID_Compute(PIDController_t *pid, INT8U visionReference, INT8U encMeasuredVal);
 
 void vPanControllerTask(void *pvParameters);
-//void vTiltControllerTask(void *pvParameters);
+void vTiltControllerTask(void *pvParameters);
 
 #endif /* CONTROLLER_H */
