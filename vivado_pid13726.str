@@ -1983,3 +1983,5 @@ dismissDialog("Package IP"); // bh (Package IP Progress)
 // Tcl Message: update_ip_catalog 
 // Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jrm/git/pan_tilt_control_system/VHDL/ip_repo/pwm_generator_v0'. INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jrm/vivado/my_ip_repo'. 
 // Tcl Message: current_project pwm_generator 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,971 MB. GUI used memory: 151 MB. Current time: 5/14/25, 12:03:57 PM CEST
+// HMemoryUtils.trashcanNow. Engine heap size: 2,956 MB. GUI used memory: 128 MB. Current time: 5/14/25, 12:33:57 PM CEST

@@ -35,41 +35,41 @@
   <File Type="BG-BIT" Name="pwm_generator_wrapper.bit"/>
   <File Type="PDI-FILE" Name="pwm_generator_wrapper.pdi"/>
   <File Type="RDI-RDI" Name="pwm_generator_wrapper.vdi"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="pwm_generator_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="pwm_generator_for_ip_1_wrapper_timing_summary_routed.rpt"/>
   <File Type="BG-BIN" Name="pwm_generator_wrapper.bin"/>
-  <File Type="PLACE-IO" Name="pwm_generator_wrapper_io_placed.rpt"/>
-  <File Type="OPT-DRC" Name="pwm_generator_wrapper_drc_opted.rpt"/>
-  <File Type="PLACE-CTRL" Name="pwm_generator_wrapper_control_sets_placed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="pwm_generator_wrapper_methodology_drc_routed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="pwm_generator_wrapper_utilization_placed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="pwm_generator_wrapper_timing_summary_routed.rpx"/>
+  <File Type="PLACE-IO" Name="pwm_generator_for_ip_1_wrapper_io_placed.rpt"/>
+  <File Type="OPT-DRC" Name="pwm_generator_for_ip_1_wrapper_drc_opted.rpt"/>
+  <File Type="PLACE-CTRL" Name="pwm_generator_for_ip_1_wrapper_control_sets_placed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="pwm_generator_for_ip_1_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="pwm_generator_for_ip_1_wrapper_utilization_placed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="pwm_generator_for_ip_1_wrapper_timing_summary_routed.rpx"/>
   <File Type="REPORTS-TCL" Name="pwm_generator_wrapper_reports.tcl"/>
   <File Type="PA-TCL" Name="pwm_generator_wrapper.tcl"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="pwm_generator_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="pwm_generator_for_ip_1_wrapper_methodology_drc_routed.pb"/>
   <File Type="BG-BGN" Name="pwm_generator_wrapper.bgn"/>
-  <File Type="PLACE-UTIL" Name="pwm_generator_wrapper_utilization_placed.rpt"/>
-  <File Type="ROUTE-STATUS" Name="pwm_generator_wrapper_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="pwm_generator_wrapper_route_status.pb"/>
+  <File Type="PLACE-UTIL" Name="pwm_generator_for_ip_1_wrapper_utilization_placed.rpt"/>
+  <File Type="ROUTE-STATUS" Name="pwm_generator_for_ip_1_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="pwm_generator_for_ip_1_wrapper_route_status.pb"/>
   <File Type="BG-DRC" Name="pwm_generator_wrapper.drc"/>
-  <File Type="ROUTE-PWR" Name="pwm_generator_wrapper_power_routed.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="pwm_generator_wrapper_power_routed.rpx"/>
-  <File Type="ROUTE-PWR-SUM" Name="pwm_generator_wrapper_power_summary_routed.pb"/>
-  <File Type="ROUTE-DRC" Name="pwm_generator_wrapper_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="pwm_generator_wrapper_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-DRC-RPX" Name="pwm_generator_wrapper_drc_routed.rpx"/>
-  <File Type="ROUTE-DRC-PB" Name="pwm_generator_wrapper_drc_routed.pb"/>
-  <File Type="ROUTE-SIMILARITY" Name="pwm_generator_wrapper_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="pwm_generator_wrapper_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="pwm_generator_wrapper_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="pwm_generator_wrapper_bus_skew_routed.rpx"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="pwm_generator_wrapper_bus_skew_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="pwm_generator_for_ip_1_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="pwm_generator_for_ip_1_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="pwm_generator_for_ip_1_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="pwm_generator_for_ip_1_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="pwm_generator_for_ip_1_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-RPX" Name="pwm_generator_for_ip_1_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="pwm_generator_for_ip_1_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-SIMILARITY" Name="pwm_generator_for_ip_1_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="pwm_generator_for_ip_1_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="pwm_generator_for_ip_1_wrapper_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="pwm_generator_for_ip_1_wrapper_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="pwm_generator_for_ip_1_wrapper_bus_skew_routed.pb"/>
   <File Type="BITSTR-MSK" Name="pwm_generator_wrapper.msk"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="pwm_generator_wrapper_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="pwm_generator_wrapper_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="pwm_generator_wrapper_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="pwm_generator_wrapper_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="pwm_generator_wrapper_bus_skew_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="pwm_generator_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="pwm_generator_for_ip_1_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="pwm_generator_for_ip_1_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="pwm_generator_for_ip_1_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="pwm_generator_for_ip_1_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="pwm_generator_for_ip_1_wrapper_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="pwm_generator_for_ip_1_wrapper_bus_skew_postroute_physopted.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/counter.vhd">
@@ -204,14 +204,14 @@
     <Step Id="write_bitstream"/>
     <Step Id="write_device_image"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_twentyone_counter_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clear_comparator_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_big_duty_cycle_lut_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_pwm_soft_start_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clk_divider_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_big_duty_cycle_lut_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_reset_comparator_0_3"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_counter_2_1"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_1_1"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_3_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_big_duty_cycle_lut_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clk_divider_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_pwm_soft_start_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_big_duty_cycle_lut_0_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clear_comparator_1_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_twentyone_counter_0_0"/>
 </GenRun>

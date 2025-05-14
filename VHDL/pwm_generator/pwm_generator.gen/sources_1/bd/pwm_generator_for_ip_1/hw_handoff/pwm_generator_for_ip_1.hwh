@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 14 11:19:34 2025" VIVADOVERSION="2024.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 14 18:05:02 2025" VIVADOVERSION="2024.2">
 
   <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="pwm_generator_for_ip_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -36,8 +36,8 @@
       <CONNECTIONS>
         <CONNECTION INSTANCE="twenty_counter_1" PORT="rst"/>
         <CONNECTION INSTANCE="clk_divider_0" PORT="rst"/>
-        <CONNECTION INSTANCE="pwm_soft_start_0" PORT="rst"/>
         <CONNECTION INSTANCE="twentyone_counter_0" PORT="rst"/>
+        <CONNECTION INSTANCE="pwm_soft_start_0" PORT="rst"/>
         <CONNECTION INSTANCE="pwm_soft_start_1" PORT="rst"/>
       </CONNECTIONS>
     </PORT>

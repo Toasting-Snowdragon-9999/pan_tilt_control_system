@@ -576,8 +576,8 @@
           "rst",
           "twenty_counter_1/rst",
           "clk_divider_0/rst",
-          "pwm_soft_start_0/rst",
           "twentyone_counter_0/rst",
+          "pwm_soft_start_0/rst",
           "pwm_soft_start_1/rst"
         ]
       },

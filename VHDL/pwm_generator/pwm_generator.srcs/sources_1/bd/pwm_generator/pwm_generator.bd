@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x7EFDB5B9FAAE8D9E",
+      "boundary_crc": "0x7EFDB5B945279FBB",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../pwm_generator.gen/sources_1/bd/pwm_generator",
       "name": "pwm_generator",

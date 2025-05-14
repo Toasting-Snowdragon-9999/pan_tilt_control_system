@@ -2,7 +2,7 @@
 --Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
---Date        : Wed May 14 11:19:33 2025
+--Date        : Wed May 14 18:05:02 2025
 --Host        : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 --Command     : generate_target pwm_generator_for_ip_1.bd
 --Design      : pwm_generator_for_ip_1
