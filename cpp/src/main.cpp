@@ -15,15 +15,15 @@ int main() {
     std::string usb_debugger = "/dev/ttyACM0";
     std::string usb_to_tty = "/dev/ttyUSB0";
     Uart uart;
-    UartConfig config = {
-        .baud_rate = 115200 ,
-        .data_bits = 8,
-        .stop_bits = 1,
-        .parity = 0,
-        .flow_control = 0
-    };
-    bool success = uart.init(config, usb_debugger.c_str());
-
+    // UartConfig config = {
+    //     .baud_rate = 115200 ,
+    //     .data_bits = 8,
+    //     .stop_bits = 1,
+    //     .parity = 0,
+    //     .flow_control = 0
+    // };
+    // bool success = uart.init(config, usb_debugger.c_str());
+    bool success = true;
     /*IF UART SUCCESSFULLY INITIALISED WE START TRACKING*/
     if (success){
         PrioVision vision;

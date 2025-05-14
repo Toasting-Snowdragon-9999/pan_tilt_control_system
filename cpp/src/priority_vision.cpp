@@ -50,8 +50,8 @@ void PrioVision::tracking(Uart& uart) {
     auto frame_interval = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::duration<double>(1.0 / SAMPLING_FREQ));
 
-    UartReader ur(uart);
-    ur.start();
+    // UartReader ur(uart);
+    // ur.start();
 
     for (;;) { 
         // To adjust sampling rate
@@ -88,33 +88,35 @@ void PrioVision::tracking(Uart& uart) {
         auto best = find_highest_priority_threshold(_thresholds);
         if (best) {
             _draw_rect(_image, best->get().contours, best->get().min_area);
-        } else {
-            std::cout << "No valid threshold found." << std::endl;
-        }
+        } 
+        else {}
         
         _calculate_offset(offset);
         
-        //std::cout << "Offset: " << offset.x_offset << " " << offset.y_offset << std::endl;
-   
-        uint16_t x_encoded = static_cast<uint16_t>(offset.x_offset) + 400;  // Range: 0–800
-        uint16_t y_encoded = static_cast<uint16_t>(offset.y_offset) + 224;  // Range: 0–448
+        // Converte to motor degrees
+        int8_t pan_error =  offset.x_offset / PAN_TICK_TO_DEGREE;
+        int8_t tilt_error = offset.y_offset / TILT_TICK_TO_DEGREE;
         
-        std::cout << "Encoded: " << x_encoded << " " << y_encoded << std::endl;
+        static float ___prev_x = 0;
+        static float ___prev_y = 0;
+        if (abs(offset.x_offset - ___prev_x) > 10 || abs(offset.y_offset - ___prev_y) > 10) {
+            std::cout << "Encoded: " << offset.x_offset << " " << offset.y_offset << std::endl;
+        }
+        ___prev_x = offset.x_offset;
+        ___prev_y = offset.y_offset;
+        // uint8_t x_off[2];
+        // // memcpy(&x_off[0], "x", sizeof(uint8_t));
+        // memcpy(&x_off[0], &x_encoded, sizeof(uint16_t));
 
-        uint8_t x_off[2];
-        // memcpy(&x_off[0], "x", sizeof(uint8_t));
-        memcpy(&x_off[0], &x_encoded, sizeof(uint16_t));
+        // uint8_t y_off[3];
+        // memcpy(&y_off[0], "y", sizeof(uint8_t));
+        // memcpy(&y_off[1], &y_encoded, sizeof(uint16_t));
 
-        uint8_t y_off[3];
-        memcpy(&y_off[0], "y", sizeof(uint8_t));
-        memcpy(&y_off[1], &y_encoded, sizeof(uint16_t));
-
-        uart.speak(x_off, 2);   
- 
+        // uart.speak(x_off, 2);   
         cv::imshow("GPU Accelerated", _image);
         
-        if (cv::waitKey(1) >= 0) {
-            ur.stop();
+        if (cv::waitKey(1) == 'q') {
+            // ur.stop();
             break;
         }
     }

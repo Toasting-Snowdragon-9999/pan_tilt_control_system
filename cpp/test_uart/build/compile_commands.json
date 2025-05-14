@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/build",
+  "command": "/usr/bin/c++  -I/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/include -std=gnu++17 -o CMakeFiles/uart.dir/main_test_uart.cpp.o -c /home/rootlet/git/pan_tilt_control_system/cpp/test_uart/main_test_uart.cpp",
+  "file": "/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/main_test_uart.cpp",
+  "output": "CMakeFiles/uart.dir/main_test_uart.cpp.o"
+},
+{
+  "directory": "/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/build",
+  "command": "/usr/bin/c++  -I/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/include -std=gnu++17 -o CMakeFiles/uart.dir/uart.cpp.o -c /home/rootlet/git/pan_tilt_control_system/cpp/test_uart/uart.cpp",
+  "file": "/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/uart.cpp",
+  "output": "CMakeFiles/uart.dir/uart.cpp.o"
+}
+]

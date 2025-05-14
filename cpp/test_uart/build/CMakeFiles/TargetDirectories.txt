@@ -1,0 +1,3 @@
+/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/build/CMakeFiles/uart.dir
+/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/build/CMakeFiles/edit_cache.dir
+/home/rootlet/git/pan_tilt_control_system/cpp/test_uart/build/CMakeFiles/rebuild_cache.dir

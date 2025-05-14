@@ -8,6 +8,8 @@
 #include "vision.h"
 
 #define MAX_PRIOS 1
+#define PAN_TICK_TO_DEGREE 10.4
+#define TILT_TICK_TO_DEGREE 10.5
 
 enum class Priority {
     LOW = 0,
