@@ -419,3 +419,4 @@ FodyWeavers.xsd
 
 # Pjhonny long path
 /VHDL/movement_interpreter/project_1.ip_user_files/bd/movement_interpreter/project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_2/sim/*
+VHDL/**/sim/
