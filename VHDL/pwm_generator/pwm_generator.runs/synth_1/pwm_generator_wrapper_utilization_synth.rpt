@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Wed Apr  9 11:04:04 2025
+| Date         : Wed May  7 18:02:10 2025
 | Host         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_utilization -file pwm_generator_wrapper_utilization_synth.rpt -pb pwm_generator_wrapper_utilization_synth.pb
 | Design       : pwm_generator_wrapper
@@ -93,7 +93,7 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |    5 |     0 |          0 |       125 |  4.00 |
+| Bonded IOB                  |   15 |     0 |          0 |       125 | 12.00 |
 | Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
 | Bonded IOPADs               |    0 |     0 |          0 |       130 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         4 |  0.00 |
@@ -149,8 +149,8 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| IBUF     |    3 |                  IO |
-| OBUF     |    2 |                  IO |
+| OBUF     |    9 |                  IO |
+| IBUF     |    6 |                  IO |
 +----------+------+---------------------+
 
 
@@ -162,9 +162,11 @@ Warning! For any ECO changes, please run place_design if there are unplaced inst
 +--------------------------------------+------+
 | pwm_generator_twentyone_counter_0_0  |    1 |
 | pwm_generator_reset_comparator_0_3   |    1 |
+| pwm_generator_pwm_soft_start_0_0     |    1 |
 | pwm_generator_counter_2_1            |    1 |
 | pwm_generator_comparator_3_0         |    1 |
 | pwm_generator_comparator_1_1         |    1 |
+| pwm_generator_clk_divider_0_0        |    1 |
 | pwm_generator_clear_comparator_1_0   |    1 |
 | pwm_generator_big_duty_cycle_lut_0_1 |    1 |
 | pwm_generator_big_duty_cycle_lut_0_0 |    1 |

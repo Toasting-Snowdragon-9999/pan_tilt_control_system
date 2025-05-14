@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Wed Apr  9 11:03:22 2025
+| Date         : Wed Apr 30 13:48:02 2025
 | Host         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_utilization -file pwm_generator_big_duty_cycle_lut_0_0_utilization_synth.rpt -pb pwm_generator_big_duty_cycle_lut_0_0_utilization_synth.pb
 | Design       : pwm_generator_big_duty_cycle_lut_0_0

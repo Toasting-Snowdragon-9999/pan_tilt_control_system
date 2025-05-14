@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1744189366" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pwm_generator_wrapper.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1746633704" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/pwm_generator_wrapper.dcp">
   <File Type="VDS-TIMINGSUMMARY" Name="pwm_generator_wrapper_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="pwm_generator_wrapper.dcp"/>
   <File Type="RDS-UTIL-PB" Name="pwm_generator_wrapper_utilization_synth.pb"/>
@@ -35,6 +35,18 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_divider.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pwm_soft_start.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/bd/pwm_generator/pwm_generator.bd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -48,7 +60,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/not_gate.vhd">
+    <File Path="$PSRCDIR/sources_1/new/pwm_test_switcher.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -69,6 +81,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/not_gate.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/small_duty_cycle_lut.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -82,6 +101,7 @@
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="pwm_generator_wrapper"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -114,6 +134,8 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clk_divider_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="pwm_generator_pwm_soft_start_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_twentyone_counter_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_clear_comparator_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="pwm_generator_comparator_3_0"/>

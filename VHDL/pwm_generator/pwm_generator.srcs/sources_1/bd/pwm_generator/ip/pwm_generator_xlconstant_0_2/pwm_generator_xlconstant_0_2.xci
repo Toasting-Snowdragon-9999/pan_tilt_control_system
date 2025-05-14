@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "pwm_generator_xlconstant_0_2",
-    "cell_name": "twentyone_constant_0",
+    "cell_name": "twenty_constant_0",
     "component_reference": "xilinx.com:ip:xlconstant:1.1",
     "ip_revision": "9",
     "gen_directory": "../../../../../../pwm_generator.gen/sources_1/bd/pwm_generator/ip/pwm_generator_xlconstant_0_2",

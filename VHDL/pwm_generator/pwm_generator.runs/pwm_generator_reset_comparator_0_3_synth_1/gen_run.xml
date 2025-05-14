@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="pwm_generator_reset_comparator_0_3_synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1744189365">
-  <File Type="VDS-TIMINGSUMMARY" Name="pwm_generator_reset_comparator_0_3_timing_summary_synth.rpt"/>
+<GenRun Id="pwm_generator_reset_comparator_0_3_synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1746013641">
   <File Type="RDS-DCP" Name="pwm_generator_reset_comparator_0_3.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="pwm_generator_reset_comparator_0_3_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="pwm_generator_reset_comparator_0_3_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="pwm_generator_reset_comparator_0_3_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="pwm_generator_reset_comparator_0_3.vds"/>
   <File Type="REPORTS-TCL" Name="pwm_generator_reset_comparator_0_3_reports.tcl"/>
-  <File Type="VDS-TIMING-PB" Name="pwm_generator_reset_comparator_0_3_timing_summary_synth.pb"/>
   <File Type="PA-TCL" Name="pwm_generator_reset_comparator_0_3.tcl"/>
+  <File Type="RDS-UTIL" Name="pwm_generator_reset_comparator_0_3_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="pwm_generator_reset_comparator_0_3_utilization_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pwm_generator_reset_comparator_0_3" RelGenDir="$PGENDIR/pwm_generator_reset_comparator_0_3">
     <File Path="$PSRCDIR/sources_1/bd/pwm_generator/ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3.xci">
       <FileInfo>

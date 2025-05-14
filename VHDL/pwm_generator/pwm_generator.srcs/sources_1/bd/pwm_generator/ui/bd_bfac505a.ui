@@ -1,5 +1,5 @@
 {
-   "ActiveEmotionalView":"Grouping and No Loops",
+   "ActiveEmotionalView":"Reduced Jogs",
    "Color Coded_ExpandedHierarchyInLayout":"",
    "Color Coded_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
@@ -59,171 +59,162 @@ pagesize -pg 1 -db -bbox -sgen -100 0 1490 750
    "Grouping and No Loops_ExpandedHierarchyInLayout":"",
    "Grouping and No Loops_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
+preplace port group_1 -pg 1 -lvl 6 -x 1360 -y -250 -defaultsOSRD
 preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
-preplace port port-id_led_0 -pg 1 -lvl 5 -x 980 -y 260 -defaultsOSRD
-preplace port port-id_led_1 -pg 1 -lvl 5 -x 980 -y 880 -defaultsOSRD
+preplace port port-id_led_0 -pg 1 -lvl 6 -x 1360 -y 260 -defaultsOSRD
+preplace port port-id_led_1 -pg 1 -lvl 6 -x 1360 -y 880 -defaultsOSRD
 preplace portBus sw_0 -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
 preplace portBus sw_1 -pg 1 -lvl 0 -x 0 -y 1140 -defaultsOSRD
-preplace inst enabled_0 -pg 1 -lvl 2 -x 350 -y 360 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst disabled_0 -pg 1 -lvl 2 -x 350 -y 40 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst twentyone_counter_0 -pg 1 -lvl 3 -x 630 -y 40 -swap {2 0 1 3 4} -defaultsOSRD -pinDir clk left -pinY clk 140L -pinDir rst left -pinY rst 20L -pinDir clr left -pinY clr 120L -pinDir en left -pinY en 160L -pinBusDir cnt right -pinBusY cnt 160R
-preplace inst twentyone_constant_0 -pg 1 -lvl 1 -x 130 -y 140 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst clear_comparator_1 -pg 1 -lvl 2 -x 350 -y 140 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 120R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst big_duty_cycle_lut_0 -pg 1 -lvl 3 -x 630 -y 360 -swap {1 0 2} -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 120L -pinDir en left -pinY en 20L -pinBusDir duty_constant right -pinBusY duty_constant 20R
-preplace inst comparator_3 -pg 1 -lvl 4 -x 870 -y 240 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 140L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst big_duty_cycle_lut_1 -pg 1 -lvl 3 -x 630 -y 920 -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 60L -pinDir en left -pinY en 80L -pinBusDir duty_constant right -pinBusY duty_constant 20R
-preplace inst clear_comparator_2 -pg 1 -lvl 2 -x 350 -y 780 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 100R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst comparator_4 -pg 1 -lvl 4 -x 870 -y 860 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 80L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst disabled_1 -pg 1 -lvl 2 -x 350 -y 680 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst enabled_1 -pg 1 -lvl 2 -x 350 -y 1220 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst twentyone_constant_1 -pg 1 -lvl 1 -x 130 -y 780 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst twentyone_counter_1 -pg 1 -lvl 3 -x 630 -y 560 -defaultsOSRD -pinDir clk left -pinY clk 20L -pinDir rst left -pinY rst 140L -pinDir clr left -pinY clr 240L -pinDir en left -pinY en 260L -pinBusDir cnt right -pinBusY cnt 260R
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 130 -y 580 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconstant_1 -pg 1 -lvl 1 -x 130 -y 460 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconcat_0 -pg 1 -lvl 2 -x 350 -y 460 -defaultsOSRD -pinBusDir In0 left -pinBusY In0 20L -pinBusDir In1 left -pinBusY In1 80L -pinBusDir In2 left -pinBusY In2 140L -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconcat_1 -pg 1 -lvl 2 -x 350 -y 960 -defaultsOSRD -pinBusDir In0 left -pinBusY In0 20L -pinBusDir In1 left -pinBusY In1 120L -pinBusDir In2 left -pinBusY In2 180L -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconstant_2 -pg 1 -lvl 1 -x 130 -y 1060 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconstant_3 -pg 1 -lvl 1 -x 130 -y 960 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace netloc clk_0_1 1 0 3 NJ 320 NJ 320 460
-preplace netloc disabled_0_dout 1 2 1 N 60
-preplace netloc four_constant_0_dout 1 1 1 NJ 160
-preplace netloc four_counter_0_cnt 1 2 2 NJ 260 780
-preplace netloc reset_comparator_2_c 1 2 1 N 160
-preplace netloc xlconstant_0_dout 1 2 1 480 200n
-preplace netloc big_duty_cycle_lut_0_duty_constant 1 3 1 N 380
-preplace netloc comparator_3_c 1 4 1 NJ 260
-preplace netloc big_duty_cycle_lut_0_duty_constant1 1 3 1 N 940
-preplace netloc comparator_3_c1 1 4 1 NJ 880
-preplace netloc disabled_0_dout1 1 2 1 N 700
-preplace netloc four_constant_0_dout1 1 1 1 NJ 800
-preplace netloc four_counter_0_cnt1 1 2 2 NJ 880 780
-preplace netloc reset_comparator_2_c1 1 2 1 N 800
-preplace netloc xlconstant_0_dout1 1 2 1 480 820n
-preplace netloc xlconstant_0_dout2 1 1 1 NJ 600
-preplace netloc xlconstant_1_dout 1 1 1 NJ 480
-preplace netloc In1_0_1 1 0 2 NJ 540 NJ
-preplace netloc xlconcat_0_dout 1 2 1 N 480
-preplace netloc xlconstant_3_dout 1 1 1 NJ 980
-preplace netloc xlconstant_2_dout 1 1 1 NJ 1080
-preplace netloc sw_1_1 1 0 2 NJ 1140 NJ
-preplace netloc xlconcat_1_dout 1 2 1 N 980
-levelinfo -pg 1 0 130 350 630 870 980
-pagesize -pg 1 -db -bbox -sgen -120 0 1070 1300
+preplace inst enabled_0 -pg 1 -lvl 3 -x 730 -y 360 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst disabled_0 -pg 1 -lvl 3 -x 730 -y 40 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst twentyone_counter_0 -pg 1 -lvl 4 -x 1010 -y 40 -swap {2 0 1 3 4} -defaultsOSRD -pinDir clk left -pinY clk 140L -pinDir rst left -pinY rst 20L -pinDir clr left -pinY clr 120L -pinDir en left -pinY en 160L -pinBusDir cnt right -pinBusY cnt 160R
+preplace inst twentyone_constant_0 -pg 1 -lvl 2 -x 510 -y 140 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst clear_comparator_1 -pg 1 -lvl 3 -x 730 -y 140 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 120R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst big_duty_cycle_lut_0 -pg 1 -lvl 4 -x 1010 -y 360 -swap {1 0 2} -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 120L -pinDir en left -pinY en 20L -pinBusDir duty_constant right -pinBusY duty_constant 20R
+preplace inst comparator_3 -pg 1 -lvl 5 -x 1250 -y 240 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 140L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst big_duty_cycle_lut_1 -pg 1 -lvl 4 -x 1010 -y 920 -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 60L -pinDir en left -pinY en 80L -pinBusDir duty_constant right -pinBusY duty_constant 20R
+preplace inst clear_comparator_2 -pg 1 -lvl 3 -x 730 -y 780 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 100R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst comparator_4 -pg 1 -lvl 5 -x 1250 -y 860 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 80L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst disabled_1 -pg 1 -lvl 3 -x 730 -y 680 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst enabled_1 -pg 1 -lvl 3 -x 730 -y 1220 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst twentyone_constant_1 -pg 1 -lvl 2 -x 510 -y 780 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst twentyone_counter_1 -pg 1 -lvl 4 -x 1010 -y 560 -defaultsOSRD -pinDir clk left -pinY clk 20L -pinDir rst left -pinY rst 140L -pinDir clr left -pinY clr 240L -pinDir en left -pinY en 260L -pinBusDir cnt right -pinBusY cnt 260R
+preplace inst xlconstant_0 -pg 1 -lvl 2 -x 510 -y 580 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst xlconstant_1 -pg 1 -lvl 2 -x 510 -y 460 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst xlconcat_0 -pg 1 -lvl 3 -x 730 -y 460 -defaultsOSRD -pinBusDir In0 left -pinBusY In0 20L -pinBusDir In1 left -pinBusY In1 80L -pinBusDir In2 left -pinBusY In2 140L -pinBusDir dout right -pinBusY dout 20R
+preplace inst xlconcat_1 -pg 1 -lvl 3 -x 730 -y 960 -defaultsOSRD -pinBusDir In0 left -pinBusY In0 20L -pinBusDir In1 left -pinBusY In1 120L -pinBusDir In2 left -pinBusY In2 180L -pinBusDir dout right -pinBusY dout 20R
+preplace inst xlconstant_2 -pg 1 -lvl 2 -x 510 -y 1060 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst xlconstant_3 -pg 1 -lvl 2 -x 510 -y 960 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 210 -y -270 -defaultsOSRD -pinBusDir group_1 right -pinBusY group_1 20R -pinDir USBIND_0 right -pinY USBIND_0 40R -pinDir M_AXI_GP0 right -pinY M_AXI_GP0 60R -pinDir M_AXI_GP0_ACLK left -pinY M_AXI_GP0_ACLK 20L -pinDir FCLK_CLK0 right -pinY FCLK_CLK0 80R -pinDir FCLK_RESET0_N right -pinY FCLK_RESET0_N 100R
+preplace netloc netgroup_1 1 1 5 NJ -250 NJ -250 NJ -250 NJ -250 NJ
+preplace netloc In1_0_1 1 0 3 NJ 540 NJ 540 NJ
+preplace netloc big_duty_cycle_lut_0_duty_constant 1 4 1 N 380
+preplace netloc big_duty_cycle_lut_0_duty_constant1 1 4 1 N 940
+preplace netloc clk_0_1 1 0 4 20J 390 400 320 NJ 320 840
+preplace netloc comparator_3_c 1 5 1 NJ 260
+preplace netloc comparator_3_c1 1 5 1 NJ 880
+preplace netloc disabled_0_dout 1 3 1 N 60
+preplace netloc disabled_0_dout1 1 3 1 N 700
+preplace netloc four_constant_0_dout 1 2 1 NJ 160
+preplace netloc four_constant_0_dout1 1 2 1 NJ 800
+preplace netloc four_counter_0_cnt 1 3 2 NJ 260 1160
+preplace netloc four_counter_0_cnt1 1 3 2 NJ 880 1160
+preplace netloc reset_comparator_2_c 1 3 1 N 160
+preplace netloc reset_comparator_2_c1 1 3 1 N 800
+preplace netloc sw_1_1 1 0 3 NJ 1140 NJ 1140 NJ
+preplace netloc xlconcat_0_dout 1 3 1 N 480
+preplace netloc xlconcat_1_dout 1 3 1 N 980
+preplace netloc xlconstant_0_dout 1 3 1 860 200n
+preplace netloc xlconstant_0_dout1 1 3 1 860 820n
+preplace netloc xlconstant_0_dout2 1 2 1 NJ 600
+preplace netloc xlconstant_1_dout 1 2 1 NJ 480
+preplace netloc xlconstant_2_dout 1 2 1 NJ 1080
+preplace netloc xlconstant_3_dout 1 2 1 NJ 980
+levelinfo -pg 1 0 210 510 730 1010 1250 1360
+pagesize -pg 1 -db -bbox -sgen -120 -310 1470 1300
 ",
-   "Grouping and No Loops_ScaleFactor":"1.02162",
-   "Grouping and No Loops_TopLeft":"-666,3",
+   "Grouping and No Loops_ScaleFactor":"0.471651",
+   "Grouping and No Loops_TopLeft":"-946,-307",
    "No Loops_ExpandedHierarchyInLayout":"",
    "No Loops_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
-preplace port port-id_led_0 -pg 1 -lvl 5 -x 980 -y 260 -defaultsOSRD
-preplace port port-id_led_1 -pg 1 -lvl 5 -x 980 -y 880 -defaultsOSRD
-preplace portBus sw_0 -pg 1 -lvl 0 -x 0 -y 540 -defaultsOSRD
-preplace portBus sw_1 -pg 1 -lvl 0 -x 0 -y 1140 -defaultsOSRD
-preplace inst enabled_0 -pg 1 -lvl 2 -x 350 -y 360 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst disabled_0 -pg 1 -lvl 2 -x 350 -y 40 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst twentyone_counter_0 -pg 1 -lvl 3 -x 630 -y 40 -swap {2 0 1 3 4} -defaultsOSRD -pinDir clk left -pinY clk 140L -pinDir rst left -pinY rst 20L -pinDir clr left -pinY clr 120L -pinDir en left -pinY en 160L -pinBusDir cnt right -pinBusY cnt 160R
-preplace inst twentyone_constant_0 -pg 1 -lvl 1 -x 130 -y 140 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst clear_comparator_1 -pg 1 -lvl 2 -x 350 -y 140 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 120R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst big_duty_cycle_lut_0 -pg 1 -lvl 3 -x 630 -y 360 -swap {1 0 2} -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 120L -pinDir en left -pinY en 20L -pinBusDir duty_constant right -pinBusY duty_constant 20R
-preplace inst comparator_3 -pg 1 -lvl 4 -x 870 -y 240 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 140L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst big_duty_cycle_lut_1 -pg 1 -lvl 3 -x 630 -y 920 -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 60L -pinDir en left -pinY en 80L -pinBusDir duty_constant right -pinBusY duty_constant 20R
-preplace inst clear_comparator_2 -pg 1 -lvl 2 -x 350 -y 780 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 100R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst comparator_4 -pg 1 -lvl 4 -x 870 -y 860 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 80L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
-preplace inst disabled_1 -pg 1 -lvl 2 -x 350 -y 680 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst enabled_1 -pg 1 -lvl 2 -x 350 -y 1220 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst twentyone_constant_1 -pg 1 -lvl 1 -x 130 -y 780 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst twentyone_counter_1 -pg 1 -lvl 3 -x 630 -y 560 -defaultsOSRD -pinDir clk left -pinY clk 20L -pinDir rst left -pinY rst 140L -pinDir clr left -pinY clr 240L -pinDir en left -pinY en 260L -pinBusDir cnt right -pinBusY cnt 260R
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 130 -y 580 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconstant_1 -pg 1 -lvl 1 -x 130 -y 460 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconcat_0 -pg 1 -lvl 2 -x 350 -y 460 -defaultsOSRD -pinBusDir In0 left -pinBusY In0 20L -pinBusDir In1 left -pinBusY In1 80L -pinBusDir In2 left -pinBusY In2 140L -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconcat_1 -pg 1 -lvl 2 -x 350 -y 960 -defaultsOSRD -pinBusDir In0 left -pinBusY In0 20L -pinBusDir In1 left -pinBusY In1 120L -pinBusDir In2 left -pinBusY In2 180L -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconstant_2 -pg 1 -lvl 1 -x 130 -y 1060 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace inst xlconstant_3 -pg 1 -lvl 1 -x 130 -y 960 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
-preplace netloc clk_0_1 1 0 3 NJ 320 NJ 320 460
-preplace netloc disabled_0_dout 1 2 1 N 60
-preplace netloc four_constant_0_dout 1 1 1 NJ 160
-preplace netloc four_counter_0_cnt 1 2 2 NJ 260 780
-preplace netloc reset_comparator_2_c 1 2 1 N 160
-preplace netloc xlconstant_0_dout 1 2 1 480 200n
-preplace netloc big_duty_cycle_lut_0_duty_constant 1 3 1 N 380
-preplace netloc comparator_3_c 1 4 1 NJ 260
-preplace netloc big_duty_cycle_lut_0_duty_constant1 1 3 1 N 940
-preplace netloc comparator_3_c1 1 4 1 NJ 880
-preplace netloc disabled_0_dout1 1 2 1 N 700
-preplace netloc four_constant_0_dout1 1 1 1 NJ 800
-preplace netloc four_counter_0_cnt1 1 2 2 NJ 880 780
-preplace netloc reset_comparator_2_c1 1 2 1 N 800
-preplace netloc xlconstant_0_dout1 1 2 1 480 820n
-preplace netloc xlconstant_0_dout2 1 1 1 NJ 600
-preplace netloc xlconstant_1_dout 1 1 1 NJ 480
-preplace netloc In1_0_1 1 0 2 NJ 540 NJ
-preplace netloc xlconcat_0_dout 1 2 1 N 480
-preplace netloc xlconstant_3_dout 1 1 1 NJ 980
-preplace netloc xlconstant_2_dout 1 1 1 NJ 1080
-preplace netloc sw_1_1 1 0 2 NJ 1140 NJ
-preplace netloc xlconcat_1_dout 1 2 1 N 980
-levelinfo -pg 1 0 130 350 630 870 980
-pagesize -pg 1 -db -bbox -sgen -120 0 1070 1300
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 340 -defaultsOSRD
+preplace port port-id_led4_b -pg 1 -lvl 6 -x 1430 -y 260 -defaultsOSRD
+preplace port port-id_en_motor -pg 1 -lvl 6 -x 1430 -y 680 -defaultsOSRD
+preplace portBus sw -pg 1 -lvl 0 -x 0 -y 400 -defaultsOSRD
+preplace portBus led -pg 1 -lvl 1 -x 420 -y 860 -defaultsOSRD -bot
+preplace inst enabled_0 -pg 1 -lvl 3 -x 780 -y 380 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst disabled_0 -pg 1 -lvl 3 -x 780 -y 40 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst twentyone_counter_0 -pg 1 -lvl 4 -x 1080 -y 40 -swap {2 0 1 3 4} -defaultsOSRD -pinDir clk left -pinY clk 140L -pinDir rst left -pinY rst 20L -pinDir clr left -pinY clr 120L -pinDir en left -pinY en 160L -pinBusDir cnt right -pinBusY cnt 160R
+preplace inst twentyone_constant_0 -pg 1 -lvl 2 -x 560 -y 140 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst clear_comparator_1 -pg 1 -lvl 3 -x 780 -y 140 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 120R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst big_duty_cycle_lut_0 -pg 1 -lvl 4 -x 1080 -y 300 -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 20L -pinDir en left -pinY en 40L -pinBusDir duty_constant right -pinBusY duty_constant 20R
+preplace inst comparator_3 -pg 1 -lvl 5 -x 1320 -y 240 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 80L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst big_duty_cycle_lut_1 -pg 1 -lvl 4 -x 1080 -y 720 -defaultsOSRD -pinBusDir spi_in left -pinBusY spi_in 20L -pinDir en left -pinY en 40L -pinBusDir duty_constant right -pinBusY duty_constant 20R
+preplace inst clear_comparator_2 -pg 1 -lvl 3 -x 780 -y 580 -swap {2 1 0} -defaultsOSRD -pinBusDir a right -pinBusY a 100R -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst comparator_4 -pg 1 -lvl 5 -x 1320 -y 660 -swap {1 0 2} -defaultsOSRD -pinBusDir a left -pinBusY a 80L -pinBusDir b left -pinBusY b 20L -pinDir c right -pinY c 20R
+preplace inst disabled_1 -pg 1 -lvl 3 -x 780 -y 480 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst enabled_1 -pg 1 -lvl 3 -x 780 -y 760 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst twentyone_constant_1 -pg 1 -lvl 2 -x 560 -y 580 -defaultsOSRD -pinBusDir dout right -pinBusY dout 20R
+preplace inst twentyone_counter_1 -pg 1 -lvl 4 -x 1080 -y 420 -defaultsOSRD -pinDir clk left -pinY clk 20L -pinDir rst left -pinY rst 80L -pinDir clr left -pinY clr 180L -pinDir en left -pinY en 200L -pinBusDir cnt right -pinBusY cnt 200R
+preplace inst pwm_test_switcher_0 -pg 1 -lvl 1 -x 300 -y 380 -defaultsOSRD -pinBusDir sw left -pinBusY sw 20L -pinBusDir out_1 right -pinBusY out_1 20R
+preplace inst led_slice -pg 1 -lvl 1 -x 300 -y 490 -defaultsOSRD -pinBusDir Din right -pinBusY Din 20R -pinBusDir Dout right -pinBusY Dout 40R
+preplace netloc big_duty_cycle_lut_0_duty_constant 1 4 1 N 320
+preplace netloc big_duty_cycle_lut_0_duty_constant1 1 4 1 N 740
+preplace netloc clk_0_1 1 0 4 NJ 340 NJ 340 NJ 340 910
+preplace netloc comparator_3_c 1 5 1 NJ 260
+preplace netloc comparator_3_c1 1 5 1 NJ 680
+preplace netloc disabled_0_dout 1 3 1 N 60
+preplace netloc disabled_0_dout1 1 3 1 N 500
+preplace netloc four_constant_0_dout 1 2 1 NJ 160
+preplace netloc four_constant_0_dout1 1 2 1 NJ 600
+preplace netloc four_counter_0_cnt 1 3 2 NJ 260 1230
+preplace netloc four_counter_0_cnt1 1 3 2 NJ 680 1230
+preplace netloc reset_comparator_2_c 1 3 1 N 160
+preplace netloc reset_comparator_2_c1 1 3 1 N 600
+preplace netloc xlconstant_0_dout 1 3 1 930 200n
+preplace netloc xlconstant_0_dout1 1 3 1 930 620n
+preplace netloc sw_0_1 1 0 1 N 400
+preplace netloc pwm_test_switcher_0_out_1 1 1 3 450 320 NJ 320 890J
+preplace netloc led_slice_Dout 1 1 1 450 530n
+levelinfo -pg 1 0 300 560 780 1080 1320 1430
+pagesize -pg 1 -db -bbox -sgen -100 0 1550 960
 ",
-   "No Loops_ScaleFactor":"1.02162",
-   "No Loops_TopLeft":"-877,3",
+   "No Loops_ScaleFactor":"0.906821",
+   "No Loops_TopLeft":"-96,-216",
    "Reduced Jogs_ExpandedHierarchyInLayout":"",
    "Reduced Jogs_Layout":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
-preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 250 -defaultsOSRD
-preplace port port-id_led_0 -pg 1 -lvl 5 -x 980 -y 70 -defaultsOSRD
-preplace port port-id_led_1 -pg 1 -lvl 5 -x 980 -y 730 -defaultsOSRD
-preplace portBus sw_0 -pg 1 -lvl 0 -x 0 -y 470 -defaultsOSRD
-preplace portBus sw_1 -pg 1 -lvl 0 -x 0 -y 1070 -defaultsOSRD
-preplace inst enabled_0 -pg 1 -lvl 2 -x 350 -y 290 -defaultsOSRD -pinBusY dout 20R
-preplace inst disabled_0 -pg 1 -lvl 2 -x 350 -y 50 -defaultsOSRD -pinBusY dout 20R
-preplace inst twentyone_counter_0 -pg 1 -lvl 3 -x 630 -y 50 -swap {2 0 1 3 4} -defaultsOSRD -pinY clk 200L -pinY rst 20L -pinY clr 120L -pinY en 220L -pinBusY cnt 20R
-preplace inst twentyone_constant_0 -pg 1 -lvl 1 -x 130 -y 170 -defaultsOSRD -pinBusY dout 20R
-preplace inst clear_comparator_1 -pg 1 -lvl 2 -x 350 -y 150 -defaultsOSRD -pinBusY a 20L -pinBusY b 40L -pinY c 20R
-preplace inst big_duty_cycle_lut_0 -pg 1 -lvl 3 -x 630 -y 350 -swap {1 0 2} -defaultsOSRD -pinBusY spi_in 60L -pinY en 20L -pinBusY duty_constant 20R
-preplace inst comparator_3 -pg 1 -lvl 4 -x 870 -y 50 -swap {1 0 2} -defaultsOSRD -pinBusY a 320L -pinBusY b 20L -pinY c 20R
-preplace inst big_duty_cycle_lut_1 -pg 1 -lvl 3 -x 630 -y 770 -defaultsOSRD -pinBusY spi_in 140L -pinY en 160L -pinBusY duty_constant 20R
-preplace inst clear_comparator_2 -pg 1 -lvl 2 -x 350 -y 770 -defaultsOSRD -pinBusY a 20L -pinBusY b 40L -pinY c 20R
-preplace inst comparator_4 -pg 1 -lvl 4 -x 870 -y 710 -swap {1 0 2} -defaultsOSRD -pinBusY a 80L -pinBusY b 20L -pinY c 20R
-preplace inst disabled_1 -pg 1 -lvl 2 -x 350 -y 610 -defaultsOSRD -pinBusY dout 20R
-preplace inst enabled_1 -pg 1 -lvl 2 -x 350 -y 1150 -defaultsOSRD -pinBusY dout 20R
-preplace inst twentyone_constant_1 -pg 1 -lvl 1 -x 130 -y 790 -defaultsOSRD -pinBusY dout 20R
-preplace inst twentyone_counter_1 -pg 1 -lvl 3 -x 630 -y 490 -defaultsOSRD -pinY clk 20L -pinY rst 140L -pinY clr 160L -pinY en 180L -pinBusY cnt 180R
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 130 -y 510 -defaultsOSRD -pinBusY dout 20R
-preplace inst xlconstant_1 -pg 1 -lvl 1 -x 130 -y 390 -defaultsOSRD -pinBusY dout 20R
-preplace inst xlconcat_0 -pg 1 -lvl 2 -x 350 -y 390 -defaultsOSRD -pinBusY In0 20L -pinBusY In1 80L -pinBusY In2 140L -pinBusY dout 20R
-preplace inst xlconcat_1 -pg 1 -lvl 2 -x 350 -y 890 -defaultsOSRD -pinBusY In0 20L -pinBusY In1 120L -pinBusY In2 180L -pinBusY dout 20R
-preplace inst xlconstant_2 -pg 1 -lvl 1 -x 130 -y 990 -defaultsOSRD -pinBusY dout 20R
-preplace inst xlconstant_3 -pg 1 -lvl 1 -x 130 -y 890 -defaultsOSRD -pinBusY dout 20R
-preplace netloc clk_0_1 1 0 3 NJ 250 NJ 250 460
-preplace netloc disabled_0_dout 1 2 1 NJ 70
-preplace netloc four_constant_0_dout 1 1 1 NJ 190
-preplace netloc four_counter_0_cnt 1 1 3 240 10 NJ 10 780
-preplace netloc reset_comparator_2_c 1 2 1 N 170
-preplace netloc xlconstant_0_dout 1 2 1 480 270n
-preplace netloc big_duty_cycle_lut_0_duty_constant 1 3 1 N 370
-preplace netloc comparator_3_c 1 4 1 NJ 70
-preplace netloc big_duty_cycle_lut_0_duty_constant1 1 3 1 N 790
-preplace netloc comparator_3_c1 1 4 1 NJ 730
-preplace netloc disabled_0_dout1 1 2 1 NJ 630
-preplace netloc four_constant_0_dout1 1 1 1 NJ 810
-preplace netloc four_counter_0_cnt1 1 1 3 240 730 NJ 730 780
-preplace netloc reset_comparator_2_c1 1 2 1 460 650n
-preplace netloc xlconstant_0_dout1 1 2 1 480 670n
-preplace netloc xlconstant_0_dout2 1 1 1 NJ 530
-preplace netloc xlconstant_1_dout 1 1 1 NJ 410
-preplace netloc In1_0_1 1 0 2 NJ 470 NJ
-preplace netloc xlconcat_0_dout 1 2 1 N 410
-preplace netloc xlconstant_3_dout 1 1 1 NJ 910
-preplace netloc xlconstant_2_dout 1 1 1 NJ 1010
-preplace netloc sw_1_1 1 0 2 NJ 1070 NJ
-preplace netloc xlconcat_1_dout 1 2 1 N 910
-levelinfo -pg 1 0 130 350 630 870 980
-pagesize -pg 1 -db -bbox -sgen -120 0 1070 1230
+preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 790 -defaultsOSRD
+preplace port port-id_ja_7 -pg 1 -lvl 6 -x 1320 -y 130 -defaultsOSRD
+preplace port port-id_EN_A -pg 1 -lvl 6 -x 1320 -y 860 -defaultsOSRD
+preplace port port-id_led5_g -pg 1 -lvl 6 -x 1320 -y 530 -defaultsOSRD
+preplace port port-id_rpio_12_r -pg 1 -lvl 6 -x 1320 -y 890 -defaultsOSRD
+preplace port port-id_led4_b -pg 1 -lvl 6 -x 1320 -y 930 -defaultsOSRD
+preplace portBus led -pg 1 -lvl 6 -x 1320 -y 470 -defaultsOSRD
+preplace portBus ar -pg 1 -lvl 0 -x 0 -y 450 -defaultsOSRD
+preplace inst enabled_0 -pg 1 -lvl 3 -x 590 -y 330 -defaultsOSRD -pinBusY dout 20R
+preplace inst disabled_0 -pg 1 -lvl 3 -x 590 -y 110 -defaultsOSRD -pinBusY dout 20R
+preplace inst twentyone_counter_0 -pg 1 -lvl 4 -x 940 -y 110 -swap {3 0 1 2 4} -defaultsOSRD -pinY clk 160L -pinY rst 20L -pinY clr 120L -pinY en 140L -pinBusY cnt 20R
+preplace inst twenty_constant_0 -pg 1 -lvl 2 -x 310 -y 230 -defaultsOSRD -pinBusY dout 20R
+preplace inst clear_comparator_1 -pg 1 -lvl 3 -x 590 -y 210 -defaultsOSRD -pinBusY a 20L -pinBusY b 40L -pinY c 20R
+preplace inst big_duty_cycle_lut_0 -pg 1 -lvl 4 -x 940 -y 350 -swap {1 0 2} -defaultsOSRD -pinBusY spi_in 60L -pinY en 20L -pinBusY duty_constant 20R
+preplace inst comparator_3 -pg 1 -lvl 5 -x 1200 -y 110 -swap {1 0 2} -defaultsOSRD -pinBusY a 260L -pinBusY b 20L -pinY c 20R
+preplace inst big_duty_cycle_lut_1 -pg 1 -lvl 3 -x 590 -y 490 -defaultsOSRD -pinBusY spi_in 20L -pinY en 40L -pinBusY duty_constant 40R
+preplace inst clear_comparator_2 -pg 1 -lvl 2 -x 310 -y 630 -defaultsOSRD -pinBusY a 20L -pinBusY b 40L -pinY c 60R
+preplace inst comparator_4 -pg 1 -lvl 5 -x 1200 -y 870 -defaultsOSRD -pinBusY a 20L -pinBusY b 80L -pinY c 20R
+preplace inst disabled_1 -pg 1 -lvl 1 -x 110 -y 830 -defaultsOSRD -pinBusY dout 20R
+preplace inst enabled_1 -pg 1 -lvl 2 -x 310 -y 510 -defaultsOSRD -pinBusY dout 20R
+preplace inst twenty_constant_1 -pg 1 -lvl 1 -x 110 -y 650 -defaultsOSRD -pinBusY dout 20R
+preplace inst twenty_counter_1 -pg 1 -lvl 3 -x 590 -y 650 -swap {2 3 1 0 4} -defaultsOSRD -pinY clk 60L -pinY rst 160L -pinY clr 40L -pinY en 20L -pinBusY cnt 20R
+preplace inst led_slice -pg 1 -lvl 5 -x 1200 -y 450 -defaultsOSRD -pinBusY Din 20L -pinBusY Dout 20R
+preplace inst clk_divider_0 -pg 1 -lvl 2 -x 310 -y 770 -defaultsOSRD -pinY clk 20L -pinY rst 40L -pinY clk_div 20R
+preplace inst pwm_soft_start_0 -pg 1 -lvl 4 -x 940 -y 510 -swap {1 2 0 3 5 4} -defaultsOSRD -pinY clk 40L -pinY rst 360L -pinBusY target_duty_i 20L -pinY pwm_period_pulse_i 380L -pinBusY duty_o 380R -pinY ready_o 20R
+preplace netloc big_duty_cycle_lut_0_duty_constant 1 4 1 N 370
+preplace netloc big_duty_cycle_lut_1_duty_constant 1 3 1 N 530
+preplace netloc clk_1 1 0 2 NJ 790 NJ
+preplace netloc clk_divider_0_clk_div 1 2 2 440 610 760
+preplace netloc comparator_3_c 1 5 1 NJ 130
+preplace netloc comparator_3_c1 1 5 1 1300J 860n
+preplace netloc disabled_0_dout 1 3 1 NJ 130
+preplace netloc four_constant_0_dout 1 2 1 NJ 250
+preplace netloc four_constant_0_dout1 1 1 1 NJ 670
+preplace netloc four_counter_0_cnt 1 2 3 420 70 NJ 70 1100
+preplace netloc four_counter_0_cnt1 1 1 4 200 590 NJ 590 740 950 NJ
+preplace netloc led_slice_Dout 1 5 1 NJ 470
+preplace netloc pwm_soft_start_0_duty_o 1 4 1 N 890
+preplace netloc pwm_soft_start_0_ready_o 1 4 2 NJ 530 NJ
+preplace netloc pwm_test_switcher_0_out_1 1 0 5 NJ 450 NJ 450 420 450 780 470 NJ
+preplace netloc reset_comparator_2_c 1 3 1 N 230
+preplace netloc reset_comparator_2_c1 1 2 1 N 690
+preplace netloc xlconstant_0_dout 1 3 1 780 250n
+preplace netloc xlconstant_0_dout1 1 2 1 420 530n
+preplace netloc disabled_1_dout 1 1 3 200J 870 420J 870 N
+levelinfo -pg 1 0 110 310 590 940 1200 1320
+pagesize -pg 1 -db -bbox -sgen -120 0 1440 1010
 ",
-   "Reduced Jogs_ScaleFactor":"1.07736",
-   "Reduced Jogs_TopLeft":"-808,0",
+   "Reduced Jogs_ScaleFactor":"0.50211",
+   "Reduced Jogs_TopLeft":"-675,60",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
 preplace port port-id_clk -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
@@ -250,4 +241,6 @@ levelinfo -pg 1 0 100 270 440 550
 pagesize -pg 1 -db -bbox -sgen -70 0 640 530
 "
 }
-0
+{
+   "da_ps7_cnt":"1"
+}

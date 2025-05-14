@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="pwm_generator_pwm_test_switcher_0_0_synth_1" LaunchDir="/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_pwm_test_switcher_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="pwm_generator_clk_divider_0_0_synth_1" LaunchDir="/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/pwm_generator_clk_divider_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="pwm_generator_pwm_test_switcher_0_0_synth_1"/>
+		<Parent Id="pwm_generator_clk_divider_0_0_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="pwm_generator_pwm_test_switcher_0_0_synth_1"/>
+		<Parent Id="pwm_generator_clk_divider_0_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+		<Parameter Name="general.ignorePathLengthChecks" Val="true" Type="bool"/>
+		<Parameter Name="general.shortenLongPath" Val="true" Type="bool"/>
+	</Parameters>
+	<ProductInfo Name="vivado"/>
+</Runs>
+

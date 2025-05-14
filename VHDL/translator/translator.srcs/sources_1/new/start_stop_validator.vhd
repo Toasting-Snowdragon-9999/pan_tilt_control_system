@@ -49,4 +49,5 @@ begin
                 commands <= data(9 downto 1);
             end if;
         end if;
+    end process;
 end Behavioral;

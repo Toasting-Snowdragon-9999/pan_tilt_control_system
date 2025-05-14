@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (lin64) Build 5239630 Fri Nov 08 22:34:34 MST 2024
-| Date         : Wed Apr  9 11:04:30 2025
+| Date         : Wed May  7 18:02:34 2025
 | Host         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx running 64-bit Ubuntu 24.04.2 LTS
 | Command      : report_drc -file pwm_generator_wrapper_drc_opted.rpt -pb pwm_generator_wrapper_drc_opted.pb -rpx pwm_generator_wrapper_drc_opted.rpx
 | Design       : pwm_generator_wrapper
