@@ -55,10 +55,10 @@ void PID_Init(PIDController_t *pid,
 INT16U PID_Compute(PIDController_t *pid, INT8U visionReference, INT8U encMeasuredVal)
 {
     INT8U error = visionReference - encMeasuredVal;
-    uart1_print("error: 0x%04x, 0b%s, d:%u \r\n", error, rx_binary_string(error), (unsigned)error);
+    uart1_print("\r\nerror: 0x%04x, 0b%s, d:%u \r\n", error, rx_binary_string(error), (unsigned)error);
     // Proportional
     FP32 P = pid->kp * error;
-    uart1_print("Proportional: 0x%04x, 0b%s, d:%u \r\n", P, rx_binary_string(P), (unsigned)P);
+    uart1_print("\r\nProportional: 0x%04x, 0b%s, d:%u \r\n", P, rx_binary_string(P), (unsigned)P);
 
     // Integral
     //FP32 I = pid->prev_integral + pid->ki * (pid->Ts / 2) * (error + pid->prev_error);
@@ -67,7 +67,7 @@ INT16U PID_Compute(PIDController_t *pid, INT8U visionReference, INT8U encMeasure
     // Derivative
     FP32 D = - (pid->alpha / pid->beta) * pid->prev_derivative + (pid->gamma / pid->beta) * (error - pid->prev_error);
     pid->prev_derivative = D; // Save the derivative term for next calculation
-    uart1_print("Derivative: 0x%04x, 0b%s, d:%u \r\n", D, rx_binary_string(D), (unsigned)D);
+    uart1_print("\r\nDerivative: 0x%04x, 0b%s, d:%u \r\n", D, rx_binary_string(D), (unsigned)D);
 
     // Update previous error for next calculation
     pid->prev_error = error;
@@ -104,18 +104,18 @@ void vPanControllerTask(void *pvParameters){
     FP32 panOutput = 0;
     INT8U panIn; //pan input from uart
     for( ;; ){
-        uart1_print("<<<PanControllerTask>>>\r\n");
+        uart1_print("\r\n<<<PanControllerTask>>>\r\n");
         FSM_STATUS = CTRL;
 
         if((xQueueReceive(xPanCtrlInQueue, &panIn, portMAX_DELAY) == pdTRUE)){
             panVisionRef = panIn; //updating reference
-            uart1_print("panIn: 0x%04x, 0b%s, d:%u \r\n", panIn, rx_binary_string(panIn), (unsigned)panIn);
+            uart1_print("\r\npanIn: 0x%04x, 0b%s, d:%u \r\n", panIn, rx_binary_string(panIn), (unsigned)panIn);
         }
 
         if((xQueueReceive(xPanFbInQueue, &panEncMeasuredVal, portMAX_DELAY) == pdTRUE)){
             panOutput = PID_Compute(&pid, panVisionRef, panEncMeasuredVal);
 
-            uart1_print("panOutput:  0x%04x, 0b%s, d:%u \r\n", panOutput, rx_binary_string(panOutput), (unsigned)panOutput);
+            uart1_print("\r\npanOutput:  0x%04x, 0b%s, d:%u \r\n", panOutput, rx_binary_string(panOutput), (unsigned)panOutput);
 
             //PAN CTRL OUT (to map then to motor)
             xQueueSend(xPanCtrlOutQueue, &panOutput, 0);
