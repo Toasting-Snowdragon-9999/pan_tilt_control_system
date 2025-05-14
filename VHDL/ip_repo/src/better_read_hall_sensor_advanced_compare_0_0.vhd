@@ -46,33 +46,44 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:not_gate:1.0
+-- IP VLNV: xilinx.com:module_ref:advanced_compare:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY read_sensor_not_gate_0_0 IS
+ENTITY better_read_hall_sensor_advanced_compare_0_0 IS
   PORT (
     a_in : IN STD_LOGIC;
-    not_a : OUT STD_LOGIC
+    b_in : IN STD_LOGIC;
+    direction : OUT STD_LOGIC
   );
-END read_sensor_not_gate_0_0;
+END better_read_hall_sensor_advanced_compare_0_0;
 
-ARCHITECTURE read_sensor_not_gate_0_0_arch OF read_sensor_not_gate_0_0 IS
+ARCHITECTURE better_read_hall_sensor_advanced_compare_0_0_arch OF better_read_hall_sensor_advanced_compare_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF read_sensor_not_gate_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT not_gate IS
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF better_read_hall_sensor_advanced_compare_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT advanced_compare IS
     PORT (
       a_in : IN STD_LOGIC;
-      not_a : OUT STD_LOGIC
+      b_in : IN STD_LOGIC;
+      direction : OUT STD_LOGIC
     );
-  END COMPONENT not_gate;
+  END COMPONENT advanced_compare;
+  ATTRIBUTE X_CORE_INFO : STRING;
+  ATTRIBUTE X_CORE_INFO OF better_read_hall_sensor_advanced_compare_0_0_arch: ARCHITECTURE IS "advanced_compare,Vivado 2024.2";
+  ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
+  ATTRIBUTE CHECK_LICENSE_TYPE OF better_read_hall_sensor_advanced_compare_0_0_arch : ARCHITECTURE IS "better_read_hall_sensor_advanced_compare_0_0,advanced_compare,{}";
+  ATTRIBUTE CORE_GENERATION_INFO : STRING;
+  ATTRIBUTE CORE_GENERATION_INFO OF better_read_hall_sensor_advanced_compare_0_0_arch: ARCHITECTURE IS "better_read_hall_sensor_advanced_compare_0_0,advanced_compare,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=advanced_compare,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
+  ATTRIBUTE IP_DEFINITION_SOURCE OF better_read_hall_sensor_advanced_compare_0_0_arch: ARCHITECTURE IS "module_ref";
 BEGIN
-  U0 : not_gate
+  U0 : advanced_compare
     PORT MAP (
       a_in => a_in,
-      not_a => not_a
+      b_in => b_in,
+      direction => direction
     );
-END read_sensor_not_gate_0_0_arch;
+END better_read_hall_sensor_advanced_compare_0_0_arch;

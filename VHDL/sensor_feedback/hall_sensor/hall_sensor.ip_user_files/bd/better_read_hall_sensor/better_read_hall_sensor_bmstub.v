@@ -6,31 +6,30 @@
 
 (* BLOCK_STUB = "true" *)
 module better_read_hall_sensor (
-  a_in_0,
-  b_in_0,
-  clk_0,
-  count,
-  c_out_0,
-  dir,
-  en
+  motor_a,
+  motor_b,
+  clk,
+  rst,
+  external_sensor,
+  count_0
 );
 
   (* X_INTERFACE_IGNORE = "true" *)
-  input a_in_0;
+  input motor_a;
   (* X_INTERFACE_IGNORE = "true" *)
-  input b_in_0;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK_0 CLK" *)
-  (* X_INTERFACE_MODE = "slave CLK.CLK_0" *)
-  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK_0, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk_0, INSERT_VIP 0" *)
-  input clk_0;
+  input motor_b;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.CLK CLK" *)
+  (* X_INTERFACE_MODE = "slave CLK.CLK" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.CLK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk, ASSOCIATED_RESET rst, INSERT_VIP 0" *)
+  input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.RST RST" *)
+  (* X_INTERFACE_MODE = "slave RST.RST" *)
+  (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.RST, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+  input rst;
   (* X_INTERFACE_IGNORE = "true" *)
-  output [10:0]count;
+  input external_sensor;
   (* X_INTERFACE_IGNORE = "true" *)
-  output c_out_0;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output dir;
-  (* X_INTERFACE_IGNORE = "true" *)
-  output en;
+  output [7:0]count_0;
 
   // stub module has no contents
 
