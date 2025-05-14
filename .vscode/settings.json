@@ -1,5 +1,5 @@
 {
-    "cmake.sourceDirectory": "/home/chris/git/pan_tilt_control_system/cpp",
+    "cmake.sourceDirectory": "C:/Users/chris/git/pan_tilt_control_system/cpp",
     "files.associations": {
         "*.tcc": "cpp",
         "fstream": "cpp",
