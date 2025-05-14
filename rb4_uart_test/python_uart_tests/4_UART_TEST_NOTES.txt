@@ -1,0 +1,77 @@
+UART TEST 1 SETUP--------------------------------------------------------------------------
+uart0: setup for task receiver, used for transmitting data from cpp/linux
+uart1: setup as debugger/used to log received data
+
+transmitter doesnt log anymore, but will send 8 bit data with 1kHz, 
+meaning 16 bit data with ca 500Hz
+Same as before data is a counter starting from 0 reaching just under 5000
+
+switched from realterm to python script logging 16-bit data to csv
+
+Baudrate: 9600
+Sender: 1kHz transmission rate
+Using FIFOs on both uart1 and uart0
+#define configCPU_CLOCK_HZ          ( ( unsigned long ) 16000000 )
+#define configTICK_RATE_HZ          ( ( portTickType ) 1000 )
+
+UART CODE  ----------------------------------------------------------------------------
+
+
+TASK CODE (CHANGES MADE TO RX)-------------------------------------------------------------------------------
+void vUartRxTask(void *pv) {
+    TickType_t lastWake = xTaskGetTickCount();
+        INT16U rx;
+        for (;;) {
+            FSM_STATUS = URTRX;
+            rx = uart_get_16int(0);
+            //xQueueSend(xUartTxQueue, &rx, pdMS_TO_TICKS(50));
+                  uart_send_16int(1, rx);
+            //vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(5));
+        }
+}
+
+eliminating delay as it is a benchmark test
+
+DATA TRANSMITTED ---------------------------------------------------------------------------
+transmitted the same as always, counter from 0
+DATA RECEIVED -----------------------------------------------------------------------------
+index	low	high	dec	hex
+0	0x00	0x00	0	0x0000
+1	0x01	0x00	1	0x0001
+2	0x02	0x00	2	0x0002
+3	0x03	0x00	3	0x0003
+4	0x04	0x00	4	0x0004
+5	0x05	0x00	5	0x0005
+6	0x06	0x00	6	0x0006
+7	0x07	0x00	7	0x0007
+8	0x08	0x00	8	0x0008
+9	0x00	0x19	6400	0x1900
+10	0x31	0x00	49	0x0031
+11	0x49	0x00	73	0x0049
+12	0x61	0x00	97	0x0061
+13	0x79	0x00	121	0x0079
+14	0x91	0x00	145	0x0091
+15	0xA9	0x00	169	0x00A9
+16	0xC1	0x00	193	0x00C1
+17	0xD9	0x00	217	0x00D9
+18	0xF1	0x00	241	0x00F1
+19	0x09	0x01	265	0x0109
+20	0x21	0x01	289	0x0121
+21	0x39	0x01	313	0x0139
+22	0x51	0x01	337	0x0151
+23	0x69	0x01	361	0x0169
+OUTTAKE ^^^^
+
+NOTES ------------------------------------------------------------------------------------
+
+okay so there was some kind of jump around sample 9, but i am getting the correct data(ish)
+its counting up from 0 like it is supposed to, but then after that 9th sample there are jumps, 
+so i am not getting every sample 
+So the FIFO holds 8 bytes each byte has a stop bit so at sample 9 the fifo overflows?
+  // 6) 8-N-1 FIFO
+    *mod->UART_LCRH = (1<<4)|(0x3<<5);
+
+the transmitter sends sample every 1ms (1KhZ)
+but the baudrate of 9600/18 (bits to send every sample) = 1.8ms
+after the first 8 bytes in the fifo it overflows
+

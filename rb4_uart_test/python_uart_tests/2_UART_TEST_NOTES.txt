@@ -1,0 +1,63 @@
+UART TEST 1 SETUP--------------------------------------------------------------------------
+uart0: setup for task receiver, used for transmitting data from cpp/linux
+uart1: setup as debugger/used to log received data
+Baudrate: 9600
+Sender: 1kHz transmission rate
+Using FIFOs on both uart1 and uart0
+#define configCPU_CLOCK_HZ          ( ( unsigned long ) 16000000 )
+#define configTICK_RATE_HZ          ( ( portTickType ) 1000 )
+
+UART CODE (CHANGES TO uart_getc) ----------------------------------------------------------------------------
+uint8_t uart_getc(uint8_t m)
+{
+    const UARTMod *mod = &uart_mods[m];
+
+    while (*mod->UART_FR & UART_FR_RXFE) {
+        taskYIELD(); //TASK YIELD INSTEAD OF DELAY
+    }
+    return (uint8_t)(*mod->UART_DR & 0xFF);
+}
+
+TASK CODE (CHANGES MADE)-------------------------------------------------------------------------------
+void vUartRxTask(void *pv) {
+    TickType_t lastWake = xTaskGetTickCount();
+        INT16U rx;
+        for (;;) {
+            FSM_STATUS = URTRX;
+            rx = uart_get_16int(0);
+            xQueueSend(xUartTxQueue, &rx, pdMS_TO_TICKS(50));
+                  uart_send_16int(1, rx);
+            //vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(5));
+        }
+}
+
+void vUartTxTask(void *pvParameters)
+{
+    TickType_t lastWake = xTaskGetTickCount();
+    INT16U tx;
+      for (;;) {
+          FSM_STATUS = URTTX;
+          if(xQueueReceive(xUartTxQueue, &tx, pdMS_TO_TICKS(50)) == pdTRUE){
+              //uart_send_16int(0, tx);
+          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(500));
+    }
+}
+
+DATA COMPARISION ------------------------------------------------------------------------
+tx hex	rx hex	tx binary	rx binary
+0x0000	0x0102	0b0000000000000000	0b0000000100000010
+0x0001	0x0304	0b0000000000000001	0b0000001100000100
+0x0002	0x0506	0b0000000000000010	0b0000010100000110
+0x0003	0x0708	0b0000000000000011	0b0000011100001000
+0x0004	0x090A	0b0000000000000100	0b0000100100001010
+0x0005	0x0B0C	0b0000000000000101	0b0000101100001100
+0x0006	0x233B	0b0000000000000110	0b0010001100111011
+0x0007	0x536B	0b0000000000000111	0b0101001101101011
+
+NOTES ------------------------------------------------------------------------------------
+starts receiving at sample 102
+Receiving on every 200 sample only? (cirka)	
+
+the debugging might slow down the uart 
+furthermore the task delay on the receiver is 5ms --> 200Hz, so it is only receiving every 200Hz (at most)
+but i am trying to send at 1Khz

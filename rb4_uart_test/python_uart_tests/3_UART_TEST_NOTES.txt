@@ -1,0 +1,104 @@
+UART TEST 1 SETUP--------------------------------------------------------------------------
+uart0: setup for task receiver, used for transmitting data from cpp/linux
+uart1: setup as debugger/used to log received data
+
+added time control to the transmitter script; it will have time stamps and only transmit
+for 10 seconds
+
+switched serial com on windows from hercules to realterm
+Hercules Logged 428 bytes using hercules (logged for transmission = 10 sec)
+relaterm it logged 1084??
+
+Baudrate: 9600
+Sender: 1kHz transmission rate
+Using FIFOs on both uart1 and uart0
+#define configCPU_CLOCK_HZ          ( ( unsigned long ) 16000000 )
+#define configTICK_RATE_HZ          ( ( portTickType ) 1000 )
+
+UART CODE (CHANGES TO uart_get16int) ----------------------------------------------------------------------------
+INT16U uart_get_16int(uint8_t m)
+{
+    const UARTMod *mod = &uart_mods[m];
+    uint8_t lo, hi;
+
+    taskENTER_CRITICAL(); //block context switches for 2contigious bytes
+      while (*mod->UART_FR & UART_FR_RXFE);
+      lo = (uint8_t)(*mod->UART_DR & 0xFF);
+
+      while (*mod->UART_FR & UART_FR_RXFE);
+      hi = (uint8_t)(*mod->UART_DR & 0xFF);
+    taskEXIT_CRITICAL();
+
+    return (INT16U)((hi << 8) | lo);
+}
+
+
+TASK CODE (CHANGES MADE)-------------------------------------------------------------------------------
+void vUartRxTask(void *pv) {
+    TickType_t lastWake = xTaskGetTickCount();
+        INT16U rx;
+        for (;;) {
+            FSM_STATUS = URTRX;
+            rx = uart_get_16int(0);
+            xQueueSend(xUartTxQueue, &rx, pdMS_TO_TICKS(50));
+                  uart_send_16int(1, rx);
+            //vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(5));
+        }
+}
+
+void vUartTxTask(void *pvParameters)
+{
+    TickType_t lastWake = xTaskGetTickCount();
+    INT16U tx;
+      for (;;) {
+          FSM_STATUS = URTTX;
+          if(xQueueReceive(xUartTxQueue, &tx, pdMS_TO_TICKS(50)) == pdTRUE){
+              //uart_send_16int(0, tx);
+          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(500));
+    }
+}
+DATA TRANSMITTED ---------------------------------------------------------------------------
+Im observing that the tx log is of 4951 samples
+but i am trying to send for 10 seconds with a frequency of 1000Hz.....
+what is happening is that i am trying to send 16 bits as if it were 8 bits 
+uart protocol only handles 8 data bits at a time, but has to send 10 bits at a time
+baud: 9600 bits/sec
+data size: 10 bits/byte
+baud/datasize = 960 bytes/sec
+2 bytes pr message means --> 480 messages
+makes sense
+DATA RECEIVED -----------------------------------------------------------------------------
+Data received is 1028 samples (chars) accoding to realterm 
+1/5 of the data sent?
+maybe its I/O lag from the transmission
+I am still only getting 16 bits over 2 packages from realterm, 
+so i cant really compare the transmit data to the recieved data
+DATA COMPARISION --------------------------------------------------------------------------
+tx_hex	rx_hex	tx_binary	rx_binary	tx_dec	rx_dec
+0x3D	0x31	0b00111101	0b00110001	61	49
+0x3D	0x37	0b00111101	0b00110111	61	55
+0x3D	0x34	0b00111101	0b00110100	61	52
+0x20	0x37	0b00100000	0b00110111	32	55
+0x53	0x31	0b01010011	0b00110001	83	49
+0x54	0x33	0b01010100	0b00110011	84	51
+0x41	0x38	0b01000001	0b00111000	65	56
+0x52	0x38	0b01010010	0b00111000	82	56
+0x54	0x35	0b01010100	0b00110101	84	53
+0x3A	0x31	0b00111010	0b00110001	58	49
+0x20	0x2C	0b00100000	0b00101100	32	44
+0x32	0x30	0b00110010	0b00110000	50	48
+0x30	0x30	0b00110000	0b00110000	48	48
+0x32	0x30	0b00110010	0b00110000	50	48
+0x35	0x30	0b00110101	0b00110000	53	48
+0x2D	0x45	0b00101101	0b01000101	45	69
+0x30	0x30	0b00110000	0b00110000	48	48
+0x35	0x30	0b00110101	0b00110000	53	48
+0x2D	0x30	0b00101101	0b00110000	45	48
+0x31	0x30	0b00110001	0b00110000	49	48
+0x33	0x30	0b00110011	0b00110000	51	48
+0x20	0x30	0b00100000	0b00110000	32	48
+0x31	0x30	0b00110001	0b00110000	49	48
+0x31	0x30	0b00110001	0b00110000	49	48
+
+
+NOTES ------------------------------------------------------------------------------------

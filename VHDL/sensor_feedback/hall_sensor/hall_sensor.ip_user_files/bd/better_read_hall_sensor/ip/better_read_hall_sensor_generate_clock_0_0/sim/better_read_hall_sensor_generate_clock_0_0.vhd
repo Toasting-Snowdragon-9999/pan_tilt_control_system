@@ -81,7 +81,7 @@ ARCHITECTURE better_read_hall_sensor_generate_clock_0_0_arch OF better_read_hall
   ATTRIBUTE X_INTERFACE_PARAMETER OF gen_clk: SIGNAL IS "XIL_INTERFACENAME gen_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_generate_clock_0_0_gen_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF internal_clock: SIGNAL IS "xilinx.com:signal:clock:1.0 internal_clock CLK";
   ATTRIBUTE X_INTERFACE_MODE OF internal_clock: SIGNAL IS "slave internal_clock";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF internal_clock: SIGNAL IS "XIL_INTERFACENAME internal_clock, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk_0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF internal_clock: SIGNAL IS "XIL_INTERFACENAME internal_clock, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk, INSERT_VIP 0";
 BEGIN
   U0 : generate_clock
     PORT MAP (

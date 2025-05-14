@@ -59,7 +59,8 @@ ENTITY better_read_hall_sensor_advanced_counter_0_0 IS
     up : IN STD_LOGIC;
     en : IN STD_LOGIC;
     rst : IN STD_LOGIC;
-    count : OUT STD_LOGIC_VECTOR(10 DOWNTO 0)
+    clr : IN STD_LOGIC;
+    count : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END better_read_hall_sensor_advanced_counter_0_0;
 
@@ -75,7 +76,8 @@ ARCHITECTURE better_read_hall_sensor_advanced_counter_0_0_arch OF better_read_ha
       up : IN STD_LOGIC;
       en : IN STD_LOGIC;
       rst : IN STD_LOGIC;
-      count : OUT STD_LOGIC_VECTOR(10 DOWNTO 0)
+      clr : IN STD_LOGIC;
+      count : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
     );
   END COMPONENT advanced_counter;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -83,20 +85,21 @@ ARCHITECTURE better_read_hall_sensor_advanced_counter_0_0_arch OF better_read_ha
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
   ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
   ATTRIBUTE X_INTERFACE_MODE OF clk: SIGNAL IS "slave clk";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk_0, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF rst: SIGNAL IS "xilinx.com:signal:reset:1.0 rst RST";
   ATTRIBUTE X_INTERFACE_MODE OF rst: SIGNAL IS "slave rst";
   ATTRIBUTE X_INTERFACE_PARAMETER OF rst: SIGNAL IS "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 BEGIN
   U0 : advanced_counter
     GENERIC MAP (
-      n_bits => 11
+      n_bits => 8
     )
     PORT MAP (
       clk => clk,
       up => up,
       en => en,
       rst => rst,
+      clr => clr,
       count => count
     );
 END better_read_hall_sensor_advanced_counter_0_0_arch;

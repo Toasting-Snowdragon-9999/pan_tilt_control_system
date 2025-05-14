@@ -244,13 +244,7 @@
           },
           "clk": {
             "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "CLK_DOMAIN": {
-                "value": "read_sensor_internal_clock_0",
-                "value_src": "default_prop"
-              }
-            }
+            "direction": "I"
           },
           "result": {
             "direction": "O",
@@ -271,8 +265,8 @@
       "advanced_compare_0_direction": {
         "ports": [
           "advanced_compare_0/direction",
-          "not_gate_0/a_in",
-          "positiv_count/en"
+          "positiv_count/en",
+          "not_gate_0/a_in"
         ]
       },
       "b_in_0_1": {
@@ -293,8 +287,8 @@
       "internal_clock_0_1": {
         "ports": [
           "internal_clock_0",
-          "subtract_0/clk",
-          "generate_clock_0/internal_clock"
+          "generate_clock_0/internal_clock",
+          "subtract_0/clk"
         ]
       },
       "negativ_count_count": {

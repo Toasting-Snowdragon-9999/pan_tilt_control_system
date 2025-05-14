@@ -1,0 +1,130 @@
+UART TEST 1 SETUP--------------------------------------------------------------------------
+uart0: setup for task receiver, used for transmitting data from cpp/linux
+uart1: setup as debugger/used to log received data
+Baudrate: 9600
+Sender: 1kHz transmission rate
+Using FIFOs on both uart1 and uart0
+#define configCPU_CLOCK_HZ          ( ( unsigned long ) 16000000 )
+#define configTICK_RATE_HZ          ( ( portTickType ) 1000 )
+UART CODE ----------------------------------------------------------------------------
+uint8_t uart_getc(uint8_t m)
+{
+    const UARTMod *mod = &uart_mods[m];
+    while (*mod->UART_FR & UART_FR_RXFE) {
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+    return (uint8_t)(*mod->UART_DR & 0xFF);
+}
+
+void uart_putc(uint8_t m, uint8_t b)
+{
+    const UARTMod *mod = &uart_mods[m];
+    while (*mod->UART_FR & UART_FR_TXFF) { }
+    *mod->UART_DR = b;
+}
+
+INT16U uart_get_16int(uint8_t m)
+{
+    uint8_t lo = uart_getc(m);
+    uint8_t hi = uart_getc(m);
+    return (INT16U)(hi << 8) | lo;
+}
+
+void uart_send_16int(uint8_t m, INT16U value)
+{
+    uint8_t *p = (uint8_t*)&value;
+    size_t i;
+    for (i = 0; i < sizeof(INT16U); i++)
+        uart_putc(m, p[i]);
+}
+
+void uart_init(uint8_t m, uint32_t baud)
+{
+    const UARTMod *mod = &uart_mods[m];
+
+    // 1) Enable GPIO & UART clocks
+    SYSCTL_RCGCGPIO_R |=  (1 << mod->gpio_bit);
+    SYSCTL_RCGCUART_R |=  (1 << mod->uart_bit);
+    // 2) Wait for them to really turn on
+    while(!(SYSCTL_PRGPIO_R &  (1 << mod->gpio_bit))) {;}
+    while(!(SYSCTL_PRUART_R &  (1 << mod->uart_bit))) {;}
+
+    // 3) Disable UART while we configure it
+    *mod->UART_CTL  &= ~UART_CTL_UARTEN;
+
+    // 4) Configure the pins (PA0/1 or PB0/1)
+    *mod->GPIOLOCK   = 0x4C4F434B;           // unlock if needed
+    *mod->GPIOCR    |=  (mod->rx_pin|mod->tx_pin);
+    *mod->GPIOAFSEL |=  (mod->rx_pin|mod->tx_pin);
+    *mod->GPIOPCTL   =  (*mod->GPIOPCTL & ~mod->pctl_mask)
+                     |   mod->pctl_val;
+    *mod->GPIODEN   |=  (mod->rx_pin|mod->tx_pin);
+    *mod->GPIODIR   =  (*mod->GPIODIR & ~mod->rx_pin)
+                    |   mod->tx_pin;
+
+    // 5) Set up baud
+    uint32_t ibrd = 16000000/(16*baud);
+    uint32_t fbrd = (uint32_t)(((16000000/(16.0f*baud)-ibrd)*64)+0.5f);
+    *mod->UART_IBRD = ibrd;
+    *mod->UART_FBRD = fbrd;
+
+    // 6) 8-N-1 FIFO
+    *mod->UART_LCRH = (1<<4)|(0x3<<5);
+
+    // 7) Re-enable UART + TX/RX
+    *mod->UART_CTL  = UART_CTL_UARTEN
+                    | UART_CTL_TXE
+                    | UART_CTL_RXE;
+
+    // (optional) interrupts…
+}
+
+TASK CODE -------------------------------------------------------------------------------
+void vUartRxTask(void *pv) {
+    TickType_t lastWake = xTaskGetTickCount();
+    INT16U rx;
+    FSM_STATUS = URTRX;
+    for (;;) {
+        rx = uart_get_16int(0);
+        xQueueSend(xUartTxQueue, &rx, pdMS_TO_TICKS(50));
+           uart_print(1,"uart rx char: ");
+            uart_send_16int(1, rx);
+            uart_print(1,"\n");
+        vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(5));
+    }
+}
+
+void vUartTxTask(void *pv) {
+    TickType_t lastWake = xTaskGetTickCount();
+    INT16U tx;
+    for (;;) {
+	FSM_STATUS = URTTX;
+        if (xQueueReceive(xUartTxQueue, &tx, pdMS_TO_TICKS(50)) == pdTRUE) {
+            uart_send_16int(0, tx);
+        }
+        vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(500));
+    }
+}
+
+DATA COMPARISION ------------------------------------------------------------------------
+tx hex	rx hex	tx binary	rx binary
+0x0000	0x0102	0b0000000000000000	0b0000000100000010
+0x0001	0x0304	0b0000000000000001	0b0000001100000100
+0x0002	0x0506	0b0000000000000010	0b0000010100000110
+0x0003	0x0708	0b0000000000000011	0b0000011100001000
+0x0004	0x090A	0b0000000000000100	0b0000100100001010
+0x0005	0x0B0C	0b0000000000000101	0b0000101100001100
+0x0006	0x233B	0b0000000000000110	0b0010001100111011
+0x0007	0x536B	0b0000000000000111	0b0101001101101011
+
+NOTES ------------------------------------------------------------------------------------
+starts receiving at sample 102
+Receiving on every 200 sample only? (cirka)	
+
+the debugging might slow down the uart 
+furthermore the task delay on the receiver is 5ms --> 200Hz, so it is only receiving every 200Hz (at most)
+but i am trying to send at 1Khz
+
+also there is a 10ms task delay on the uart getc task, so that will (further) only pick up data every 10ms!
+
+
