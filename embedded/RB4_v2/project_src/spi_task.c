@@ -19,17 +19,15 @@ extern QueueHandle_t xUartRxQueue;
 
 void vSpiRxTask(void *pv) { //receive from fpga to tiva
 
-        INT16U spirx;
-        TickType_t lastWake = xTaskGetTickCount();
+        INT16S spirx;
         for (;;) {
-
 
             //spirx = SPI_read();
             //spirx = uart0_get16();
 
             if(xQueueReceive(xSpiRxQueue, &spirx, portMAX_DELAY) == pdTRUE){ //find appropriate delay and create macro?
                 uart1_print("\r\n<<<SPI_RECIEVER>>>\r\n");
-                uart1_print("\r\nSpiRxTask received: 0x%04x, 0b%s, d:%u \r\n", spirx, rx_binary_string(spirx), (unsigned)spirx); //debugger
+                uart1_print("\r\nSpiRxTask received: 0x%04x, 0b%s, d:%d \r\n", spirx, rx_binary_string(spirx), spirx); //debugger
             }
 
 
@@ -39,14 +37,12 @@ void vSpiRxTask(void *pv) { //receive from fpga to tiva
 
 void vSpiTxTask(void *pvParameters)
 {
-    TickType_t lastWake = xTaskGetTickCount();
-    INT16U spitx;
-
+    INT16S spitx;
     for (;;) {
 
           if(xQueueReceive(xSpiTxQueue, &spitx, portMAX_DELAY) == pdTRUE){
               uart1_print("\r\n<<<SPI_TRANSMITTER>>>\r\n");
-              uart1_print("\r\nSpiTxTask received: 0x%04x, 0b%s, d:%u \r\n", spitx, rx_binary_string(spitx), (unsigned)spitx); //debugger
+              uart1_print("\r\nSpiTxTask received: 0x%04x, 0b%s, d:%d \r\n", spitx, rx_binary_string(spitx), spitx); //debugger
               xQueueSend(xUartTxQueue, &spitx, 0);
               //SPI_write(spitx);
           }

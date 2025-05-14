@@ -14,7 +14,7 @@
 #define PID_FREQ_MS   1000   //delay/frequecy af controller
 
 typedef struct {
-     kp;       // Proportional gain
+    FP32 kp;       // Proportional gain
     FP32 ki;       // Integral gain
     FP32 kd;       // Derivative gain
     FP32 Ts;       // Sampling time
@@ -34,7 +34,7 @@ void PID_Init(PIDController_t *pid,
     FP32 kp, FP32 ki, FP32 kd, FP32 Ts, FP32 N,
     FP32 output_min, FP32 output_max);
 
-INT16U PID_Compute(PIDController_t *pid, INT8U visionReference, INT8U encMeasuredVal);
+INT16S PID_Compute(PIDController_t *pid, INT8S visionReference, INT8S encMeasuredVal);
 
 void vPanControllerTask(void *pvParameters);
 void vTiltControllerTask(void *pvParameters);

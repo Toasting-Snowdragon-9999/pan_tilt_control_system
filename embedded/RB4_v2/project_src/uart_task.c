@@ -17,8 +17,8 @@ extern QueueHandle_t xTiltCtrlOutQueue;
 
 void vUartRxTask(void *pv) {
 
-        INT16U uartrx;
-        INT16U spirx;
+        INT16S uartrx;
+        INT16S spirx;
         for (;;) {
 
             FSM_STATUS = URTRX;
@@ -28,7 +28,7 @@ void vUartRxTask(void *pv) {
 
             if((xQueueSend(xUartRxQueue, &uartrx, portMAX_DELAY) == pdTRUE)){
                 uart1_print("\r\n<<<UartRxTask>>>\r\n");
-                uart1_print("\r\nUartRxTask received: 0x%04x, 0b%s, d:%u \r\n", uartrx, rx_binary_string(uartrx), (unsigned)uartrx); //debugger
+                uart1_print("\r\nUartRxTask received: 0x%04x, 0b%s, d:%d \r\n", uartrx, rx_binary_string(uartrx), uartrx); //debugger
                 xQueueSend(xSpiRxQueue, &spirx, 0);
             }
 
@@ -40,7 +40,7 @@ void vUartRxTask(void *pv) {
 
 void vUartTxTask(void *pvParameters)
 {
-    INT16U tx;
+    INT16S tx;
 
       for (;;) {
 

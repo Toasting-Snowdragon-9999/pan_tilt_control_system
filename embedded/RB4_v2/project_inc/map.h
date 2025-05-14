@@ -27,14 +27,14 @@
 
 extern INT16U MotorFrame;
 
-INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed);
-void UnpackFrame(INT16U *Frame, INT8U *panVal, INT8U *tiltVal, INT8U *panDir, INT8U *tiltDir);
-INT8U ErrorToSpeed(INT8U error);
+void CreateFrame(INT16S *Frame, INT8S *panDir, INT8S *panSpeed, INT8S *tiltDir, INT8S *tiltSpeed);
+void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal);
+INT8S ErrorToSpeed(INT8S error);
 //INT8U EncValToAngle(INT8U encVal);
 void vSpiGetFrameTask(void *pvParameters);
 void vSpiSendFrameTask(void *pvParameters);
 //void vUartSendFrameTask(void *pvParameters);
 void vUartGetFrameTask(void *pvParameters);
 
-static inline INT8U f32_to_u8(FP32 f);
+static inline INT8S f32_to_u8(FP32 f);
 #endif /* PROJECT_INC_MAP_H_ */

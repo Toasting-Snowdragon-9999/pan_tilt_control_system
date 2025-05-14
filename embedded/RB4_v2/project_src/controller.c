@@ -10,7 +10,6 @@
 #include "common.h"
 #include "controller.h"
 
-//ALL A BIT QUEUES
 extern QueueHandle_t xPanCtrlOutQueue;
 extern QueueHandle_t xTiltCtrlOutQueue;
 
@@ -20,11 +19,6 @@ extern QueueHandle_t xTiltCtrlInQueue;
 extern QueueHandle_t xPanFbInQueue;
 extern QueueHandle_t xTiltFbInQueue;
 
-//extern QueueHandle_t xUartTxQueue;
-//extern QueueHandle_t xUartRxQueue;
-
-//extern QueueHandle_t xPanFbOutQueue;
-//extern QueueHandle_t xTiltFbOutQueue;
 
 void PID_Init(PIDController_t *pid,
               FP32 kp, FP32 ki, FP32 kd, FP32 Ts, FP32 N,
@@ -52,13 +46,13 @@ void PID_Init(PIDController_t *pid,
     // U_d(z) / e(z) = gamma * (z-1) / (alpha*z + beta)
 }
 
-INT16U PID_Compute(PIDController_t *pid, INT8U visionReference, INT8U encMeasuredVal)
+INT16S PID_Compute(PIDController_t *pid, INT8S visionReference, INT8S encMeasuredVal)
 {
-    INT8U error = visionReference - encMeasuredVal;
-    uart1_print("\r\nerror: 0x%04x, 0b%s, d:%u \r\n", error, rx_binary_string(error), (unsigned)error);
+    INT8S error = visionReference - encMeasuredVal;
+    uart1_print("\r\n error: 0x%04x, 0b%s, d:%d \r\n", error, rx_binary_string(error), error);
     // Proportional
     FP32 P = pid->kp * error;
-    uart1_print("\r\nProportional: 0x%04x, 0b%s, d:%u \r\n", P, rx_binary_string(P), (unsigned)P);
+    uart1_print("\r\nProportional: 0x%04x, 0b%s, d:%d \r\n", P, rx_binary_string(P), P);
 
     // Integral
     //FP32 I = pid->prev_integral + pid->ki * (pid->Ts / 2) * (error + pid->prev_error);
@@ -67,13 +61,13 @@ INT16U PID_Compute(PIDController_t *pid, INT8U visionReference, INT8U encMeasure
     // Derivative
     FP32 D = - (pid->alpha / pid->beta) * pid->prev_derivative + (pid->gamma / pid->beta) * (error - pid->prev_error);
     pid->prev_derivative = D; // Save the derivative term for next calculation
-    uart1_print("\r\nDerivative: 0x%04x, 0b%s, d:%u \r\n", D, rx_binary_string(D), (unsigned)D);
+    uart1_print("\r\nDerivative: 0x%04x, 0b%s, d:%d \r\n", D, rx_binary_string(D), D);
 
     // Update previous error for next calculation
     pid->prev_error = error;
 
     // Compute PID output
-    INT16U output = (INT16U)(P + D);
+    INT16S output = (INT16S)(P + D);
 
     // Clamp output to min/max
     /*if (output > pid->output_max) {
@@ -99,23 +93,23 @@ void vPanControllerTask(void *pvParameters){
 
     PIDController_t pid;
     PID_Init(&pid, 350, 1, 10, 0, 1000, 12, 12);
-    INT8U panVisionRef = 100;
-    INT8U panEncMeasuredVal =  0;
-    FP32 panOutput = 0;
-    INT8U panIn; //pan input from uart
+    INT8S panVisionRef = 100;
+    INT8S panEncMeasuredVal =  0;
+    FP32 panOutput = 0; //INT16S??
+    INT8S panIn; //pan input from uart
     for( ;; ){
         uart1_print("\r\n<<<PanControllerTask>>>\r\n");
         FSM_STATUS = CTRL;
 
         if((xQueueReceive(xPanCtrlInQueue, &panIn, portMAX_DELAY) == pdTRUE)){
             panVisionRef = panIn; //updating reference
-            uart1_print("\r\npanIn: 0x%04x, 0b%s, d:%u \r\n", panIn, rx_binary_string(panIn), (unsigned)panIn);
+            uart1_print("\r\npanIn: 0x%04x, 0b%s, d:%d \r\n", panIn, rx_binary_string(panIn), panIn);
         }
 
         if((xQueueReceive(xPanFbInQueue, &panEncMeasuredVal, portMAX_DELAY) == pdTRUE)){
             panOutput = PID_Compute(&pid, panVisionRef, panEncMeasuredVal);
 
-            uart1_print("\r\npanOutput:  0x%04x, 0b%s, d:%u \r\n", panOutput, rx_binary_string(panOutput), (unsigned)panOutput);
+            uart1_print("\r\npanOutput:  0x%04x, 0b%s, d:%d \r\n", panOutput, rx_binary_string(panOutput), panOutput);
 
             //PAN CTRL OUT (to map then to motor)
             xQueueSend(xPanCtrlOutQueue, &panOutput, 0);
@@ -131,28 +125,28 @@ void vPanControllerTask(void *pvParameters){
 
 void vTiltControllerTask(void *pvParameters)
 {
-
     PIDController_t pid;
     PID_Init(&pid, 350, 1, 10, 0, 1000, 12, 12);
-    INT8U tiltVisionRef   = 100;
-    INT8U tiltEncMeasuredVal =  0;
-    FP32 tiltOutput = 0;
-    INT8U tiltIn; //tilt input from uart
+    INT8S tiltVisionRef   = 100;
+    INT8S tiltEncMeasuredVal =  0;
+    FP32 tiltOutput = 0; //INT16S??
+    INT8S tiltIn; //tilt input from uart
 
     for( ;; )
     {
        FSM_STATUS = CTRL;
        uart1_print("<<<TiltControllerTask>>>\r\n");
+
        if( (xQueueReceive(xTiltCtrlInQueue, &tiltIn, portMAX_DELAY) == pdTRUE)){
            tiltVisionRef = tiltIn; //updating reference
-         uart1_print("tiltIn: 0x%04x, 0b%s, d:%u \r\n", tiltIn, rx_binary_string(tiltIn), (unsigned)tiltIn);
+         uart1_print("tiltIn: 0x%04x, 0b%s, d:%d \r\n", tiltIn, rx_binary_string(tiltIn), tiltIn);
        }
 
        if((xQueueReceive(xTiltFbInQueue, &tiltEncMeasuredVal, portMAX_DELAY) == pdTRUE)){
 
           tiltOutput = PID_Compute(&pid, tiltVisionRef, tiltEncMeasuredVal);
 
-          uart1_print("tiltOutput:  0x%04x, 0b%s, d:%u \r\n", tiltOutput, rx_binary_string(tiltOutput), (unsigned)tiltOutput);
+          uart1_print("tiltOutput:  0x%04x, 0b%s, d:%d \r\n", tiltOutput, rx_binary_string(tiltOutput), tiltOutput);
 
           //TILT CTRL OUT (to map then to motor)
           xQueueSend(xTiltCtrlOutQueue, &tiltOutput, 0);
