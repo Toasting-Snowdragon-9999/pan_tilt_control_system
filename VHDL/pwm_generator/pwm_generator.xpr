@@ -219,7 +219,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../vivado/my_ip_repo/pwm_generator_pantilt_0/component.xml">
+      <File Path="$PPRDIR/../ip_repo/pwm_generator_v0/component.xml">
         <FileInfo SFType="IPXACT"/>
       </File>
       <Config>
