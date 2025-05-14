@@ -1,16 +1,17 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x6DA1D41102654AA7",
+      "boundary_crc": "0xDF8C401F4083BDC7",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../hall_sensor.gen/sources_1/bd/better_read_hall_sensor",
       "name": "better_read_hall_sensor",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.2"
+      "tool_version": "2024.2",
+      "validated": "true"
     },
     "design_tree": {
-      "determin_direction": "",
+      "determine_direction": "",
       "get_deg": "",
       "generate_clock_0": ""
     },
@@ -23,25 +24,64 @@
       },
       "clk": {
         "type": "clk",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "rst",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "better_read_hall_sensor_clk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
       },
-      "deg_times_four": {
-        "direction": "O",
-        "left": "10",
-        "right": "0"
-      },
-      "external_hall": {
+      "rst": {
         "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "external_sensor": {
         "direction": "I"
+      },
+      "count_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
       }
     },
     "components": {
-      "determin_direction": {
+      "determine_direction": {
         "vlnv": "xilinx.com:module_ref:advanced_compare:1.0",
         "ip_revision": "1",
         "xci_name": "better_read_hall_sensor_advanced_compare_0_0",
         "xci_path": "ip\\better_read_hall_sensor_advanced_compare_0_0\\better_read_hall_sensor_advanced_compare_0_0.xci",
-        "inst_hier_path": "determin_direction",
+        "inst_hier_path": "determine_direction",
         "reference_info": {
           "ref_type": "hdl",
           "ref_name": "advanced_compare",
@@ -67,7 +107,7 @@
         "inst_hier_path": "get_deg",
         "parameters": {
           "n_bits": {
-            "value": "11"
+            "value": "8"
           }
         },
         "reference_info": {
@@ -85,7 +125,7 @@
                 "value_src": "constant"
               },
               "CLK_DOMAIN": {
-                "value": "better_read_hall_sensor_clk_0",
+                "value": "better_read_hall_sensor_clk",
                 "value_src": "default_prop"
               }
             }
@@ -114,9 +154,12 @@
             "type": "rst",
             "direction": "I"
           },
+          "clr": {
+            "direction": "I"
+          },
           "count": {
             "direction": "O",
-            "left": "10",
+            "left": "7",
             "right": "0"
           }
         }
@@ -144,7 +187,7 @@
             "direction": "I",
             "parameters": {
               "CLK_DOMAIN": {
-                "value": "better_read_hall_sensor_clk_0",
+                "value": "better_read_hall_sensor_clk",
                 "value_src": "default_prop"
               }
             }
@@ -160,28 +203,34 @@
       "a_in_0_1": {
         "ports": [
           "motor_a",
-          "determin_direction/a_in",
+          "determine_direction/a_in",
           "generate_clock_0/pwm_a"
         ]
       },
       "advanced_compare_0_direction": {
         "ports": [
-          "determin_direction/direction",
+          "determine_direction/direction",
           "get_deg/up"
         ]
       },
       "b_in_0_1": {
         "ports": [
           "motor_b",
-          "determin_direction/b_in",
+          "determine_direction/b_in",
           "generate_clock_0/pwm_b"
         ]
       },
       "clk_0_1": {
         "ports": [
           "clk",
-          "generate_clock_0/internal_clock",
-          "get_deg/clk"
+          "get_deg/clk",
+          "generate_clock_0/internal_clock"
+        ]
+      },
+      "clr_0_1": {
+        "ports": [
+          "external_sensor",
+          "get_deg/clr"
         ]
       },
       "generate_clock_0_gen_clk": {
@@ -193,12 +242,12 @@
       "get_deg_count": {
         "ports": [
           "get_deg/count",
-          "deg_times_four"
+          "count_0"
         ]
       },
       "rst_0_1": {
         "ports": [
-          "external_hall",
+          "rst",
           "get_deg/rst"
         ]
       }

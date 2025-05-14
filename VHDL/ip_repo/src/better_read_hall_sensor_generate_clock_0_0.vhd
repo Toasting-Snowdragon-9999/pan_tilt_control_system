@@ -46,51 +46,56 @@
 -- 
 -- DO NOT MODIFY THIS FILE.
 
--- IP VLNV: xilinx.com:module_ref:subtract:1.0
+-- IP VLNV: xilinx.com:module_ref:generate_clock:1.0
 -- IP Revision: 1
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY read_sensor_subtract_0_0 IS
+ENTITY better_read_hall_sensor_generate_clock_0_0 IS
   PORT (
-    a_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    b_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-    clk : IN STD_LOGIC;
-    result : OUT STD_LOGIC_VECTOR(10 DOWNTO 0)
+    pwm_a : IN STD_LOGIC;
+    pwm_b : IN STD_LOGIC;
+    internal_clock : IN STD_LOGIC;
+    gen_clk : OUT STD_LOGIC
   );
-END read_sensor_subtract_0_0;
+END better_read_hall_sensor_generate_clock_0_0;
 
-ARCHITECTURE read_sensor_subtract_0_0_arch OF read_sensor_subtract_0_0 IS
+ARCHITECTURE better_read_hall_sensor_generate_clock_0_0_arch OF better_read_hall_sensor_generate_clock_0_0 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF read_sensor_subtract_0_0_arch: ARCHITECTURE IS "yes";
-  COMPONENT subtract IS
-    GENERIC (
-      n_bits : INTEGER
-    );
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF better_read_hall_sensor_generate_clock_0_0_arch: ARCHITECTURE IS "yes";
+  COMPONENT generate_clock IS
     PORT (
-      a_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-      b_in : IN STD_LOGIC_VECTOR(10 DOWNTO 0);
-      clk : IN STD_LOGIC;
-      result : OUT STD_LOGIC_VECTOR(10 DOWNTO 0)
+      pwm_a : IN STD_LOGIC;
+      pwm_b : IN STD_LOGIC;
+      internal_clock : IN STD_LOGIC;
+      gen_clk : OUT STD_LOGIC
     );
-  END COMPONENT subtract;
+  END COMPONENT generate_clock;
+  ATTRIBUTE X_CORE_INFO : STRING;
+  ATTRIBUTE X_CORE_INFO OF better_read_hall_sensor_generate_clock_0_0_arch: ARCHITECTURE IS "generate_clock,Vivado 2024.2";
+  ATTRIBUTE CHECK_LICENSE_TYPE : STRING;
+  ATTRIBUTE CHECK_LICENSE_TYPE OF better_read_hall_sensor_generate_clock_0_0_arch : ARCHITECTURE IS "better_read_hall_sensor_generate_clock_0_0,generate_clock,{}";
+  ATTRIBUTE CORE_GENERATION_INFO : STRING;
+  ATTRIBUTE CORE_GENERATION_INFO OF better_read_hall_sensor_generate_clock_0_0_arch: ARCHITECTURE IS "better_read_hall_sensor_generate_clock_0_0,generate_clock,{x_ipProduct=Vivado 2024.2,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=generate_clock,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VHDL,x_ipSimLanguage=MIXED}";
+  ATTRIBUTE IP_DEFINITION_SOURCE : STRING;
+  ATTRIBUTE IP_DEFINITION_SOURCE OF better_read_hall_sensor_generate_clock_0_0_arch: ARCHITECTURE IS "module_ref";
   ATTRIBUTE X_INTERFACE_INFO : STRING;
   ATTRIBUTE X_INTERFACE_MODE : STRING;
   ATTRIBUTE X_INTERFACE_PARAMETER : STRING;
-  ATTRIBUTE X_INTERFACE_INFO OF clk: SIGNAL IS "xilinx.com:signal:clock:1.0 clk CLK";
-  ATTRIBUTE X_INTERFACE_MODE OF clk: SIGNAL IS "slave clk";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF clk: SIGNAL IS "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN read_sensor_generate_clock_0_0_gen_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF gen_clk: SIGNAL IS "xilinx.com:signal:clock:1.0 gen_clk CLK";
+  ATTRIBUTE X_INTERFACE_MODE OF gen_clk: SIGNAL IS "master gen_clk";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF gen_clk: SIGNAL IS "XIL_INTERFACENAME gen_clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_generate_clock_0_0_gen_clk, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF internal_clock: SIGNAL IS "xilinx.com:signal:clock:1.0 internal_clock CLK";
+  ATTRIBUTE X_INTERFACE_MODE OF internal_clock: SIGNAL IS "slave internal_clock";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF internal_clock: SIGNAL IS "XIL_INTERFACENAME internal_clock, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN better_read_hall_sensor_clk, INSERT_VIP 0";
 BEGIN
-  U0 : subtract
-    GENERIC MAP (
-      n_bits => 11
-    )
+  U0 : generate_clock
     PORT MAP (
-      a_in => a_in,
-      b_in => b_in,
-      clk => clk,
-      result => result
+      pwm_a => pwm_a,
+      pwm_b => pwm_b,
+      internal_clock => internal_clock,
+      gen_clk => gen_clk
     );
-END read_sensor_subtract_0_0_arch;
+END better_read_hall_sensor_generate_clock_0_0_arch;

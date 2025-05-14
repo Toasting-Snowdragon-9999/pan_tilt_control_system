@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "better_read_hall_sensor_advanced_compare_0_0",
-    "cell_name": "determin_direction",
+    "cell_name": "determine_direction",
     "component_reference": "xilinx.com:module_ref:advanced_compare:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../hall_sensor.gen/sources_1/bd/better_read_hall_sensor/ip/better_read_hall_sensor_advanced_compare_0_0",
