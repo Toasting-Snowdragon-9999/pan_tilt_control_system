@@ -1,1 +1,1 @@
---incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "xlconstant_v1_1_9" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "better_read_hall_sensor_wrapper_behav" "xil_defaultlib.better_read_hall_sensor_wrapper" "xil_defaultlib.glbl" -log "elaborate.log" 
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "better_read_hall_sensor_wrapper_behav" "xil_defaultlib.better_read_hall_sensor_wrapper" -log "elaborate.log" 
