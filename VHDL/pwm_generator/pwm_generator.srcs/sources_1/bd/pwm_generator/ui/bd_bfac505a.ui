@@ -197,6 +197,7 @@ preplace netloc clk_divider_0_clk_div 1 2 2 440 610 760
 preplace netloc comparator_3_c 1 5 1 NJ 130
 preplace netloc comparator_3_c1 1 5 1 1300J 860n
 preplace netloc disabled_0_dout 1 3 1 NJ 130
+preplace netloc disabled_1_dout 1 1 3 200J 870 420J 870 N
 preplace netloc four_constant_0_dout 1 2 1 NJ 250
 preplace netloc four_constant_0_dout1 1 1 1 NJ 670
 preplace netloc four_counter_0_cnt 1 2 3 420 70 NJ 70 1100
@@ -209,7 +210,6 @@ preplace netloc reset_comparator_2_c 1 3 1 N 230
 preplace netloc reset_comparator_2_c1 1 2 1 N 690
 preplace netloc xlconstant_0_dout 1 3 1 780 250n
 preplace netloc xlconstant_0_dout1 1 2 1 420 530n
-preplace netloc disabled_1_dout 1 1 3 200J 870 420J 870 N
 levelinfo -pg 1 0 110 310 590 940 1200 1320
 pagesize -pg 1 -db -bbox -sgen -120 0 1440 1010
 ",

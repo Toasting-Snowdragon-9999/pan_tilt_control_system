@@ -1,0 +1,671 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x13472E2E4315FD26",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../pwm_generator.gen/sources_1/bd/pwm_generator_for_ip_1",
+      "name": "pwm_generator_for_ip_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "big_duty_cycle_lut_0": "",
+      "big_duty_cycle_lut_1": "",
+      "clear_comparator_1": "",
+      "clear_comparator_2": "",
+      "clk_divider_0": "",
+      "comparator_3": "",
+      "comparator_4": "",
+      "pwm_soft_start_0": "",
+      "twenty_constant_0": "",
+      "twenty_constant_1": "",
+      "twenty_counter_1": "",
+      "twentyone_counter_0": "",
+      "pwm_soft_start_1": ""
+    },
+    "ports": {
+      "tilt_duty": {
+        "direction": "O"
+      },
+      "clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "rst",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "pwm_generator_for_ip_1_clk",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "125000000"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.0",
+            "value_src": "default"
+          }
+        }
+      },
+      "pan_duty": {
+        "direction": "O"
+      },
+      "rst": {
+        "direction": "I"
+      },
+      "pan_speed": {
+        "direction": "I",
+        "left": "4",
+        "right": "0"
+      },
+      "tilt_speed": {
+        "direction": "I",
+        "left": "4",
+        "right": "0"
+      },
+      "pan_ready": {
+        "direction": "O"
+      },
+      "tilt_ready": {
+        "direction": "O"
+      },
+      "en": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "big_duty_cycle_lut_0": {
+        "vlnv": "xilinx.com:module_ref:big_duty_cycle_lut:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_big_duty_cycle_lut_0_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_big_duty_cycle_lut_0_0/pwm_generator_for_ip_1_big_duty_cycle_lut_0_0.xci",
+        "inst_hier_path": "big_duty_cycle_lut_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "big_duty_cycle_lut",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "spi_in": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "duty_constant": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "big_duty_cycle_lut_1": {
+        "vlnv": "xilinx.com:module_ref:big_duty_cycle_lut:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_big_duty_cycle_lut_1_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_big_duty_cycle_lut_1_0/pwm_generator_for_ip_1_big_duty_cycle_lut_1_0.xci",
+        "inst_hier_path": "big_duty_cycle_lut_1",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "big_duty_cycle_lut",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "spi_in": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "duty_constant": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "clear_comparator_1": {
+        "vlnv": "xilinx.com:module_ref:equal_comparator:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_clear_comparator_1_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_clear_comparator_1_0/pwm_generator_for_ip_1_clear_comparator_1_0.xci",
+        "inst_hier_path": "clear_comparator_1",
+        "parameters": {
+          "n_bits": {
+            "value": "5"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "equal_comparator",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "b": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "c": {
+            "direction": "O"
+          }
+        }
+      },
+      "clear_comparator_2": {
+        "vlnv": "xilinx.com:module_ref:equal_comparator:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_clear_comparator_2_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_clear_comparator_2_0/pwm_generator_for_ip_1_clear_comparator_2_0.xci",
+        "inst_hier_path": "clear_comparator_2",
+        "parameters": {
+          "n_bits": {
+            "value": "5"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "equal_comparator",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "b": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "c": {
+            "direction": "O"
+          }
+        }
+      },
+      "clk_divider_0": {
+        "vlnv": "xilinx.com:module_ref:clk_divider:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_clk_divider_0_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_clk_divider_0_0/pwm_generator_for_ip_1_clk_divider_0_0.xci",
+        "inst_hier_path": "clk_divider_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "clk_divider",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "user_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "pwm_generator_for_ip_1_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clk_div": {
+            "direction": "O"
+          }
+        }
+      },
+      "comparator_3": {
+        "vlnv": "xilinx.com:module_ref:comparator:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_comparator_3_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_comparator_3_0/pwm_generator_for_ip_1_comparator_3_0.xci",
+        "inst_hier_path": "comparator_3",
+        "parameters": {
+          "n_bits": {
+            "value": "5"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "comparator",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "b": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "c": {
+            "direction": "O"
+          }
+        }
+      },
+      "comparator_4": {
+        "vlnv": "xilinx.com:module_ref:comparator:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_comparator_4_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_comparator_4_0/pwm_generator_for_ip_1_comparator_4_0.xci",
+        "inst_hier_path": "comparator_4",
+        "parameters": {
+          "n_bits": {
+            "value": "5"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "comparator",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "a": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "b": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "c": {
+            "direction": "O"
+          }
+        }
+      },
+      "pwm_soft_start_0": {
+        "vlnv": "xilinx.com:module_ref:pwm_soft_start:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_pwm_soft_start_0_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_pwm_soft_start_0_0/pwm_generator_for_ip_1_pwm_soft_start_0_0.xci",
+        "inst_hier_path": "pwm_soft_start_0",
+        "parameters": {
+          "UPDATE_DIV": {
+            "value": "100"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "pwm_soft_start",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "target_duty_i": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "pwm_period_pulse_i": {
+            "direction": "I"
+          },
+          "duty_o": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "ready_o": {
+            "direction": "O"
+          }
+        }
+      },
+      "twenty_constant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "9",
+        "xci_name": "pwm_generator_for_ip_1_twenty_constant_0_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_twenty_constant_0_0/pwm_generator_for_ip_1_twenty_constant_0_0.xci",
+        "inst_hier_path": "twenty_constant_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "20"
+          },
+          "CONST_WIDTH": {
+            "value": "5"
+          }
+        }
+      },
+      "twenty_constant_1": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "9",
+        "xci_name": "pwm_generator_for_ip_1_twenty_constant_1_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_twenty_constant_1_0/pwm_generator_for_ip_1_twenty_constant_1_0.xci",
+        "inst_hier_path": "twenty_constant_1",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "20"
+          },
+          "CONST_WIDTH": {
+            "value": "5"
+          }
+        }
+      },
+      "twenty_counter_1": {
+        "vlnv": "xilinx.com:module_ref:counter:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_twenty_counter_1_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_twenty_counter_1_0/pwm_generator_for_ip_1_twenty_counter_1_0.xci",
+        "inst_hier_path": "twenty_counter_1",
+        "parameters": {
+          "n_bits": {
+            "value": "5"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "pwm_generator_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clr": {
+            "direction": "I"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "cnt": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "twentyone_counter_0": {
+        "vlnv": "xilinx.com:module_ref:counter:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_twentyone_counter_0_0",
+        "xci_path": "ip/pwm_generator_for_ip_1_twentyone_counter_0_0/pwm_generator_for_ip_1_twentyone_counter_0_0.xci",
+        "inst_hier_path": "twentyone_counter_0",
+        "parameters": {
+          "n_bits": {
+            "value": "5"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "counter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "pwm_generator_clk",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "clr": {
+            "direction": "I"
+          },
+          "en": {
+            "direction": "I"
+          },
+          "cnt": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          }
+        }
+      },
+      "pwm_soft_start_1": {
+        "vlnv": "xilinx.com:module_ref:pwm_soft_start:1.0",
+        "ip_revision": "1",
+        "xci_name": "pwm_generator_for_ip_1_pwm_soft_start_0_1",
+        "xci_path": "ip/pwm_generator_for_ip_1_pwm_soft_start_0_1/pwm_generator_for_ip_1_pwm_soft_start_0_1.xci",
+        "inst_hier_path": "pwm_soft_start_1",
+        "parameters": {
+          "UPDATE_DIV": {
+            "value": "100"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "pwm_soft_start",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "target_duty_i": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "pwm_period_pulse_i": {
+            "direction": "I"
+          },
+          "duty_o": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "ready_o": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "big_duty_cycle_lut_0_duty_constant": {
+        "ports": [
+          "big_duty_cycle_lut_0/duty_constant",
+          "pwm_soft_start_1/target_duty_i"
+        ]
+      },
+      "big_duty_cycle_lut_1_duty_constant": {
+        "ports": [
+          "big_duty_cycle_lut_1/duty_constant",
+          "pwm_soft_start_0/target_duty_i"
+        ]
+      },
+      "clk_1": {
+        "ports": [
+          "clk",
+          "clk_divider_0/clk"
+        ]
+      },
+      "clk_divider_0_clk_div": {
+        "ports": [
+          "clk_divider_0/clk_div",
+          "twenty_counter_1/clk",
+          "twentyone_counter_0/clk",
+          "pwm_soft_start_0/clk",
+          "pwm_soft_start_1/clk"
+        ]
+      },
+      "comparator_3_c": {
+        "ports": [
+          "comparator_3/c",
+          "pan_duty"
+        ]
+      },
+      "comparator_3_c1": {
+        "ports": [
+          "comparator_4/c",
+          "tilt_duty"
+        ]
+      },
+      "disabled_1_dout": {
+        "ports": [
+          "rst",
+          "twenty_counter_1/rst",
+          "clk_divider_0/rst",
+          "pwm_soft_start_0/rst",
+          "twentyone_counter_0/rst",
+          "pwm_soft_start_1/rst"
+        ]
+      },
+      "en_0_1": {
+        "ports": [
+          "en",
+          "big_duty_cycle_lut_0/en",
+          "twenty_counter_1/en",
+          "twentyone_counter_0/en",
+          "big_duty_cycle_lut_1/en"
+        ]
+      },
+      "four_constant_0_dout": {
+        "ports": [
+          "twenty_constant_0/dout",
+          "clear_comparator_1/b"
+        ]
+      },
+      "four_constant_0_dout1": {
+        "ports": [
+          "twenty_constant_1/dout",
+          "clear_comparator_2/b"
+        ]
+      },
+      "four_counter_0_cnt": {
+        "ports": [
+          "twentyone_counter_0/cnt",
+          "clear_comparator_1/a",
+          "comparator_3/b",
+          "pwm_soft_start_1/pwm_period_pulse_i"
+        ]
+      },
+      "four_counter_0_cnt1": {
+        "ports": [
+          "twenty_counter_1/cnt",
+          "clear_comparator_2/a",
+          "comparator_4/b",
+          "pwm_soft_start_0/pwm_period_pulse_i"
+        ]
+      },
+      "pwm_soft_start_0_duty_o": {
+        "ports": [
+          "pwm_soft_start_0/duty_o",
+          "comparator_4/a"
+        ]
+      },
+      "pwm_soft_start_0_ready_o": {
+        "ports": [
+          "pwm_soft_start_0/ready_o",
+          "tilt_ready"
+        ]
+      },
+      "pwm_soft_start_1_duty_o": {
+        "ports": [
+          "pwm_soft_start_1/duty_o",
+          "comparator_3/a"
+        ]
+      },
+      "pwm_soft_start_1_ready_o": {
+        "ports": [
+          "pwm_soft_start_1/ready_o",
+          "pan_ready"
+        ]
+      },
+      "reset_comparator_2_c": {
+        "ports": [
+          "clear_comparator_1/c",
+          "twentyone_counter_0/clr"
+        ]
+      },
+      "reset_comparator_2_c1": {
+        "ports": [
+          "clear_comparator_2/c",
+          "twenty_counter_1/clr"
+        ]
+      },
+      "spi_in_0_1": {
+        "ports": [
+          "pan_speed",
+          "big_duty_cycle_lut_0/spi_in"
+        ]
+      },
+      "spi_in_0_2": {
+        "ports": [
+          "tilt_speed",
+          "big_duty_cycle_lut_1/spi_in"
+        ]
+      }
+    }
+  }
+}

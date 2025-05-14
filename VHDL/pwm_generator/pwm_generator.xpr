@@ -93,13 +93,7 @@
   <FileSets Version="1" Minor="32">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/new/counter.vhd">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/equal_comparator.vhd">
+      <File Path="$PSRCDIR/sources_1/new/pwm_soft_start.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -111,7 +105,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/comparator.vhd">
+      <File Path="$PSRCDIR/sources_1/new/equal_comparator.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -123,7 +117,26 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/pwm_soft_start.vhd">
+      <File Path="$PSRCDIR/sources_1/new/comparator.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/counter.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/bd/pwm_generator_for_ip_1/pwm_generator_for_ip_1.bd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PGENDIR/sources_1/bd/pwm_generator_for_ip_1/hdl/pwm_generator_for_ip_1_wrapper.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -131,6 +144,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/bd/pwm_generator/pwm_generator.bd">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -156,9 +170,6 @@
         <CompFileExtendedInfo CompFileName="pwm_generator.bd" FileRelPathName="ip/pwm_generator_counter_2_1/pwm_generator_counter_2_1.xci">
           <Proxy FileSetName="pwm_generator_counter_2_1"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="pwm_generator.bd" FileRelPathName="ip/pwm_generator_pwm_soft_start_0_0/pwm_generator_pwm_soft_start_0_0.xci">
-          <Proxy FileSetName="pwm_generator_pwm_soft_start_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="pwm_generator.bd" FileRelPathName="ip/pwm_generator_reset_comparator_0_3/pwm_generator_reset_comparator_0_3.xci">
           <Proxy FileSetName="pwm_generator_reset_comparator_0_3"/>
         </CompFileExtendedInfo>
@@ -168,6 +179,7 @@
       </File>
       <File Path="$PGENDIR/sources_1/bd/pwm_generator/hdl/pwm_generator_wrapper.vhd">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -207,13 +219,12 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../../vivado/my_ip_repo/comparator/component.xml">
+      <File Path="$PPRDIR/../../../../vivado/my_ip_repo/pwm_generator_pantilt_0/component.xml">
         <FileInfo SFType="IPXACT"/>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="pwm_generator_wrapper"/>
-        <Option Name="TopAutoSet" Val="TRUE"/>
+        <Option Name="TopModule" Val="pwm_generator_for_ip_1_wrapper"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -307,12 +318,6 @@
     <FileSet Name="pwm_generator_twentyone_counter_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pwm_generator_twentyone_counter_0_0" RelGenDir="$PGENDIR/pwm_generator_twentyone_counter_0_0">
       <Config>
         <Option Name="TopModule" Val="pwm_generator_twentyone_counter_0_0"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="pwm_generator_pwm_soft_start_0_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/pwm_generator_pwm_soft_start_0_0" RelGenDir="$PGENDIR/pwm_generator_pwm_soft_start_0_0">
-      <Config>
-        <Option Name="TopModule" Val="pwm_generator_pwm_soft_start_0_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
       </Config>
     </FileSet>
@@ -435,21 +440,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pwm_generator_pwm_soft_start_0_0_synth_1" Type="Ft3:Synth" SrcSet="pwm_generator_pwm_soft_start_0_0" Part="xc7z020clg400-1" ConstrsSet="pwm_generator_pwm_soft_start_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pwm_generator_pwm_soft_start_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/pwm_generator_pwm_soft_start_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/pwm_generator_pwm_soft_start_0_0_synth_1" ParallelReportGen="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2024"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="pwm_generator_clk_divider_0_0_synth_1" Type="Ft3:Synth" SrcSet="pwm_generator_clk_divider_0_0" Part="xc7z020clg400-1" ConstrsSet="pwm_generator_clk_divider_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/pwm_generator_clk_divider_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/pwm_generator_clk_divider_0_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/pwm_generator_clk_divider_0_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -611,28 +604,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="pwm_generator_pwm_soft_start_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pwm_generator_pwm_soft_start_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pwm_generator_pwm_soft_start_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/pwm_generator_pwm_soft_start_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/pwm_generator_pwm_soft_start_0_0_impl_1" ParallelReportGen="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2024"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="pwm_generator_clk_divider_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="pwm_generator_clk_divider_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="pwm_generator_clk_divider_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/pwm_generator_clk_divider_0_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/pwm_generator_clk_divider_0_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

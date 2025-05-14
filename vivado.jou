@@ -1,0 +1,178 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Wed May 14 09:31:10 2025
+# Process ID         : 13726
+# Current directory  : /home/jrm/git/pan_tilt_control_system
+# Command line       : vivado
+# Log file           : /home/jrm/git/pan_tilt_control_system/vivado.log
+# Journal file       : /home/jrm/git/pan_tilt_control_system/vivado.jou
+# Running On         : jrm-HP-Spectre-x360-2-in-1-Laptop-14-eu0xxx
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.2 LTS
+# Processor Detail   : Intel(R) Core(TM) Ultra 7 155H
+# CPU Frequency      : 400.000 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 22
+# Host memory        : 32970 MB
+# Swap memory        : 8589 MB
+# Total Virtual      : 41560 MB
+# Available Virtual  : 38254 MB
+#-----------------------------------------------------------
+start_gui
+open_project /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.xpr
+update_compile_order -fileset sources_1
+open_bd_design {/home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/bd/pwm_generator/pwm_generator.bd}
+create_bd_design "pwm_generator_for_ip_1"
+update_compile_order -fileset sources_1
+current_bd_design pwm_generator
+set tmpCopyObjs [concat  [get_bd_cells {enabled_0 enabled_1 clk_divider_0 pwm_soft_start_0 led_slice twentyone_counter_0 comparator_3 disabled_0 twenty_constant_0 comparator_4 disabled_1 twenty_constant_1 twenty_counter_1 clear_comparator_1 big_duty_cycle_lut_0 big_duty_cycle_lut_1 clear_comparator_2}] [get_bd_ports {led5_g led4_b ja_7 clk EN_A rpio_12_r ar led}] [get_bd_nets {xlconstant_0_dout1 xlconstant_0_dout pwm_soft_start_0_duty_o led_slice_Dout four_counter_0_cnt1 four_constant_0_dout comparator_3_c reset_comparator_2_c four_counter_0_cnt reset_comparator_2_c1 comparator_3_c1 clk_1 disabled_1_dout disabled_0_dout clk_divider_0_clk_div pwm_test_switcher_0_out_1 big_duty_cycle_lut_1_duty_constant big_duty_cycle_lut_0_duty_constant pwm_soft_start_0_ready_o four_constant_0_dout1}]]
+current_bd_design pwm_generator_for_ip_1
+copy_bd_objs -from_design pwm_generator / $tmpCopyObjs
+regenerate_bd_layout
+report_ip_status -name ip_status 
+report_ip_status -name ip_status 
+update_module_reference [get_ips  {pwm_generator_pwm_soft_start_0_0 pwm_generator_for_ip_1_pwm_soft_start_0_0}]
+current_bd_design [get_bd_designs pwm_generator]
+current_bd_design [get_bd_designs pwm_generator_for_ip_1]
+delete_bd_objs [get_bd_nets disabled_0_dout] [get_bd_cells disabled_0]
+delete_bd_objs [get_bd_cells disabled_1]
+connect_bd_net [get_bd_pins twentyone_counter_0/rst] [get_bd_pins twenty_counter_1/rst]
+create_bd_port -dir I rst
+connect_bd_net [get_bd_ports rst] [get_bd_pins twenty_counter_1/rst]
+regenerate_bd_layout
+delete_bd_objs [get_bd_nets pwm_soft_start_0_ready_o]
+undo
+copy_bd_objs /  [get_bd_cells {pwm_soft_start_0}]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins big_duty_cycle_lut_0/duty_constant] [get_bd_pins pwm_soft_start_1/target_duty_i]
+connect_bd_net [get_bd_pins twentyone_counter_0/cnt] [get_bd_pins pwm_soft_start_1/pwm_period_pulse_i]
+current_bd_design [get_bd_designs pwm_generator]
+current_bd_design [get_bd_designs pwm_generator_for_ip_1]
+disconnect_bd_net /big_duty_cycle_lut_0_duty_constant [get_bd_pins comparator_3/a]
+connect_bd_net [get_bd_pins comparator_3/a] [get_bd_pins pwm_soft_start_1/duty_o]
+disconnect_bd_net /pwm_test_switcher_0_out_1 [get_bd_pins led_slice/Din]
+delete_bd_objs [get_bd_nets led_slice_Dout] [get_bd_cells led_slice]
+delete_bd_objs [get_bd_ports led]
+regenerate_bd_layout
+connect_bd_net [get_bd_pins pwm_soft_start_1/clk] [get_bd_pins clk_divider_0/clk_div]
+connect_bd_net [get_bd_ports rst] [get_bd_pins pwm_soft_start_1/rst]
+regenerate_bd_layout
+disconnect_bd_net /pwm_test_switcher_0_out_1 [get_bd_ports ar]
+delete_bd_objs [get_bd_nets pwm_test_switcher_0_out_1]
+delete_bd_objs [get_bd_ports ar]
+regenerate_bd_layout
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout
+set_property name pan_duty [get_bd_ports ja_7]
+startgroup
+make_bd_pins_external  [get_bd_cells big_duty_cycle_lut_0]
+make_bd_intf_pins_external  [get_bd_cells big_duty_cycle_lut_0]
+endgroup
+set_property name pan_speed_bits [get_bd_ports spi_in_0]
+startgroup
+make_bd_pins_external  [get_bd_cells big_duty_cycle_lut_1]
+make_bd_intf_pins_external  [get_bd_cells big_duty_cycle_lut_1]
+endgroup
+set_property name tilt_speed_bits [get_bd_ports spi_in_0]
+set_property name pan_speed [get_bd_ports pan_speed_bits]
+set_property name tilt_speed [get_bd_ports tilt_speed_bits]
+regenerate_bd_layout
+regenerate_bd_layout -routing
+regenerate_bd_layout
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout -routing
+regenerate_bd_layout
+delete_bd_objs [get_bd_nets pwm_soft_start_0_ready_o] [get_bd_ports led5_g]
+startgroup
+make_bd_pins_external  [get_bd_cells pwm_soft_start_1]
+make_bd_intf_pins_external  [get_bd_cells pwm_soft_start_1]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_cells pwm_soft_start_0]
+make_bd_intf_pins_external  [get_bd_cells pwm_soft_start_0]
+endgroup
+set_property name pan_ready [get_bd_ports ready_o_0]
+set_property name tilt_ready [get_bd_ports ready_o_1]
+regenerate_bd_layout
+regenerate_bd_layout -routing
+delete_bd_objs [get_bd_ports rpio_12_r]
+delete_bd_objs [get_bd_ports led4_b]
+set_property name tilt_duty [get_bd_ports EN_A]
+regenerate_bd_layout
+regenerate_bd_layout -routing
+delete_bd_objs [get_bd_cells enabled_0]
+delete_bd_objs [get_bd_cells enabled_1]
+delete_bd_objs [get_bd_nets xlconstant_0_dout1]
+delete_bd_objs [get_bd_nets xlconstant_0_dout]
+startgroup
+make_bd_pins_external  [get_bd_cells big_duty_cycle_lut_0]
+make_bd_intf_pins_external  [get_bd_cells big_duty_cycle_lut_0]
+endgroup
+connect_bd_net [get_bd_ports en_0] [get_bd_pins twenty_counter_1/en]
+connect_bd_net [get_bd_ports en_0] [get_bd_pins twentyone_counter_0/en]
+connect_bd_net [get_bd_ports en_0] [get_bd_pins big_duty_cycle_lut_1/en]
+regenerate_bd_layout -routing
+regenerate_bd_layout
+regenerate_bd_layout -routing
+regenerate_bd_layout
+save_bd_design
+set_property name en [get_bd_ports en_0]
+save_bd_design
+regenerate_bd_layout
+regenerate_bd_layout -routing
+set_property location {0.5 -370 347} [get_bd_cells clk_divider_0]
+regenerate_bd_layout -routing
+regenerate_bd_layout
+validate_bd_design
+set_property name clk_125_MHz [get_bd_ports clk]
+set_property CONFIG.FREQ_HZ 125000000 [get_bd_ports clk_125_MHz]
+regenerate_bd_layout
+regenerate_bd_layout -routing
+validate_bd_design
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout
+regenerate_bd_layout -routing
+open_project /home/jrm/git/pan_tilt_control_system/VHDL/movement_interpreter/project_1.xpr
+open_bd_design {/home/jrm/git/pan_tilt_control_system/VHDL/movement_interpreter/project_1.srcs/sources_1/bd/movement_interpreter/movement_interpreter.bd}
+update_compile_order -fileset sources_1
+current_project pwm_generator
+set_property name clk [get_bd_ports clk_125_MHz]
+save_bd_design
+make_wrapper -files [get_files /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.srcs/sources_1/bd/pwm_generator_for_ip_1/pwm_generator_for_ip_1.bd] -top
+add_files -norecurse /home/jrm/git/pan_tilt_control_system/VHDL/pwm_generator/pwm_generator.gen/sources_1/bd/pwm_generator_for_ip_1/hdl/pwm_generator_for_ip_1_wrapper.vhd
+update_compile_order -fileset sources_1
+regenerate_bd_layout
+regenerate_bd_layout -routing
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top pwm_generator_for_ip_1_wrapper [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+ipx::package_project -root_dir /home/jrm/vivado/my_ip_repo/pwm_generator_pantilt_0 -vendor user.org -library user -taxonomy /UserIP -import_files -set_current false
+ipx::unload_core /home/jrm/vivado/my_ip_repo/pwm_generator_pantilt_0/component.xml
+ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory /home/jrm/vivado/my_ip_repo/pwm_generator_pantilt_0 /home/jrm/vivado/my_ip_repo/pwm_generator_pantilt_0/component.xml
+current_project pwm_generator
+current_project tmp_edit_project
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property name pwm_generator [ipx::current_core]
+set_property display_name {PWM Generator} [ipx::current_core]
+set_property previous_version_for_upgrade user.org:user:pwm_generator_for_ip_1_wrapper:1.0 [ipx::current_core]
+set_property core_revision 1 [ipx::current_core]
+ipx::create_xgui_files [ipx::current_core]
+ipx::update_checksums [ipx::current_core]
+ipx::check_integrity [ipx::current_core]
+ipx::save_core [ipx::current_core]
+ipx::move_temp_component_back -component [ipx::current_core]
+close_project -delete
+update_ip_catalog -rebuild -repo_path /home/jrm/vivado/my_ip_repo
+current_project pwm_generator

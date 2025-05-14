@@ -7,8 +7,7 @@
       "name": "pwm_generator",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2024.2",
-      "validated": "true"
+      "tool_version": "2024.2"
     },
     "design_tree": {
       "enabled_0": "",
@@ -32,29 +31,7 @@
     "ports": {
       "clk": {
         "type": "clk",
-        "direction": "I",
-        "parameters": {
-          "CLK_DOMAIN": {
-            "value": "pwm_generator_clk",
-            "value_src": "default"
-          },
-          "FREQ_HZ": {
-            "value": "100000000",
-            "value_src": "default"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "PHASE": {
-            "value": "0.0",
-            "value_src": "default"
-          }
-        }
+        "direction": "I"
       },
       "ja_7": {
         "direction": "O"
@@ -76,13 +53,7 @@
       "ar": {
         "direction": "I",
         "left": "4",
-        "right": "0",
-        "parameters": {
-          "PortWidth": {
-            "value": "5",
-            "value_src": "ip_prop"
-          }
-        }
+        "right": "0"
       },
       "led4_b": {
         "direction": "O"
@@ -597,9 +568,9 @@
       "disabled_1_dout": {
         "ports": [
           "disabled_1/dout",
-          "pwm_soft_start_0/rst",
           "twenty_counter_1/rst",
-          "clk_divider_0/rst"
+          "clk_divider_0/rst",
+          "pwm_soft_start_0/rst"
         ]
       },
       "four_constant_0_dout": {

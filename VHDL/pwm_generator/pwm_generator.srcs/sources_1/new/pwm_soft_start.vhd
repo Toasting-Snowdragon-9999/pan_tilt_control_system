@@ -12,7 +12,7 @@ entity pwm_soft_start is
     );
     port (
         clk                 : in  std_logic;
-        rst                 : in  std_logic;                -- synchronous reset
+        rst                 : in  std_logic;                
         target_duty_i       : in  unsigned(WIDTH-1 downto 0); -- desired duty (0 = off)
         pwm_period_pulse_i  : in  std_logic;                -- pulse at PWM period start
         duty_o              : out unsigned(WIDTH-1 downto 0); -- ramped duty output
