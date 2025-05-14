@@ -107,15 +107,18 @@ void vPanControllerTask(void *pvParameters)
     INT16U in;
 
     //not sure where these should be?
-   uart1_print("<<<PanControllerTask>>>\r\n");
+    uart1_print("<<<PanControllerTask>>>\r\n");
     measured_value += output; // * dt
     uart1_print("meassured value: 0x%04x, 0b%s, d:%u \r\n", measured_value, rx_binary_string(measured_value), (unsigned)measured_value); //debugger
 
     for( ;; )
     {
 
+
         //PAN CTRL IN (from vision)
-       if( xQueueReceive(xPanCtrlInQueue, &in, portMAX_DELAY) == pdTRUE){                       //task only "wakes" when something to do
+       if( xQueueReceive(xPanCtrlInQueue, &in, portMAX_DELAY) == pdTRUE){
+           FSM_STATUS = CTRL;
+                                                                                                 //task only "wakes" when something to do
             uart1_print("in: 0x%04x, 0b%s, d:%u \r\n", in, rx_binary_string(in), (unsigned)in); //also no task delay to block other tasks
                                                                                                 //unless it has something to process
             output = PID_Compute(&pid, reference, measured_value);

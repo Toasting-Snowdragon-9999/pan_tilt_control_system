@@ -17,6 +17,7 @@ QueueHandle_t xSpiRxQueue;
 QueueHandle_t xSpiTxQueue;
 
 INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir,INT8U tiltSpeed){
+    FSM_STATUS = URTTX;
     MotorFrame &= ~CLEAR_MASK;
 
     MotorFrame |=(0u << 15)                 //start bit = 0
@@ -30,7 +31,7 @@ INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir,INT8U tiltSpeed){
 }
 
 void UnpackFrame(INT16U *Frame, INT8U *panVal, INT8U *tiltVal, INT8U *panDir, INT8U *tiltDir){
-
+    FSM_STATUS = URTRX;
     //shift MSB of EncoderFrame into panVal
     *panVal  = (INT8U)((*Frame >> 8) & 0xFF);
     *panDir = (INT8U)((*panVal >> 7) & 0x01); //MSB
@@ -137,7 +138,7 @@ void vUartGetFrameTask(void *pvParameters){ //should unpack visionframe from uar
     for(;;){
 
        if(xQueueReceive(xUartRxQueue, &VisionFrame, portMAX_DELAY) == pdTRUE){
-
+           FSM_STATUS = CTRL;
            UnpackFrame(&VisionFrame, &panVal, &tiltVal, &panDir, &tiltDir);
            uart1_print("VisionFrame:: 0x%04x, 0b%s, d:%u \r\n", VisionFrame, rx_binary_string(VisionFrame), (unsigned)VisionFrame);
            uart1_print("panVal: 0x%04x, 0b%s, d:%u \r\n", panVal, rx_binary_string(panVal), (unsigned)panVal);
@@ -194,7 +195,7 @@ void vUartSendFrameTask(void *pvParameters){ //should create vision frame from P
 
       if ((xQueueReceive(xPanCtrlOutQueue, &panError, portMAX_DELAY) == pdTRUE) &&
           (xQueueReceive(xTiltCtrlOutQueue, &tiltError, portMAX_DELAY) == pdTRUE)){
-
+                FSM_STATUS = CTRL;
                 panDir = 1; //temp
                 tiltDir = 0; //temp
                 // panError = 0b00110011;

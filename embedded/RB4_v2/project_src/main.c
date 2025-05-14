@@ -59,7 +59,7 @@ int main(void)
       //xTaskCreate(vDebugTask, "DEBUG", 200, NULL, 4, &vDebugTaskHandle);
       //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
-        xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 3, &vLedTaskHandle);
+        xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
         xTaskCreate( vUartRxTask, "UART_RX",  512, xUartRxQueue,3, &vUartRxTaskHandle);
 
         xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, xUartRxQueue, 4, &vPanControllerTaskHandle);

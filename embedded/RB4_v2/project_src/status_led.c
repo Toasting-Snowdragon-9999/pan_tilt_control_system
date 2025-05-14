@@ -17,7 +17,7 @@ void LedDriver(){
 
     switch(FSM_STATUS)
        {
-         case IDLE:
+         case CTRL:
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_RED;
            break;
