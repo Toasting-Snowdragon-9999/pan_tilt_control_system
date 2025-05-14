@@ -148,7 +148,7 @@ void Vision::_greyscale_image(cv::cuda::GpuMat& src_host, std::vector<cv::Scalar
 {
     try
     {
-        cv::cuda::cvtColor(src_host, _hsv, COLORSPACE); // e.g., cv::COLOR_BGR2HSV
+        cv::cuda::cvtColor(src_host, _hsv, COLORSPACE); // e.g., LAB or HSV
         cv::cuda::inRange(_hsv, cv_threshold[0], cv_threshold[1], _grey);
         // Morphological operations on GPU
         // Dilate
@@ -218,17 +218,20 @@ void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>&
                 _region_of_interest.y + _region_of_interest.height / 2);
 
     for (size_t i = 0; i < contours.size(); i++){
+        // Iterate over each contour, then skip if the area is too small
         double area = cv::contourArea(contours[i]);
         if (area < min_contour_area) {
             continue;
         }
         if (area > max_area){
+            // Find the maximum area contour, this must be our object
             max_area = area;
             max_index = static_cast<int>(i);
         } 
     }
 
     if (max_index >= 0){
+        // If a contour was found, draw a rectangle around it
         cv::Rect new_rect = cv::boundingRect(contours[max_index]);
 
         new_rect.x      = std::max(0, new_rect.x);
@@ -242,6 +245,7 @@ void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>&
         cv::Point new_center(center_x, center_y);
 
         if (_valid_center_diff(new_center, old_center, MAX_DEVIATION)){
+            // If the center has moved too much, update the region of interest
             _region_of_interest = new_rect;
             old_center = new_center;
         }
@@ -258,7 +262,7 @@ void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>&
         cv::circle(src_image,
             old_center,
             1,                      // radius
-            cv::Scalar(0, 0, 0),    // color: black
+            cv::Scalar(1, 1, 0),    // color: black
             cv::FILLED
         );
 
@@ -289,7 +293,7 @@ void Vision::_draw_center_dot(cv::Mat &src, std::vector<int> size){
         src,
         cv::Point(center_x, center_y),
         center_r,                    
-        cv::Scalar(0, 0, 0),     // BGR: black
+        cv::Scalar(1, 1, 0),     // BGR: black
         cv::FILLED               // thickness or FILLED to make it a solid dot
     );
 }
@@ -318,8 +322,6 @@ void Vision::_mark_cornors(cv::Mat &src){
     }
 
 }
-
-
 
 void Vision::_calibration(std::vector<cv::Scalar>& thresholds) {
     std::cout << "Calibration (LAB-based)" << std::endl;

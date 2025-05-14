@@ -22,7 +22,7 @@
 #define MAX_CALIBRATION 100
 #define MAX_8_BIT 255
 #define MAX_DEVIATION 7
-#define SAMPLING_FREQ 1 // Hz
+#define SAMPLING_FREQ 60 // Hz
 
 using chrone_time = std::chrono::steady_clock;
 
