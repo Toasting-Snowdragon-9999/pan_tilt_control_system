@@ -23,43 +23,19 @@ QueueHandle_t xUartRxQueue;
 QueueHandle_t xUartTxQueue;
 
 INT16U MotorFrame = 0;
-static inline INT8S f32_to_u8(FP32 f) {
+static inline INT8U f32_to_u8(FP32 f) {
     // 1) round to nearest integer
     int   tmp = (int)roundf(f);
     // 2) clamp to [0..255]
     if (tmp < 0)   tmp = 0;
     if (tmp > 255) tmp = 255;
     // 3) return as INT8U
-    return (INT8S)tmp;
+    return (INT8U)tmp;
 }
 
-/*INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir,INT8U tiltSpeed){
-    FSM_STATUS = URTTX;
-    MotorFrame &= ~CLEAR_MASK;
 
-    MotorFrame |=(0u << 15)                 //start bit = 0
-               |((panDir & 0x1u) << 12)     //1 bit
-               |((panSpeed & 0x1Fu) << 7)   //5 bit
-               |((tiltDir & 0x1u) << 6)     //1 bit
-               |((tiltSpeed & 0x1Fu) << 1)  //5 bit
-               |(1u << 0);                  //stop bit = 1
-
-    return MotorFrame;
-}
-*/
-/*
-void UnpackFrame(INT16U *Frame, INT8U *panVal, INT8U *tiltVal, INT8U *panDir, INT8U *tiltDir){
-    FSM_STATUS = URTRX;
-    //shift MSB of EncoderFrame into panVal
-    *panVal  = (INT8U)((*Frame >> 8) & 0xFF);
-    *panDir = (INT8U)((*panVal >> 7) & 0x01); //MSB
-
-    //shift LSB of EncoderFrame into tiltVal
-    *tiltVal = (INT8U)( *Frame   & 0xFF);
-    *tiltDir = (INT8U)((*tiltVal >> 7) & 0x01); //MSB
-}*/
 //SKAL ALT VÆRE SIGNED??
-void CreateFrame(INT16S *Frame, INT8S *panDir, INT8S *panSpeed, INT8S *tiltDir, INT8S *tiltSpeed){ //From TIVA to FPGA
+void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed){ //From TIVA to FPGA
     FSM_STATUS = URTTX;
     *Frame &= 0x0000;
 
@@ -117,7 +93,7 @@ void vSpiGetFrameTask(void *pvParameters){ //should unpack encoderFrame from Spi
 
             panAng = panVal;
             tiltAng = tiltVal;
-            uart1_print("\r\\n EncoderFrame:: 0x%04x, 0b%s, d:%d \r\n", EncoderFrame, rx_binary_string(EncoderFrame), EncoderFrame);
+            uart1_print("\r\nEncoderFrame: 0x%04x, 0b%s, d:%d \r\n", EncoderFrame, rx_binary_string(EncoderFrame), EncoderFrame);
             uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
             uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
 
@@ -130,56 +106,42 @@ void vSpiGetFrameTask(void *pvParameters){ //should unpack encoderFrame from Spi
 void vSpiSendFrameTask(void *pvParameters){ //should create MotorFrame from PanCtrloutQueue and send to SpiTxQueue
       //INT8U panError, tiltError;
     FP32 panError, tiltError;
-    INT8S panSpeed, tiltSpeed;
-    INT8S  panDir,   tiltDir;
-      INT16S MotorFrame;
-      INT8S panReceived = 0;
-      INT8S tiltReceived = 0;
-
+    INT8U panSpeed, tiltSpeed;
+    INT8U  panDir,   tiltDir;
+      INT16U MotorFrame;
 
       for(;;){
 
-        if ((xQueueReceive(xPanCtrlOutQueue, &panError, portMAX_DELAY) == pdTRUE)){
-            //INT8U  panSpeed;
-            //TEMP: get speed from error function (save current errors as global variables?)
-            panSpeed = f32_to_u8(panError);
-            //TEMP: get direction function
-            panDir = 1; //temp
-            panReceived = 1;
-        }
+          if((xQueueReceive(xPanCtrlOutQueue, &panError, portMAX_DELAY) == pdTRUE) &&
+              (xQueueReceive(xTiltCtrlOutQueue, &tiltError, portMAX_DELAY) == pdTRUE))
+              uart1_print("\r\n<<<SpiSendFrameTask>>>\r\n");
 
-        if ((xQueueReceive(xTiltCtrlOutQueue, &tiltError, portMAX_DELAY) == pdTRUE)){
-          // INT8U tiltSpeed;
-           //TEMP: get speed from error function (save current errors as global variables?)
-            tiltSpeed = f32_to_u8(tiltError);
-           //TEMP: get direction function
-           tiltDir = 0; //temp
-           tiltReceived = 1;
-        }
+               panSpeed = f32_to_u8(panError);
+                //TEMP: get direction function
+                panDir = 1; //temp
+                tiltSpeed = f32_to_u8(tiltError);
+                //TEMP: get direction function
+                tiltDir = 0; //temp
 
-        if(panReceived == 1 && tiltReceived == 1){
-            uart1_print("\r\n<<<SpiSendFrameTask>>>\r\n");
-
-            CreateFrame(&MotorFrame, &panDir, &panSpeed, &tiltDir, &tiltSpeed);
+                CreateFrame(&MotorFrame, &panDir, &panSpeed, &tiltDir, &tiltSpeed);
 
             //DEBUGGER PRINTS
-              uart1_print("\r\nMotorFrame: 0x%04x, 0b%s, d:%d \r\n", MotorFrame, rx_binary_string(MotorFrame), MotorFrame);
-              uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panError, rx_binary_string(panError), panError);
-              uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltError, rx_binary_string(tiltError), tiltError);
-              uart1_print("\r\npanDir: 0x%04x, 0b%s, d:%d \r\n", panDir, rx_binary_string(panDir), panDir);
-              uart1_print("\r\ntiltDir: 0x%04x, 0b%s, d:%d \r\n", tiltDir, rx_binary_string(tiltDir), tiltDir);
+              uart1_print("\r\nMotorFrame: 0x%04x, 0b%s, d:%u \r\n", MotorFrame, rx_binary_string(MotorFrame), (unsigned)MotorFrame);
+              uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%u \r\n", panError, rx_binary_string(panError), (unsigned)panError);
+              uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%u \r\n", tiltError, rx_binary_string(tiltError), (unsigned)tiltError);
+              uart1_print("\r\npanDir: 0x%04x, 0b%s, d:%u \r\n", panDir, rx_binary_string(panDir), (unsigned)panDir);
+              uart1_print("\r\ntiltDir: 0x%04x, 0b%s, d:%u \r\n", tiltDir, rx_binary_string(tiltDir), (unsigned)tiltDir);
 
             //xQueueSend(xUartTxQueue, &MotorFrame, 0);
              xQueueSend(xSpiTxQueue, &MotorFrame, 0);
 
-            panReceived = 0;
-            tiltReceived = 0;
+
 
         }
 
    }
 
-}
+
 
 void vUartGetFrameTask(void *pvParameters){ //should unpack visionframe from uartRxQueue and send to PanCtrlInQueue
 
@@ -202,10 +164,9 @@ void vUartGetFrameTask(void *pvParameters){ //should unpack visionframe from uar
 
             //  uart1_print("\r\npanDir: 0x%04x, 0b%s, d:%u \r\n", panDir, rx_binary_string(panDir), (unsigned)panDir);
           //  uart1_print("\r\ntiltDir: 0x%04x, 0b%s, d:%u \r\n", tiltDir, rx_binary_string(tiltDir), (unsigned)tiltDir);
-
            xQueueSend(xPanCtrlInQueue, &panVal, 0);
-           xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
 
+            xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
        }
  }
 }

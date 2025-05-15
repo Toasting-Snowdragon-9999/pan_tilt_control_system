@@ -8,7 +8,7 @@
 #include "uart.h"
 
 extern QueueHandle_t xUartRxQueue;
-extern QueueHandle_t xSpiRxQueue;
+extern QueueHandle_t xSpiRxTempQueue;
 extern QueueHandle_t xUartTxQueue;
 extern QueueHandle_t xPanCtrlOutQueue;
 extern QueueHandle_t xPanCtrlInQueue;
@@ -29,7 +29,7 @@ void vUartRxTask(void *pv) {
             if((xQueueSend(xUartRxQueue, &uartrx, portMAX_DELAY) == pdTRUE)){
                 uart1_print("\r\n<<<UartRxTask>>>\r\n");
                 uart1_print("\r\nUartRxTask received: 0x%04x, 0b%s, d:%d \r\n", uartrx, rx_binary_string(uartrx), uartrx); //debugger
-                xQueueSend(xSpiRxQueue, &spirx, 0);
+                xQueueSend(xSpiRxTempQueue, &spirx, 0);
             }
 
             xQueueSend(xSpiRxQueue, &spirx, portMAX_DELAY);

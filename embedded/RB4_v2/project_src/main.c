@@ -23,6 +23,7 @@ static void initilization(void)
 void queueSetup(){
 
           xSpiRxQueue = xQueueCreate(1, sizeof(INT16S)); //from fpga encoders
+          xSpiRxTempQueue = xQueueCreate(1, sizeof(INT16S)); //from fpga encoders
           xSpiTxQueue = xQueueCreate(1, sizeof(INT16S)); //to fpa motors
 
           xPanCtrlOutQueue = xQueueCreate(1, sizeof(FP32)); //from controller task to map task
@@ -48,17 +49,17 @@ int main(void)
         initilization();
         queueSetup();
 
-        xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
+        xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 3, &vLedTaskHandle);
 
-        xTaskCreate( vUartRxTask, "UART_RX",  512, NULL,3, &vUartRxTaskHandle);
-        xTaskCreate( vUartTxTask,"UART_TX", 512, NULL, 4, &vUartTxTaskHandle);
+        xTaskCreate( vUartRxTask, "UART_RX",  512, NULL,2, &vUartRxTaskHandle);
+        xTaskCreate( vUartTxTask,"UART_TX", 512, NULL, 3, &vUartTxTaskHandle);
 
-        xTaskCreate( vSpiTxTask,"SPI_TX", 512, xSpiTxQueue, 4, &vSpiTxTaskHandle);
-        xTaskCreate( vSpiRxTask, "SPI_RX",  512, xSpiRxQueue, 3, &vSpiRxTaskHandle);
+        xTaskCreate( vSpiTxTask,"SPI_TX", 512, xSpiTxQueue, 3, &vSpiTxTaskHandle);
+        xTaskCreate( vSpiRxTask, "SPI_RX",  512, xSpiRxQueue, 2, &vSpiRxTaskHandle);
 
-        xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  512, NULL, 3, &vUartGetFrameTaskHandle);
-        xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 512, NULL, 4, &vSpiSendFrameTaskHandle);
-        xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  512, NULL, 3, &vSpiGetFrameTaskHandle);
+        xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  512, NULL, 2, &vUartGetFrameTaskHandle);
+        xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 512, NULL, 3, &vSpiSendFrameTaskHandle);
+        xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  512, NULL, 2, &vSpiGetFrameTaskHandle);
 
         xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, NULL, 4, &vPanControllerTaskHandle);
         xTaskCreate( vTiltControllerTask, "TILT_CONTROLLER", 512, NULL, 4, &vTiltControllerTaskHandle);

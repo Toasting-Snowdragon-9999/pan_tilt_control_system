@@ -112,8 +112,8 @@ void uart1_putc(uint8_t b) {
 }
 uint16_t uart1_get16(void) {
     taskENTER_CRITICAL();
+    uint8_t hi = uart1_getc(); //maybe test/change?
     uint8_t lo = uart1_getc();
-    uint8_t hi = uart1_getc();
     taskEXIT_CRITICAL();
     return (uint16_t)((hi << 8) | lo);
 }

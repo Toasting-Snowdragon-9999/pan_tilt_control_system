@@ -8,6 +8,7 @@ QueueHandle_t xUartRxQueue;
 
 QueueHandle_t xSpiRxQueue;
 QueueHandle_t xSpiTxQueue;
+QueueHandle_t xSpiRxTempQueue;
 
 QueueHandle_t xPanCtrlInQueue;
 QueueHandle_t xTiltCtrlInQueue;

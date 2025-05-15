@@ -69,6 +69,7 @@ extern QueueHandle_t xUartTxQueue;
 
 extern QueueHandle_t xSpiRxQueue;
 extern QueueHandle_t xSpiTxQueue;
+extern QueueHandle_t xSpiRxTempQueue;
 
 extern QueueHandle_t xPanCtrlOutQueue;
 extern QueueHandle_t xTiltCtrlOutQueue;
