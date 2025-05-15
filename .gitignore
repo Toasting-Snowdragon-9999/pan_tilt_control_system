@@ -413,6 +413,6 @@ FodyWeavers.xsd
 /VHDL/pwm_generator/vivado.jou
 /VHDL/sensor_feedback/vivado.log
 /VHDL/pwm_generator/pwm_generator.cache/wt/project.wpc
-
+/VHDL/movement_interpreter/project_1.ip_user_files/bd/movement_interpreter/project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_mode_selector_0_0/sim/movement_interpreter_mode_selector_0_0.vhd
 # Include directories for c FreeRTOS
 /embedded/RB4_v2/.cproject
