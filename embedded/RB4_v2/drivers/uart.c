@@ -61,9 +61,9 @@ void uart0_putc(uint8_t b) {
 }
 uint16_t uart0_get16(void) {
     taskENTER_CRITICAL();
-    uint8_t hi = uart0_getc();
-    uint8_t lo = uart0_getc();
 
+    uint8_t lo = uart0_getc();
+    uint8_t hi = uart0_getc();
     taskEXIT_CRITICAL();
     return (uint16_t)((hi << 8) | lo);
 }
@@ -113,8 +113,9 @@ void uart1_putc(uint8_t b) {
 }
 uint16_t uart1_get16(void) {
     taskENTER_CRITICAL();
-    uint8_t lo = uart1_getc();
     uint8_t hi = uart1_getc();
+    uint8_t lo = uart1_getc();
+
     taskEXIT_CRITICAL();
     return (uint16_t)((hi << 8) | lo);
 }
