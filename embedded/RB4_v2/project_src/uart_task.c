@@ -29,9 +29,9 @@ void vUartRxTask(void *pv) {
 
             //uart0_print("UartRxTask received: 0x%04x, 0b%s, d:%u \r\n", rx, rx_binary_string(rx), (unsigned)rx); //debugger
 
-           xQueueSend(xUartRxQueue, &rx, 0); //test om delay kan være mindre
-
-            vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(10));
+           xQueueSend(xSpiTxQueue, &rx, pdMS_TO_TICKS(100)); //test om delay kan være mindre
+//           xQueueSend(xUartTxQueue, &rx, 0);
+            vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(20));
         }
 }
 
@@ -41,14 +41,18 @@ void vUartTxTask(void *pvParameters)
 {
     TickType_t lastWake = xTaskGetTickCount();
     INT16U tx;
+    INT16U fail = 0x0101;
       for (;;) {
           FSM_STATUS = URTTX;
 
-          if(xQueueReceive(xUartTxQueue, &tx, portMAX_DELAY)){
+          if(xQueueReceive(xUartTxQueue, &tx, pdMS_TO_TICKS(500))){
               uart0_send16(tx);
               //uart1_print("uart tx task received motorFrame \r\n"); //debugger
           }
-          //vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(20));
+          else{
+          uart0_send16(fail);
+          }
+          vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(20));
     }
 }
 

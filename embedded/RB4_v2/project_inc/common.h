@@ -37,8 +37,8 @@
 #include "controller_dummy.h"
 //#include "uart_rx_task.h"
 //#include "uart_tx_task.h"
-#include "spi_tx_task.h"
-#include "spi_rx_task.h"
+//#include "spi_tx_task.h"
+//#include "spi_rx_task.h"
 #include "map.h"
 #include "status_led.h"
 #include "led_task.h"
@@ -48,8 +48,8 @@
 /* configuration and state headers? */
 #include "led_state.h"
 //#include "uart_config.h"
-#include "spi_config.h"
-
+#include "spi.h"
+#include "spi_task.h"
 #include "uart.h"
 #include "uart_task.h"
 
