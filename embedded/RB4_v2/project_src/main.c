@@ -60,10 +60,10 @@ int main(void)
       //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
        // xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 3, &vLedTaskHandle);
-        xTaskCreate( vUartRxTask, "UART_RX",  512, NULL,3, &vUartRxTaskHandle);
+       // xTaskCreate( vUartRxTask, "UART_RX",  512, NULL,4, &vUartRxTaskHandle);
 
 //        xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, xUartRxQueue, 4, &vPanControllerTaskHandle);
-        xTaskCreate( vUartTxTask,"UART_TX", 512, NULL, 4, &vUartTxTaskHandle);
+       // xTaskCreate( vUartTxTask,"UART_TX", 512, NULL, 4, &vUartTxTaskHandle);
 
 //        xTaskCreate( vUartSendFrameTask,"UART_SEND_FRAME", 512, NULL, 4, &vUartSendFrameTaskHandle);
 
@@ -75,7 +75,7 @@ int main(void)
 //       xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 200, NULL, 4, &vSpiSendFrameTaskHandle);
        //xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  200, NULL, 4, &vSpiGetFrameTaskHandle);
        xTaskCreate( vSpiTxTask,"SPI_TX", 512, NULL, 4, &vSpiTxTaskHandle);
-//       xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, 4, &vSpiRxTaskHandle);
+       xTaskCreate( vSpiRxTask, "SPI_RX",  200, xSpiRxQueue, 4, &vSpiRxTaskHandle);
 
         vTaskStartScheduler();
 

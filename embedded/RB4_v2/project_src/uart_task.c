@@ -49,9 +49,7 @@ void vUartTxTask(void *pvParameters)
               uart0_send16(tx);
               //uart1_print("uart tx task received motorFrame \r\n"); //debugger
           }
-          else{
-          uart0_send16(fail);
-          }
+
           vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(20));
     }
 }

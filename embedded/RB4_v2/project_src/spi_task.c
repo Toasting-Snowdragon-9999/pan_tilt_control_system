@@ -64,9 +64,9 @@ void vSpiRxTask(void *pv) { //receive from fpga to tiva
             //uart_print("\r\n<<<SPI_RECIEVER>>>\r\n");
             rxChar = SPI_read();
 
-            xQueueSend(xSpiRxQueue, &rxChar, pdMS_TO_TICKS(10)); //find appropriate delay and create macro?
-                xQueueSend(xUartTxQueue, &rxChar, pdMS_TO_TICKS(10));
-            //uart_send_16int(rxChar);
+            //xQueueSend(xSpiRxQueue, &rxChar, pdMS_TO_TICKS(10)); //find appropriate delay and create macro?
+              //xQueueSend(xUartTxQueue, &rxChar, pdMS_TO_TICKS(10));
+            uart0_send16(rxChar);
 
             vTaskDelayUntil(&lastWake, pdMS_TO_TICKS(100)); //necessary?
             //task delay to yield?
@@ -83,12 +83,12 @@ void vSpiTxTask(void *pvParameters)
 
 
           //uart_print("\r\n<<<SPI_TRANSMITTER>>>\r\n");
-
-          xQueueReceive(xSpiTxQueue, &txChar, pdMS_TO_TICKS(20)); //define portmax delay or specific macro?
+        txChar =   uart0_get16();
+         // xQueueReceive(xSpiTxQueue, &txChar, pdMS_TO_TICKS(20)); //define portmax delay or specific macro?
               SPI_write(txChar);
-            // uart0_send16(txChar);
+            //uart0_send16(txChar);
 //             GPIO_PORTF_DATA_R ^= 0x04;
-             xQueueSend(xUartTxQueue, &txChar, 0);
+             //xQueueSend(xUartTxQueue, &txChar, 0);
               //xQueueSend(xUartTxQueue, &txChar, pdMS_TO_TICKS(1000));
               //uart_send_16int('T');
               //uart_send_double(txChar);  //transmit byte over uart

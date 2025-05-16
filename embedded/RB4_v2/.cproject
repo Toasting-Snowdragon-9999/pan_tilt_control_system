@@ -46,8 +46,8 @@
 									<listOptionValue builtIn="false" value="${PROJECT_ROOT}"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/lib"/>
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
-									<listOptionValue builtIn="false" value="C:\Users\Laura\Documents\git\pan_tilt_control_system\embedded\frt10\port\TivaM4"/>
-									<listOptionValue builtIn="false" value="C:\Users\Laura\Documents\git\pan_tilt_control_system\embedded\frt10\inc"/>
+									<listOptionValue builtIn="false" value="C:\Users\sarah\Documents\git\pan_tilt_control_system\embedded\frt10\port\TivaM4"/>
+									<listOptionValue builtIn="false" value="C:\Users\sarah\Documents\git\pan_tilt_control_system\embedded\frt10\inc"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/drivers}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/kernal_files}"/>
 									<listOptionValue builtIn="false" value="${workspace_loc:/${ProjName}/project_inc}"/>
