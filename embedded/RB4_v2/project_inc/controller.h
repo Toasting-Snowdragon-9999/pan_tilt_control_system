@@ -36,7 +36,9 @@ void PID_Init(PIDController_t *pid,
 
 INT32S PID_Compute(PIDController_t *pid, INT8S visionReference, INT8S encMeasuredVal);
 
-void vPanControllerTask(void *pvParameters);
-void vTiltControllerTask(void *pvParameters);
+void vPIDControllerTask(void *pvParameters);
+
+//void vPanControllerTask(void *pvParameters);
+//void vTiltControllerTask(void *pvParameters);
 
 #endif /* CONTROLLER_H */

@@ -23,20 +23,9 @@ QueueHandle_t xUartRxQueue;
 QueueHandle_t xUartTxQueue;
 
 INT16U MotorFrame = 0;
-static inline INT8U f32_to_u8(FP32 f) {
-    // 1) round to nearest integer
-    int   tmp = (int)roundf(f);
-    // 2) clamp to [0..255]
-    if (tmp < 0)   tmp = 0;
-    if (tmp > 255) tmp = 255;
-    // 3) return as INT8U
-    return (INT8U)tmp;
-}
 
-
-//SKAL ALT VÆRE SIGNED??
 void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed){ //From TIVA to FPGA
-    FSM_STATUS = URTTX;
+
     *Frame &= 0x0000;
 
     *Frame     |=(0 << 15)                 //start bit = 0
@@ -48,8 +37,9 @@ void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, 
                |(1 << 0);                  //stop bit = 1
 
 }
+
 void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
-    FSM_STATUS = URTRX;
+
     //shift MSB of EncoderFrame into panVal
     *panVal  = (INT8S)((*Frame >> 8) & 0xFF);
 
@@ -57,28 +47,47 @@ void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to T
     *tiltVal = (INT8S)(*Frame & 0xFF);
 }
 
+INT8S ticks_to_degrees(INT8S ticks){
+    INT8S gear_ratio = 3;      // 1:3 gear ratio for the external gears
+    INT8S encoder_cpr = 360;      // Encoder counts per revolution
+
+    if (gear_ratio <= 0.0 || encoder_cpr <= 0) {
+        return 0.0;  // or some error value
+    }
+
+    return ((INT8S)ticks / (encoder_cpr * gear_ratio)) * 360.0;
+}
+
+
+void tiva_fpga_map_pan(INT32S *pid_output_pan, INT8U *pid_speed_pan, INT8U *pid_dir_pan)
+/*****************************************************************************
+ *   Input    : INT32S pid_output_pan - PID output value from the pan controller
+ *   Output   : INT8S - Mapped value for the FPGA
+ *   Function : Maps the PID output value to a range suitable for the FPGA
+ *****************************************************************************/
+{
+
+    *pid_speed_pan = abs(max_pid_output_pan) / pan_step_increment;
+    *pid_dir_pan = pid_output_pan < 0 ? 1 : 0;
+
+}
+
+void tiva_fpga_map_tilt(INT32S *pid_output_tilt, INT8U *pid_speed_tilt, INT8U *pid_dir_tilt)
+/*****************************************************************************
+ *   Input    : INT32S pid_output_tilt - PID output value from the tilt controller
+ *   Output   : INT8S - Mapped value for the FPGA
+ *   Function : Maps the PID output value to a range suitable for the FPGA
+ *****************************************************************************/
+{
+    *pid_speed_tilt = abs(max_pid_output_tilt) / tilt_step_increment;
+    *pid_dir_tilt = pid_speed_tilt < 0 ? 1 : 0;
+}
 
 /*
-INT8U ErrorToSpeed(INT8U error){
-    if (error > 100) error = 100;
-    return (INT8U)((error * 20 + 50) / 100); //speed
-}
-
-
-INT8U EncValToAngle(INT8U encVal){ //EncValToErrorMap????
-
-    //return angle for control
-    //encAng queue???
-    //and direction???
-
-}
-
-*/
 void vSpiGetFrameTask(void *pvParameters){ //should unpack encoderFrame from SpiRxQueue and send to PanCtrlFbqueue
 
     INT16S EncoderFrame;
-    INT8S panVal, tiltVal;
-   // INT8U panDir, tiltDir;
+    INT8S panTicks, tiltTicks;
     INT8S panAng, tiltAng;
 
     for(;;){
@@ -86,16 +95,14 @@ void vSpiGetFrameTask(void *pvParameters){ //should unpack encoderFrame from Spi
         if(xQueueReceive(xSpiRxQueue, &EncoderFrame, portMAX_DELAY) == pdTRUE){
             uart1_print("\r\n<<<SpiGetFrameTask>>>\r\n");
 
-            UnpackFrame(&EncoderFrame, &panVal, &tiltVal);
+            UnpackFrame(&EncoderFrame, &panTicks, &tiltTicks);
 
-            //MISSING MAP AND DIRECTIONS?
-            //INT8U EncValToAngle(INT8U encVal);
+            panAng = ticks_to_degrees(panTicks);
+            tiltAng = ticks_to_degrees(tiltTicks);
 
-            panAng = panVal;
-            tiltAng = tiltVal;
             uart1_print("\r\nEncoderFrame: 0x%04x, 0b%s, d:%d \r\n", EncoderFrame, rx_binary_string(EncoderFrame), EncoderFrame);
-            uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
-            uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
+            uart1_print("\r\npanAng: 0x%04x, 0b%s, d:%d \r\n", panAng, rx_binary_string(panAng), panAng);
+            uart1_print("\r\ntiltAng: 0x%04x, 0b%s, d:%d \r\n", tiltAng, rx_binary_string(tiltAng), tiltAng);
 
             xQueueSend(xPanFbInQueue, &panAng, 0);
             xQueueSend(xTiltFbInQueue, &tiltAng, 0);
@@ -105,10 +112,10 @@ void vSpiGetFrameTask(void *pvParameters){ //should unpack encoderFrame from Spi
 
 void vSpiSendFrameTask(void *pvParameters){ //should create MotorFrame from PanCtrloutQueue and send to SpiTxQueue
       //INT8U panError, tiltError;
-    FP32 panError, tiltError;
+    INT32S panError, tiltError;
     INT8U panSpeed, tiltSpeed;
     INT8U  panDir,   tiltDir;
-      INT16U MotorFrame;
+    INT16U MotorFrame;
 
       for(;;){
 
@@ -116,19 +123,15 @@ void vSpiSendFrameTask(void *pvParameters){ //should create MotorFrame from PanC
               (xQueueReceive(xTiltCtrlOutQueue, &tiltError, portMAX_DELAY) == pdTRUE))
               uart1_print("\r\n<<<SpiSendFrameTask>>>\r\n");
 
-               panSpeed = f32_to_u8(panError);
-                //TEMP: get direction function
-                panDir = 1; //temp
-                tiltSpeed = f32_to_u8(tiltError);
-                //TEMP: get direction function
-                tiltDir = 0; //temp
+              tiva_fpga_map_pan(&panError, &panSpeed, &panDir);
+              tiva_fpga_map_tilt(&tiltError, &tiltSpeed, &tiltDir);
 
-                CreateFrame(&MotorFrame, &panDir, &panSpeed, &tiltDir, &tiltSpeed);
+              CreateFrame(&MotorFrame, &panDir, &panSpeed, &tiltDir, &tiltSpeed);
 
             //DEBUGGER PRINTS
               uart1_print("\r\nMotorFrame: 0x%04x, 0b%s, d:%u \r\n", MotorFrame, rx_binary_string(MotorFrame), (unsigned)MotorFrame);
-              uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%u \r\n", panError, rx_binary_string(panError), (unsigned)panError);
-              uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%u \r\n", tiltError, rx_binary_string(tiltError), (unsigned)tiltError);
+              uart1_print("\r\panSpeed: 0x%04x, 0b%s, d:%u \r\n", panSpeed, rx_binary_string(panSpeed), (unsigned)panSpeed);
+              uart1_print("\r\tiltSpeed: 0x%04x, 0b%s, d:%u \r\n", tiltSpeed, rx_binary_string(tiltSpeed), (unsigned)tiltSpeed);
               uart1_print("\r\npanDir: 0x%04x, 0b%s, d:%u \r\n", panDir, rx_binary_string(panDir), (unsigned)panDir);
               uart1_print("\r\ntiltDir: 0x%04x, 0b%s, d:%u \r\n", tiltDir, rx_binary_string(tiltDir), (unsigned)tiltDir);
 
@@ -147,9 +150,6 @@ void vUartGetFrameTask(void *pvParameters){ //should unpack visionframe from uar
 
     INT16S VisionFrame;
     INT8S panVal, tiltVal;
-   // INT8U panDir, tiltDir;
-
-
 
     for(;;){
 
@@ -162,15 +162,12 @@ void vUartGetFrameTask(void *pvParameters){ //should unpack visionframe from uar
             uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
             uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
 
-            //  uart1_print("\r\npanDir: 0x%04x, 0b%s, d:%u \r\n", panDir, rx_binary_string(panDir), (unsigned)panDir);
-          //  uart1_print("\r\ntiltDir: 0x%04x, 0b%s, d:%u \r\n", tiltDir, rx_binary_string(tiltDir), (unsigned)tiltDir);
            xQueueSend(xPanCtrlInQueue, &panVal, 0);
-
-            xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
+           xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
        }
  }
 }
-
+*/
 //uart send frame skal ikke rigtigt bruges medmindre user feedback??
 
 /*

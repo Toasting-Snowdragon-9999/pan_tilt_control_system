@@ -8,7 +8,6 @@
 #ifndef PROJECT_INC_UART_TASK_H_
 #define PROJECT_INC_UART_TASK_H_
 
-void vUartRxTask(void *pvParameters);
-void vUartTxTask( void *pvParameters );
+void vUartTask(void *pv);
 
 #endif /* PROJECT_INC_UART_TASK_H_ */

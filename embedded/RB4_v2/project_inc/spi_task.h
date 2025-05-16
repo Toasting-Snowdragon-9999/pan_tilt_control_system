@@ -10,5 +10,5 @@
 
 void vSpiRxTask();
 void vSpiTxTask();
-
+//void vSpiTask();
 #endif /* PROJECT_INC_SPI_TASK_H_ */

@@ -21,11 +21,11 @@ void LedDriver(){
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_RED;
            break;
-         case URTRX:
+         case UART:
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_YELLOW;
            break;
-         case URTTX:
+         case SPI:
              GPIO_PORTF_DATA_R |= (0x0E);
              GPIO_PORTF_DATA_R ^=  LED_GREEN;
            break;

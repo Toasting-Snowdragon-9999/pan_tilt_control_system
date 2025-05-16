@@ -14,7 +14,3 @@ encoding//Debug/subdir_rules.mk=UTF-8
 encoding//Debug/subdir_vars.mk=UTF-8
 encoding//drivers/uart.c=UTF-8
 encoding//drivers/uart.h=UTF-8
-encoding//project_inc/uart_config.h=UTF-8
-encoding//project_src/controller_dummy.c=UTF-8
-encoding//project_src/uart_config.c=UTF-8
-encoding//project_src/uart_rx_task.c=UTF-8

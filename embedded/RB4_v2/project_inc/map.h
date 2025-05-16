@@ -25,16 +25,32 @@
                     | BIT_0 )
 
 
+#define MAX_DEGREE_PAN 38.48
+#define MAX_DEGREE_TILT 22.84
+
+#define MAX_MAP_STEP 20
+
 extern INT16U MotorFrame;
 
 void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed);
 void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal);
-INT8S ErrorToSpeed(INT8S error);
-//INT8U EncValToAngle(INT8U encVal);
 void vSpiGetFrameTask(void *pvParameters);
 void vSpiSendFrameTask(void *pvParameters);
 //void vUartSendFrameTask(void *pvParameters);
 void vUartGetFrameTask(void *pvParameters);
 
-static inline INT8U f32_to_u8(FP32 f);
+INT8S ticks_to_degrees(INT8S ticks);
+void tiva_fpga_map_tilt(INT32S *pid_output_tilt, INT8U *pid_speed_tilt, INT8U *pid_dir_tilt);
+/*****************************************************************************
+ *   Input    : INT32S pid_output_pan - PID output value from the pan controller
+ *   Output   : INT8S - Mapped value for the FPGA
+ *   Function : Maps the PID output value to a range suitable for the FPGA
+ ******************************************************************************/
+
+void tiva_fpga_map_pan(INT32S *pid_output_pan, INT8U *pid_speed_pan, INT8U *pid_dir_pan);
+/*****************************************************************************
+ *   Input    : INT32S pid_output_tilt - PID output value from the tilt controller
+ *   Output   : INT8S - Mapped value for the FPGA
+ *   Function : Maps the PID output value to a range suitable for the FPGA
+ ******************************************************************************/
 #endif /* PROJECT_INC_MAP_H_ */

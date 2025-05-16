@@ -20,25 +20,20 @@ QueueHandle_t xPanFbInQueue;
 QueueHandle_t xTiltFbInQueue;
 
 // Task Handles
-
-TaskHandle_t vPanControllerTaskHandle;
-TaskHandle_t vTiltControllerTaskHandle;
-
-TaskHandle_t vSpiSendFrameTaskHandle;
-TaskHandle_t vSpiGetFrameTaskHandle;
-
-TaskHandle_t vUartSendFrameTaskHandle;
-TaskHandle_t vUartGetFrameTaskHandle;
-
-TaskHandle_t vUartRxTaskHandle;
-TaskHandle_t vUartTxTaskHandle;
-
 TaskHandle_t vSpiRxTaskHandle;
 TaskHandle_t vSpiTxTaskHandle;
-
-TaskHandle_t vDebugTaskHandle;
+TaskHandle_t vUartTaskHandle;
+TaskHandle_t vPIDControllerTaskHandle;
 TaskHandle_t vLedTaskHandle;
-TaskHandle_t vSwitchTaskHandle;
+TaskHandle_t vSpiTaskHandle;
 
 //state machines
 extern volatile INT8U FSM_STATUS = IDLE;
+
+// Initialize PID output limits
+INT32S max_pid_output_pan;
+INT32S max_pid_output_tilt;
+
+// Increment values for mapping
+INT32S pan_step_increment;
+INT32S tilt_step_increment;

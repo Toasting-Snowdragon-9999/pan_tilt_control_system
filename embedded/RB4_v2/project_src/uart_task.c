@@ -6,6 +6,7 @@
  */
 #include "common.h"
 #include "uart.h"
+#include "map.h"
 
 extern QueueHandle_t xUartRxQueue;
 extern QueueHandle_t xSpiRxTempQueue;
@@ -15,29 +16,44 @@ extern QueueHandle_t xPanCtrlInQueue;
 extern QueueHandle_t xTiltCtrlOutQueue;
 
 
-void vUartRxTask(void *pv) {
+void vUartTask(void *pv) {
 
-        INT16S uartrx;
-        INT16S spirx;
+    INT16S VisionFrame;
+    INT8S panVal, tiltVal;
+
         for (;;) {
+            uart1_print("\r\n<<<UART_TASK>>>\r\n");
+            FSM_STATUS = UART;
 
-            FSM_STATUS = URTRX;
+            VisionFrame = uart0_get16();
 
-            uartrx = uart0_get16();
-            spirx = uart0_get16();
 
-            if((xQueueSend(xUartRxQueue, &uartrx, portMAX_DELAY) == pdTRUE)){
-                uart1_print("\r\n<<<UartRxTask>>>\r\n");
-                uart1_print("\r\nUartRxTask received: 0x%04x, 0b%s, d:%d \r\n", uartrx, rx_binary_string(uartrx), uartrx); //debugger
-                xQueueSend(xSpiRxTempQueue, &spirx, 0);
-            }
+            UnpackFrame(&VisionFrame, &panVal, &tiltVal);
 
-            xQueueSend(xSpiRxQueue, &spirx, portMAX_DELAY);
+           if(((xQueueSend(xPanCtrlInQueue, &panVal, 0) == pdTRUE))
+            && (xQueueSend(xTiltCtrlInQueue, &tiltVal, 0) == pdTRUE)){
 
+               //block spi
+
+
+               //DEBUGGER PRINTS
+               uart1_print ("\r\nVisionFrame:: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
+               uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
+               uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
+
+               //taskYIELD();
+               vTaskDelay(pdMS_TO_TICKS(10));
+           } else{
+           //unblock control
+           //vTaskDelay(pdMS_TO_TICKS(10));
+               taskYIELD();
+           }
         }
 }
 
 
+
+/*
 void vUartTxTask(void *pvParameters)
 {
     INT16S tx;
@@ -52,6 +68,6 @@ void vUartTxTask(void *pvParameters)
           }
     }
 }
-
+*/
 
 
