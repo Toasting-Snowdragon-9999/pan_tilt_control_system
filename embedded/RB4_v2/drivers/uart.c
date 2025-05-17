@@ -17,6 +17,8 @@
 #include "common.h"
 static SemaphoreHandle_t xUart1Mutex;
 
+char buf[80];
+
 // Helpers: enable clocks for UART0 (PA) and UART1 (PB)
 static void _enable_uart0(void) {
     SYSCTL_RCGCGPIO_R |= (1 << 0);
@@ -51,7 +53,7 @@ void uart0_init(uint32_t baud) {
     UART0_CTL_R  = UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE;
 }
 uint8_t uart0_getc(void) {
-    while (UART0_FR_R & UART_FR_RXFE) taskYIELD();
+   while (!(UART0_FR_R & UART_FR_RXFE));// taskYIELD();
     return (uint8_t)(UART0_DR_R & 0xFF);
 }
 void uart0_putc(uint8_t b) {
@@ -103,7 +105,7 @@ void uart1_init(uint32_t baud) {
     xUart1Mutex = xSemaphoreCreateMutex();
 }
 uint8_t uart1_getc(void) {
-    while (UART1_FR_R & UART_FR_RXFE) taskYIELD();
+    while (!(UART1_FR_R & UART_FR_RXFE));
     return (uint8_t)(UART1_DR_R & 0xFF);
 }
 void uart1_putc(uint8_t b) {
@@ -123,7 +125,6 @@ void uart1_send16(uint16_t v) {
 }
 void uart1_print(const char *fmt, ...) {
     if (xSemaphoreTake(xUart1Mutex, portMAX_DELAY) == pdTRUE) {
-        char buf[80];
         va_list ap;
         va_start(ap, fmt);
         vsnprintf(buf, sizeof(buf), fmt, ap);

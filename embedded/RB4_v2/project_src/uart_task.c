@@ -17,12 +17,15 @@ extern QueueHandle_t xTiltCtrlOutQueue;
 
 
 void vUartTask(void *pv) {
+    TickType_t xLastWakeTime;
+      const TickType_t xFrequency = 1;
+      xLastWakeTime = xTaskGetTickCount();
 
     INT16S VisionFrame;
     INT8S panVal, tiltVal;
 
         for (;;) {
-            uart1_print("\r\n<<<UART_TASK>>>\r\n");
+
             FSM_STATUS = UART;
 
             VisionFrame = uart0_get16();
@@ -32,22 +35,22 @@ void vUartTask(void *pv) {
 
            if(((xQueueSend(xPanCtrlInQueue, &panVal, 0) == pdTRUE))
             && (xQueueSend(xTiltCtrlInQueue, &tiltVal, 0) == pdTRUE)){
-
-               //block spi
+              //uart1_print("\r\n<<<UART_TASK>>>\r\n");
+               //block spi?
 
 
                //DEBUGGER PRINTS
-               uart1_print ("\r\nVisionFrame:: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
-               uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
-               uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
+           //  uart1_print ("\r\nVisionFrame:: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
+            //  uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
+             // uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
 
-               //taskYIELD();
-               vTaskDelay(pdMS_TO_TICKS(10));
-           } else{
-           //unblock control
-           //vTaskDelay(pdMS_TO_TICKS(10));
-               taskYIELD();
+
+
            }
+          // taskYIELD();
+
+           vTaskDelay(pdMS_TO_TICKS(1));
+           //  vTaskDelayUntil( &xLastWakeTime, xFrequency );
         }
 }
 

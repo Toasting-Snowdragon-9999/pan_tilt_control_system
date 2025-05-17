@@ -21,10 +21,6 @@ static void initilization(void)
 
 void queueSetup(){
 
-         // xSpiRxQueue = xQueueCreate(1, sizeof(INT32S)); //from fpga encoders
-
-        //  xSpiTxQueue = xQueueCreate(1, sizeof(INT32S)); //to fpa motors
-       //   xUartRxQueue = xQueueCreate(1, sizeof(INT32S)); //from vision
 
 
           xPanCtrlOutQueue = xQueueCreate(1, sizeof(FP32)); //from controller task to map task
@@ -37,9 +33,6 @@ void queueSetup(){
          xTiltFbInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
 
 
-        // xUartTxQueue = xQueueCreate(1, sizeof(INT16S)); //to pc
-
-          // xSpiRxTempQueue = xQueueCreate(1, sizeof(INT16S)); //from fpga encoders
 }
 
 
@@ -49,30 +42,14 @@ int main(void)
         FSM_STATUS = IDLE;
         initilization();
         queueSetup();
-       // xTaskCreate( vSpiTask,"SPI", 512, NULL, 4, &vSpiTaskHandle);
-        xTaskCreate( vSpiRxTask,"SPI_RX", 512, NULL, 4, &vSpiRxTaskHandle);
-        xTaskCreate( vSpiTxTask,"SPI_TX", 512, NULL, 4, &vSpiTxTaskHandle);
-        xTaskCreate( vPIDControllerTask, "PID_CONTROLLER", 512, NULL, 3, &vPIDControllerTaskHandle);
-        xTaskCreate( vUartTask, "UART_RX",  512, NULL,2, &vUartTaskHandle);
+
+        xTaskCreate( vSpiRxTask,"SPI_RX", 1024, NULL, 4, &vSpiRxTaskHandle);
+        xTaskCreate( vSpiTxTask,"SPI_TX", 1024, NULL, 4, &vSpiTxTaskHandle);
+       xTaskCreate( vPIDControllerTask, "PID_CONTROLLER", 1024, NULL, 3, &vPIDControllerTaskHandle);
+      xTaskCreate( vUartTask, "UART_RX",  1024, NULL,2, &vUartTaskHandle);
         //xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 1, &vLedTaskHandle);
 
 
-      //  xTaskCreate( vUartTxTask,"UART_TX", 512, NULL, 3, &vUartTxTaskHandle);
-
-     //   xTaskCreate( vSpiTxTask,"SPI_TX", 512, xSpiTxQueue, 3, &vSpiTxTaskHandle);
-      //  xTaskCreate( vSpiRxTask, "SPI_RX",  512, xSpiRxQueue, 2, &vSpiRxTaskHandle);
-
-        //xTaskCreate( vUartGetFrameTask, "UART_GET_FRAME",  512, NULL, 2, &vUartGetFrameTaskHandle);
-        //xTaskCreate( vSpiSendFrameTask,"SEND_FRAME", 512, NULL, 3, &vSpiSendFrameTaskHandle);
-        //xTaskCreate( vSpiGetFrameTask, "GET_FRAME",  512, NULL, 2, &vSpiGetFrameTaskHandle);
-
-        //xTaskCreate( vPanControllerTask, "PAN_CONTROLLER", 512, NULL, 4, &vPanControllerTaskHandle);
-       // xTaskCreate( vTiltControllerTask, "TILT_CONTROLLER", 512, NULL, 4, &vTiltControllerTaskHandle);
-
-
-        // xTaskCreate( vUartSendFrameTask,"UART_SEND_FRAME", 512, NULL, 4, &vUartSendFrameTaskHandle);
-        //xTaskCreate(vDebugTask, "DEBUG", 200, NULL, 4, &vDebugTaskHandle);
-       //xTaskCreate(vTestTask, "TEST", 200, NULL, 4, NULL);
 
         vTaskStartScheduler();
 
