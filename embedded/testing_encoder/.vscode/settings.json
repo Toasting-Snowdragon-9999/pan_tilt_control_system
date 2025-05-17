@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "start_to_move.h": "c",
+<<<<<<< HEAD
+        "key_pad_driver.h": "c",
+        "char_def.h": "c",
+        "ui_task.h": "c"
+=======
+        "adc.h": "c"
+>>>>>>> main
+    }
+}
