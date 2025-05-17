@@ -1,6 +1,5 @@
 #include "priority_vision.h"
 
-
 PrioVision::PrioVision() : Vision() {
 
 }

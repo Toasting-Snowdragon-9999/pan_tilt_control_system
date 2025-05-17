@@ -426,3 +426,7 @@ VHDL/movement_interpreter/project_1.ip_user_files/bd/movement_interpreter/projec
 VHDL/movement_interpreter/project_1.ip_user_files/bd/movement_interpreter/project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_0/sim/
 VHDL/movement_interpreter/project_1.ip_user_files/bd/movement_interpreter/project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_1/sim/
 VHDL/movement_interpreter/project_1.ip_user_files/bd/movement_interpreter/project_1.gen/sources_1/bd/movement_interpreter/ip/movement_interpreter_xlconstant_0_2/sim/
+<<<<<<< HEAD
+=======
+VHDL/sensor_feedback/hall_sensor/hall_sensor.sim/sim_1/behav/xsim/better_read_hall_sensor_wrapper_behav.wdb
+>>>>>>> 6e1c230e2979b4beddadf921c18161519cccdec3
