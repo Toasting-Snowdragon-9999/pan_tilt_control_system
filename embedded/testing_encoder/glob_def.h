@@ -47,6 +47,14 @@
 #define UART_ERROR_CODE 0xFFFF
 #define MOTOR_STOP_COMMAND 0x0001
 
+// Control defs
+#define MAX_DEGREE_PAN 38.48
+#define MAX_DEGREE_TILT 21.31
+#define MAX_MAP_STEP 20
+#define GEAR_RATIO 3              // 1:3 gear ratio for the external gears
+#define ENC_CPR 360               // Encoder counts per revolution
+
+
 /*****************************   Constants   *******************************/
 
 

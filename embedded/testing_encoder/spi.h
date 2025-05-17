@@ -29,6 +29,11 @@ INT16U SPI_read(void);
 
 void spi_info_init(struct spi_info *spi_info);
 
+void set_spi_tx(struct spi_info* spi_info, uint16_t message);
+
+uint16_t get_spi_rx(struct spi_info* spi_info);
+
+
 void spi_task(void *pvParameter);
 
 #endif /* DRIVERS_SPI_H_ */

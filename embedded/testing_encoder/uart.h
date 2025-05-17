@@ -13,10 +13,12 @@
 #include "glob_def.h"
 #include "FreeRTOS.h"
 #include "semphr.h"
+#include "emp_type.h"
 
 struct uart_info {
     uint16_t tx;
     uint16_t rx;
+    BOOLEAN new_data_flag;
     SemaphoreHandle_t semaphore;
 };
 
@@ -45,6 +47,10 @@ uint16_t uart0_get16_nonblocking(void);
 int uart0_getc_nonblocking(uint8_t* byte_out);
 
 void uart_info_init(struct uart_info* uart_info);
+
+void set_uart_tx(struct uart_info* uart_info, uint16_t message);
+uint16_t get_uart_rx(struct uart_info* uart_info);
+
 void uart_task(void *pvParameter);
 
 #endif /* DRIVERS_UART_H_ */

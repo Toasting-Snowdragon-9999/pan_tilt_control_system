@@ -125,14 +125,31 @@ INT16U SPI_read(void){
 
 void spi_info_init(struct spi_info *spi_info){
 
-    spi_info->tx = 0x12CB;
+    spi_info->tx = 0x0000;
     spi_info->rx = 0x0000;
     spi_info->semaphore = xSemaphoreCreateMutex();
 
 }
 
+void set_spi_tx(struct spi_info* spi_info, uint16_t message)
+{
+    if(xSemaphoreTake(spi_info->semaphore, portMAX_DELAY)) {
+        spi_info->tx = message;
+        xSemaphoreGive(spi_info->semaphore);
+    }
+}
+uint16_t get_spi_rx(struct spi_info* spi_info)
+{
+    uint16_t message = 0;
+    if(xSemaphoreTake(spi_info->semaphore, portMAX_DELAY)) {
+        message = spi_info->rx;
+        xSemaphoreGive(spi_info->semaphore);
+    }
+    return message;
+}
 
-void spi_task(void *pvParameter){
+void spi_task(void *pvParameter)
+{
     struct spi_info* spi_info = (struct spi_info*)pvParameter;
     for(EVER){
 
@@ -141,7 +158,6 @@ void spi_task(void *pvParameter){
             spi_info->rx = SPI_read();
             xSemaphoreGive(spi_info->semaphore);
         }
-
         vTaskDelay(5 / portTICK_RATE_MS);
     }
 }

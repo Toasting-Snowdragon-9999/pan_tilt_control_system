@@ -87,8 +87,6 @@ uint16_t uart0_get16_nonblocking(void) {
     return (uint16_t)((hi << 8) | lo);
 }
 
-
-
 void uart0_send16(uint16_t v) {
     uart0_putc((uint8_t)(v & 0xFF));
     uart0_putc((uint8_t)(v >> 8));
@@ -174,16 +172,38 @@ const char *rx_binary_string(uint16_t v) {
 void uart_info_init(struct uart_info* uart_info){
     uart_info->tx = 0x0000;
     uart_info->rx = 0x0000;
+    uart_info->new_data_flag = 0;
     uart_info->semaphore = xSemaphoreCreateMutex();
+}
+
+void set_uart_tx(struct uart_info* uart_info, uint16_t message)
+{
+    if(xSemaphoreTake(uart_info->semaphore, portMAX_DELAY)) {
+        uart_info->tx = message;
+        xSemaphoreGive(uart_info->semaphore);
+    }
+}
+uint16_t get_uart_rx(struct uart_info* uart_info)
+{
+    uint16_t message = 0;
+    if(xSemaphoreTake(uart_info->semaphore, portMAX_DELAY)) {
+        message = uart_info->rx;
+        xSemaphoreGive(uart_info->semaphore);
+    }
+    return message;
 }
 
 void uart_task(void *pvParameter){
     struct uart_info* uart_info = (struct uart_info*)pvParameter;
     static uint16_t prev_uart_tx = UART_ERROR_CODE;
     static uint16_t temp_tx = UART_ERROR_CODE;
+    static uint16_t prev_uart_rx = 0xFFFF;
 
     for(EVER){
         uint16_t temp_rx = uart0_get16_nonblocking();
+        if(prev_uart_rx != temp_rx){
+            uart_info->new_data_flag = 1;
+        }
 
         //  Always store new received value if valid
         if (temp_rx != UART_ERROR_CODE) {
@@ -201,9 +221,7 @@ void uart_task(void *pvParameter){
         {
             uart0_send16(temp_tx);
             prev_uart_tx = temp_tx;
-
         }
-
         vTaskDelay(pdMS_TO_TICKS(10));
     }
 }

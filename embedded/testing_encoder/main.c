@@ -48,6 +48,8 @@ int main(void)
   uart_info_init(&uart_info);
   static struct control_info control_info;
   control_info_init(&control_info, &spi_info, &uart_info);
+  static struct PID_controller PID_controller;
+  PID_init(&PID_controller, &spi_info, &uart_info);
   
   int i;
   for (i = 0; i <= 20; i++);
@@ -56,7 +58,9 @@ int main(void)
   xTaskCreate(status_led, "red_LED_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
   xTaskCreate(spi_task, "spi_task", USERTASK_STACK_SIZE, (void *)&spi_info, LOW_PRIO, NULL);
   xTaskCreate(uart_task, "uart_task", USERTASK_STACK_SIZE, (void *)&uart_info, LOW_PRIO, NULL);
-  xTaskCreate(control_task, "control_task", USERTASK_STACK_SIZE, (void *)&control_info, LOW_PRIO, NULL);
+  // xTaskCreate(control_task, "control_task", USERTASK_STACK_SIZE, (void *)&control_info, LOW_PRIO, NULL);
+//   xTaskCreate(uart_task2, "uart_task2", USERTASK_STACK_SIZE, (void *)&control_info, LOW_PRIO, NULL);
+   xTaskCreate(PID_task, "PID_task", USERTASK_STACK_SIZE, (void *)&PID_controller, LOW_PRIO, NULL);
 
   vTaskStartScheduler();
   return 0;
