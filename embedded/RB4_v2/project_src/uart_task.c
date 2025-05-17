@@ -29,24 +29,24 @@ void vUartTask(void *pv) {
             FSM_STATUS = UART;
 
             VisionFrame = uart0_get16();
-
-
+           //uart1_print("\r\n<<<UART_TASK>>>\r\n");
+            uart1_print ("\r\nVisionFrame:: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
             UnpackFrame(&VisionFrame, &panVal, &tiltVal);
 
-           if(((xQueueSend(xPanCtrlInQueue, &panVal, 0) == pdTRUE))
-            && (xQueueSend(xTiltCtrlInQueue, &tiltVal, 0) == pdTRUE)){
-              //uart1_print("\r\n<<<UART_TASK>>>\r\n");
+           xQueueSend(xPanCtrlInQueue, &panVal, 0);
+
+           xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
+
                //block spi?
 
-
                //DEBUGGER PRINTS
-           //  uart1_print ("\r\nVisionFrame:: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
-            //  uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
-             // uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
+
+            // uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
+            // uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
 
 
 
-           }
+
           // taskYIELD();
 
            vTaskDelay(pdMS_TO_TICKS(1));

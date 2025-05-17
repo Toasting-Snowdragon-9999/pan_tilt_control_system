@@ -49,11 +49,11 @@ void uart0_init(uint32_t baud) {
     uint32_t fbrd = (uint32_t)((((16000000.0f/(16.0f*baud)) - ibrd) * 64) + 0.5f);
     UART0_IBRD_R = ibrd;
     UART0_FBRD_R = fbrd;
-    UART0_LCRH_R = UART_LCRH_WLEN_8 | UART_LCRH_FEN;
+    UART0_LCRH_R = UART_LCRH_WLEN_8;
     UART0_CTL_R  = UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE;
 }
 uint8_t uart0_getc(void) {
-   while (!(UART0_FR_R & UART_FR_RXFE));// taskYIELD();
+ //  while (!(UART0_FR_R & UART_FR_RXFE));// taskYIELD();
     return (uint8_t)(UART0_DR_R & 0xFF);
 }
 void uart0_putc(uint8_t b) {
