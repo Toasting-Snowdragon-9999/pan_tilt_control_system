@@ -1,5 +1,6 @@
 #include "priority_vision.h"
 
+
 PrioVision::PrioVision() : Vision() {
 
 }
@@ -52,16 +53,14 @@ void PrioVision::tracking(Uart& uart) {
 
     // UartReader ur(uart);
     // ur.start();
-
-    for (;;) { 
+    for (EVER) { 
         // To adjust sampling rate
         auto now = chrone_time::now();
         if (now < next_frame_time) {
-            //std::cout << "Waiting for next frame..." << std::endl;
             std::this_thread::sleep_for(next_frame_time - now);
         }
         next_frame_time += frame_interval;
-
+        auto now_after_sleep = chrone_time::now();
         cap >> _image;         
         if (_image.empty()) {
             std::cerr << "Error: Empty frame!" << std::endl;
@@ -82,8 +81,6 @@ void PrioVision::tracking(Uart& uart) {
             _find_contours(_contours, _blurred_cpu);
             _thresholds[i].contours = _contours;
         }
-
-
         
         auto best = find_highest_priority_threshold(_thresholds);
         if (best) {
@@ -96,25 +93,22 @@ void PrioVision::tracking(Uart& uart) {
         // Converte to motor degrees
         int8_t pan_error =  offset.x_offset / PAN_TICK_TO_DEGREE;
         int8_t tilt_error = offset.y_offset / TILT_TICK_TO_DEGREE;
-        
-        static float ___prev_x = 0;
-        static float ___prev_y = 0;
-        if (abs(offset.x_offset - ___prev_x) > 10 || abs(offset.y_offset - ___prev_y) > 10) {
-            std::cout << "Encoded: " << offset.x_offset << " " << offset.y_offset << std::endl;
-        }
-        ___prev_x = offset.x_offset;
-        ___prev_y = offset.y_offset;
-        // uint8_t x_off[2];
-        // // memcpy(&x_off[0], "x", sizeof(uint8_t));
-        // memcpy(&x_off[0], &x_encoded, sizeof(uint16_t));
 
-        // uint8_t y_off[3];
-        // memcpy(&y_off[0], "y", sizeof(uint8_t));
-        // memcpy(&y_off[1], &y_encoded, sizeof(uint16_t));
+        std::cout << "Encoded: " << offset.x_offset << " " << offset.y_offset << std::endl;
 
-        // uart.speak(x_off, 2);   
+        uart.speak(reinterpret_cast<const uint8_t*>(&pan_error), 1);
+        uart.speak(reinterpret_cast<const uint8_t*>(&tilt_error), 1); 
+
         cv::imshow("GPU Accelerated", _image);
-        
+        auto last = chrone_time::now();
+        auto elapsed = last - now;
+        double elapsed_seconds = std::chrono::duration<double>(elapsed).count();
+        if (elapsed_seconds > 0.0) {  // avoid division by zero
+            double frequency_hz = 1.0 / elapsed_seconds;
+            std::cout << "Actual sampling frequency: " << frequency_hz << " Hz" << std::endl;
+        }
+
+        // log_error(offset);
         if (cv::waitKey(1) == 'q') {
             // ur.stop();
             break;
@@ -154,3 +148,23 @@ void PrioVision::_prio_calibration() {
     std::cout << "Red: " << _thresholds[0].values[0] << " " << _thresholds[0].values[1] << std::endl;
     
 }
+
+// void PrioVision::log_error(two_dim::tracking_offset& offset) {
+//     // Open log file in append mode
+//     std::ofstream log_file("error_log.txt", std::ios::app);
+//     if (!log_file.is_open()) {
+//         std::cerr << "Failed to open log file!" << std::endl;
+//         return;
+//     }
+
+//     // Get current system time
+//     auto now = std::chrono::system_clock::now();
+//     std::time_t now_c = std::chrono::system_clock::to_time_t(now);
+
+//     // Write timestamp and offset values
+//     log_file << std::put_time(std::localtime(&now_c), "%Y-%m-%d %H:%M:%S")
+//     << " | x_offset: " << offset.x_offset / PAN_TICK_TO_DEGREE 
+//     << " y_offset: " << offset.y_offset / TILT_TICK_TO_DEGREE << std::endl;
+
+//     log_file.close(); // optional, automatically closes when out of scope
+// }

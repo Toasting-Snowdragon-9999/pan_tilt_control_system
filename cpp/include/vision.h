@@ -15,6 +15,8 @@
 #include "cuda_defines.h"
 #include "uart.h"
 
+#define EVER ;;
+
 #define EXTERNAL_CAMERA 4
 #define INTERNAL_CAMERA 0
 #define CAMERA_IN_USE INTERNAL_CAMERA
@@ -22,7 +24,7 @@
 #define MAX_CALIBRATION 100
 #define MAX_8_BIT 255
 #define MAX_DEVIATION 7
-#define SAMPLING_FREQ 60 // Hz
+#define SAMPLING_FREQ 1 // Max peak freq = 50hz, but will drop to around 30 hz 
 
 using chrone_time = std::chrono::steady_clock;
 
