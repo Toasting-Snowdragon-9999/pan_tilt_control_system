@@ -93,8 +93,9 @@ void PrioVision::tracking(Uart& uart) {
         int8_t pan_error =  offset.x_offset / PAN_TICK_TO_DEGREE;
         int8_t tilt_error = offset.y_offset / TILT_TICK_TO_DEGREE;
 
-        std::cout << "Encoded: " << offset.x_offset << " " << offset.y_offset << std::endl;
-
+        std::cout << "Encoded: pan: " << static_cast<int>(pan_error)
+        << " tilt: " << static_cast<int>(tilt_error) << std::endl;
+        
         uart.speak(reinterpret_cast<const uint8_t*>(&pan_error), 1);
         uart.speak(reinterpret_cast<const uint8_t*>(&tilt_error), 1); 
 

@@ -38,11 +38,6 @@ set(SOURCES
 # Add executable
 add_executable(vision_executable src/main.cpp ${SOURCES})
 
-<<<<<<< HEAD
-=======
-add_executable(uart src/main_test_uart.cpp src/uart.cpp)
-
->>>>>>> 6e1c230e2979b4beddadf921c18161519cccdec3
 # Link OpenCV libraries (including CUDA)
 target_link_libraries(vision_executable PRIVATE ${OpenCV_LIBS})
 
