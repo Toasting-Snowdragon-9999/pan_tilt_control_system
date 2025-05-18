@@ -14,9 +14,9 @@ void PID_init(struct PID_controller *PID_controller,
 ){
     PID_controller->spi_info = spi_info;
     PID_controller->uart_info = uart_info;
-    PID_controller->kp = 25.0f;
+    PID_controller->kp = 5.0f;
     PID_controller->ki = 0.0f;
-    PID_controller->kd = 0.2f;
+    PID_controller->kd = 0.001f;
     PID_controller->Ts = (1.0f / 250.0f);
     PID_controller->N = 1000.0f;
     PID_controller->output_min = -12.0f;
