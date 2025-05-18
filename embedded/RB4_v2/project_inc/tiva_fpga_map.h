@@ -10,11 +10,9 @@
 
 #include "emp_type.h"
 
-#define MAX_PID_OUTPUT_PAN 379981
-#define MAX_PID_OUTPUT_TILT 225474
+#define MAX_DEGREE_PAN 38.48
+#define MAX_DEGREE_TILT 22.84
 #define MAX_MAP_STEP 20
-#define PAN_STEP_INCREMENT (MAX_PID_OUTPUT_PAN / MAX_MAP_STEP)
-#define TILT_STEP_INCREMENT (MAX_PID_OUTPUT_TILT / MAX_MAP_STEP)
 
 INT8S tiva_fpga_map_pan(INT32S pid_output_pan);
 /*****************************************************************************

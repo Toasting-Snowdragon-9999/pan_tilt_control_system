@@ -40,8 +40,8 @@ int main(void)
         if (xTaskCreate( vUartRxTask, "UART_RX",  200, xUartRxQueue, Prio_Uart_Rx, &vUartRxTaskHandle) != pdPASS)
         { uart_print("TaskCreate UART_RX failed\n"); }
 
-       if (xTaskCreate( vPidControllerTask, "PID_CONTROLLER",  200, xUartRxQueue, Prio_Pid_Controller, &vPidControllerTaskHandle) != pdPASS)
-       { uart_print("TaskCreate PID_CONTROLLER failed\n"); }
+        if (xTaskCreate( vPidControllerTask, "PID_CONTROLLER",  200, xUartRxQueue, Prio_Pid_Controller, &vPidControllerTaskHandle) != pdPASS)
+        { uart_print("TaskCreate PID_CONTROLLER failed\n"); }
 
 
         //if (xTaskCreate( vLedTask, "LED_TASK", 200, NULL, Prio_Led, &vLedTaskHandle) != pdPASS)

@@ -12,6 +12,7 @@
 #include "queue.h"
 #include "emp_type.h"
 #include <stdint.h>
+#include "tiva_fpga_map.h"
 #define PID_FREQ_MS   1000   //delay/frequecy af controller
 
 typedef struct {
