@@ -11,7 +11,7 @@
 #include "tmodel.h"
 #include "queue.h"
 #include "semphr.h"
-#include "status_led.h"'
+#include "status_led.h"
 #include "spi.h"
 #include "uart.h"
 #include "control.h"
