@@ -54,6 +54,12 @@
 #define GEAR_RATIO 3              // 1:3 gear ratio for the external gears
 #define ENC_CPR 360               // Encoder counts per revolution
 
+// Pan and tilt direction seen from the camera
+#define PAN_DIR_LEFT 1
+#define PAN_DIR_RIGHT 0
+#define TILT_DIR_UP 1
+#define TILT_DIR_DOWN 0
+
 
 /*****************************   Constants   *******************************/
 

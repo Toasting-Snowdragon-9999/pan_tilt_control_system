@@ -13,10 +13,10 @@ void PID_init(struct PID_controller *PID_controller,
 {
     PID_controller->spi_info = spi_info;
     PID_controller->uart_info = uart_info;
-    PID_controller->kp = 25.0f;
+    PID_controller->kp = 1.0f; //5.0f; // 25.0f;
     PID_controller->ki = 0.0f;
-    PID_controller->kd = 0.2f;
-    PID_controller->Ts = (1.0f / 250.0f);
+    PID_controller->kd = 0.0f; //0.001f; // 0.1f;
+    PID_controller->Ts = (1.0f / 200.0f);
     PID_controller->N = 1000.0f;
     PID_controller->output_min = -12.0f;
     PID_controller->output_max = 12.0f;
@@ -39,6 +39,16 @@ void PID_init(struct PID_controller *PID_controller,
     PID_controller->pan_step_increment = PID_controller->max_pid_output_pan / MAX_MAP_STEP;
     PID_controller->tilt_step_increment = PID_controller->max_pid_output_tilt / MAX_MAP_STEP;
 
+    // Initialize reference values
+    PID_controller->combined_ref_pan = 0;
+    PID_controller->combined_ref_tilt = 0;
+    PID_controller->vision_ref_pan = 0;
+    PID_controller->vision_ref_tilt = 0;
+
+    // Initialize output values
+    PID_controller->pid_output_pan = 0;
+    PID_controller->pid_output_tilt = 0;
+
     // Initialize encoder values and history
     PID_controller->enc_pan = 0;
     PID_controller->enc_tilt = 0;
@@ -54,14 +64,14 @@ INT32S PID_compute(struct PID_controller *PID_controller, INT8S vision_reference
 {
     INT8S error = vision_reference - enc_measured_val;
 
-    // Proportional led
+    // Proportional term
     INT32S P = PID_controller->kp * error;
 
-    // Integral led
+    // Integral term
     // FP32 I = pid->prev_integral + pid->ki * (pid->Ts / 2) * (error + pid->prev_error);
     // pid->prev_integral = I; // Save the integral term for next calculation
 
-    // Derivative led
+    // Derivative term
     INT32S D = -(PID_controller->alpha / PID_controller->beta) * PID_controller->prev_derivative + (PID_controller->gamma / PID_controller->beta) * (error - PID_controller->prev_error);
 
     PID_controller->prev_derivative = D; // Save the derivative term for next calculation
@@ -110,7 +120,20 @@ void tiva_fpga_map_pan(struct PID_controller *PID_controller)
 {
     PID_controller->pid_speed_pan = abs(PID_controller->pid_output_pan) / PID_controller->pan_step_increment;
     // hardcode if 10 then stop, if less than 25 then 25
-    PID_controller->pid_dir_pan = PID_controller->pid_output_pan < 0 ? 1 : 0;
+    // if (PID_controller->pid_speed_pan < 2)
+    // {
+    //     PID_controller->pid_speed_pan = 0;
+    // }
+    // else if (PID_controller->pid_speed_pan < 5)
+    // {
+    //     PID_controller->pid_speed_pan = 5;
+    // }
+    if (PID_controller->pid_speed_pan > 20)
+    {
+        PID_controller->pid_speed_pan = 20;
+    }
+
+    PID_controller->pid_dir_pan = PID_controller->pid_output_pan < 0 ? PAN_DIR_LEFT : PAN_DIR_RIGHT;
 }
 
 void tiva_fpga_map_tilt(struct PID_controller *PID_controller)
@@ -122,7 +145,20 @@ void tiva_fpga_map_tilt(struct PID_controller *PID_controller)
 {
     PID_controller->pid_speed_tilt = abs(PID_controller->pid_output_tilt) / PID_controller->tilt_step_increment;
     // hardcode if 10 then stop, if less than 25 then 25
-    PID_controller->pid_dir_tilt = PID_controller->pid_output_tilt < 0 ? 1 : 0;
+    // if (PID_controller->pid_speed_tilt < 2)
+    // {
+    //     PID_controller->pid_speed_tilt = 0;
+    // }
+    // else if (PID_controller->pid_speed_tilt < 5)
+    // {
+    //     PID_controller->pid_speed_tilt = 5;
+    // }
+    if (PID_controller->pid_speed_tilt > 20)
+    {
+        PID_controller->pid_speed_tilt = 20;
+    }
+
+    PID_controller->pid_dir_tilt = PID_controller->pid_output_tilt < 0 ? TILT_DIR_DOWN : TILT_DIR_UP;
 }
 
 void update_encoder_total(struct PID_controller *PID)
@@ -149,8 +185,11 @@ void unpack_uart_frame(struct PID_controller *PID_controller, uint16_t message)
     INT8S error_MSB = MSB & 0x7F;
     INT8S error_LSB = LSB & 0x7F; // 0b00000111
 
-    PID_controller->vision_ref_pan = (motor_check_MSB) ? error_MSB : error_LSB;
-    PID_controller->vision_ref_tilt = (motor_check_LSB) ? error_LSB : error_MSB;
+    // PID_controller->vision_ref_pan = (motor_check_MSB) ? error_MSB : error_LSB;
+    // PID_controller->vision_ref_tilt = (motor_check_LSB) ? error_MSB : error_LSB;
+
+    PID_controller->vision_ref_pan = error_MSB;
+    PID_controller->vision_ref_tilt = error_LSB;
 }
 
 void unpack_spi_frame(struct PID_controller *PID_controller, uint16_t message)
@@ -186,10 +225,11 @@ void PID_task(void *pvParameter)
     {
         uint16_t uart_rx = get_uart_rx(PID_controller->uart_info);
         BOOLEAN uart_new_flag = PID_controller->uart_info->new_data_flag;
-        set_uart_tx(PID_controller->uart_info, uart_rx);
         unpack_uart_frame(PID_controller, uart_rx);
         uint16_t spi_rx = get_spi_rx(PID_controller->spi_info);
+        set_uart_tx(PID_controller->uart_info, spi_rx);
         unpack_spi_frame(PID_controller, spi_rx);
+        update_encoder_total(PID_controller);
         if (uart_new_flag)
         {
 
@@ -199,8 +239,8 @@ void PID_task(void *pvParameter)
             PID_controller->uart_info->new_data_flag = 0;
         }
 
-        PID_controller->pid_output_pan = PID_compute(PID_controller, PID_controller->combined_ref_pan, PID_controller->enc_pan);
-        PID_controller->pid_output_tilt = PID_compute(PID_controller, PID_controller->combined_ref_tilt, PID_controller->enc_tilt);
+        PID_controller->pid_output_pan = PID_compute(PID_controller, PID_controller->combined_ref_pan, PID_controller->enc_pan_total);
+        PID_controller->pid_output_tilt = PID_compute(PID_controller, PID_controller->combined_ref_tilt, PID_controller->enc_tilt_total);
 
         tiva_fpga_map_pan(PID_controller);
         tiva_fpga_map_tilt(PID_controller);
@@ -209,7 +249,7 @@ void PID_task(void *pvParameter)
 
         set_spi_tx(PID_controller->spi_info, spi_message);
 
-        vTaskDelay(1 / portTICK_RATE_MS);
+        vTaskDelay(5 / portTICK_RATE_MS);
     }
 }
 

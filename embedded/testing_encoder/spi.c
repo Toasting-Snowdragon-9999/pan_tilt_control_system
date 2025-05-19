@@ -125,7 +125,7 @@ INT16U SPI_read(void){
 
 void spi_info_init(struct spi_info *spi_info){
 
-    spi_info->tx = 0x0000;
+    spi_info->tx = 0x0001;
     spi_info->rx = 0x0000;
     spi_info->semaphore = xSemaphoreCreateMutex();
 
