@@ -14,7 +14,7 @@
 
 void SPI_init(void);
 
-void SPI_write(INT16U);
+void SPI_write(INT16U data);
 
 INT16U SPI_read(void);
 

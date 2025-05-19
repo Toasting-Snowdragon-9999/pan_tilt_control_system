@@ -32,22 +32,23 @@
 
 extern INT16U MotorFrame;
 
-void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed);
-void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal);
+//INT16U CreateFrame(INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed);
+INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed);
+void UnpackFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal);
 void vSpiGetFrameTask(void *pvParameters);
 void vSpiSendFrameTask(void *pvParameters);
 //void vUartSendFrameTask(void *pvParameters);
 void vUartGetFrameTask(void *pvParameters);
 
 INT8S ticks_to_degrees(INT8S ticks);
-void tiva_fpga_map_tilt(INT32S *pid_output_tilt, INT8U *pid_speed_tilt, INT8U *pid_dir_tilt);
+void tiva_fpga_map_tilt(INT32S pid_output_tilt, INT8U *pid_speed_tilt, INT8U *pid_dir_tilt);
 /*****************************************************************************
  *   Input    : INT32S pid_output_pan - PID output value from the pan controller
  *   Output   : INT8S - Mapped value for the FPGA
  *   Function : Maps the PID output value to a range suitable for the FPGA
  ******************************************************************************/
 
-void tiva_fpga_map_pan(INT32S *pid_output_pan, INT8U *pid_speed_pan, INT8U *pid_dir_pan);
+void tiva_fpga_map_pan(INT32S pid_output_pan, INT8U *pid_speed_pan, INT8U *pid_dir_pan);
 /*****************************************************************************
  *   Input    : INT32S pid_output_tilt - PID output value from the tilt controller
  *   Output   : INT8S - Mapped value for the FPGA

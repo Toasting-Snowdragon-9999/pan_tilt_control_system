@@ -29,6 +29,39 @@
 /*****************************   Variables   *******************************/
 
 /*****************************   Functions   *******************************/
+/*
+void init_gpio(void)
+{
+    // 1) Enable clock to Port F
+    SYSCTL_RCGCGPIO_R |= (1<<5);            // 0x20
+    while((SYSCTL_PRGPIO_R & (1<<5)) == 0); // wait for Port F
+
+    // 2) Unlock PF4 (and PF0) if you ever want to use them
+    GPIO_PORTF_LOCK_R   = 0x4C4F434B;
+    GPIO_PORTF_CR_R    |= (1<<4);          // allow commit on PF4
+
+    // 3) Configure PF4 as digital output
+    GPIO_PORTF_DIR_R   |= (1<<4);          // PF4 = output
+    GPIO_PORTF_DEN_R   |= (1<<4);          // PF4 digital enable
+    GPIO_PORTF_AFSEL_R &= ~(1<<4);         // PF4 regular GPIO
+    GPIO_PORTF_PCTL_R  &= ~(0xF << (4*4));// clear PCTL for PF4
+    GPIO_PORTF_AMSEL_R &= ~(1<<4);         // disable analog on PF4
+
+
+    // 2) Unlock PF4 (and PF0) if you ever want to use them
+    GPIO_PORTF_LOCK_R   = 0x4C4F434B;
+    GPIO_PORTF_CR_R    |= (1<<2);          // allow commit on PF4
+
+    // 3) Configure PF4 as digital output
+    GPIO_PORTF_DIR_R   |= (1<<2);          // PF4 = output
+    GPIO_PORTF_DEN_R   |= (1<<2);          // PF4 digital enable
+    GPIO_PORTF_AFSEL_R &= ~(1<<2);         // PF4 regular GPIO
+    GPIO_PORTF_PCTL_R  &= ~(0xF << (4*4));// clear PCTL for PF4
+    GPIO_PORTF_AMSEL_R &= ~(1<<2);         // disable analog on PF4
+
+    // (optional) if you also want PF0 as input/pullup:
+    // GPIO_PORTF_PUR_R |= (1<<4); // pull-up on PF4 (if you actually want input)
+}*/
 
 void init_gpio(void)
 {
@@ -43,8 +76,8 @@ void init_gpio(void)
   // Dummy read to allow clocks to settle.
   dummy = SYSCTL_RCGC2_R;
 
-  /* For Port A, do not override UART pins (PA0 and PA1).
-     Use OR-assignment to set additional pins if needed (e.g., for other functions on Port A). */
+  //For Port A, do not override UART pins (PA0 and PA1).
+    // Use OR-assignment to set additional pins if needed (e.g., for other functions on Port A). */
   GPIO_PORTA_DIR_R |= 0x1C;   // OR with 0x1C preserves PA0 and PA1.
   GPIO_PORTA_DEN_R |= 0x1C;   // Same for digital enable.
 
@@ -60,6 +93,7 @@ void init_gpio(void)
 
   // Enable internal pull-ups for PF0 and PF4.
   GPIO_PORTF_PUR_R = 0x11;
+
 }
 
 

@@ -22,29 +22,31 @@ QueueHandle_t xSpiTxQueue;
 QueueHandle_t xUartRxQueue;
 QueueHandle_t xUartTxQueue;
 
-INT16U MotorFrame = 0;
 
-void CreateFrame(INT16U *Frame, INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed){ //From TIVA to FPGA
 
-    *Frame &= 0x0000;
+INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed){ //From TIVA to FPGA
+    INT16U Frame = 0b0000000000000000;
+    Frame &= 0x0000;
 
-    *Frame     |=(0 << 15)                 //start bit = 0
+    Frame     |=(0 << 15)                 //start bit = 0
                | (0 << 14) | (0 << 13)
-               |((*panDir & 0x01) << 12)     //1 bit
-               |((*panSpeed & 0x1F) << 7)   //5 bit
-               |((*tiltDir & 0x01) << 6)     //1 bit
-               |((*tiltSpeed & 0x1F) << 1)  //5 bit
+               |((panDir & 0x01) << 12)     //1 bit
+               |((panSpeed & 0x1F) << 7)   //5 bit
+               |((tiltDir & 0x01) << 6)     //1 bit
+               |((tiltSpeed & 0x1F) << 1)  //5 bit
                |(1 << 0);                  //stop bit = 1
 
+
+    return Frame;
 }
 
-void UnpackFrame(INT16S *Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
+void UnpackFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
 
     //shift MSB of EncoderFrame into panVal
-    *panVal  = (INT8S)((*Frame >> 8) & 0xFF);
+    *panVal  = (INT8S)((Frame >> 8) & 0xFF);
 
     //shift LSB of EncoderFrame into tiltVal
-    *tiltVal = (INT8S)(*Frame & 0xFF);
+    *tiltVal = (INT8S)(Frame & 0xFF);
 }
 
 INT8S ticks_to_degrees(INT8S ticks){
@@ -58,31 +60,44 @@ INT8S ticks_to_degrees(INT8S ticks){
     return ((INT8S)ticks / (encoder_cpr * gear_ratio)) * 360.0;
 }
 
-
-void tiva_fpga_map_pan(INT32S *pid_output_pan, INT8U *pid_speed_pan, INT8U *pid_dir_pan)
-/*****************************************************************************
- *   Input    : INT32S pid_output_pan - PID output value from the pan controller
- *   Output   : INT8S - Mapped value for the FPGA
- *   Function : Maps the PID output value to a range suitable for the FPGA
- *****************************************************************************/
+/* Option 1: pass by value – simplest */
+void tiva_fpga_map_pan(INT32S  pid_output_pan,
+                       INT8U  *pid_speed_pan,
+                       INT8U  *pid_dir_pan)
 {
+    *pid_speed_pan = (INT8U)(abs(pid_output_pan) / pan_step_increment) & 0x1F;
+    *pid_dir_pan   = (pid_output_pan < 0);
+    if(*pid_speed_pan < 5){
+            *pid_speed_pan = 5;
+     }
+    if(*pid_speed_pan < 2){
+                *pid_speed_pan = 0;
+      }
 
-    *pid_speed_pan = abs(max_pid_output_pan) / pan_step_increment;
-    *pid_dir_pan = pid_output_pan < 0 ? 1 : 0;
 
 }
 
+void tiva_fpga_map_tilt(INT32S  pid_output_tilt,
+                        INT8U  *pid_speed_tilt,
+                        INT8U  *pid_dir_tilt)
+{
+    *pid_speed_tilt = (INT8U)(abs(pid_output_tilt) / tilt_step_increment) & 0x1F;
+    *pid_dir_tilt   = (pid_output_tilt < 0);
+    if(*pid_speed_tilt < 5){
+        *pid_speed_tilt = 5;
+    }
+    if(*pid_speed_tilt < 2){
+            *pid_speed_tilt = 0;
+        }
+}
+/*
 void tiva_fpga_map_tilt(INT32S *pid_output_tilt, INT8U *pid_speed_tilt, INT8U *pid_dir_tilt)
-/*****************************************************************************
- *   Input    : INT32S pid_output_tilt - PID output value from the tilt controller
- *   Output   : INT8S - Mapped value for the FPGA
- *   Function : Maps the PID output value to a range suitable for the FPGA
- *****************************************************************************/
-{
-    *pid_speed_tilt = abs(max_pid_output_tilt) / tilt_step_increment;
-    *pid_dir_tilt = pid_speed_tilt < 0 ? 1 : 0;
-}
 
+{
+    *pid_speed_tilt = abs(pid_output_tilt) / tilt_step_increment;
+    *pid_dir_tilt = pid_output_tilt < 0 ? 1 : 0;
+}
+**/
 /*
 void vSpiGetFrameTask(void *pvParameters){ //should unpack encoderFrame from SpiRxQueue and send to PanCtrlFbqueue
 

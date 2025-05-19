@@ -17,43 +17,40 @@ extern QueueHandle_t xTiltCtrlOutQueue;
 
 
 void vUartTask(void *pv) {
-    TickType_t xLastWakeTime;
-      const TickType_t xFrequency = 1;
-      xLastWakeTime = xTaskGetTickCount();
+  //TickType_t xLastWakeTime;
+    //  const TickType_t xFrequency = 1;
+      //xLastWakeTime = xTaskGetTickCount();
 
-    INT16S VisionFrame;
-    INT8S panVal, tiltVal;
+
+
 
         for (;;) {
 
-            FSM_STATUS = UART;
+            if(uart0_ready()){
+                FSM_STATUS = UART;
+                INT16S VisionFrame;
+                INT8S panVal, tiltVal;
+                VisionFrame = uart0_get16();
 
-            VisionFrame = uart0_get16();
-           //uart1_print("\r\n<<<UART_TASK>>>\r\n");
-            uart1_print ("\r\nVisionFrame:: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
-            UnpackFrame(&VisionFrame, &panVal, &tiltVal);
+                //uart1_print ("\r\nVisionFrame: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
+                UnpackFrame(VisionFrame, &panVal, &tiltVal);
+                xQueueSend(xPanCtrlInQueue, &panVal, 0);
+                xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
 
-           xQueueSend(xPanCtrlInQueue, &panVal, 0);
-
-           xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
-
-               //block spi?
-
-               //DEBUGGER PRINTS
-
-            // uart1_print("\r\npanVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
-            // uart1_print("\r\ntiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
-
-
-
-
-          // taskYIELD();
+            }
 
            vTaskDelay(pdMS_TO_TICKS(1));
            //  vTaskDelayUntil( &xLastWakeTime, xFrequency );
         }
 }
 
+//   uart1_print("\r\n<<<UART_TASK>>>\r\n");
+       //  uart1_send16(VisionFrame);
+
+       //  uart1_print ("\r\nVisionFrame: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
+
+         //uart1_print ("\r\panVal: 0x%04x, 0b%s, d:%d \r\n", panVal, rx_binary_string(panVal), panVal);
+         //uart1_print ("\r\tiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
 
 
 /*

@@ -30,7 +30,7 @@
 #include "emp_type.h"
 #include "uart.h"
 #include "spi.h"
-
+#include "ssi.h"
 
 /* Task headers */
 #include "controller.h"
@@ -82,6 +82,7 @@ extern volatile INT8U FSM_STATUS;
 // Initialize PID output limits
 extern INT32S max_pid_output_pan;
 extern INT32S max_pid_output_tilt;
+
 
 // Increment values for mapping
 extern INT32S pan_step_increment;

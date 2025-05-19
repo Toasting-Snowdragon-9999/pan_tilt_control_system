@@ -107,9 +107,9 @@ void SPI_init(void){
 void SPI_write(INT16U data){
 
     //GPIO_PORTB_DATA_R &= ~(1 << 5); //Slave select bit is set to low, causing slave data to be enabled onto SSI2Rx
-    //while((SSI2_SR_R & SSI_SR_TNF) == 0); //Waits until transmit FIFO is empty/ready
+    while((SSI2_SR_R & SSI_SR_TNF) == 0); //Waits until transmit FIFO is empty/ready
     SSI2_DR_R = data; //Transmit data via SPI
-    //while(SSI2_SR_R & SSI_SR_BSY); //Wait until transmit FIFO is idle/transmission complete
+    while(SSI2_SR_R & SSI_SR_BSY); //Wait until transmit FIFO is idle/transmission complete
     //GPIO_PORTB_DATA_R |= (1 << 5); //Slave select bit is set to high to end communication
 
 }

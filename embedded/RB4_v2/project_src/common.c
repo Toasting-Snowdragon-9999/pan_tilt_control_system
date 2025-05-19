@@ -34,6 +34,8 @@ extern volatile INT8U FSM_STATUS = IDLE;
 INT32S max_pid_output_pan;
 INT32S max_pid_output_tilt;
 
+
+
 // Increment values for mapping
 INT32S pan_step_increment;
 INT32S tilt_step_increment;
