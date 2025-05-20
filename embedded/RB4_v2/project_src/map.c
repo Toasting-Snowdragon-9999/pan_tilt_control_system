@@ -68,7 +68,7 @@ void tiva_fpga_map_pan(INT32S  pid_output_pan,
     *pid_speed_pan = (INT8U)(abs(pid_output_pan) / pan_step_increment) & 0x1F;
 
     if(*pid_speed_pan >= 5){
-        *pid_speed_pan+=3;
+        *pid_speed_pan+=6;
     }
 
     *pid_dir_pan   = pid_output_pan < 0 ? PAN_DIR_LEFT : PAN_DIR_RIGHT;

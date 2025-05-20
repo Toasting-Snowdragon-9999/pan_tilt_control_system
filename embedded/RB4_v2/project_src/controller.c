@@ -201,8 +201,8 @@ void vPIDControllerTask(void *pvParameters){
   //  PID_Init(&tiltPID, 25.0, 0., 0.1, 0.004, 1000.0, -12.0, 12.0);
    // PID_Init(&panPID, 25.0, 0., 0.1, 0.004, 1000.0, -12.0, 12.0);
     //void Pan_PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, float N, float output_min, float output_max);
-    Pan_PID_Init(&panPID, 0.0f, 0.0f, 0.5f, 0.005f, 1000.0f, -12.0f, 12.0f);
-    Tilt_PID_Init(&tiltPID, 75.0f, 0.0f, 0.9f, 0.005f, 1000.0f, -12.0f, 12.0f);
+    Pan_PID_Init(&panPID, 2000.0f, 0.0f, 0.001f, 0.005f, 1000.0f, -12.0f, 12.0f); //tilt (DONT CHANGE NAME)
+    Tilt_PID_Init(&tiltPID, 0.0f, 0.0f, 0.9f, 0.005f, 1000.0f, -12.0f, 12.0f); //pan (DONT CHANGE NAME)
 
 
     //INT8S panEncCurrentVal =  0;
