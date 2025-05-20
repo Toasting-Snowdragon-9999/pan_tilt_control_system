@@ -18,9 +18,50 @@ extern QueueHandle_t xTiltCtrlInQueue;
 extern QueueHandle_t xPanFbInQueue;
 extern QueueHandle_t xTiltFbInQueue;
 
+//extern INT8S panCombinedRef = 0;
+//extern INT8S tiltCombinedRef = 0;
+
+void Pan_PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, float N, float output_min, float output_max){
+    // Values given to the PID controller
+      pid->kp = kp;
+      pid->ki = ki;
+      pid->kd = kd;
+      pid->Ts = Ts;
+      pid->N  = N;
+      pid->output_min = output_min;
+      pid->output_max = output_max;
+
+        // Initialize previous values
+        pid->prev_error = 0;
+        //pid->integral   = 0.0;
+        //pid->prev_integral = 0.0;
+        pid->prev_derivative = 0;
 
 
-void PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, float N, float output_min, float output_max){
+        // Initialize PID coefficients for the derivative term
+        pid->alpha  = pid->N * (pid->Ts / 2) - 1;
+        pid->beta = 1 + pid->N * (pid->Ts / 2);
+        pid->gamma = pid->kd * pid->N;
+        // U_d(z) / e(z) = gamma * (z-1) / (alpha*z + beta)
+        // Initialize PID output limits
+       // panCombinedRef = 38;
+      max_pid_output_pan   = Pan_PID_Compute(pid, 38, 0.0);
+
+      // Initialize previous values
+     pid->prev_error = 0;
+     //panCombinedRef = 0;
+
+      //max_pid_output_tilt  = Tilt_PID_Compute(pid, 21, 0.0);
+    //  uart1_print("\r\n max_pid_output_pan: 0x%04x, 0b%s, d:%d \r\n", max_pid_output_pan, rx_binary_string(max_pid_output_pan), max_pid_output_pan);
+     // uart1_print("\r\n max_pid_output_tilt: 0x%04x, 0b%s, d:%d \r\n", max_pid_output_tilt, rx_binary_string(max_pid_output_tilt), max_pid_output_tilt);
+
+      // Increment values for mapping
+      pan_step_increment = max_pid_output_pan /20;
+     // tilt_step_increment = max_pid_output_pan / MAX_MAP_STEP;
+
+}
+
+void Tilt_PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, float N, float output_min, float output_max){
     // Values given to the PID controller
       pid->kp = kp;
       pid->ki = ki;
@@ -44,24 +85,28 @@ void PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, floa
         // U_d(z) / e(z) = gamma * (z-1) / (alpha*z + beta)
         // Initialize PID output limits
 
-      max_pid_output_pan   = Pan_PID_Compute(pid, 38, 0.0);
-      max_pid_output_tilt  = Tilt_PID_Compute(pid, 21, 0.0);
-    //  uart1_print("\r\n max_pid_output_pan: 0x%04x, 0b%s, d:%d \r\n", max_pid_output_pan, rx_binary_string(max_pid_output_pan), max_pid_output_pan);
+     // max_pid_output_pan   = Pan_PID_Compute(pid, 38, 0.0);
+        //tiltCombinedRef = 21;
+        max_pid_output_tilt  = Tilt_PID_Compute(pid, 21, 0.0);
+      // Initialize previous values
+             pid->prev_error = 0;
+          //   tiltCombinedRef = 0;
+             //  uart1_print("\r\n max_pid_output_pan: 0x%04x, 0b%s, d:%d \r\n", max_pid_output_pan, rx_binary_string(max_pid_output_pan), max_pid_output_pan);
      // uart1_print("\r\n max_pid_output_tilt: 0x%04x, 0b%s, d:%d \r\n", max_pid_output_tilt, rx_binary_string(max_pid_output_tilt), max_pid_output_tilt);
 
       // Increment values for mapping
-      pan_step_increment = max_pid_output_pan / MAX_MAP_STEP;
-      tilt_step_increment = max_pid_output_pan / MAX_MAP_STEP;
+   //   pan_step_increment = max_pid_output_pan / MAX_MAP_STEP;
+      tilt_step_increment = max_pid_output_tilt / 20;
 
 }
 
 INT32S Pan_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S encMeasuredVal){
     INT8S error = combinedReference - encMeasuredVal;
-   uart1_print("\r\n Pan error: 0x%04x, 0b%s, d:%d \r\n", error, rx_binary_string(error), error);
+  //uart1_print("\r\n Pan error: 0x%04x, 0b%s, d:%d \r\n", error, rx_binary_string(error), error);
 
     // Proportional
     INT32S P = pid->kp * error;
-   //uart1_print("\r\nProportional: 0x%04x, 0b%s, d:%d \r\n", P, rx_binary_string(P), P);
+   //uart1_print("\r\n pan Proportional: 0x%04x, 0b%s, d:%d \r\n", P, rx_binary_string(P), P);
 
     // Integral
     //FP32 I = pid->prev_integral + pid->ki * (pid->Ts / 2) * (error + pid->prev_error);
@@ -71,12 +116,12 @@ INT32S Pan_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S encM
     INT32S D = - (pid->alpha / pid->beta) * pid->prev_derivative + (pid->gamma / pid->beta) * (error - pid->prev_error);
     pid->prev_derivative = D; // Save the derivative term for next calculation
 
-    //uart1_print("\r\nDerivative: 0x%04x, 0b%s, d:%d \r\n", D, rx_binary_string(D), D);
+   // uart1_print("\r\n pan Derivative: 0x%04x, 0b%s, d:%d \r\n", D, rx_binary_string(D), D);
 
 
     // Update previous error for next calculation
     pid->prev_error = error;
-
+    error = 0;
     // Compute PID output
     INT32S output = (INT32S)(P + D); //expected voltage
 
@@ -101,7 +146,7 @@ INT32S Pan_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S encM
 
 INT32S Tilt_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S encMeasuredVal){
     INT8S error = combinedReference - encMeasuredVal;
-  uart1_print("\r\n Tilt error: 0x%04x, 0b%s, d:%d \r\n", error, rx_binary_string(error), error);
+//  uart1_print("\r\n Tilt error: 0x%04x, 0b%s, d:%d \r\n", error, rx_binary_string(error), error);
 
     // Proportional
     INT32S P = pid->kp * error;
@@ -120,7 +165,7 @@ INT32S Tilt_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S enc
 
     // Update previous error for next calculation
     pid->prev_error = error;
-
+    error = 0;
     // Compute PID output
     INT32S output = (INT32S)(P + D); //expected voltage
 
@@ -155,26 +200,29 @@ void vPIDControllerTask(void *pvParameters){
 
   //  PID_Init(&tiltPID, 25.0, 0., 0.1, 0.004, 1000.0, -12.0, 12.0);
    // PID_Init(&panPID, 25.0, 0., 0.1, 0.004, 1000.0, -12.0, 12.0);
-    PID_Init(&tiltPID, 1.0, 0.0f, 0.0f, 0.005f, 1000.0, -12.0, 12.0);
-    PID_Init(&panPID, 1.0, 0., 0., 0.005, 1000.0, -12.0, 12.0);
+    //void Pan_PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, float N, float output_min, float output_max);
+    Pan_PID_Init(&panPID, 0.0f, 0.0f, 0.5f, 0.005f, 1000.0f, -12.0f, 12.0f);
+    Tilt_PID_Init(&tiltPID, 75.0f, 0.0f, 0.9f, 0.005f, 1000.0f, -12.0f, 12.0f);
 
-    INT8S panVisionRef = 0;
+
+    //INT8S panEncCurrentVal =  0;
+    //INT8S tiltEncCurrentVal =  0;
+
+   // INT8S panVisionRef = 0;
+    //  INT8S tiltVisionRef   = 0;
     INT8S panEncMeasuredVal =  0;
-
-    INT32S panOutput = 0;
-    INT8S panIn;
-
-    INT32S tiltOutput = 0;
-    INT8S tiltIn;
-
-    INT8S tiltVisionRef   = 0;
     INT8S tiltEncMeasuredVal =  0;
 
-    INT8S panEncCurrentVal =  0;
-    INT8S tiltEncCurrentVal =  0;
+    INT8S panIn = 0;
+    INT8S tiltIn = 0;
 
+    INT32S panOutput = 0;
+    INT32S tiltOutput = 0;
     INT8S panCombinedRef = 0;
     INT8S tiltCombinedRef = 0;
+
+
+
 
     for(EVER){
 
@@ -184,20 +232,14 @@ void vPIDControllerTask(void *pvParameters){
            FSM_STATUS = CTRL;
 
             //updating reference
-            panVisionRef = panIn;
-            tiltVisionRef = tiltIn;
+          //  panVisionRef = panIn;
+           // tiltVisionRef = tiltIn;
 
-           panEncCurrentVal = panEncMeasuredVal;
-           tiltEncCurrentVal = tiltEncMeasuredVal;
+           panCombinedRef = panIn+panEncMeasuredVal;
+           tiltCombinedRef = tiltIn+tiltEncMeasuredVal;
 
-           panCombinedRef = panVisionRef+panEncMeasuredVal;
-           tiltCombinedRef = tiltVisionRef+tiltEncMeasuredVal;
-
-       //uart1_print("\r\panVisionRef: 0x%04x, 0b%s, d:%d \r\n", panVisionRef, rx_binary_string(panVisionRef), panVisionRef);
+    //   uart1_print("\r\panVisionRef: 0x%04x, 0b%s, d:%d \r\n", panVisionRef, rx_binary_string(panVisionRef), panVisionRef);
        //uart1_print("\r \tiltVisionRef: 0x%04x, 0b%s, d:%d \r\n", tiltVisionRef, rx_binary_string(tiltVisionRef), tiltVisionRef);
-
-         // uart1_print("\r\panEncCurrentVal: 0x%04x, 0b%s, d:%d \r\n", panEncCurrentVal, rx_binary_string(panEncCurrentVal), panEncCurrentVal);
-         //uart1_print("\r\ntiltEncCurrentVal: 0x%04x, 0b%s, d:%d \r\n", tiltEncCurrentVal, rx_binary_string(tiltEncCurrentVal), tiltEncCurrentVal);
 
         }
 
@@ -205,22 +247,23 @@ void vPIDControllerTask(void *pvParameters){
           && (xQueueReceive(xTiltFbInQueue, &tiltEncMeasuredVal, 0) == pdTRUE)){
 
          //uart1_print("\r\n<<<PID_CONTROLLER_ENCODER>>>\r\n");
-
-         //uart1_print("panVisionRef: d:%d, panEncMeasuredVal: d:%d, \r\n", panVisionRef, panEncMeasuredVal);
-         //uart1_print("tiltVisionRef: d:%d,  tiltEncMeasuredVal: d:%d \r\n", tiltVisionRef,tiltEncMeasuredVal);
-       uart1_print("panEncMeasuredVal: 0x%04x, 0b%s, d:%d \r\n", panEncMeasuredVal, rx_binary_string(panEncMeasuredVal), panEncMeasuredVal);
-     uart1_print("tiltEncMeasuredVal: 0x%04x, 0b%s, d:%d \r\n", tiltEncMeasuredVal, rx_binary_string(tiltEncMeasuredVal), tiltEncMeasuredVal);
+      // uart1_print("panEncMeasuredVal: 0x%04x, 0b%s, d:%d \r\n", panEncMeasuredVal, rx_binary_string(panEncMeasuredVal), panEncMeasuredVal);
+       //uart1_print("tiltEncMeasuredVal: 0x%04x, 0b%s, d:%d \r\n", tiltEncMeasuredVal, rx_binary_string(tiltEncMeasuredVal), tiltEncMeasuredVal);
            FSM_STATUS = CTRL;
-         //BLOCK SPI
+           panEncMeasuredVal = panEncMeasuredVal/3;
+           tiltEncMeasuredVal = tiltEncMeasuredVal/3;
 
-           //GPIO_PORTF_DATA_R ^=  (1U << 4);// Toggle PB2 (XOR bit 2)
-            panOutput = Pan_PID_Compute(&panPID, panCombinedRef, panEncMeasuredVal);
+           panOutput = Pan_PID_Compute(&panPID, panCombinedRef, panEncMeasuredVal);
+
            tiltOutput = Tilt_PID_Compute(&tiltPID, tiltCombinedRef, tiltEncMeasuredVal);
-            //GPIO_PORTF_DATA_R ^=  (1U << 4);// Toggle PB2 (XOR bit 2)
-            //tiltOutput =  0b0000000000000000;
+           //uart1_print("\r\n pan prev_derivative:  d:%d \r\n", (panPID.prev_derivative));
+          // uart1_print("\r\n tilt prev_derivative:  d:%d \r\n", (tiltPID.prev_derivative));
+          // uart1_print("\r\n pan prev_derivative:  d:%d \r\n", (panPID.prev_error));
+          // uart1_print("\r\n tilt prev_derivative:  d:%d \r\n", (tiltPID.prev_error));
+
             //PAN CTRL OUT (to map then to motor) //TILT CTRL OUT (to map then to motor)
-          //  uart1_print("\r\npanOutput:  0x%04x, 0b%s, d:%d \r\n", panOutput, rx_binary_string(panOutput), panOutput);
-           // uart1_print("tiltOutput:  0x%04x, 0b%s, d:%d \r\n", tiltOutput, rx_binary_string(tiltOutput), tiltOutput);
+         // uart1_print("\r\npanOutput:  0x%04x, 0b%s, d:%d \r\n", panOutput, rx_binary_string(panOutput), panOutput);
+           //uart1_print("tiltOutput:  0x%04x, 0b%s, d:%d \r\n", tiltOutput, rx_binary_string(tiltOutput), tiltOutput);
             xQueueSend(xPanCtrlOutQueue, &panOutput, 0);
             xQueueSend(xTiltCtrlOutQueue, &tiltOutput, 0);
 
@@ -229,10 +272,6 @@ void vPIDControllerTask(void *pvParameters){
 
        }
 
-
-           // taskYIELD();
-     //  GPIO_PORTB_DATA_R ^=  (1U << 2);// Toggle PB2 (XOR bit 2)
-      // GPIO_PORTF_DATA_R ^=  (1U << 2);// Toggle PB2 (XOR bit 2)
            vTaskDelay(pdMS_TO_TICKS(1));
             // vTaskDelayUntil( &xLastWakeTime, xFrequency );
      }

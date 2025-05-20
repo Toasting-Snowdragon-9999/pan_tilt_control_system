@@ -40,7 +40,8 @@ extern INT16U MotorFrame;
 
 //INT16U CreateFrame(INT8U *panDir, INT8U *panSpeed, INT8U *tiltDir, INT8U *tiltSpeed);
 INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed);
-void UnpackFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal);
+void UnpackEncoderFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal);
+void UnpackVisionFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal);
 void vSpiGetFrameTask(void *pvParameters);
 void vSpiSendFrameTask(void *pvParameters);
 //void vUartSendFrameTask(void *pvParameters);

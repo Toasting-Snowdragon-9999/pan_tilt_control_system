@@ -40,11 +40,21 @@ INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed)
     return Frame;
 } //specifiy unsigned values?
 
-void UnpackFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
-    //shift LSB of EncoderFrame into tiltVal
-    *tiltVal = (INT8S)((uint16_t)Frame & 0x7Fu);
+void UnpackVisionFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
+
     //shift MSB of EncoderFrame into panVal
-    *panVal = (INT8S)(((uint16_t)Frame >> 8) & 0x7Fu);
+    *panVal = (INT8S)(((uint16_t)Frame >> 8) & 0xFFu);
+    //shift LSB of EncoderFrame into tiltVal
+       *tiltVal = (INT8S)((uint16_t)Frame & 0xFFu);
+
+}
+void UnpackEncoderFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
+
+    //shift MSB of EncoderFrame into panVal
+    *panVal = (INT8S)(((uint16_t)Frame >> 8) & 0xFFu);
+    //shift LSB of EncoderFrame into tiltVal
+       *tiltVal = (INT8S)((uint16_t)Frame & 0xFFu);
+
 
 
 }
@@ -56,15 +66,12 @@ void tiva_fpga_map_pan(INT32S  pid_output_pan,
                        INT8U  *pid_dir_pan)
 {
     *pid_speed_pan = (INT8U)(abs(pid_output_pan) / pan_step_increment) & 0x1F;
+
+    if(*pid_speed_pan >= 5){
+        *pid_speed_pan+=3;
+    }
+
     *pid_dir_pan   = pid_output_pan < 0 ? PAN_DIR_LEFT : PAN_DIR_RIGHT;
-
-    if(*pid_speed_pan < 5){
-            *pid_speed_pan = 5;
-     }
-    if(*pid_speed_pan < 2){
-                *pid_speed_pan = 0;
-      }
-
 
 }
 
@@ -74,14 +81,12 @@ void tiva_fpga_map_tilt(INT32S  pid_output_tilt,
                         INT8U  *pid_dir_tilt)
 {
     *pid_speed_tilt = (INT8U)(abs(pid_output_tilt) / tilt_step_increment) & 0x1F;
-    *pid_dir_tilt   =  pid_output_tilt < 0 ? TILT_DIR_DOWN : TILT_DIR_UP;
+    *pid_dir_tilt   =  pid_output_tilt < 0 ? TILT_DIR_UP : TILT_DIR_DOWN;
 
-    if(*pid_speed_tilt < 5){
-        *pid_speed_tilt = 5;
+    if(*pid_speed_tilt >= 5){
+            *pid_speed_tilt+=5;
     }
-    if(*pid_speed_tilt < 2){
-            *pid_speed_tilt = 0;
-        }
+
 }
 
 /*
