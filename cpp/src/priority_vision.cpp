@@ -93,7 +93,7 @@ void PrioVision::tracking(Uart& uart) {
         
         // Converte to motor degrees
         int8_t pan_error =  (offset.x_offset * (-1)) / PAN_TICK_TO_DEGREE;
-        int8_t tilt_error = (offset.y_offset) / TILT_TICK_TO_DEGREE;
+        int8_t tilt_error = (offset.y_offset * (-1)) / TILT_TICK_TO_DEGREE;
 
         std::cout << "Encoded: pan: " << static_cast<int>(pan_error)
         << " tilt: " << static_cast<int>(tilt_error) << std::endl;
