@@ -26,7 +26,13 @@
 
 
 #define MAX_DEGREE_PAN 38.48
-#define MAX_DEGREE_TILT 22.84
+#define MAX_DEGREE_TILT 21.31
+
+#define PAN_DIR_LEFT 1
+#define PAN_DIR_RIGHT 0
+
+#define TILT_DIR_UP 1
+#define TILT_DIR_DOWN 0
 
 #define MAX_MAP_STEP 20
 

@@ -21,19 +21,26 @@ void vUartTask(void *pv) {
     //  const TickType_t xFrequency = 1;
       //xLastWakeTime = xTaskGetTickCount();
 
+    INT16S VisionFrame;
+               INT8S panVal, tiltVal;
 
 
 
-        for (;;) {
+        for (EVER) {
 
             if(uart0_ready()){
                 FSM_STATUS = UART;
-                INT16S VisionFrame;
-                INT8S panVal, tiltVal;
-                VisionFrame = uart0_get16();
 
-                //uart1_print ("\r\nVisionFrame: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
+               uart0_get16(&VisionFrame);
+
+                //uart1_send16(VisionFrame);
+               // uart1_print ("\r\nVisionFrame: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
                 UnpackFrame(VisionFrame, &panVal, &tiltVal);
+
+
+
+
+
                 xQueueSend(xPanCtrlInQueue, &panVal, 0);
                 xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
 

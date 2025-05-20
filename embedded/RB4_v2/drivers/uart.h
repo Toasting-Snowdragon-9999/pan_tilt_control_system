@@ -15,8 +15,8 @@ static char _binbuf[17];  // 16 bits + NUL
 void uart0_init(INT32U baud);
 BOOLEAN uart0_ready(void);
 INT8S uart0_getc(void);
-INT16S uart0_get16(void);
-
+//INT16S uart0_get16(void);
+BOOLEAN uart0_get16(INT16S *value);
 
 // UART 1: with mutex-protected prints
 void uart1_init(INT32U baud);

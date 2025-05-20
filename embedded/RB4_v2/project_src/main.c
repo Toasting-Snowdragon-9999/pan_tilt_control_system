@@ -23,8 +23,8 @@ void queueSetup(){
 
 
 
-          xPanCtrlOutQueue = xQueueCreate(1, sizeof(FP32)); //from controller task to map task
-          xTiltCtrlOutQueue = xQueueCreate(1, sizeof(FP32)); //from controller task to map task
+          xPanCtrlOutQueue = xQueueCreate(1, sizeof(INT32S)); //from controller task to map task
+          xTiltCtrlOutQueue = xQueueCreate(1, sizeof(INT32S)); //from controller task to map task
 
           xPanCtrlInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
           xTiltCtrlInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
@@ -54,7 +54,7 @@ int main(void)
 
         vTaskStartScheduler();
 
-        for(;;);
+        for(EVER);
 
 }
 

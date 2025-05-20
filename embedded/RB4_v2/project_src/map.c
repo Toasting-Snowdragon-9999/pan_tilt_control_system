@@ -38,27 +38,17 @@ INT16U CreateFrame(INT8U panDir, INT8U panSpeed, INT8U tiltDir, INT8U tiltSpeed)
 
 
     return Frame;
-}
+} //specifiy unsigned values?
 
 void UnpackFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal){ //From FPGA to TIVA (And vision to TIVA)
-
-    //shift MSB of EncoderFrame into panVal
-    *panVal  = (INT8S)((Frame >> 8) & 0xFF);
-
     //shift LSB of EncoderFrame into tiltVal
-    *tiltVal = (INT8S)(Frame & 0xFF);
+    *tiltVal = (INT8S)((uint16_t)Frame & 0x7Fu);
+    //shift MSB of EncoderFrame into panVal
+    *panVal = (INT8S)(((uint16_t)Frame >> 8) & 0x7Fu);
+
+
 }
 
-INT8S ticks_to_degrees(INT8S ticks){
-    INT8S gear_ratio = 3;      // 1:3 gear ratio for the external gears
-    INT8S encoder_cpr = 360;      // Encoder counts per revolution
-
-    if (gear_ratio <= 0.0 || encoder_cpr <= 0) {
-        return 0.0;  // or some error value
-    }
-
-    return ((INT8S)ticks / (encoder_cpr * gear_ratio)) * 360.0;
-}
 
 /* Option 1: pass by value – simplest */
 void tiva_fpga_map_pan(INT32S  pid_output_pan,
@@ -66,7 +56,8 @@ void tiva_fpga_map_pan(INT32S  pid_output_pan,
                        INT8U  *pid_dir_pan)
 {
     *pid_speed_pan = (INT8U)(abs(pid_output_pan) / pan_step_increment) & 0x1F;
-    *pid_dir_pan   = (pid_output_pan < 0);
+    *pid_dir_pan   = pid_output_pan < 0 ? PAN_DIR_LEFT : PAN_DIR_RIGHT;
+
     if(*pid_speed_pan < 5){
             *pid_speed_pan = 5;
      }
@@ -77,12 +68,14 @@ void tiva_fpga_map_pan(INT32S  pid_output_pan,
 
 }
 
+
 void tiva_fpga_map_tilt(INT32S  pid_output_tilt,
                         INT8U  *pid_speed_tilt,
                         INT8U  *pid_dir_tilt)
 {
     *pid_speed_tilt = (INT8U)(abs(pid_output_tilt) / tilt_step_increment) & 0x1F;
-    *pid_dir_tilt   = (pid_output_tilt < 0);
+    *pid_dir_tilt   =  pid_output_tilt < 0 ? TILT_DIR_DOWN : TILT_DIR_UP;
+
     if(*pid_speed_tilt < 5){
         *pid_speed_tilt = 5;
     }
@@ -90,7 +83,20 @@ void tiva_fpga_map_tilt(INT32S  pid_output_tilt,
             *pid_speed_tilt = 0;
         }
 }
+
 /*
+ *
+ *
+INT8S ticks_to_degrees(INT8S ticks){
+    INT8S gear_ratio = 3;      // 1:3 gear ratio for the external gears
+    INT8S encoder_cpr = 360;      // Encoder counts per revolution
+
+    if (gear_ratio <= 0.0 || encoder_cpr <= 0) {
+        return 0.0;  // or some error value
+    }
+
+    return ((INT8S)ticks / (encoder_cpr * gear_ratio)) * 360.0;
+}
 void tiva_fpga_map_tilt(INT32S *pid_output_tilt, INT8U *pid_speed_tilt, INT8U *pid_dir_tilt)
 
 {

@@ -79,6 +79,8 @@ extern volatile INT8U FSM_STATUS;
 #define CTRL 2  //uart rx task
 #define SPI 3 //uart tx task
 
+#define EVER ;;
+
 // Initialize PID output limits
 extern INT32S max_pid_output_pan;
 extern INT32S max_pid_output_tilt;

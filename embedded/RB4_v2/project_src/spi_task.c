@@ -34,7 +34,7 @@ void vSpiTxTask(void *pv) { //receive from fpga to tiva
       const TickType_t xFrequency = 2;
       xLastWakeTime = xTaskGetTickCount();
 
-        for (;;) {
+        for (EVER) {
 
             //spi_transmit(MotorFrame);
             if((xQueueReceive(xPanCtrlOutQueue, &panError, portMAX_DELAY) == pdTRUE)
@@ -90,7 +90,7 @@ void vSpiRxTask(void *pvParameters)
     const TickType_t xFrequency = 2;
     xLastWakeTime = xTaskGetTickCount();
 
-    for(;;){
+    for(EVER){
      //  uart1_print("\r\n<<<SPI_RX_TASK>>>\r\n");
         EncoderFrame = SPI_read(); //MISO
         //uart1_print("here");

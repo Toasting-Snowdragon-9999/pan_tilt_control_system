@@ -15,6 +15,11 @@
 #include "semphr.h"
 #include "task.h"
 #include "common.h"
+//#define UART_IFLS_RX_2B   (0x0 << 3)      /* 1/8 */
+//  #define UART_IFLS_TX_2B   (0x0 << 0)
+#define UART_IFLS_RX1_8  (0x0 << 3)
+#define UART_IFLS_TX1_8  (0x0 << 0)
+
 
 static SemaphoreHandle_t xUart1Mutex; //for uart1_print
 char buf[80]; //for uart1_print
@@ -33,7 +38,7 @@ static void _enable_uart1(void) {
     while (!(SYSCTL_PRGPIO_R & (1 << 1)));
     while (!(SYSCTL_PRUART_R & (1 << 1)));
 }
-
+/*
 // UART0 init + I/O (no mutex)
 void uart0_init(INT32U baud) {
     _enable_uart0();
@@ -45,30 +50,95 @@ void uart0_init(INT32U baud) {
     GPIO_PORTA_DEN_R   |= 0x03;
     GPIO_PORTA_DIR_R    = (GPIO_PORTA_DIR_R & ~0x01) | 0x02;
 
-    UART0_CTL_R &= ~UART_CTL_UARTEN;
+    UART0_CTL_R &= ~UART_CTL_UARTEN | UART_LCRH_FEN;
     INT32U ibrd = 16000000 / (16 * baud);
     INT32U fbrd = (INT32U)((((16000000.0f/(16.0f*baud)) - ibrd) * 64) + 0.5f);
     UART0_IBRD_R = ibrd;
     UART0_FBRD_R = fbrd;
     UART0_LCRH_R = UART_LCRH_WLEN_8;
     UART0_CTL_R  = UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE;
+}*/
+
+/* RX  = 1/8-full  (≈ 2 bytes)
+   TX  = 1/8-empty (default) */
+
+
+void uart0_init(INT32U baud)
+{
+    _enable_uart0();                      /* clocks ON */
+
+    /* ---------- PA0 = U0RX  |  PA1 = U0TX ---------- */
+    GPIO_PORTA_LOCK_R   = 0x4C4F434B;     /* unlock CR register           */
+    GPIO_PORTA_CR_R    |= 0x03;           /* allow changes to PA1-0       */
+    GPIO_PORTA_AFSEL_R |= 0x03;           /* turn on alt-func for PA1-0   */
+    GPIO_PORTA_PCTL_R   = (GPIO_PORTA_PCTL_R & ~0xFF) | 0x11; /* mux = UART */
+    GPIO_PORTA_DEN_R   |= 0x03;           /* digital enable               */
+    GPIO_PORTA_DIR_R    = (GPIO_PORTA_DIR_R & ~0x01) | 0x02;  /* PA0 in, PA1 out */
+
+    /* ---------- normal UART setup (unchanged) ---------- */
+    UART0_CTL_R &= ~UART_CTL_UARTEN;          /* disable while configuring */
+
+    INT32U ibrd = 16000000 / (16 * baud);
+    INT32U fbrd = (INT32U)((((16000000.0f / (16.0f * baud)) - ibrd) * 64)+0.5f);
+
+    UART0_IBRD_R = ibrd;
+    UART0_FBRD_R = fbrd;
+
+    UART0_LCRH_R = UART_LCRH_WLEN_8 | UART_LCRH_FEN;   /* 8-N-1, FIFO on  */
+    UART0_IFLS_R = UART_IFLS_RX1_8 | UART_IFLS_TX1_8;  /* RX trig ≈ 2 B   */
+
+    /* leave UART0_IM_R.RXIM = 0 → no interrupt, but RXRIS still works    */
+
+    UART0_CTL_R  = UART_CTL_UARTEN | UART_CTL_RXE | UART_CTL_TXE;
 }
 
 BOOLEAN uart0_ready(void){
-    return !(UART0_FR_R & UART_FR_RXFE);
+    //return !(UART0_MIS_R & UART_MIS_RXMIS);
+    return (UART0_RIS_R & UART_RIS_RXRIS) != 0; /* raw, _unmasked_ flag */
 }
+
+/*
+BOOLEAN uart0_ready(void){
+    return !(UART0_FR_R & UART_FR_RXFE);
+}*/
 
 INT8S uart0_getc(void) {
      return (INT8S)(UART0_DR_R & 0xFF);
 }
 
+/*INT16S uart0_get16(void)
+{
+    INT8S hi, lo;
 
-INT16S uart0_get16(void) {
-    taskENTER_CRITICAL();
-    INT8S hi = uart0_getc(); //mayeb change??/ test
-    INT8S lo = uart0_getc();
+    taskENTER_CRITICAL();          // protect the HW register access
+    hi = uart0_getc();             // first byte is already there
+    taskEXIT_CRITICAL();           // done with the register
+
+     Now wait for the second byte – no critical section!
+    while (!uart0_ready())         // or xSemaphoreTake(), etc.
+        //vTaskDelay(pdMS_TO_TICKS(1));
+
+    taskENTER_CRITICAL();          // quick, fetch the byte
+    lo = uart0_getc();
     taskEXIT_CRITICAL();
-    return (INT16S)((hi << 8) | lo);
+
+    return ((INT16S)lo << 8) | hi;
+}*/
+/*INT16S uart0_get16(void) {
+    taskENTER_CRITICAL();
+    INT8S lo  = uart0_getc(); // wait for next byte
+    INT8S hi = uart0_getc(); //mayeb change??/ test
+       taskEXIT_CRITICAL();
+    return (INT16S)((lo << 8) | hi);
+}*/
+BOOLEAN uart0_get16(INT16S *value){
+    if (!uart0_ready())             /* nothing yet?  →  false    */
+           return false;
+
+    INT16S hi = UART0_DR_R & 0xFF;
+    INT16S lo = UART0_DR_R & 0xFF;
+       *value = ((INT16S)hi << 8) | lo;
+       return true;
 }
 /*
 void uart0_send16(uint16_t v) {
