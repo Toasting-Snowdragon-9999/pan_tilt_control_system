@@ -50,8 +50,8 @@ void PrioVision::tracking(Uart& uart) {
     auto frame_interval = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::duration<double>(1.0 / SAMPLING_FREQ));
 
-    // UartReader ur(uart);
-    // ur.start();
+    UartReader ur(uart);
+    ur.start();
     for (EVER) { 
         // To adjust sampling rate
         auto now = chrone_time::now();
@@ -84,20 +84,29 @@ void PrioVision::tracking(Uart& uart) {
         auto best = find_highest_priority_threshold(_thresholds);
         if (best) {
             _draw_rect(_image, best->get().contours, best->get().min_area);
+            _calculate_offset(offset);
         } 
-        else {}
-        
-        _calculate_offset(offset);
+        else {
+            offset.x_offset = 0;
+            offset.y_offset = 0;
+        }
         
         // Converte to motor degrees
-        int8_t pan_error =  offset.x_offset / PAN_TICK_TO_DEGREE;
-        int8_t tilt_error = offset.y_offset / TILT_TICK_TO_DEGREE;
+        int8_t pan_error =  (offset.x_offset * (-1)) / PAN_TICK_TO_DEGREE;
+        int8_t tilt_error = (offset.y_offset) / TILT_TICK_TO_DEGREE;
 
         std::cout << "Encoded: pan: " << static_cast<int>(pan_error)
         << " tilt: " << static_cast<int>(tilt_error) << std::endl;
         
+        std::cout << "Packet bytes (binary): "
+        << "pan="  << std::bitset<8>(pan_error)   << "  "
+        << "tilt=" << std::bitset<8>(tilt_error)  << '\n';
+
         uart.speak(reinterpret_cast<const uint8_t*>(&pan_error), 1);
-        uart.speak(reinterpret_cast<const uint8_t*>(&tilt_error), 1); 
+        uart.speak(reinterpret_cast<const uint8_t*>(&tilt_error), 1);        
+
+        uint8_t pan_echo;
+        uint8_t tilt_echo;
 
         cv::imshow("GPU Accelerated", _image);
         auto last = chrone_time::now();
@@ -109,11 +118,26 @@ void PrioVision::tracking(Uart& uart) {
         }
 
         // log_error(offset);
+        
         if (cv::waitKey(1) == 'q') {
-            // ur.stop();
+            ur.stop();
             break;
         }
     }
+}
+
+uint8_t PrioVision::make_packet(int8_t error, bool is_pan){
+    int8_t clamped_error   = clamp7(error);          // –64 … +63
+    uint8_t casted_clamped   = static_cast<uint8_t>(clamped_error);  // identical bit pattern
+    uint8_t pkt = (casted_clamped & 0x7F) | ((is_pan) << 7);   // invert the flag
+    return pkt;
+}
+
+inline int8_t PrioVision::clamp7(int v)
+{
+    if (v > MAX_7_BIT) return MAX_7_BIT;
+    if (v < MIN_7_BIT) return MIN_7_BIT;
+    return static_cast<int8_t>(v);
 }
 
 void PrioVision::_set_priority(bool run_calibration) {

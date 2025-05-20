@@ -24,7 +24,7 @@
 #define MAX_CALIBRATION 100
 #define MAX_8_BIT 255
 #define MAX_DEVIATION 7
-#define SAMPLING_FREQ 10 // Max peak freq = 50hz, but will drop to around 30 hz 
+#define SAMPLING_FREQ 30 // Max peak freq = 50hz, but will drop to around 30 hz 
 
 using chrone_time = std::chrono::steady_clock;
 
@@ -61,9 +61,18 @@ class Vision {
         void _calibration(std::vector<cv::Scalar>& thresholds);
         bool _valid_center_diff(cv::Point& origin, cv::Point& old_center, int threshold);
 
+
     private: 
         double _min_contour_area = 400.0;
 
 };
+static void saveGpuMask(const cv::cuda::GpuMat& gpu_mask,
+    const std::string& tag,
+    int frame_idx);
+
+static void saveGpuLabRaw(const cv::cuda::GpuMat& lab_gpu,
+    const std::string& tag,
+    int frame_idx);
+
 
 #endif // VISION_H

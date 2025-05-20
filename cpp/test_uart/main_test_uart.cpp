@@ -1,48 +1,57 @@
 #include <iostream>
-#include <vector>
-// #include "vision.h"
-// #include "priority_vision.h"
-#include "uart.h"
 #include <bitset>
+#include <chrono>
+#include <thread>
+#include "uart.h"
 
 #define UART_DEBUGGER "/dev/ttyACM0"
 #define UART_TO_TTY "/dev/ttyUSB0"
 
 int main()
 {
-
-    // /*INITILISES UART*/
-    std::string usb_debugger = "/dev/ttyACM0";
-    std::string usb_to_tty = "/dev/ttyUSB0";
     Uart uart;
     UartConfig config = {
-        .baud_rate = 115200,
-        .data_bits = 8,
-        .stop_bits = 1,
-        .parity = 0,
-        .flow_control = 0};
-    bool success = uart.init(config, usb_to_tty.c_str());
-    // bool success = true;
-    UartReader ur(uart);
-    ur.start();
-    while (success)
-    {
-        std::cout << "Type a 16-bit integer to send in decimal value: " << std::endl;
-        uint16_t input;
-        while (!(std::cin >> input) || input > 65535) {
-            std::cout << "Invalid input. Please enter a valid 16-bit integer (0-65535): " << std::endl;
-            std::cin.clear(); // Clear the error flag
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
-        }
-        const uint8_t* bytes = reinterpret_cast<uint8_t*>(&input);
-        std::cout << "MSB: " << std::bitset<8>(bytes[1]) << std::endl;
-        std::cout << "LSB: " << std::bitset<8>(bytes[0]) << std::endl;
-        
-        uart.speak(bytes, 2); // Send the input as bytes
+        .baud_rate    = 115200,
+        .data_bits    = 8,
+        .stop_bits    = 1,
+        .parity       = 0,
+        .flow_control = 0
+    };
 
+    if (!uart.init(config, UART_DEBUGGER)) {
+        std::cerr << "Failed to initialize UART!" << std::endl;
+        return 1;
     }
-    ur.stop();
 
+    uint16_t value = 0x1000;       // Start value
+    uint16_t last_echoed = 0xFFFF; // Set to an invalid value initially
+
+    while (true)
+    {
+        const uint8_t* bytes = reinterpret_cast<uint8_t*>(&value);
+
+        std::cout << "Sending: 0x" << std::hex << value << std::dec
+                  << "  [MSB: " << std::bitset<8>(bytes[1])
+                  << ", LSB: " << std::bitset<8>(bytes[0]) << "]" << std::endl;
+
+        uart.speak(bytes, 2);  // Send 16-bit value as 2 bytes
+
+        // Wait for a response (should be 2 bytes if echoed)
+        uint16_t response = 0;
+        uart.listen(reinterpret_cast<uint8_t*>(&response), 2);
+
+        if (response != last_echoed) {
+            std::cout << " Echoed back: 0x" << std::hex << response << std::dec << std::endl;
+            last_echoed = response;
+        } else {
+            std::cout << "⏸ No new echo (value same as last)." << std::endl;
+        }
+
+        // Next value
+        value++;
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
 
     return 0;
 }

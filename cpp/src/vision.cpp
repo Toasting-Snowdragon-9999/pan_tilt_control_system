@@ -149,9 +149,11 @@ void Vision::_greyscale_image(cv::cuda::GpuMat& src_host, std::vector<cv::Scalar
     try
     {
         cv::cuda::cvtColor(src_host, _hsv, COLORSPACE); // e.g., LAB or HSV
+        saveGpuLabRaw(_hsv, "mask_raw_", 0);
         cv::cuda::inRange(_hsv, cv_threshold[0], cv_threshold[1], _grey);
         // Morphological operations on GPU
         // Dilate
+       saveGpuMask(_grey, "mask_raw_", 1);
         {
             cv::Ptr<cv::cuda::Filter> dilateFilter = cv::cuda::createMorphologyFilter(
                 cv::MORPH_DILATE,
@@ -163,6 +165,8 @@ void Vision::_greyscale_image(cv::cuda::GpuMat& src_host, std::vector<cv::Scalar
             dilateFilter->apply(_grey, _grey);
         }
         // Erode
+        saveGpuMask(_grey, "mask_raw_", 2);
+
         {
             cv::Ptr<cv::cuda::Filter> erodeFilter = cv::cuda::createMorphologyFilter(
                 cv::MORPH_ERODE,             // Operation
@@ -173,6 +177,8 @@ void Vision::_greyscale_image(cv::cuda::GpuMat& src_host, std::vector<cv::Scalar
             );
             erodeFilter->apply(_grey, _grey);
         }
+        saveGpuMask(_grey, "mask_raw_", 3);
+
     }
     catch (const cv::Exception& ex)
     {
@@ -181,6 +187,32 @@ void Vision::_greyscale_image(cv::cuda::GpuMat& src_host, std::vector<cv::Scalar
     }
 }
 
+static void saveGpuMask(const cv::cuda::GpuMat& gpu_mask,
+    const std::string& tag,
+    int frame_idx)
+{
+    cv::Mat host;                     // 1-channel CV_8UC1
+    gpu_mask.download(host);          // GPU → CPU copy (≈ 1 ms @ 800×448)
+
+    // Ensure binary mask is 0/255 so it’s visible when opened
+    // (inRange already gives 0/255, but clamp just in case)
+    cv::threshold(host, host, 1, 255, cv::THRESH_BINARY);
+
+    std::string fname = tag + std::to_string(frame_idx) + ".png";
+    cv::imwrite(fname, host);         // writes e.g. "mask_erode_42.png"
+}
+
+static void saveGpuLabRaw(const cv::cuda::GpuMat& lab_gpu,
+    const std::string& tag,
+    int frame_idx)
+{
+cv::Mat lab_host;                  // host matrix
+lab_gpu.download(lab_host);        // GPU → CPU  (correct order!)
+
+// lab_host is CV_8UC3 by default: L* in [0,255]  a*,b* shifted  +128
+std::vector<int> params = { cv::IMWRITE_TIFF_COMPRESSION, 1 }; // LZW
+cv::imwrite("frame_lab.tiff", lab_host, params);    // e.g. "lab_raw_0042.png"
+}
 
 void Vision::_gaussian_blur(const cv::cuda::GpuMat& d_src)
 {
@@ -193,8 +225,11 @@ void Vision::_gaussian_blur(const cv::cuda::GpuMat& d_src)
             0                   // sigmaX
             // (sigmaY defaults to 0 -> same as sigmaX)
         );
-
+        
         gaussFilter->apply(d_src, _blurred);
+        // Save the blurred image for debugging
+        saveGpuMask(_blurred, "mask_raw_", 4);
+
     }
     catch (const cv::Exception& ex)
     {
@@ -205,6 +240,7 @@ void Vision::_gaussian_blur(const cv::cuda::GpuMat& d_src)
 
 void Vision::_find_contours(std::vector<std::vector<cv::Point>>& contours, const cv::Mat& mask){
     cv::findContours(mask, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_NONE);
+
 }
 
 void Vision::_draw_rect(cv::Mat& src_image, std::vector<std::vector<cv::Point>>& contours, double min_contour_area)

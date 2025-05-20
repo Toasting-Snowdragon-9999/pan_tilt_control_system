@@ -196,10 +196,21 @@ void UartReader::stop() {
 
 void UartReader::run() {
     uint8_t byte;
+    std::ofstream log_file("uart_log.txt", std::ios::out | std::ios::app);  // open in append mode
+
+    if (!log_file.is_open()) {
+        std::cerr << "Failed to open uart_log.txt for writing!" << std::endl;
+        return;
+    }
+
     while (_running) {
         _uart.listen(&byte, 1);
-        std::cout << "Char: '" << static_cast<char>(byte) << "' "
-        << "Hex: 0x" << std::hex << std::setw(2) << std::setfill('0') 
-        << static_cast<int>(byte) << std::dec << std::endl;        
-    } 
+
+        log_file << "Char: '" << static_cast<char>(byte) << "' "
+                 << "Hex: 0x" << std::hex << std::setw(2) << std::setfill('0') 
+                 << static_cast<int>(byte) << std::dec << std::endl;
+    }
+
+    log_file.close();
 }
+

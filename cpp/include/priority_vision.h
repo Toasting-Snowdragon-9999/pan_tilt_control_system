@@ -10,12 +10,15 @@
 #include <iomanip>
 #include <chrono>
 #include <ctime>
+#include <bitset>
 
 #include "vision.h"
 
 #define MAX_PRIOS 1
 #define PAN_TICK_TO_DEGREE 10.39395388
 #define TILT_TICK_TO_DEGREE 10.50985048
+#define MAX_7_BIT 63
+#define MIN_7_BIT -64
 
 enum class Priority {
     LOW = 0,
@@ -37,6 +40,8 @@ class PrioVision : public Vision {
         ~PrioVision();
         void tracking (Uart& uart) override;
         void log_error(two_dim::tracking_offset& offset);
+        uint8_t make_packet(int8_t error, bool is_pan);
+        inline int8_t clamp7(int v);
 
     protected: 
         std::vector<ColorThreshold> _thresholds;

@@ -15,6 +15,9 @@
 #include <atomic>
 #include <thread>
 #include <iomanip>
+#include <fstream>
+#include <sstream>  // (optional) if you want to build lines before writing
+
 struct UartConfig {
   uint32_t baud_rate;
   uint8_t data_bits;
