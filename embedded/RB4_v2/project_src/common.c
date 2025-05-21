@@ -19,10 +19,15 @@ QueueHandle_t xTiltCtrlOutQueue;
 QueueHandle_t xPanFbInQueue;
 QueueHandle_t xTiltFbInQueue;
 
+QueueHandle_t xUartTxPanQueue;
+QueueHandle_t xUartTxTiltQueue;
+
+
 // Task Handles
 TaskHandle_t vSpiRxTaskHandle;
 TaskHandle_t vSpiTxTaskHandle;
 TaskHandle_t vUartTaskHandle;
+TaskHandle_t vUartTxTaskHandle;
 TaskHandle_t vPIDControllerTaskHandle;
 TaskHandle_t vLedTaskHandle;
 TaskHandle_t vSpiTaskHandle;

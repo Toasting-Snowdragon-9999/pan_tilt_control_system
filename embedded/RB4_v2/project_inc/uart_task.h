@@ -10,4 +10,6 @@
 
 void vUartTask(void *pv);
 
+void vUartTxTask(void *pv);
+
 #endif /* PROJECT_INC_UART_TASK_H_ */

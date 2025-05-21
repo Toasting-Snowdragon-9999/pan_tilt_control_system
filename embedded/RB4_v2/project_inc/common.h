@@ -30,7 +30,7 @@
 #include "emp_type.h"
 #include "uart.h"
 #include "spi.h"
-#include "ssi.h"
+//#include "ssi.h"
 
 /* Task headers */
 #include "controller.h"
@@ -61,8 +61,8 @@ extern QueueHandle_t xTiltCtrlInQueue;
 extern QueueHandle_t xPanFbInQueue;
 extern QueueHandle_t xTiltFbInQueue;
 
-//QueueHandle_t xPanCtrlOutQueue;
-//QueueHandle_t xTiltCtrlOutQueue;
+extern QueueHandle_t xUartTxPanQueue;
+extern QueueHandle_t xUartTxTiltQueue;
 
 // Task Handles
 
@@ -72,6 +72,7 @@ extern TaskHandle_t vSpiTxTaskHandle;
 extern TaskHandle_t vUartTaskHandle;
 extern TaskHandle_t vPIDControllerTaskHandle;
 extern TaskHandle_t vLedTaskHandle;
+extern TaskHandle_t vUartTxTaskHandle;
 
 extern volatile INT8U FSM_STATUS;
 #define IDLE 0 //idle???

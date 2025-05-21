@@ -61,30 +61,39 @@ void UnpackEncoderFrame(INT16S Frame, INT8S *panVal, INT8S *tiltVal){ //From FPG
 
 
 /* Option 1: pass by value – simplest */
-void tiva_fpga_map_pan(INT32S  pid_output_pan,
+void tiva_fpga_map_pan(INT32S  pid_output_pan, //TILT
                        INT8U  *pid_speed_pan,
                        INT8U  *pid_dir_pan)
 {
     *pid_speed_pan = (INT8U)(abs(pid_output_pan) / pan_step_increment) & 0x1F;
 
-    if(*pid_speed_pan >= 5){
-        *pid_speed_pan+=6;
+    if(*pid_speed_pan >= 1){
+        *pid_speed_pan+=11;
     }
 
+  /*  if(*pid_speed_pan <= 7){
+        *pid_speed_pan = 0;
+    }
+*/
     *pid_dir_pan   = pid_output_pan < 0 ? PAN_DIR_LEFT : PAN_DIR_RIGHT;
 
 }
 
 
-void tiva_fpga_map_tilt(INT32S  pid_output_tilt,
+void tiva_fpga_map_tilt(INT32S  pid_output_tilt, //PAN
                         INT8U  *pid_speed_tilt,
                         INT8U  *pid_dir_tilt)
 {
     *pid_speed_tilt = (INT8U)(abs(pid_output_tilt) / tilt_step_increment) & 0x1F;
     *pid_dir_tilt   =  pid_output_tilt < 0 ? TILT_DIR_UP : TILT_DIR_DOWN;
 
-    if(*pid_speed_tilt >= 5){
-            *pid_speed_tilt+=5;
+
+   /* if(*pid_speed_tilt <= 7){
+          *pid_speed_tilt = 0;
+      }
+    */
+      if(*pid_speed_tilt >= 1){
+            *pid_speed_tilt+=7;
     }
 
 }

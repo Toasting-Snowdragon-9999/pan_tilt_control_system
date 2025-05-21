@@ -133,12 +133,12 @@ INT8S uart0_getc(void) {
 }*/
 BOOLEAN uart0_get16(INT16S *value){
     if (!uart0_ready())             /* nothing yet?  →  false    */
-           return false;
+           return 0;
 
     INT16S hi = UART0_DR_R & 0xFF;
     INT16S lo = UART0_DR_R & 0xFF;
        *value = ((INT16S)hi << 8) | lo;
-       return true;
+       return 1;
 }
 /*
 void uart0_send16(uint16_t v) {

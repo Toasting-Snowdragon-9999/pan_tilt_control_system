@@ -29,6 +29,9 @@ void queueSetup(){
           xPanCtrlInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
           xTiltCtrlInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
 
+          xUartTxPanQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
+          xUartTxTiltQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
+
          xPanFbInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
          xTiltFbInQueue = xQueueCreate(1, sizeof(INT8S)); //from map task to controller task
 
@@ -48,7 +51,8 @@ int main(void)
         xTaskCreate( vSpiTxTask,"SPI_TX", 1024, NULL, 4, &vSpiTxTaskHandle);
         xTaskCreate( vPIDControllerTask, "PID_CONTROLLER", 1024, NULL, 3, &vPIDControllerTaskHandle);
         xTaskCreate( vUartTask, "UART_RX", 1024, NULL, 2, &vUartTaskHandle);
-      // xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
+        xTaskCreate( vUartTxTask, "UART_TX", 1024, NULL, 2, &vUartTxTaskHandle);
+       // xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
 
 
 

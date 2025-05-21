@@ -14,7 +14,8 @@ extern QueueHandle_t xUartTxQueue;
 extern QueueHandle_t xPanCtrlOutQueue;
 extern QueueHandle_t xPanCtrlInQueue;
 extern QueueHandle_t xTiltCtrlOutQueue;
-
+extern QueueHandle_t xUartTxPanQueue;
+extern QueueHandle_t xUartTxTiltQueue;
 
 void vUartTask(void *pv) {
   //TickType_t xLastWakeTime;
@@ -32,9 +33,6 @@ void vUartTask(void *pv) {
                 FSM_STATUS = UART;
 
                uart0_get16(&VisionFrame);
-
-                //uart1_send16(VisionFrame);
-               // uart1_print ("\r\nVisionFrame: 0x%04x, 0b%s, d:%d \r\n", VisionFrame, rx_binary_string(VisionFrame), VisionFrame);
                UnpackVisionFrame(VisionFrame, &panVal, &tiltVal);
 
 
@@ -60,21 +58,31 @@ void vUartTask(void *pv) {
          //uart1_print ("\r\tiltVal: 0x%04x, 0b%s, d:%d \r\n", tiltVal, rx_binary_string(tiltVal), tiltVal);
 
 
-/*
+
 void vUartTxTask(void *pvParameters)
 {
-    INT16S tx;
-
+    INT8S pantx;
+    INT8S tilttx;
+    INT16S pan;
+    INT16S tilt;
+    INT16S collectiveError; //eller collective encoder
+    //INT8U sample = 0;
       for (;;) {
 
-          FSM_STATUS = URTTX;
+        //  FSM_STATUS = URTTX;
 
-          if(xQueueReceive(xUartTxQueue, &tx, portMAX_DELAY) == pdTRUE){
-              uart1_print("\r\n<<<UartTxTask>>>\r\n");
-              uart0_send16(tx);
+          if((xQueueReceive(xUartTxPanQueue, &pantx, 0) == pdTRUE) && (xQueueReceive(xUartTxTiltQueue, &tilttx, 0) == pdTRUE)){
+
+             pan = pantx & 0xFF;
+             tilt = tilttx & 0xFF;
+             collectiveError = ((INT16S)pan << 8) | tilt;
+
+              uart1_print ("\r\n: 0x%04x, 0b%s \r\n", collectiveError, rx_binary_string(collectiveError));
           }
+
+       vTaskDelay(pdMS_TO_TICKS(1));
     }
 }
-*/
+
 
 

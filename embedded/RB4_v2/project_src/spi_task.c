@@ -9,7 +9,7 @@
 #include "common.h"
 #include "spi_task.h"
 //#include "spi.h"
-#include "ssi.h"
+//#include "ssi.h"
 #include "map.h"
 //extern QueueHandle_t SpiTxQueue;
 //extern QueueHandle_t xSpiRxQueue;

@@ -106,6 +106,7 @@ INT32S Pan_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S encM
 
     // Proportional
     INT32S P = pid->kp * error;
+    xQueueSend(xUartTxPanQueue, &error, 0);
    //uart1_print("\r\n pan Proportional: 0x%04x, 0b%s, d:%d \r\n", P, rx_binary_string(P), P);
 
     // Integral
@@ -150,6 +151,7 @@ INT32S Tilt_PID_Compute(PIDController_t *pid, INT8S combinedReference, INT8S enc
 
     // Proportional
     INT32S P = pid->kp * error;
+   xQueueSend(xUartTxTiltQueue, &error, 0);
    //uart1_print("\r\nProportional: 0x%04x, 0b%s, d:%d \r\n", P, rx_binary_string(P), P);
 
     // Integral
@@ -201,8 +203,8 @@ void vPIDControllerTask(void *pvParameters){
   //  PID_Init(&tiltPID, 25.0, 0., 0.1, 0.004, 1000.0, -12.0, 12.0);
    // PID_Init(&panPID, 25.0, 0., 0.1, 0.004, 1000.0, -12.0, 12.0);
     //void Pan_PID_Init(PIDController_t *pid, float kp, float ki, float kd, float Ts, float N, float output_min, float output_max);
-    Pan_PID_Init(&panPID, 2000.0f, 0.0f, 0.001f, 0.005f, 1000.0f, -12.0f, 12.0f); //tilt (DONT CHANGE NAME)
-    Tilt_PID_Init(&tiltPID, 0.0f, 0.0f, 0.9f, 0.005f, 1000.0f, -12.0f, 12.0f); //pan (DONT CHANGE NAME)
+    Pan_PID_Init(&panPID, 25.0f, 0.0f, 0.09f, 0.005f, 1000.0f, -12.0f, 12.0f); //tilt (DONT CHANGE NAME)
+    Tilt_PID_Init(&tiltPID, 50.0f, 0.0f, 0.9f, 0.005f, 1000.0f, -12.0f, 12.0f); //pan (DONT CHANGE NAME)
 
 
     //INT8S panEncCurrentVal =  0;
