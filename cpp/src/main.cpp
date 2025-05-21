@@ -23,6 +23,7 @@ int main() {
     };
     bool success = uart.init(config, usb_debugger.c_str());
     /*IF UART SUCCESSFULLY INITIALISED WE START TRACKING*/
+    // bool success = true;
     if (success){
         PrioVision vision;
         vision.tracking(uart);
