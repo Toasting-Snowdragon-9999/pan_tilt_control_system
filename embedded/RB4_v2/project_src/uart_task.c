@@ -28,8 +28,9 @@ void vUartTask(void *pv) {
 
 
         for (EVER) {
-
+            GPIO_PORTF_DATA_R ^= (1<<3);
             if(uart0_ready()){
+
                 FSM_STATUS = UART;
 
                uart0_get16(&VisionFrame);
@@ -41,9 +42,9 @@ void vUartTask(void *pv) {
 
                 xQueueSend(xPanCtrlInQueue, &panVal, 0);
                 xQueueSend(xTiltCtrlInQueue, &tiltVal, 0);
-
+                GPIO_PORTF_DATA_R ^= (1<<3);
             }
-
+            //GPIO_PORTF_DATA_R ^= (1<<3);
            vTaskDelay(pdMS_TO_TICKS(1));
            //  vTaskDelayUntil( &xLastWakeTime, xFrequency );
         }

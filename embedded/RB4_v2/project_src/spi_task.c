@@ -35,7 +35,7 @@ void vSpiTxTask(void *pv) { //receive from fpga to tiva
       xLastWakeTime = xTaskGetTickCount();
 
         for (EVER) {
-
+            GPIO_PORTB_DATA_R ^= (1<<3);
             if((xQueueReceive(xPanCtrlOutQueue, &panError, portMAX_DELAY) == pdTRUE)
             && (xQueueReceive(xTiltCtrlOutQueue, &tiltError, portMAX_DELAY) == pdTRUE)){
 
@@ -44,9 +44,9 @@ void vSpiTxTask(void *pv) { //receive from fpga to tiva
              //  uart1_print("\r\n<<<SPI_TX_TASK>>>\r\n");
                 tiva_fpga_map_pan(panError, &panSpeed, &panDir);
                tiva_fpga_map_tilt(tiltError, &tiltSpeed, &tiltDir);
+               MotorFrame = 0b0100001000010001;
 
-
-               MotorFrame = CreateFrame(panDir, (INT8U)panSpeed, tiltDir, (INT8U)tiltSpeed);
+           // MotorFrame = CreateFrame(panDir, (INT8U)panSpeed, tiltDir, (INT8U)tiltSpeed);
 
                 //DEBUGGER PRINTS
              //  uart1_print("\r\nMotorFrame: 0x%04x, 0b%s, d:%u \r\n", MotorFrame, rx_binary_string(MotorFrame), (unsigned)MotorFrame);
@@ -57,6 +57,7 @@ void vSpiTxTask(void *pv) { //receive from fpga to tiva
 
             }
             SPI_write(MotorFrame);
+           // GPIO_PORTB_DATA_R ^= (1<<3);
             vTaskDelay(pdMS_TO_TICKS(5));
             /*if(frameCreated == 1){
 
@@ -81,18 +82,20 @@ void vSpiRxTask(void *pvParameters)
     xLastWakeTime = xTaskGetTickCount();
 
     for(EVER){
+        GPIO_PORTC_DATA_R ^= (1<<4);
      //  uart1_print("\r\n<<<SPI_RX_TASK>>>\r\n");
         EncoderFrame = SPI_read(); //MISO
         //uart1_print("here");
-
+     //   GPIO_PORTC_DATA_R ^= (1<<4);
 //        EncoderFrame = spi_receive();
-
+      // uart1_print("\r\nEncoderFrame: 0x%04x, 0b%s, d:%d \r\n", EncoderFrame, rx_binary_string(EncoderFrame), EncoderFrame);
         //EncoderFrame = 0b011010000000100;
         UnpackEncoderFrame(EncoderFrame, &panTicks, &tiltTicks);
         //uart1_send16(EncoderFrame);
 
-     //   uart1_print("\r\panTicks: 0x%04x, 0b%s, d:%d \r\n", panTicks, rx_binary_string(panTicks), panTicks);
-      // uart1_print("\r\nEncoderFrame: 0x%04x, 0b%s, d:%d \r\n", EncoderFrame, rx_binary_string(EncoderFrame), EncoderFrame);
+        //uart1_print("\r\panTicks: 0x%04x, 0b%s, d:%d \r\n", panTicks, rx_binary_string(panTicks), panTicks);
+        //uart1_print("\r\tiltTicks: 0x%04x, 0b%s, d:%d \r\n", tiltTicks, rx_binary_string(tiltTicks), tiltTicks);
+
 
         //panAng = ticks_to_degrees(panTicks);
         //tiltAng = ticks_to_degrees(tiltTicks);

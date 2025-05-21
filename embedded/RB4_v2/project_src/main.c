@@ -51,7 +51,7 @@ int main(void)
         xTaskCreate( vSpiTxTask,"SPI_TX", 1024, NULL, 4, &vSpiTxTaskHandle);
         xTaskCreate( vPIDControllerTask, "PID_CONTROLLER", 1024, NULL, 3, &vPIDControllerTaskHandle);
         xTaskCreate( vUartTask, "UART_RX", 1024, NULL, 2, &vUartTaskHandle);
-        xTaskCreate( vUartTxTask, "UART_TX", 1024, NULL, 2, &vUartTxTaskHandle);
+     //   xTaskCreate( vUartTxTask, "UART_TX", 1024, NULL, 2, &vUartTxTaskHandle);
        // xTaskCreate( vLedTask, "LED_TASK", 128, NULL, 4, &vLedTaskHandle);
 
 

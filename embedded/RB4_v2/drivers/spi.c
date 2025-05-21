@@ -68,13 +68,13 @@ void SPI_init(void){
        Configure the SSI clock source by writing to the SSICC register.
        ****************************************************************************************************/
 
-       SSI2_CC_R = 0x00; // System clock (based on clock source and divisor factor)
+       SSI2_CC_R = 0x5; // System clock (based on clock source and divisor factor)
 
        /**************************************************************************************************
        Configure the clock prescale divisor by writing the SSICPSR register.
        ****************************************************************************************************/
 
-       SSI2_CPSR_R = 20; //Clock prescaler set to 2
+       SSI2_CPSR_R = 20 ; //250; //Clock prescaler set to 2 0x9F00
 
        /**************************************************************************************************
        Write the SSICR0 register with the following configuration:

@@ -227,9 +227,11 @@ void vPIDControllerTask(void *pvParameters){
 
 
     for(EVER){
-
+        GPIO_PORTC_DATA_R ^= (1<<5);
+    //    GPIO_PORTC_DATA_R ^= (1<<5);
         if((xQueueReceive(xPanCtrlInQueue, &panIn, 0) == pdTRUE)
           && (xQueueReceive(xTiltCtrlInQueue, &tiltIn, 0) == pdTRUE)){
+
         //  uart1_print("\r\n<<<PID_CONTROLLER_VISION>>>\r\n");
            FSM_STATUS = CTRL;
 
@@ -247,7 +249,7 @@ void vPIDControllerTask(void *pvParameters){
 
        if((xQueueReceive(xPanFbInQueue, &panEncMeasuredVal, 0) == pdTRUE)
           && (xQueueReceive(xTiltFbInQueue, &tiltEncMeasuredVal, 0) == pdTRUE)){
-
+          // GPIO_PORTC_DATA_R ^= (1<<5);
          //uart1_print("\r\n<<<PID_CONTROLLER_ENCODER>>>\r\n");
       // uart1_print("panEncMeasuredVal: 0x%04x, 0b%s, d:%d \r\n", panEncMeasuredVal, rx_binary_string(panEncMeasuredVal), panEncMeasuredVal);
        //uart1_print("tiltEncMeasuredVal: 0x%04x, 0b%s, d:%d \r\n", tiltEncMeasuredVal, rx_binary_string(tiltEncMeasuredVal), tiltEncMeasuredVal);
