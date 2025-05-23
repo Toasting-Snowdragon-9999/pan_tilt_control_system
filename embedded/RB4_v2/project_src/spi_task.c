@@ -47,7 +47,7 @@ void vSpiTxTask(void *pv) { //receive from fpga to tiva
 
 
                MotorFrame = CreateFrame(panDir, (INT8U)panSpeed, tiltDir, (INT8U)tiltSpeed);
-
+               //MotorFrame = 0b0000000000000001;
                 //DEBUGGER PRINTS
              //  uart1_print("\r\nMotorFrame: 0x%04x, 0b%s, d:%u \r\n", MotorFrame, rx_binary_string(MotorFrame), (unsigned)MotorFrame);
           // uart1_print("\r\panSpeed: 0x%04x, 0b%s, d:%u \r\n", panSpeed, rx_binary_string(panSpeed), (unsigned)panSpeed);
@@ -57,7 +57,7 @@ void vSpiTxTask(void *pv) { //receive from fpga to tiva
 
             }
             SPI_write(MotorFrame);
-            vTaskDelay(pdMS_TO_TICKS(5));
+            vTaskDelay(pdMS_TO_TICKS(1));
             /*if(frameCreated == 1){
 
             frameCreated = 0;
@@ -82,7 +82,7 @@ void vSpiRxTask(void *pvParameters)
 
     for(EVER){
      //  uart1_print("\r\n<<<SPI_RX_TASK>>>\r\n");
-        EncoderFrame = SPI_read(); //MISO
+       // EncoderFrame = SPI_read(); //MISO
         //uart1_print("here");
 
 //        EncoderFrame = spi_receive();
@@ -107,7 +107,7 @@ void vSpiRxTask(void *pvParameters)
 
 
 
-        vTaskDelay(pdMS_TO_TICKS(5));
+        vTaskDelay(pdMS_TO_TICKS(1));
 
        //vTaskDelayUntil( &xLastWakeTime, xFrequency );
     }

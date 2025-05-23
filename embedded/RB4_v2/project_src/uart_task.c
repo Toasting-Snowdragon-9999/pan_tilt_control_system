@@ -76,8 +76,10 @@ void vUartTxTask(void *pvParameters)
              pan = pantx & 0xFF;
              tilt = tilttx & 0xFF;
              collectiveError = ((INT16S)pan << 8) | tilt;
-
-              uart1_print ("\r\n: 0x%04x, 0b%s \r\n", collectiveError, rx_binary_string(collectiveError));
+             uart1_send16(collectiveError);
+            // char ch = 0xFFFF;
+            // uart1_send16(ch);
+//              uart1_print ("\r\n: 0x%04x, 0b%s \r\n", collectiveError, rx_binary_string(collectiveError));
           }
 
        vTaskDelay(pdMS_TO_TICKS(1));
